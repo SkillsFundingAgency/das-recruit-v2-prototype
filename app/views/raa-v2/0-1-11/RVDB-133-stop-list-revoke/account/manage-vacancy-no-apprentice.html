@@ -1,0 +1,109 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block content %}
+
+<style media="screen">
+  .analytics--block{
+    margin-bottom:10px;
+  }
+  .analytics--header{
+    background-color:#CAE7E5;
+    padding:6px 10px 5px;
+    margin-bottom: 10px;
+    /* font-size: 16px !important;
+    font-size: 1rem !important;
+    line-height: 1.25 !important; */
+
+  }
+  .analytics--numeric{
+    font-size: 50px;
+    font-weight: 700;
+  }
+  .analytics--label{font-size:28px;font-weight: 400;}
+  .govuk-icon-small{
+    font-size: 40px;
+    color:#6f777b;
+    margin-right:10px;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Manage vacancy</h1>
+    <p class="govuk-inset-text govuk-!-margin-top-0">This vacancy was created by <span class="govuk-!-font-weight-bold">NOTTINGHAM COLLEGE</span> and transferred to your account on 15 May 2020</p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half ">
+        <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-6">Status</h3>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">Closed</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-6">Vacancy title</h3>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">Apprentice Bricklayer</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-6">Vacancy ref</h3>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">VAC1000000997</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-6">Closing date</h3>
+      </div>
+      <div class="govuk-grid-column-one-half ">
+        <span class="govuk-body">01 Jan 2019
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-6">Possible start date</h3>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">01 Feb 2019</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <ul class="govuk-list das-action-links">
+          <li><a class="govuk-link button-link" href="preview-edit">Edit vacancy</a></li>
+          <li><a class="govuk-link button-link" href="close">Close vacancy</a></li>
+          <li><a class="govuk-link button-link" target="_blank" href="preview">View vacancy</a></li>
+          {% if query.route == 'clone' %}<li><a class="govuk-linkbutton-link" href="../vacancy-preview/vacancy-preview-cloned">Clone vacancy</a></li>{%endif%}
+        </ul>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<div class="govuk-grid-row govuk-!-margin-top-6">
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">Manage applications</h2>
+      <p class="govuk-body">Candidate applications for this apprenticeship will appear here.</p>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <div class="govuk-!-margin-top-6">
+            <a class="govuk-button" href="../vacancies">Return to dashboard</a>
+        </div>
+    </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

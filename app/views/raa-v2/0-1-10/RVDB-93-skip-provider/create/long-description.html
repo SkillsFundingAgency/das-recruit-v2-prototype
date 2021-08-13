@@ -1,0 +1,78 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+        <h1 class="govuk-heading-xl">Main description of the vacancy</h1>
+        <form method="post">
+          <fieldset class="govuk-fieldset">
+              <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  What is your address?
+                </h1>
+              </legend> -->
+              <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold" for="VacancyDescription" >
+                  What will the average work day look like?
+                </label>
+                <span id="more-detail-hint" class="govuk-hint">
+                  Describe what the apprentice will be doing.
+                </span>
+                <textarea class="govuk-textarea js-character-count" id="VacancyDescription" name="VacancyDescription" rows="5" aria-describedby="more-detail-hint">{% if data.VacancyDescription %}{{data.VacancyDescription }}{% else %}{% endif %}</textarea>
+              </div>
+              </div>
+              <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold" for="TrainingDescription" >
+                  What training will the apprentice get?
+                </label>
+                <span id="more-detail-hint" class="govuk-hint ">
+                  Describe the training they will get both at work and elsewhere
+                </span>
+                <textarea class="govuk-textarea js-character-count" id="TrainingDescription" name="TrainingDescription" rows="5" aria-describedby="more-detail-hint">{% if data.TrainingDescription %}{{data.TrainingDescription }}{% else %}{% endif %}</textarea>
+              </div>
+              </div>
+            <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold" for="OutcomeDescription" >
+                  What qualification will the apprentice get at the end of the apprenticeship?
+                </label>
+
+                <textarea class="govuk-textarea js-character-count" id="OutcomeDescription" name="OutcomeDescription" rows="5" aria-describedby="more-detail-hint" >{% if data.OutcomeDescription %}{{data.OutcomeDescription }}{% else %}{% endif %}</textarea>
+              </div>
+              </div>
+              <div class="govuk-form-group">
+                {% if data.edit != "yes"%}
+                <input type="submit" class="govuk-button" name="continueButton" value="Save and continue" />
+                <a href="short-description" class="govuk-button das-button-secondary govuk-!-margin-left-2" name="continueButton" value="Do this later">Skip</a>
+                <a href="../dashboard-multiple" class="govuk-body das-button--link">Save and exit</a>
+                {%else%}
+                <input type="submit" class="govuk-button" name="previewButton" value="Save and preview" />
+                <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+                {%endif%}
+              </div>
+            </fieldset>
+        </form>
+
+      </div>
+  </div>
+
+  </main>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

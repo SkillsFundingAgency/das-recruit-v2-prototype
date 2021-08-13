@@ -1,0 +1,66 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Duration and working hours</h1>
+
+    <form method="post">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-font-weight-bold" for="duration">
+          How long is the apprenticeship expected to last?
+        </label>
+        <span class="govuk-hint">Must be a minimum of 12 months</span>
+        <input class="govuk-input govuk-input--width-4" id="duration" name="duration" type="text" {% if data.duration and data.edit=="yes"%}{{data.duration}}{% endif %}>
+
+        <select class="govuk-select" id="sort" name="sort">
+          <option value="published">Month(s)</option>
+          <option value="published">Year(s)</option>
+        </select>
+      </div>
+
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="250">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="workingWeekDescription">
+            Details of working week
+          </label>
+          <span class="govuk-hint">For example, Monday to Friday 9am to 5pm, shifts, may work evenings and weekends</span>
+          <textarea class="govuk-textarea govuk-!-width-three-quarters js-character-count " id="workingWeekDescription"
+            name="workingWeekDescription" rows="5"></textarea>
+        </div>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-font-weight-bold" for="weekly-hours">
+          How many hours will the apprentice work each week, including training?
+        </label>
+
+        <input class="govuk-input govuk-input--width-4" id="weekly-hours" name="weeklyHours" type="text" {% if data.weeklyHours and data.edit == "yes"%} value="{{data.weeklyHours}}" {%endif%}>
+        <span class="govuk-body">hours</span>
+      </div>
+      <div class="govuk-form-group">
+      {% if data.edit != "yes"%}
+        <input type="submit" class="govuk-button" name="continueButton" value="Save and continue" />
+        <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
+      {%else%}
+        <input type="submit" class="govuk-button" name="previewButton" value="Save and continue" />
+        <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+      {%endif%}
+      </div>
+      </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

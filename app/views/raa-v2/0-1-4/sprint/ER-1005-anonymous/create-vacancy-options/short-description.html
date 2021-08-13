@@ -1,0 +1,34 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Write a few sentences to describe the vacancy
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Write a few sentences to describe the vacancy</h1>
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="350">
+        <div class="govuk-form-group">
+          <!-- <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+              Write a few sentences to describe the vacancy
+          </label> -->
+          <span class="govuk-hint">Brief overview needs to be engaging to make the candidate want to view the full vacancy.</span>
+          <textarea class="govuk-textarea js-character-count " id="shortDescription" name="shortDescription" rows="5"></textarea>
+        </div>
+      </div>
+      <a href="./employer" class="govuk-button">Save and continue</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

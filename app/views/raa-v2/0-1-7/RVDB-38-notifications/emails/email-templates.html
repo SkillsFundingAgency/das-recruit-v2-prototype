@@ -1,0 +1,32 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Email templates
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Emails</h1>
+        <!-- <h3 class="govuk-heading-m">Configure your Journey</h3> -->
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <!-- <h2 class="govuk-heading-m">Existing provider</h2> -->
+            <ul class="govuk-list">
+              {% for email in emails %}
+              <li class="govuk-list--item"><a href="./email?templateId={{email.id}}">{{email.name}}</a></li>
+              {% endfor %}
+            </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+
+{% endblock %}

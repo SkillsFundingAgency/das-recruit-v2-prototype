@@ -1,0 +1,101 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">What employer name do you want to go on the vacancy?</h1>
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="display_name_registered" name="selected_display_name" type="radio"
+                value="organisation" >
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                {{data.orgName}} (registered name)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="display_name_registered" name="selected_display_name" type="radio"
+                value="organisation" >
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                {%if data.hasTradingName =="yes"%}{{data.TradingName}}{%else%}Ducktape builders{%endif%} (trading name)
+              </label>
+            </div>
+            <div class="govuk-radios__item " data-module="business-name-vacancy-panel">
+              <input class="govuk-radios__input" id="display_name_trading" name="selected_display_name" type="radio"
+                value="tradingName"  data-aria-controls="trading-name-conditional">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                  a different trading name
+              </label>
+            </div>
+            <div class="govuk-radios__conditional" id="trading-name-conditional">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold" for="TradingName">New trading name</label>
+                <span class="govuk-hint">Updating the trading name will also update the trading name on any unapproved vacancies eg. draft, pending review or rejected vacancies</span>
+                <input class="govuk-input govuk-input--width-20" id="TradingName" name="TradingName" type="text" >
+              </div>
+            </div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="display_name_anonymous" name="selected_display_name" type="radio"
+                value="anonymous" data-aria-controls="anonymous-conditional">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                do not display a name (be anonymous)
+                <span class="govuk-hint">This could mean fewer people see your vacancy</span>
+              </label>
+            </div>
+            <div class="govuk-radios__conditional" id="anonymous-conditional">
+              <div class="form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                      <div class="govuk-form-group">
+                          <label class="govuk-label" for="description_name">
+                              Brief description of what the employer does
+                          </label>
+                          <span class="govuk-hint">For example, car manufacturer or clothing retailer.</span>
+                          <input class="govuk-input govuk-input--width-20" id="description_name" name="description_name" type="text">
+                      </div>
+                      <!-- <div class="govuk-form-group">
+                          <label class="govuk-label" for="address-postcode">
+                            Postcode
+                          </label>
+                          <span class="govuk-hint">
+                              We will only show the first half of the postcode on Find an apprenticeship.
+                          </span>
+                          <input class="govuk-input govuk-input--width-20" style="width:120px;" id="address-postcode" name="address-postcode" type="text">
+                      </div> -->
+                      <div class="govuk-form-group">
+                          <label class="govuk-label" for="reason">
+                              Reason for being anonymous
+                          </label>
+                          <span class="govuk-hint"> This will help our vacancy reviewers validate your request to remain anonymous. This information will not be displayed on the advert.</span>
+                          <textarea class="govuk-textarea govuk-!-width-three-quarters js-character-count" data-module="character-count" data-minlength="50" data-maxlength="200" rows="5" id="reason" name="reason" type="text"></textarea>
+                          <span style="float:left;">200 characters remaining</span>
+                      </div>
+
+                  </fieldset>
+
+              </div>
+            </div>
+
+          </div>
+
+        </fieldset>
+
+        <div class="govuk-form-group">
+          <button type="submit" class="govuk-button" >Save and continue</button>
+          <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

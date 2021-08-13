@@ -1,0 +1,130 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">Important dates</h1>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="closing-hint" role="group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+            Application closing date
+          </label>
+          <span id="closing-hint" class="govuk-hint">
+            For example, 19 01 2019
+          </span>
+          <div class="govuk-date-input" id="closing">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="closing-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="closing-day" name="closing-day"
+                  type="number" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="closing-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="closing-month" name="closing-month"
+                  type="number" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="closing-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="closing-year" name="closing-year"
+                  type="number" pattern="[0-9]*">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="start-hint" role="group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+            When do you expect the apprentice to start?
+          </label>
+          <span id="start-hint" class="govuk-hint">
+            For example, 02 02 2019
+          </span>
+          <div class="govuk-date-input" id="dob">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="start-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-day" name="start-day"
+                  type="number" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="start-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-month" name="start-month"
+                  type="number" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="start-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-year" name="start-year"
+                  type="number" pattern="[0-9]*">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+
+      <!-- <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
+          <legend class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+            Disability Confident (optional)
+          </legend>
+
+          <div class="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="is-disability-confident" name="is-disability-confident" type="checkbox"
+                value="british" aria-describedby="is-disability-confident">
+              <label class="govuk-label govuk-checkboxes__label" for="is-disability-confident">
+                This vacancy is <a href="https://www.gov.uk/government/collections/disability-confident-campaign" rel="noopener"
+                  target="_blank" title="Disability Confident employer scheme and guidance (opens in a new window)">Disability
+                  Confident</a>.
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div> -->
+
+      <a href="wage" class="govuk-button">Save and continue</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#apprenticeship-type').select2();
+  });
+</script>
+
+{% endblock %}

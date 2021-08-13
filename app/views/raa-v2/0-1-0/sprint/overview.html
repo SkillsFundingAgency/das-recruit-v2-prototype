@@ -1,0 +1,117 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">VAA-v2 Prototypes</span>
+        <h1 class="govuk-heading-xl">0-1-0 Sprint stories and other designs</h1>
+        <a class="govuk-heading-m" href="ALL/dashboard-multiple?vacancies=multiple">All designs (testing version)</a>
+        <a class="govuk-heading-m" href="ALL/dashboard-none?vacancies=none">All designs with no vacancies</a><br>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-788 - Redesign location page - Handle large amount of entiy types
+          <span class="govuk-caption-m">Includes: ER-000 removing border around part on content.</span>
+        </h2>
+        <p>
+          <a class="govuk-link" href="ER-788/dashboard">From dashboard</a><br>
+          <a class="govuk-link" href="ER-788/create-vacancy-options/employer">Employer(large) search</a><br>
+          <a class="govuk-link" href="ER-788/create-vacancy-options/employer-no-search">Employer(small) no search</a><br>
+          <a class="govuk-link" href="ER-788/create-vacancy-options/employer?query=Shrewsbury">Employer search - no result</a><br>
+          <a class="govuk-link" href="ER-788/create-vacancy-options/location">Location page</a><br>
+          <a class="govuk-link" href="ER-788/create-vacancy-options/location-with-alt">Location with saved alternative</a>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-780 - Adding support contact details to Recruit</h2>
+        <p>
+          <a class="govuk-link" href="ER-780/dashboard">From dashboard</a><br>
+          <a class="govuk-link" href="ER-780/create-vacancy-options/short-description">Sample page with in page support link</a><br>
+
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-487 - Ability to specify a trading name to be shown on the vacancy<br>
+        and ER-324 Create an Anonymous employer vacancy
+        <span class="govuk-caption-m">Includes: ER-788 Redesign location</span>
+      </h2>
+
+        <p>
+          <a class="govuk-link" href="ER-487/dashboard">From dashboard</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-787 - Redesign to the clone a vacancy page</h2>
+        <p>
+          <a class="govuk-link" href="ER-787/dashboard">From dashboard</a><br>
+          <a class="govuk-link" href="ER-787/create-vacancy-options/create-vacancy">Create a vacancy</a><br>
+          <a class="govuk-link" href="ER-787/create-vacancy-options/clone-vacancy">Choose vacancy - with search</a><br>
+          <a class="govuk-link" href="ER-787/create-vacancy-options/clone-vacancy?query=IT%20Apprentice%20v1">Choose vacancy - search with no result</a><br>
+          <a class="govuk-link" href="ER-787/create-vacancy-options/clone-vacancy-no-search">Choose Vacancy - no search</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-319 - Creation of a "Nationwide" vacancy</h2>
+        <p>
+          <a class="govuk-link" href="ER-319/dashboard">From dashboard</a><br>
+          <a class="govuk-link" href="ER-319/create-vacancy-options/location">Nationwide location select</a><br>
+          <a class="govuk-link" href="ER-319/create-vacancy-options/location-with-alt">Nationwide location select + saved alternative</a>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-781 - Remove Blurb on the Your vacancies dashboard
+          <span class="govuk-caption-m">Includes: ER-787 - Redesign to the clone a vacancy page</span>
+        </h2>
+
+        <p>
+          <a class="govuk-link" href="ER-781/dashboard-no-vacancy?firstVacancy=yes">Start with no vacancies</a><br>
+          <a class="govuk-link" href="ER-781/dashboard-one-vacancy?firstVacancy=yes">Dahsboard with 1 vacancy</a><br>
+          <a class="govuk-link" href="ER-781/dashboard?firstVacancy=no">Dahsboard with many vacancies</a><br>
+          <a class="govuk-link" href="ER-781/create-vacancy-options/create-vacancy?firstVacancy=yes">Create a vacancy page - user has no approved vacancies</a><br>
+        </p>
+
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-471 - System notification</h2>
+        <p>
+          <a class="govuk-link" href="ER-471/dashboard-none?vacancies=multiple">Start with no vacancies</a><br>
+          <a class="govuk-link" href="ER-471/dashboard?vacancies=none">Start with vacancies (never set up notificaitons)</a><br>
+          <a class="govuk-link" href="ER-471/vacancy-preview/confirmation?receive_notification=no">Vacancy created confirmation - First time journey</a><br>
+          <a class="govuk-link" href="ER-471/notifications/receive-notifications">Do you want to receive emails - First time journey</a><br><br>
+          <a class="govuk-link" href="ER-471/notifications/notification-preferences-new">Notification preferences - new</a><br>
+          <a class="govuk-link" href="ER-471/vacancy-preview/confirmation?receive_notification=yesw">Vacancy confirmation - Email notifications set</a><br><br>
+          <a class="govuk-link" href="ER-471/notifications/notification-preferences-new">Notification preferences - set up</a><br>
+          <a class="govuk-link" href="ER-471/notifications/notification-preferences">Notification preferences - update</a><br><br>
+          <a class="govuk-link" href="ER-471/notifications/notificaiton-confirmation?new=yes">Confirmation - Notifications successfully set up</a><br>
+          <a class="govuk-link" href="ER-471/notifications/notificaiton-confirmation?new=no">Confirmation - Notifications successfully updated (CHANGED)</a><br>
+          <a class="govuk-link" href="ER-471/notifications/notificaiton-confirmation-unsubscribe">Confirmation - Notifications successfully unsubscribed</a><br>
+        </p>
+        <span class="govuk-caption-s">Other designs</span>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-442 Dashboard redesign
+          <span class="govuk-caption-m">Initial Ideation</span>
+        </h2>
+        <p>
+          <a class="govuk-link" href="training/dashboard-new">Dashboard as a landing page</a><br>
+          <a class="govuk-link" href="training/create-vacancy-options/training-level">Vacancies</a><br>
+          <a class="govuk-link" href="training/create-vacancy-options/training">Important dates</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">Traning redesign
+          <span class="govuk-caption-m">Selection of apprentice training and level is seperated to another page.</span>
+        </h2>
+        <p>
+          <a class="govuk-link" href="training/dashboard-multiple">Start from dashboard</a><br>
+          <a class="govuk-link" href="training/create-vacancy-options/training-level">Apprentice Training</a><br>
+          <a class="govuk-link" href="training/create-vacancy-options/training">Important dates</a><br>
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}

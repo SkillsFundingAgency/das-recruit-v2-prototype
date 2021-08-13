@@ -1,0 +1,78 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-l">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</span>
+          What qualifications would you like the applicant to have?
+        </h1>
+        <form method="post">
+          <div class="govuk-form-group">
+              <label class="govuk-label" id="QualificationsHeading" for="QualificationType">Add qualifications applicants should have</label>
+              <select class="govuk-select" id="QualificationType" name="QualificationType">
+                    <option value="">Select from list</option>
+                        <option value="GCSE or equivalent">GCSE or equivalent</option>
+                        <option value="AS Level or equivalent">AS Level or equivalent</option>
+                        <option value="A Level or equivalent">A Level or equivalent</option>
+                        <option value="BTEC or equivalent">BTEC or equivalent</option>
+                        <option value="NVQ or SVQ Level 1 or equivalent">NVQ or SVQ Level 1 or equivalent</option>
+                        <option value="NVQ or SVQ Level 2 or equivalent">NVQ or SVQ Level 2 or equivalent</option>
+                        <option value="NVQ or SVQ Level 3 or equivalent">NVQ or SVQ Level 3 or equivalent</option>
+                        <option value="Other">Other</option>
+                </select>
+          </div>
+
+          <div class="govuk-form-group">
+              <label class="govuk-label" for="Subject">Subject</label>
+              <input class="govuk-input govuk-input--width-20" value="" type="text" maxlength="50" id="Subject" name="Subject">
+          </div>
+
+          <div class="govuk-form-group" data-bind="parentvalElement:grade">
+              <label class="govuk-label " for="Grade">Grade</label>
+              <input class="govuk-input govuk-input--width-20" value="" type="text" maxlength="30" id="Grade" name="Grade">
+          </div>
+
+          <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">Is this qualification essential?</h1>
+                  </legend>
+                  <div class="govuk-radios govuk-radios--inline">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="WeightingYes" type="radio" value="Essential" data-display="Essential" name="Weighting" data-automation="radio-weighting-yes">
+                      <label class="govuk-label govuk-radios__label" for="WeightingYes">Yes</label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="WeightingNo" type="radio" value="Desired" data-display="Desired" name="Weighting" data-automation="radio-weighting-no">
+                      <label class="govuk-label govuk-radios__label" for="WeightingNo">No</label>
+                    </div>
+                  </div>
+              </fieldset>
+          </div>
+
+
+
+          <br>
+
+          {% if data.edit != "yes"%}
+          <input type="submit" class="govuk-button" name="continueButton" value="Save and continue" />
+          <a href="application-process" class="govuk-button das-button-secondary govuk-!-margin-left-2" name="continueButton" value="Do this later">Skip</a>
+          <a href="../dashboard-multiple" class="govuk-body das-button--link">Save and exit</a>
+          {%else%}
+          <input type="submit" class="govuk-button" name="previewButton" value="Save and preview" />
+          <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+          {%endif%}
+
+        </form>
+          </div>
+      </div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

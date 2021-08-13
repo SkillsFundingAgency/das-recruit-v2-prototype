@@ -1,0 +1,93 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+    <h1 class="govuk-heading-xl">Has {{data.orgName}} signed up to the Disability Confident scheme?</h1>
+      <!-- <img src="https://recruit.test-eas.apprenticeships.sfa.bis.gov.uk/img/disability-confident_545x172.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident"><br> -->
+    <p class="govuk-body">Disability Confident is a scheme that helps you to recruit and retain disabled people and people with health conditions for their skills and talent. Find out more about the <a href="https://www.gov.uk/government/collections/disability-confident-campaign" rel="noopener" target="_blank" title="Disability Confident employer scheme and guidance (opens in a new window)">Disability
+        Confident Scheme (opens in new tab)</a></p>
+    <p class="govuk-body">If you are unsure if you are signed up for disability confident scheme your check the <a href="#">list of signed up employers.</a></p>
+
+
+    <form method="post">
+    <div class="govuk-form-group govuk-!-margin-bottom-8">
+        <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
+
+
+          <span class="go vuk-hint"></span>
+          <div class="govuk-radios govuk-!-margin-bottom-4" data-module="checkboxes">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="is-disability-confident" name="disability_confident_signed" type="radio" value="yes" aria-describedby="is-disability-confident" aria-controls="conditional-disability-conditional" aria-expanded="false">
+              <label class="govuk-label govuk-radios__label" for="is-disability-confident">
+                Yes, {{data.orgName}} has signed up to the disability confident scheme
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="is-disability-confident" name="disability_confident_signed" type="radio" value="no" aria-describedby="is-disability-confident" aria-controls="conditional-disability-conditional" aria-expanded="false">
+              <label class="govuk-label govuk-radios__label" for="is-disability-confident">
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-disability-conditional">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h3 class="govuk-fieldset__heading">Which disability confident level is this position?</h3>
+              </legend>
+            </fieldset>
+            <div class="govuk-form-group">
+              <div class="govuk-radios" data-module="radios">
+                <!-- <span class="govuk-hint">You must have signed up for the level you are selecting. If you are unsure please check on your Disability Confident certificate</span> -->
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="disability_confident-l2" name="disability_confident_level" type="radio" value="level1" data-search-value="Organisation">
+                  <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                    Level 1 - commited (standard)
+                    <!-- <span class="govuk-hint"><img src="https://recruit.test-eas.apprenticeships.sfa.bis.gov.uk/img/disability-confident_545x172.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident"></span> -->
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="disability_confident-l2" name="disability_confident_level" type="radio" value="level2" data-search-value="Organisation">
+                  <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                    Level 2 - employer
+                    <!-- <span class="govuk-hint"><img src="https://recruit.test-eas.apprenticeships.sfa.bis.gov.uk/img/disability-confident_545x172.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident"></span> -->
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="disability_confident-l2" name="disability_confident_level" type="radio" value="level3" data-search-value="Organisation">
+                  <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                    Level 3 - leader
+                    <!-- <span class="govuk-hint"><img src="https://recruit.test-eas.apprenticeships.sfa.bis.gov.uk/img/disability-confident_545x172.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident"></span> -->
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="govuk-form-group">
+
+        <button type="submit" class="govuk-button">Save and continue</button><!-- changed in disability branch -->
+
+        <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+      </div>
+        </fieldset>
+      </div>
+      </form>
+  </div>
+</div>
+{% block help %}
+  {% include "includes/service-help.html" %}
+{% endblock %}
+
+{% endblock %}

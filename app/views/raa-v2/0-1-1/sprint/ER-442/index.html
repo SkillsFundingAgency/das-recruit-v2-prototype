@@ -1,0 +1,36 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">ER-442 Dashboard Redesign</h1>
+        <a class="govuk-heading-m" href="config">Full Version</a>
+        <h2 class="govuk-heading-s">Dashboard</h2>
+        <p>
+          <a class="govuk-link" href="dashboard">Dashboard</a><br>
+          <a class="govuk-link" href="vacancies3?status=any">Dashboard + vacanies</a><br>
+        </p>
+        <h2 class="govuk-heading-s">Vacancy</h2>
+        <p>
+          <a class="govuk-link" href="vacancies3-2">Accordion filter</a><br>
+          <a class="govuk-link" href="vacancies6">Search and filters hidden</a><br>
+
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,494 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block content %}
+<style media="screen">
+  span.das-tag {
+    background: transparent;
+    border:3px solid #bfc1c3;
+    color: #0b0c0c;
+    font-weight:400;
+  }
+
+  span.das-tag--rejected{
+    border-color: #B10E1E;
+    color:#000000;
+  }
+  span.das-tag--closed{
+    border-color: #0b0c0c;
+
+  }
+  span.das-tag--live {
+      border-color: #006435;
+  }
+  span.das-tag--submitted {
+      border-color: #F47738;
+  }
+  .lottery-ticket{
+    margin-top:30px;
+    margin-left:1px;
+    padding: 10px 10px 10px 0;
+  }
+  .lottery-ticket--number{
+    display:inline-block;
+    font-size: 18px;
+    margin-right:5px;
+  }
+  @media (min-width: 40.0625em){
+  .lottery-ticket--number{
+    font-size: 21px;
+    font-size: 1.15rem;
+    display:block;
+    color:#6f777bx;
+    }
+  }
+  .das-filter-tab--group{
+    margin-left:1px;
+    margin-bottom:31px;
+  }
+  .das-filter-tab--group:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+  .das-filter-tab, .das-filter-tab--non-link{
+    display:inline-block;
+    text-decoration:none;
+    padding:15px 20px;
+    border: 1px solid #bfc1c3;
+    font-size: 18px;
+    font-size: 1.125rem;
+    margin-left:-1px;
+    display:block;
+    height:100%;
+
+  }
+  .das-filter--group:after {
+    content: "";
+    display: block;
+    clear: both;
+
+  }
+  .das-filter-tab:hover{
+    background-color: #f8f8f8;
+  }
+  a.lottery-ticket--link .lottery-ticket--title{
+    text-decoration: none;
+  }
+  a.lottery-ticket--active{
+    background: #005EA5 !important;
+    color: #ffffff !important;
+
+  }
+  a.lottery-ticket--active .lottery-ticket--title{
+    color: #ffffff !important;
+  }
+  .lottery-ticket--title{
+    display:inline-block;
+    font-size: 18px;
+    font-size: 1.125rem;
+    color: #0b0c0c;
+  }
+  @media (min-width: 40.0625em){
+  .lottery-ticket--title{
+    display:block;
+    font-size: 18px;
+    font-size: 1.125rem;
+
+    }
+  }
+  .govuk-grid-column-one-fifth {
+      width: 50%;
+      float: left;
+      box-sizing: border-box;
+      margin-top:-1px;
+  }
+  @media (min-width: 800px){
+    .govuk-grid-column-one-fifth {
+        width: 33.3333%;
+        float: left;
+    }
+  }
+  @media (min-width: 40.0625em){
+    .govuk-grid-column-one-fifth {
+        width: 25%;
+        float: left;
+    }
+  }
+
+
+  .lottery-ticket--action{
+
+    display:block;
+
+    color:#6f777bx;
+    text-decoration: underline;
+    /* margin-bottom:10px; */
+  }
+
+  /* .lottery-ticket a:hover{
+    background-color: #dee0e2;
+
+  } */
+
+  .lottery-ticket-danger {
+    color: #b10e1e!important;
+  }
+
+  .lottery-ticket--muted{
+    color: #6f777b;
+  }
+  .govuk-grid-column-border-left{
+    border-right: 1px solid #bfc1c3;
+  }
+  .das-link-divider{
+    display: inline-block;
+    color:#6f777b;
+    padding:0 10px;
+  }
+  .govuk-grid-column-half-border-right{border-right-color: transparent;}
+  .govuk-grid-column-third-border-right{border-right-color: transparent;}
+
+  @media (min-width: 40.0625em){
+    .govuk-grid-column-one-third {
+        width: 33.3333%;
+        float: left;
+    }
+    .govuk-grid-column-third-border-right{border-right: 1px solid #bfc1c3;}
+
+  }
+
+  @media (min-width: 40.0625em)
+    and (max-width : 865px) {
+  .dashboard-row .govuk-grid-column-one-third{
+    width: 50%;
+    float: left;
+  }
+  .govuk-grid-column-third-border-right{border-right-color: transparent;}
+  .govuk-grid-column-half-border-right{
+    border-right: 1px solid #bfc1c3;
+  }
+
+
+}
+.das-table__header--sort{
+  font-weight: 400 !important;
+}
+
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">Recruitment</h1>
+
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <a href="../ALL/create-vacancy-options/create-vacancy?firstVacancy=no&returnDashaboard=dashboard   " class="govuk-heading-m" style="text-align:right;">Create new vacancy</a>
+  </div>
+
+</div>
+<div class="govuk-grid-row govuk-!-margin-bottom-4">
+  <div class="govuk-grid-column-two-thirds">
+    <span id="tabs" ></span>
+    <form action="manage" method="get" class="govuk-!-margin-bottom-4">
+
+      <div class="row-group">
+
+        <div class="search-table column-two-thirds">
+          <fieldset class="govuk-fieldset">
+
+            <div class="form-group search-field search-field-darker">
+              <input type="hidden" name="clientsFilter" value="new">
+
+              <div class="search-input search-input-with-button">
+                <label class="form-label" for="searchClients">
+                  <!-- Client reference -->
+                  <!-- <span class="">Search for a team member by name, role or email</span> -->
+                </label>
+
+                <div class="autocomplete__parent_wrapper">
+
+                  <div class="autocomplete__wrapper">
+
+                    <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px 0px 0px 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                      <span>No search results.</span>
+                      <span>,,</span>
+                    </div>
+
+                    <p id="search-default-value" class="hidden">{% if searching %}{{searchtearm}}{% endif%}</p>
+                    <input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="searchClients" placeholder="Search for vacancy by title or vacancy ID" role="combobox" type="text" value="{% if searching %}{{searchtearm}}{% endif%}">
+                    <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
+                  </div>
+
+                </div>
+
+                <input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+              </div>
+
+              <div class="search-submit">
+                <button class="button" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+
+              </div>
+
+            </div>
+
+          </fieldset>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+
+</div>
+<div class="flexbox das-filter--group govuk-!-margin-bottom-6">
+    <!-- accordion -->
+      <div class="govuk-grid-column-one-fifth govuk-!-margin-bottom">
+        <a class="das-filter-tab govuk-component__link {% if query.status == 'any' %}lottery-ticket--active{% endif %}" href="?status=any#tabs" class="prototype-link">
+          <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>37</span>
+          <span class="lottery-ticket--title">Total Vacancies</span>
+        </a>
+      </div>
+      <div class="govuk-grid-column-one-fifth govuk-!-margin-bottom">
+        <a class="das-filter-tab govuk-component__link {% if query.status == 'live' %}lottery-ticket--active{% endif %}" href="?status=live#tabs" class="prototype-link">
+          <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>12</span>
+          <span class="lottery-ticket--title">Live vacancies</span>
+        </a>
+        </div>
+        <div class="govuk-grid-column-one-fifth govuk-!-margin-bottom">
+        <a class="das-filter-tab govuk-component__link {% if query.status == 'new' %}lottery-ticket--active{% endif %}" href="?status=new#tabs" class="prototype-link">
+          <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>5</span>
+          <span class="lottery-ticket--title">New applications</span>
+        </a>
+        </div>
+        <div class="govuk-grid-column-one-fifth govuk-!-margin-bottom">
+        <a class="das-filter-tab govuk-component__link {% if query.status == 'rejected' %}lottery-ticket--active{% endif %}" href="?status=rejected#tabs" class="prototype-link">
+          <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>10</span>
+          <span class="lottery-ticket--title">Rejected vacancies</span>
+        </a>
+        </div>
+        <div class="govuk-grid-column-one-fifth govuk-!-margin-bottom">
+        <a class="das-filter-tab govuk-component__link {% if query.status == 'draft' %}lottery-ticket--active{% endif %}" href="?status=draft#tabs" class="prototype-link">
+          <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>4</span>
+          <span class="lottery-ticket--title">Draft vacancies</span>
+        </a>
+        </div>
+        <div class="govuk-grid-column-one-fifth govuk-!-margin-bottom">
+        <a class="das-filter-tab govuk-component__link {% if query.status == 'closing' %}lottery-ticket--active{% endif %}" href="?status=closing#tabs" class="prototype-link">
+          <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>4</span>
+          <span class="lottery-ticket--title">Vacancies closing soon</span>
+        </a>
+        </div>
+  </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    {% if query.status == 'any' %}<h3 class="govuk-heading-m">All 35 Vacancies</h3>
+    {% elseif query.status == 'live' %}<h3 class="govuk-heading-m">Live Vacancies - <a href="?status=any" class="govuk-component__link">Show All vacancies</a></h3>
+    {% elseif query.status == 'new' %}<h3 class="govuk-heading-m">Vacancies with new applications - <a href="?status=any" class="govuk-component__link">Show All vacancies</a></h3>
+    {% elseif query.status == 'rejected' %}<h3 class="govuk-heading-m">Rejected Vacancies - <a href="?status=any" class="govuk-component__link">Show All vacancies</a></h3>
+    {% elseif query.status == 'draft' %}<h3 class="govuk-heading-m">Draft Vacancies - <a href="?status=any" class="govuk-component__link">Show All vacancies</a></h3>
+    {% endif %}
+
+        <!-- DATA -->
+        <div class="govuk-visually-hidden">
+          {% for i in locations %}
+          <span class="data-orgs">ABC Opticians {{i}}</span>
+          {% endfor %}
+        </div>
+
+        <div class="govuk-visually-hidden">
+          {% for p in providers %}
+          <span class="data-providers">{{p}}</span>
+          {% endfor %}
+        </div>
+        <table class="govuk-table responsive-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col"><a href="#" class="das-table__header--sort">Vacancy title</a></th>
+              <th class="govuk-table__header das-table__header--sort" scope="col"><a href="#" class="das-table__header--sort">Vacancy ref</a></th>
+              <th class="govuk-table__header das-table__header--sort" scope="col"><a href="#" class="das-table__header--sort">Closing date</a></th>
+              <th class="govuk-table__header das-table__header--sort" scope="col" colspan="2"><a href="#" class="das-table__header--sort">Status</a></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% for vacancy in vacancies %}
+            {% if query.status == "any"%}
+            <tr class="govuk-table__row" role="row">
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span><span class="data-name">{{vacancy.title}} Apprentice</span>
+                {%if vacancy.applications > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+                  <br><span class="govuk-!-font-weight-bold">Applications {{vacancy.applications}}</span>
+                {% endif%}
+                </td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>{{vacancy.VAC}}</td>
+                <td class="govuk-table__cell" role="gridcell" style="width:15%"><span class="table-heading" aria-hidden="true">Closing date</span>23 Dec 2018</td>
+                <td class="govuk-table__cell" style="width:15%" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+                <td class="govuk-table__cell" role="gridcell" style=" text-align:right"><a href="../ER-845/manage-vacancy" style="display:inline-block;" class="govuk-link">Manage</a></td>
+              </tr>
+            {% elseif query.status == "new"%}
+            {%if vacancy.applications > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Closed' and vacancy.status != 'Rejected'%}
+          <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>{{vacancy.title}} Apprentice
+              {%if vacancy.applications > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+                <br><span class="govuk-!-font-weight-bold">Applications {{vacancy.applications}}</span>
+              {% endif%}
+              </td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>{{vacancy.VAC}}</td>
+              <td class="govuk-table__cell" role="gridcell" style="width:15%"><span class="table-heading" aria-hidden="true">Closing date</span>23 Dec 2018</td>
+              <td class="govuk-table__cell" style="width:15%" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+              <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Manage</a></td>
+            </tr>
+            {% endif %}
+            {% elseif query.status == "closing"%}
+            {%if vacancy.applications > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Closed' and vacancy.status != 'Rejected'%}
+          <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>{{vacancy.title}} Apprentice
+              {%if vacancy.applications > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+                <br><span class="govuk-!-font-weight-bold">Applications {{vacancy.applications}}</span>
+              {% endif%}
+              </td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>{{vacancy.VAC}}</td>
+              <td class="govuk-table__cell" role="gridcell" style="width:15%"><span class="table-heading" aria-hidden="true">Closing date</span>23 Dec 2018</td>
+              <td class="govuk-table__cell" style="width:15%" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+              <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Manage</a></td>
+            </tr>
+            {% endif %}
+            {% else %}
+            {% if vacancy.status|lower == query.status%}
+          <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>{{vacancy.title}} Apprentice
+              {%if vacancy.applications > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+                <br><span class="govuk-!-font-weight-bold">Applications {{vacancy.applications}}</span>
+              {% endif%}
+              </td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>{{vacancy.VAC}}</td>
+              <td class="govuk-table__cell" role="gridcell" style="width:15%"><span class="table-heading" aria-hidden="true">Closing date</span>23 Dec 2018</td>
+              <td class="govuk-table__cell" style="width:15%" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+              <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Manage</a></td>
+            </tr>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="pager das-pager" aria-hidden="false" style="margin-top:0" data-paging="">
+          <div class="pager-controls das-pager-controls">
+            <a class="pager-prev das-pager-prev hidden" href="#" aria-hidden="true" hidden="hidden">Prev</a>
+            <ul class="pager-items das-pager-items"><li data-page-number="1">1</li><li data-page-number="2"><a href="#">2</a></li><li data-page-number="3"><a href="#">3</a></li><li data-page-number="4"><a href="#">4</a></li><li data-page-number="5"><a href="#">5</a></li></ul>
+            <a class="pager-next das-pager-next" href="#" aria-hidden="false">Next</a>
+          </div>
+          <div class="das-pager-summary">Showing 1 - 25 of 55 vacancies</div>
+        </div>
+        <!-- END table -->
+        <p class="govuk-body"><a href="?status=any">Show All vacancies</a></p>
+      </div>
+    </div>
+    </div>
+<script src="/public/javascripts/accordion.js"></script>
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  function addMembers(event) {
+  document.getElementById("add-members-form").submit();
+}
+ var baseheight= $('.govuk-grid-column-one-fifth').
+  window.addEventListener('load', function () {
+    $( window ).resize(function() {
+      var filterBlocks = $('.govuk-grid-column-one-fifth');
+      // console.log(filterBlocks)
+      console.log("** checking")
+      filterBlocks.each(function( index ){
+        var n =filterBlocks[index]
+        console.log($(n).height())
+        // if(filterBlocks[index].height>filterBlocks[index+1].height){
+        //   console.log("index: "+index+"is bigger")
+        // }
+      })
+    })
+
+  })
+
+
+function getUsers() {
+
+  var names = document.getElementsByClassName("data-name");
+  var id = document.getElementsByClassName("data-id");
+  var orgs = document.getElementsByClassName("data-orgs");
+  var providers = document.getElementsByClassName("data-providers");
+  var data = [];
+
+  for (var i=0; i<names.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var user="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>VAC1000000697: </span>"+names[i].textContent
+      data.push(user);
+  }
+  for (var i=0; i<orgs.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var org="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>Organisation: </span>" + orgs[i].textContent;
+    data.push(org);
+  }
+  for (var i=0; i<providers.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var provider="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>Provider: </span>" + providers[i].textContent;
+    data.push(provider);
+  }
+  return data;
+}
+
+function suggest (query, populateResults) {
+  // const results = "Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677".split(",");
+  // const results = Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677
+  // const results = JSON.stringify(Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677)
+  const results = getUsers();
+  const filteredResults = results.filter(
+    result => result.toUpperCase().indexOf(query.trim().toUpperCase()) !== -1
+  )
+  // console.log(filteredResults)
+  populateResults(filteredResults);
+}
+
+// Trigger search click.  Taken out the clich for the prototype.
+function fireSearch() {
+  setTimeout(function(){ $("#searchClientsSubmit").trigger("click") }, 200);
+// console.log($('.autocomplete__option--focused').html ())
+}
+// function fireSearch(){
+// 	// $("#searchClientsSubmit").trigger("click")
+//   console.log("pressed")
+// }
+var myInput = document.querySelector('#searchClients');
+var myInputID = myInput.id;
+var element = document.createElement('div');
+var value = ""
+
+if (document.getElementById('search-default-value').innerHTML != "") {
+  value = document.getElementById("search-default-value").innerHTML;
+}
+
+element.className = "autocomplete__parent_wrapper";
+myInput.parentNode.insertBefore(element, myInput)
+// console.log("value"+document.getElementById("search-default-value").innerHTML)
+accessibleAutocomplete({
+  // other options
+  element: element,
+  id: myInputID,
+  name: myInput.name,
+  source: suggest,
+  defaultValue: value,
+  confirmOnBlur: false,
+  autoselect: true,
+  onConfirm: fireSearch,
+  placeholder: 'Search for vacancy by title or vacancy ID',
+  displayMenu: 'overlay'
+});
+myInput.style.display = 'none';
+myInput.id = myInputID + '-old';
+myInput.name = '';
+</script>
+{% endblock %}

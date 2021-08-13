@@ -1,0 +1,79 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">What training will the apprentice take?</h1>
+        <p class="govuk-body">If you haven't found appropriate training for the vacancy, you can <a class="govuk-link" href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/" target="_blank">find apprenticeship training here (opens in new tab)</a>.</p>
+
+        <form method="post">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group search-field search-field-darker">
+              <div class="search-input ">
+              <label class="govuk-label" for="apprenticeshipTraining">
+                Enter apprenticeship training title
+              </label>
+              <select class="govuk-select " style="    max-width: 41ex;" id="apprenticeshipTraining" name="training_level">
+                {% for training in data.training_full %}
+                <option value="{{training.name}}">{{training.name}}</option>
+                {% endfor %}
+              </select>
+              <input class="govuk-input" id="defualt" name="defualt" type="text" value="{% if (data.edit == 'yes' or data.change == 'yes') and if data.has_training %}{{data.training_level}}{%endif%}">
+              <p class="govuk-body govuk-!-margin-top-2"><a href="#" id="clear-search" class="govuk-link" style="display:none">Clear search</a></p>
+            </div>
+            </div>
+          </fieldset>
+          <div class=" govuk-form-group govuk-!-margin-top-2">
+            {% if data.edit != "yes"%}
+              <input type="submit" class="govuk-button" name="continueButton" value="Continue"/>
+              <a href="../dashboard-new" class="govuk-body das-button--link">Cancel</a>
+            {%else%}
+            <input type="submit" class="govuk-button" name="previewdButton" value="Continue"/>
+            <a href="../vacancy-preview/vacancy-preview?edit=no" class="govuk-body das-button--link">Cancel</a>
+            {%endif%}
+          </div>
+        </form>
+
+      </div>
+  </div>
+  <div class="govuk-visually-hidden">
+    {% for training in data.training_full %}
+    <span class="data-item">{{training.name}}</span>
+    {% endfor %}
+  </div>
+
+
+
+{% endblock %}
+{% block pageScripts %}
+{{super()}}
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $('#clear-search').show()
+    $('#clear-search').on('click', function() {
+      $('#searchClients').val("");
+    })
+  })
+accessibleAutocomplete.enhanceSelectElement({
+  defaultValue: '',
+  name: 'training_level',
+  selectElement: document.querySelector('#apprenticeshipTraining')
+})
+
+</script>
+
+{% endblock %}

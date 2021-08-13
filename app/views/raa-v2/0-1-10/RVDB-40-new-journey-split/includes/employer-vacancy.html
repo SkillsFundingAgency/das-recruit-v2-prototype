@@ -1,0 +1,23 @@
+<tr class="govuk-table__row" role="row">
+  <td class="govuk-table__cell" role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>{{vacancy.title}} Apprentice
+  {%if vacancy.applications > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+    <br><span class="govuk-!-font-weight-bold">Applications {{vacancy.applications}}</span>
+  {% endif%}
+  </td>
+  <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>{{vacancy.VAC}}</td>
+  <td class="govuk-table__cell" role="gridcell" style="width:15%"><span class="table-heading" aria-hidden="true">Closing date</span>{{data["dates"] | random}}</td>
+  <td class="govuk-table__cell" style="width:15%" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+  <td class="govuk-table__cell" role="gridcell" style="text-align:right">
+    {% if vacancy.status == "Draft"%}
+      <a href="vacancy-preview/vacancy-preview" class="govuk-link">Manage</a>
+    {% elseif vacancy.status == "Rejected"%}
+      <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Manage</a>
+    {% elseif vacancy.status == "Closed"%}
+        <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
+    {% elseif vacancy.status == "Pending review"%}
+      <a href="account/manage-vacancy-no-apprentice" class="govuk-link">Manage</a>
+    {%else%}
+      <a href="account/manage-vacancy" class="govuk-link">Manage</a>
+    {%endif%}
+  </td>
+</tr>

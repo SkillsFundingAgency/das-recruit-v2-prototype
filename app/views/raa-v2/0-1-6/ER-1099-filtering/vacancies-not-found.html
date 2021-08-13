@@ -1,0 +1,311 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Vacancies
+{% endblock %}
+{% block beforeContent %}
+<style>
+  span.das-tag {
+    background: transparent;
+    border:3px solid #bfc1c3;
+    color: #0b0c0c;
+    font-weight:400;
+  }
+  .exp_elem_list--divider{height:1px; margin:10px 0 20px !important; background-color:#bfc1c3;}
+  span.das-tag--rejected{
+    border-color: #B10E1E;
+    color:#000000;
+  }
+  span.das-tag--closed{
+    border-color: #0b0c0c;
+
+  }
+  span.das-tag--live {
+      border-color: #006435;
+  }
+  span.das-tag--submitted {
+      border-color: #F47738;
+  }
+
+  .accordion-controls{display:none !important;}
+  .das-table__header--sort{font-weight: normal}
+  .annotate{
+  	font-style: italic;
+  	color: #366ED4;
+  }
+
+  .listbox-area {
+  }
+
+  .left-area, .right-area {
+  	box-sizing: border-box;
+  	display: inline-block;
+  	font-size: 18px;
+  	vertical-align: top;
+  	width: 50%;
+  }
+
+  .left-area {
+  	padding-right: 10px;
+  }
+
+  .right-area {
+  	padding-left: 10px;
+  }
+
+  [role="listbox"] {
+  	min-height: 18em;
+  	padding: 0px;
+  	background: white;
+  	border: 1px solid #aaa;
+  }
+
+  [role="option"] {
+  	display: block;
+  	padding: 0.5em;
+  	position: relative;
+  	line-height: 1.5em;
+  }
+  [role="option"].focused {
+  	background: #005ea5;
+    color: #fff;
+  }
+
+  [role="option"][aria-selected="true"]::before {
+  	content: '✓';
+  	position: absolute;
+  	left: 0.5em;
+  }
+
+  button {
+  	font-size: 16px;
+  }
+
+  button[aria-disabled="true"] {
+  	opacity: 0.5;
+  }
+
+  .move-right-btn {
+  	padding-right: 20px;
+  	position: relative;
+  }
+
+  .move-right-btn::after {
+  	content: ' ';
+  	height: 10px;
+  	width: 12px;
+  	background-image: url('../imgs/Arrows-Right-icon.png');
+  	background-position: center right;
+  	position: absolute;
+  	right: 2px;
+  	top: 6px;
+  }
+
+  .move-left-btn {
+  	padding-left: 20px;
+  	position: relative;
+  }
+
+  .move-left-btn::after {
+  	content: ' ';
+  	height: 10px;
+  	width: 12px;
+  	background-image: url('../imgs/Arrows-Left-icon.png');
+  	background-position: center left;
+  	position: absolute;
+  	left: 2px;
+  	top: 6px;
+  }
+
+  #ss_elem_list {
+  	max-height: 18em;
+  	overflow-y: auto;
+  	position: relative;
+  }
+#exp_wrapper{
+  width:100%;
+}
+  #exp_button {
+    -webkit-appearance: none;
+    border-radius: 0;
+    font-family: "nta", Arial, sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 18px;
+    line-height: 1.25;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 40px 0 10px;
+    display: block;
+    height: 50px;
+    border-color: #6f777b;
+    border-width: 2px !important;
+    line-height: 48px !important;
+    position: relative;
+    width:100%;
+    text-align:left;
+  }
+    #exp_button:hover{
+
+    }
+  #exp_button::after {
+  	width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #2b8cc4;
+    content: " ";
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    z-index:100;
+  }
+  #exp_button:focus, #exp_elem_list:focus{
+    outline: 3px solid #ffbf47;
+    outline-offset: 0;
+}
+
+  #exp_button[aria-expanded="true"]::after {
+  	width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  	border-top: 0;
+    border-bottom: 6px solid #2b8cc4;
+    content: " ";
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    z-index:100;
+  }
+
+  #exp_elem_list {
+  	border-top: 0;
+  	max-height: 10em;
+  	overflow-y: auto;
+  	position: absolute;
+  	margin: 0;
+    width:298px;
+
+  }
+
+  .hidden {
+  	display: none;
+  }
+
+  .toolbar {
+  	font-size: 0;
+  }
+
+  .toolbar-item {
+  	border: 1px solid #aaa;
+  	background: #ccc;
+  }
+
+  .toolbar-item[aria-disabled="false"]:focus {
+  	background-color: #eee;
+  }
+
+  .offscreen {
+  	clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+  	font-size: 18px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  .das-button-filter{
+    display:inline-block;
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Vacancies</h1>
+    <!-- <a href="create-vacancy-options/create-vacancy" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold">Create a new vacancy</a> -->
+  </div>
+  <div class="govuk-grid-column-one-third" style="text-align:right;">
+    {% if data['user'] == "employer" %}
+    <a href="create-vacancy-options/create-vacancy?returnDashaboard=multiple&user=employer" class="govuk-button">Create vacancy</a>
+    {% else %}
+    <a href="create-vacancy-options/employers-select?returnDashaboard=multiple&user=employer" class="govuk-button">Create vacancy</a>
+    {% endif %}
+  </div>
+</div>
+<div class="govuk-grid-row govuk-!-margin-bottom-2">
+  <div class="govuk-grid-column-one-half">
+    <!-- accordion -->
+    <form method="post" action="./vacancies">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="sort">
+        Filter vacancies by
+      </label>
+      <select class="govuk-select" id="filter" name="filter" aria-haspopup="listbox" aria-labelledby="exp_elem exp_button">
+        <option value="any">All vacancies (39)</option>
+        <option value="live">Live vacancies (11)</option>
+        <option value="new">with applications (20)</option>
+        <option value="rejected" selected="selected">Rejected vacancies (0)</option>
+        <option value="pending review">Pending review vacancies (2)</option>
+        <option value="draft">Draft vacancies (4)</option>
+      </select>
+      <button type="submit" id="filter-submit" class="das-button-filter das-button-secondary govuk-button">Filter</button>
+    </div>
+    </form>
+
+
+    <!-- accordion -->
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h3 class="govuk-heading-m">Showing 0 "Rejected" vacancies &nbsp; <a href="vacancies?filter=any" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all vacancies</a></h3>
+      <!-- DATA -->
+      <div class="govuk-visually-hidden">
+        {% for i in locations %}
+        <span class="data-orgs">ABC Opticians {{i}}</span>
+        {% endfor %}
+      </div>
+
+      <div class="govuk-visually-hidden">
+        {% for p in providers %}
+        <span class="data-providers">{{p}}</span>
+        {% endfor %}
+      </div>
+
+      <div class="not-found">
+        <p class="govuk-body">No vacancies match the criteria</p>
+      </div>
+
+      <!-- <table class="govuk-table responsive-table">
+        {% if data['user'] == 'employer' %}
+        {% block employertablehead %}{% include "./includes/employer-table-header.html" %}{% endblock %}
+        {% else %}
+        {% block providertablehead %}{% include "./includes/provider-table-header.html" %}{% endblock %}
+        {% endif %}
+      </table> -->
+
+        <!-- END table -->
+      </div>
+    </div>
+<script type="text/javascript">
+  window.addEventListener('load', function () {
+      document.getElementById('filter-submit').style.display = "none";
+    function filter_list() {
+    var selector = document.getElementById('filter');
+    var value = selector[selector.selectedIndex].value;
+    document.location.href = "./vacancies?filter="+value
+
+    }
+
+    document.getElementById('filter').onchange = function() {filter_list()};
+})
+</script>
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="https://www.smartsurvey.co.uk/s/KK1KM/" target="_blank">feedback</a> will help us to improve it.'
+  }) }}
+<style media="screen">
+  span.das-tag {
+    background: transparent;
+    border: 3px solid #bfc1c3;
+    color: #0b0c0c;
+    font-weight: 400;
+  }
+
+  span.das-tag--rejected {
+    border-color: #B10E1E;
+    color: #000000;
+  }
+
+  span.das-tag--closed {
+    border-color: #0b0c0c;
+  }
+
+  span.das-tag--live {
+    border-color: #006435;
+  }
+
+  span.das-tag--submitted {
+    border-color: #F47738;
+  }
+
+  .govuk-table__header,
+  .govuk-table__cell {
+    padding: 15px 20px 15px 0;
+  }
+
+  td.govuk-table__cell,
+  th.govuk-table__header {
+    font-size: 16px !important;
+    font-size: 1rem !important;
+    line-height: 1.25 !important;
+  }
+</style>
+{% if query.employer_selected == "yes" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <a href="./employers" class="govuk-back-link">Choose a different employer</a>
+  </div>
+</div>
+{% else %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">Vacancies dashboard </li>
+      </ol>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if query.alert=="updated" %}
+<div class="govuk-info-summary" role="alert" tabindex="-1">
+  <p class="govuk-body govuk-!-margin-bottom-0">The vacancy 'Faizal Apprenticeship' has been updated.</p>
+</div>
+{% endif %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Vacancies
+      </h1>
+    </div>
+    <div class="govuk-grid-column-one-third" style="text-align:right;">
+      {% if query.employer_selected == "yes" %}
+      <a href="create-vacancy-options/title" class="govuk-button govuk-!-margin-top-6">Create vacancy</a>
+      {% else %}
+      <a href="create-vacancy-options/employers-select?returnDashaboard=multiple" class="govuk-button">Create vacancy</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <table class="govuk-table responsive-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Vacancy</th>
+            <th class="govuk-table__header das-table__header--sort" scope="col">Employer</th>
+            <th class="govuk-table__header das-table__header--sort" scope="col">Applications</th>
+            <th class="govuk-table__header das-table__header--sort" scope="col">Closing</th>
+            <th class="govuk-table__header das-table__header--sort" scope="col" colspan="2">Status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for vacancy in vacancies %}
+          {% set appCount = vacancy.applications+vacancy.newApplications %}
+
+
+          <tr class="govuk-table__row" role="row">
+            <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+              <span class="table-heading " aria-hidden="true">Vacancy title</span>
+              <span class="data-name">{{vacancy.title}} Apprentice</span><br>{{vacancy.VAC}}
+            </td>
+
+            <td class="govuk-table__cell" role="gridcell" style=" width:25%">{%set employer = employers | random %}{{employer}}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric" role="gridcell" style="width:10%">
+              <!-- Applications<br> -->
+              {%if appCount > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+
+              {% if appCount > vacancy.newApplications and vacancy.newApplications > 0 %}{{appCount}} <span class="govuk-!-font-weight-bold">({{vacancy.newApplications}} new )</span>{% else %}{{appCount}} {% endif %}
+              {% elseif vacancy.status != 'Live'%}
+              -
+              {% else %}
+              0
+              {% endif%}
+            <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>{{dates | random}}</td>
+            <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+            <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style=" text-align:right">
+              {%if vacancy.status == "Live" %}
+              <a href="
+            {% if appCount > 0 %}account/manage-vacancy{% else %}account/manage-vacancy-no-apprentice{% endif %}
+            " style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+              {%elseif vacancy.status == "Draft"%}
+              <a href="vacancy-preview/vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+              {%elseif vacancy.status == "Rejected"%}
+              <a href="vacancy-preview/vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+              {% else %}
+              <a href="account/manage-vacancy-closed?title={{vacancy.title}}&orgName={{employer}}" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+              {%endif%}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endblock %}

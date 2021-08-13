@@ -1,0 +1,115 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Duration, working hours and pay</h1>
+
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-font-weight-bold" for="duration">
+          How long is the apprenticeship expected to last?
+        </label>
+        <span class="govuk-hint">Must be a minimum of 12 months</span>
+        <input class="govuk-input govuk-input--width-4" id="duration" name="duration" type="text">
+
+        <select class="govuk-select" id="sort" name="sort">
+          <option value="published">Year(s)</option>
+          <option value="published">Month(s)</option>
+        </select>
+      </div>
+
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="250">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="workingWeekDescription">
+            Details of working week
+          </label>
+          <span class="govuk-hint">For example, Monday to Friday 9am to 5pm, shifts, may work evenings and weekends</span>
+          <textarea class="govuk-textarea govuk-!-width-three-quarters js-character-count " id="workingWeekDescription"
+            name="workingWeekDescription" rows="5"></textarea>
+        </div>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-font-weight-bold" for="weekly-hours">
+          How many hours will the apprentice work each week, including training?
+        </label>
+
+        <input class="govuk-input govuk-input--width-4" id="weekly-hours" name="weekly-hours" type="text">
+        <span class="govuk-body">hours</span>
+      </div>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+                    What will the apprentice be paid?
+                </label>
+                <span class="govuk-hint">The pay will only show as a yearly figure on your vacancy advertisement</span>
+
+                <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="wage-type-fixed" name="WageType" type="radio"
+                      value="First organisation"  data-aria-controls="fixed-wage-conditional">
+                    <label class="govuk-label govuk-radios__label" for="wage-type-fixed">
+                      Fixed wage
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="fixed-wage-conditional">
+                      <div class="govuk-form-group">
+                          <span class="govuk-hint">The wage should not be less then the <a href="https://www.gov.uk/national-minimum-wage-rates" rel="noopener" target="_blank">National Minimum Wage</a> for apprentices
+                          </span>
+                        <span class="govuk-body">£</span>
+                        <input class="govuk-input govuk-input--width-10" id="FixedWageYearlyAmount" name="FixedWageYearlyAmount" type="text">
+                        <span class="govuk-body"> yearly</span>
+                      </div>
+
+                    </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="wage-type-national-minimum-wage" name="WageType" type="radio"
+                      value="Second organisation">
+                    <label class="govuk-label govuk-radios__label" for="wage-type-national-minimum-wage">
+                        National Minimum Wage
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="wage-type-national-minimum-wage-for-apprentices" name="WageType" type="radio"
+                      value="Another organisation">
+                    <label class="govuk-label govuk-radios__label" for="wage-type-national-minimum-wage-for-apprentices">
+                        National Minimum Wage for apprentices
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="250">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="WageAdditionalInformation">
+            Additional information about pay (optional)
+          </label>
+          <span class="govuk-hint">For example, subject to experience, bonus scheme, performance increases or non
+            contractual benefits</span>
+          <textarea class="govuk-textarea govuk-!-width-three-quarters js-character-count " id="WageAdditionalInformation"
+            name="WageAdditionalInformation" rows="5"></textarea>
+        </div>
+      </div>
+
+      <a href="search-results-preview" class="govuk-button">Save and continue</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

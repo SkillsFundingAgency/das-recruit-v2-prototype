@@ -1,0 +1,63 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Your vacancy summary</h1>
+    <div class="das-todo govuk-body govuk-!-margin-bottom-6">
+      <h2  class="govuk-heading govuk-!-margin-bottom-0">Developer Apprentice</h2>
+
+      <ul class="govuk-list">
+        <li class="govuk-caption-m">
+
+            {% if data.hasTradingName == "yes"%}
+            {{data.orgname}} trading as {{data.tradingName}}
+            {% else %}
+            {{data.orgname}}
+            {% endif%}
+
+        </li>
+        <li class="govuk-caption-m">1 position available</li>
+      </ul>
+
+      <p class="govuk-body">Brief overview of the role.</p>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <ul class="govuk-list">
+                <li>
+                    <span class="govuk-!-font-weight-bold">Closing date:</span>
+                    <span>01 Jan 2019</span>
+                </li>
+                <li>
+                    <span class="govuk-!-font-weight-bold">Possible start date:</span>
+                    <span>01 Feb 2019</span>
+                </li>
+                <li>
+                    <span class="govuk-!-font-weight-bold">Apprenticeship level:</span>
+                    <span>Master's Degree</span>
+                </li>
+                <li>
+                    <span class="govuk-!-font-weight-bold">Wage:</span>
+                    <span>£8,736 - £16,286.40</span><span> yearly</span>
+                </li>
+            </ul>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <img id="static-map" class="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=50.827153,-0.167566&amp;size=190x125&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=CBxo6DzPLoJ_ZZST6AKnHjgBl30=">
+        </div>
+      </div>
+
+    </div>
+    <a href="../vacancy-preview/vacancy-preview" class="govuk-button">Add full vacancy details</a>
+      <a href="title" class="govuk-body das-button--link">Make changes</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Return to dashboard</a>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Create an employer profile for {{data.orgName}}</h1>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Name
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 Sarah Philips
+               </dd>
+               <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="#">
+                   Change
+                   <span class="govuk-visually-hidden"> name</span>
+                 </a>
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Date of birth
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 5 January 1978
+               </dd>
+               <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="#">
+                   Change
+                   <span class="govuk-visually-hidden"> date of birth</span>
+                 </a>
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Contact information
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 72 Guild Street
+                 <br>London
+                 <br>SE23 6FH
+               </dd>
+               <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="#">
+                   Change
+                   <span class="govuk-visually-hidden"> contact information</span>
+                 </a>
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Contact details
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 <p class="govuk-body">07700 900457</p>
+                 <p class="govuk-body">sarah.phillips@example.com</p>
+               </dd>
+               <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="#">
+                   Change
+                   <span class="govuk-visually-hidden"> contact details</span>
+                 </a>
+               </dd>
+             </div>
+           </dl>
+          </div>
+        </div>
+    <form  method="post" novalidate>
+      <div class="govuk-form-group">
+        <a href="display-employer" class="govuk-button">Continue</a>
+        <a href="javascript:history.back()" class="govuk-body das-button--link">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#apprenticeship-type').select2();
+  });
+</script>
+
+{% endblock %}

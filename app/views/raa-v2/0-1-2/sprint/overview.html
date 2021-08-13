@@ -1,0 +1,43 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">RAA-v2 Prototypes</span>
+        <h1 class="govuk-heading-xl">0-1-2 Sprint stories and other designs</h1>
+        <h2 class="govuk-heading-s">Customer</h2>
+        <a class="govuk-heading-m" href="ALL/dashboard-multiple?vacancies=multiple">All designs (testing version)</a>
+        <a class="govuk-heading-m" href="ALL/dashboard-none?vacancies=none">All designs with no vacancies</a><br>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">Proivider</h2>
+        <p>
+          <a class="govuk-link" href="provider/home">Start from home page</a><br>
+          <a class="govuk-link" href="provider/new-dahsboard">New dashboard design</a><br>
+          <a class="govuk-link" href="provider/new-vacancies?status=all">New vacancy page with filters</a><br>
+        </p>
+        <h2 class="govuk-heading-s">New design1 - Task list pattern</h2>
+        <p>
+          <a class="govuk-link " href="new-design/create/tasks?completed=">Create a vacancy - task list</a><b
+        </p>
+        <h2 class="govuk-heading-s">New design 2- step by step (preview at end)</h2>
+        <p>
+          <a class="govuk-link " href="new-design2/dashboard-multiple">From dashboard </a><b
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}

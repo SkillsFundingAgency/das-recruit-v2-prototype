@@ -1,0 +1,382 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+
+{% block content %}
+<style media="screen">
+  .das-preview-change-link{
+    margin-top: -15px;
+    display:block;
+    font-size: 19px;
+  }
+  .govuk-heading-s{margin-bottom:10px;}
+  .das-not-shown{
+    color:  #6f777b;
+  }
+  .accordion-expand-all{display:none;}
+
+</style>
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-three-quarters">
+        <h2 class="govuk-heading-xl govuk-!-margin-bottom-2">{%if data.title %}{{data.title}}{%else%}Test Apprenticeship{%endif%}<br>
+            <span class="govuk-caption-l">{%if data.orgName %}{{data.orgName}}{%else%}COMPANY LIMITED{%endif%}</span>
+        </h2>
+      <a href="title?edit=yes" style="line-height:25px;display:block;" class="govuk-link govuk-!-font-size-19 govuk-!-font-weight-regular">Change title</a><a href="linked-organisation?edit=yes" class="govuk-link govuk-!-font-size-19">Change organisaiton</a>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-s">Brief overview</h3>
+        <p class="govuk-body">{%if data.shortDescription%}{{data.shortDescription}}{%else%}As a Software Developer Apprentice, you will be undertaking a recognised apprenticeship qualification, including Microsoft certifications, at the same time as working as part of the company’s Software Development team.{%endif%}</p>
+        <a href="short-description?edit=yes" class="govuk-link das-preview-change-link">Change</a>
+    </div>
+    <div class="govuk-grid-column-one-third">
+            <h3 class="govuk-heading-s">Closing date</h3>
+            <p class="govuk-body">01 Jan 2019</p>
+            <a href="dates?edit=yes" class="govuk-link das-preview-change-link">Change</a>
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+            <h2 class="govuk-heading-l">Apprenticeship summary</h2>
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <ul class="govuk-list">
+          <li>
+            <h3 class="govuk-heading-s">Working week</h3>
+            <p class="govuk-body">Monday to Friday 9am to 5pm<br>Total hours per week: 40</p>
+            <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+
+          </li>
+          <li>
+            <h3 class="govuk-heading-s">Yearly wage</h3>
+            <p class="govuk-body">£3,494.40 - £6,514.56</p>
+            <p><p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p></p>
+          </li>
+          <li>
+            <h3 class="govuk-heading-s">Expected duration</h3>
+            <p class="govuk-body">1 Year</p>
+            <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+          </li>
+          <li>
+            <h3 class="govuk-heading-s">Possible start date</h3>
+            <p class="govuk-body">24 Dec 2018</p>
+            <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+          </li>
+          <li>
+            <h3 class="govuk-heading-s">Apprenticeship level</h3>
+            <p class="govuk-body">Advanced Level Apprenticeship</p>
+            <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+          </li>
+          <li>
+            <h3 class="govuk-heading-s">Positions</h3>
+            <p class="govuk-body">{%if data.numberOfPositions %}{{numberOfPositions}}{%else%}2{%endif%} positions available</p>
+            <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+          </li>
+      </ul>
+    </div>
+    <div class="govuk-grid-column-two-thirds" id="vacancyDescription">
+      <ul class="govuk-list">
+        <li>
+          <h3 class="govuk-heading-s">What you will do in your working day</h3>
+          <p class="govuk-body">You’ll work as part of the team to learn about the latest technologies used to deliver what is needed, including C# within the MVC framework, supported by the use of test driven development (TDD), continuous integration using Team City and continuous deployment using Octopus Deploy.</p>
+          <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s">The training you will be getting</h3>
+          <ul class="govuk-list govuk-list--bullet">
+        	<li>Learning how to collate feature requests</li>
+        	<li>Providing frontline helpdesk support</li>
+        	<li>Growing into projects</li>
+        	<li>Basic Programming</li>
+        	<li>Becoming a valued part of the Software Development team</li>
+        	<li>Helping existing staff with front-end development using Octopus Deploy Technology</li>
+        	<li>Being responsible for extracting data and processing the extracted data</li>
+        	<li>Gaining on the job experience and being able to utilise the skills you have gained over the duration of your apprenticeship</li>
+        	<li>Learning and developing skills in integration management using Team City technology</li>
+        	<li>Updating software and systems development</li>
+        </ul>
+        <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s">What to expect at the end of your apprenticeship</h3>
+          <p class="govuk-body">There are lots of opportunities to develop your career within our expanding Dealer Network. Your early development is carefully mapped through your Apprenticeship journey with your learning focussed toward achieving an industry recognised qualification that's recognised across the Motor Industry.
+
+This is the grounding for your future development within the network and opportunities exist, once qualified, to further develop your skills and to move into new roles.</p>
+          <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+        </li>
+      </ul>
+    </div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+              <h2 class="govuk-heading-l">Requirements and prospects</h2>
+      </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <h3 class="govuk-heading-s">Desired skills and personal qualities</h3>
+    <ul class="govuk-list govuk-list--bullet">
+  	<li>Experience within a customer service, administration or sales role is preferred but not essential</li>
+  	<li>Excellent communication skills</li>
+  	<li>Fantastic customer service skills</li>
+  </ul>
+    <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+
+
+        <h3 class="govuk-heading-s">Qualifications</h3>
+        <p class="govuk-body"></p>
+        <ul class="govuk-list govuk-list--bullet">
+	<li>You must have at least a C grade for Maths &amp; English at GCSE (or equivalent)</li>
+	<li>A GCSE, BTEC or A/S Level in Business Admin or Business Studies would be beneficial</li>
+</ul>
+<p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+      </div>
+
+    <div class="govuk-grid-column-one-half">
+      <h3 class="govuk-heading-s">Things to consider (optional)</h3>
+      <p class="govuk-body">We welcome applications from everyone irrespective of gender and ethnic group and appointment will be based on merit alone. Being committed to equal opportunities, if you have a disability please state this during the application process. Measures will be put in place to support you through your application and apprenticeship journey.</p>
+      <p class="govuk-body">Our Dealers dictate the remuneration that our learners receive. All Dealers are required to pay, at least, The National Minimum Wage. The current National Minimum Wage for an apprentice is £3.70 from April 2018. This rate applies to apprentices under 19 and those aged 19 or over who are in their first year.</p>
+      <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+    </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+            <h2 class="govuk-heading-l">About the employer</h2>
+    </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <ul class="govuk-list">
+        <li>
+          <h3 class="govuk-heading-s">Description</h3>
+          <p class="govuk-body">Founded in 2005, we have a long history of helping businesses become more efficient, saving time and money, and ultimately opening the door to greater productivity. Our process and products have evolved over our 13-year journey, but our mission has remained the same.</p>
+          <p class="govuk-body"><a href="short-description" class="govuk-link das-preview-change-link">Change</a></p>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s">Employer</h3>
+          <p class="govuk-body">Organisation 1</p>
+          <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s das-not-shown">Disability Confident (not visibile to candidate)<span class="govuk-hint">This is an optional section</span></h3>
+
+          <!-- <img src="https://recruit.test-eas.apprenticeships.sfa.bis.gov.uk/img/disability-confident_545x172.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident"> -->
+          <!-- <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                About disability confident
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p>Disabled candidates are generally guaranteed an interview if you meet the minimum requirements for this vacancy. Contact the employer for full details.</p>
+
+              <p>Employers may need to limit the number of interviews offered to both disabled and non-disabled people if they receive high numbers of applications.</p>
+
+              <p>The disability confident scheme supports employers to make the most of the talents disabled people can bring to your workplace.provide your nationality, you’ll have to send copies of identity documents through the post.</p>
+            </div>
+          </details> -->
+          <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Add</a></p>
+        </li>
+        <li>
+            <h3 class="govuk-heading-s das-not-shown">Website (not visibile to candidate)</h3>
+            <p class="govuk-body"></p>
+            <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Add</a></p>
+        </li>
+    </ul>
+  </div>
+  <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-s">Contact details</h3>
+      <p class="govuk-body">
+      Bill Shoggins<br>
+      bill@shogginsIT.co.uk<br>
+      Tel: 090 0034 3234
+    </p>
+    <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+      <h3 class="govuk-heading-s">Location</h3>
+      <ul class="govuk-list">
+        <li>Cheylsmore House</li>
+        <li>5 Quinton Road</li>
+        <li>Coventry</li>
+        <li>West Midlands</li>
+        <li>CV1 2WT</li>
+      </ul>
+      <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+  </div>
+  <div class="govuk-grid-column-one-half">
+      <img id="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=52.400997,-1.508122&amp;size=465x256&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=lCuCTEI-K25bn1YgDLOSpzopvFk=" alt="Location map">
+  </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+            <h2 class="govuk-heading-l">Training provider</h2>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-s">Training provider</h3>
+        <p class="govuk-body">CALEX UK LTD</p>
+        <ul class="govuk-list govuk-list--bullet">
+	<li>Level 2&nbsp;Customer service practitioner</li>
+	<li>Our Apprenticeship Programme is an excellent way of ensuring we have high quality people working within our business. We're looking for ambitious candidates ready to take ownership of their development, work hard to achieve their potential and grow with an ambitious employer.</li>
+	<li>The programme typically lasts for 18&nbsp;months and you'll achieve a nationally recognised qualification - Customer Service Practitioner.&nbsp;We will support you to gain your functional skills,&nbsp;if you require them in maths and English.</li>
+	<li>Block training is complemented by a combination of regular coaching visits from one of our experienced coaches as well as virtual classroom sessions and e-Learning modules.</li>
+</ul>
+          <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+      <ul class="govuk-list">
+        <li>
+          <h3 class="govuk-heading-s">Apprenticeship Framework</h3>
+          <p class="govuk-body">{%if data.training_standard %}{{data.training_standard}}{%else%}Technical Theatre, Lighting, Sound and Stage: Lighting{%endif%}</p>
+          <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+        </li>
+      </ul>
+    </div>
+
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+            <h2 class="govuk-heading-l">Application process</h2>
+    </div>
+    <div class="govuk-grid-column-full">
+      <p class="govuk-body">Candidates will apply through the <a href="https://www.gov.uk/apply-apprenticeship" rel="noopener" target="_blank">Find an apprenticeship service</a></p>
+      <p class="govuk-body"><a href="#" class="govuk-link das-preview-change-link">Change</a></p>
+    </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-0">
+
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+
+
+      <!-- accordion -->
+      <div class="accordion govuk-!-margin-bottom-8" id="accordion-default">
+
+        <div class="accordion-section">
+
+          <div class="accordion-section-header">
+            <h2 class="heading-medium">Your vacancy summary</h2>
+              <span class="govuk-body">Check what your vacancy will look like in a cadidate search result.</span>
+          </div>
+          <div class="accordion-section-body">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+            <p class="govuk-body govuk-!-margin-top-6">This is what your vacancy will look like in a cadidate search result. View the entire vacancy on <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?SearchField=All&Keywords=engineering&Location=CV1+2WT&WithinDistance=5&ApprenticeshipLevel=All&DisabilityConfidentOnly=false&Latitude=52.400997&Longitude=-1.508122&Hash=-218207335&SearchMode=Keyword&Category=&LocationType=NonNational&sortType=RecentlyAdded&SearchAction=Sort&resultsPerPage=5&DisplayDescription=true&DisplayDistance=true&DisplayClosingDate=true&DisplayStartDate=true&DisplayApprenticeshipLevel=false&DisplayWage=false">search an apprentice (opens in a new tab)</a></p>
+            <div class="das-summary govuk-body govuk-!-margin-bottom-6">
+              <h2  class="govuk-heading-m govuk-!-margin-bottom-1">{% if data.title %}{{ data.title }}{% else %}Developer Apprentice{% endif %}</h2>
+
+              <ul class="govuk-list">
+                <li class="govuk-caption-m">
+
+                    {% if data.hasTradingName == "yes"%}
+                    {{data.orgname}} trading as {{data.tradingName}}
+                    {% else %}
+                    {{data.orgname}}
+                    {% endif%}
+
+                </li>
+                <li class="govuk-caption-m">1 position available</li>
+              </ul>
+              <p class="govuk-body">
+                {% if data.shortDescription %}
+                {{data.shortDescription}}
+                {%else%}
+                We have an exciting opportunity for you to join our team as a Service Technician Apprentice, working with vehicles that use some of the most advanced technology in the world. As a team member in our prestigious retailer you will be involved in all aspects of vehicle maintenance from routine services to complex diagnostics and repairs.</p>
+                <p class="govuk-body"> </p>
+                {%endif%}
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <ul class="govuk-list">
+                        <li>
+                            <span class="govuk-!-font-weight-bold">Closing date:</span>
+                            <span>01 Jan 2019   </span>
+                        </li>
+                        <li>
+                            <span class="govuk-!-font-weight-bold">Possible start date:</span>
+                            <span>01 Feb 2019   </span>
+                        </li>
+                        <li>
+                            <span class="govuk-!-font-weight-bold">Apprenticeship level:</span>
+                            <span>{% if data.training_standard %}{{data.training_standard}}{%else%}Master's Degree{% endif %}  </span>
+                        </li>
+                        <li>
+                            <span class="govuk-!-font-weight-bold">Wage:</span>
+                            <span>£8,736 - £16,286.40</span><span> yearly   </span>
+                        </li>
+                    </ul>
+                    {% if data.is_disability_confident == "yes" %}
+                    <div class="disability-confident-container">
+                      {% if data.disability_confident_level == "level3" %}
+                      <img src="/public/images/disability-confident-leader-logo@x2.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident">
+                      {% elseif data.disability_confident_level == "level2" %}
+                      <img src="/public/images/disability-confident-employer-logo@x2.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident">
+                      {% else %}
+                      <img src="/public/images/disability-confident-commited-logo@x2.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident">
+                      {% endif %}
+                      <details class="govuk-details">
+                        <summary class="govuk-details__summary">
+                          <span class="govuk-details__summary-text">
+                            About disability confident
+                          </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                          <p>Disabled candidates are generally guaranteed an interview if you meet the minimum requirements for this vacancy. Contact the employer for full details.</p>
+
+                          <p>Employers may need to limit the number of interviews offered to both disabled and non-disabled people if they receive high numbers of applications.</p>
+
+                          <p>The disability confident scheme supports employers to make the most of the talents disabled people can bring to your workplace.provide your nationality, you’ll have to send copies of identity documents through the post.</p>
+                        </div>
+                      </details>
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="govuk-grid-column-one-third">
+                  <img id="static-map" class="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=50.827153,-0.167566&amp;size=190x125&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=CBxo6DzPLoJ_ZZST6AKnHjgBl30=">
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- accordion -->
+      <!-- <p>After submitting your vacancy it will go to be reviewed by our QA team. It will take upto 24 hours for your vacancy to do live.</p> -->
+      <form method="post">
+        <a href="confirmation" class="govuk-button" value="Submit vacancy">Submit vacancy</a>
+        <a href="../dashboard-multiple" class="govuk-body das-button--link">Save and Exit</a>
+        <a href="delete" class="govuk-body das-button--link">Delete vacancy</a>
+      </form>
+    </div>
+</div>
+<script src="/public/javascripts/accordion.js"></script>
+<script type="text/javascript">
+  new Accordion(document.getElementById('accordion-default'))
+</script>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

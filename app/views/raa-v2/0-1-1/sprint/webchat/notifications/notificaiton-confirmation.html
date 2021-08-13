@@ -1,0 +1,39 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Successfully {%if new == 'no' %}updated {% else %}set up {% endif %}email notifcations
+      </h1>
+    </div>
+    <p>We will send a weekly email to <b>yourname@abcopticions.com</b>, containing the following information:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+          New applications your have received.
+      </li>
+      <li>
+          When a vacancy is made live
+      </li>
+    </ul>
+    <div class="govuk-inset-text">
+      You can update your preference anytime from the recuitement dashboard.
+    </div>
+    <form method="post">
+    <div class="form-group inline">
+      <div class="form-group">
+          <button class="govuk-button" type="submit">Finish</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+{% block help %}{% include "includes/service-help-chat.html" %}{% endblock %}
+{% endblock %}

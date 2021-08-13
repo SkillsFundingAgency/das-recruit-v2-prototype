@@ -1,0 +1,213 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+  #apprenticeship-govuk-grid-row result s article, #provider-govuk-grid-row result s article {
+    position: relative;
+}
+.result-block{
+    border-bottom: 1px solid #bfc1c3;
+}
+
+.result  {
+
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+ .data-list{
+   overflow:hidden;
+ }
+  .data-list dt {
+      max-width: none;
+      font-weight: normal;
+      font-size: 19px;
+      font-size: 1.1875rem;
+      line-height: 1.31579;
+  }
+
+  .data-list dt {
+      margin-bottom: 0 !important;
+
+  }
+  .data-list dt {
+    font-weight: bold;
+width: 30%;
+padding-right: 7.5px;
+clear: left;
+margin-bottom: 1em;
+  }
+  .data-list dt, .data-list dd {
+      float: left;
+      box-sizing: border-box;
+padding-bottom: 7.5px;
+  }
+  .data-list dd {
+    width: 60%;
+margin-bottom: 1em;
+}
+
+.data-list dd {
+    max-width: 70%;
+    margin-bottom: 1em;
+}
+.data-list dt, .data-list dd {
+    float: left;
+    box-sizing: border-box;
+}
+@media (max-width: 640px){
+  .data-list dt {
+      float: left;
+      clear: both;
+      display: inline-block;
+      width: auto;
+      margin-right: .5rem;
+      font-weight: normal;
+      margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 640px){
+  .data-list dt, .data-list dd {
+      float: none;
+      width: 100%;
+      max-width: none;
+      padding: 0;
+  }
+}
+media (max-width: 640px){
+  .data-list dd {
+      width: auto;
+      margin-bottom: 0 !important;
+  }
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div>
+      <h1 class="govuk-heading-xl">
+          {% if data.title %}{{data.title}}{%else%}Improvement Specialist{% endif %}
+      </h1>
+      <p class="govuk-body-l">Leading and training employees in improvement strategies.</p>
+    </div>
+            <div class="related-container">
+                <aside class="hidden-for-mobile-tablet">
+                        <a class="button btn-find-trng-prov" rel="nofollow" id="ga-find-provider-bottom" href="/Apprenticeship/SearchForStandardProviders?standardId=375&amp;keywords=IT%20Application%20Specialist">
+        Find training providers
+    </a>
+
+                </aside>
+            </div>
+        </div>
+    </div>
+    <section>
+        <header>
+            <h2 class="govuk-heading-l">
+                Summary of this apprenticeship standard
+            </h2>
+        </header>
+        <dl class="data-list">
+                    <dt>Level</dt>
+        <dd id="level">
+            <div class="markdown data-list"><p>5 (equivalent to foundation degree)</p>
+
+</div>        </dd>
+
+                    <dt>Typical length</dt>
+        <dd id="length">14 months</dd>
+
+            <dt>Current funding band</dt>
+            <dd id="funding-cap">
+                Up to £9,000 per apprentice.<br>
+
+                <a href="https://www.gov.uk/guidance/employing-an-apprentice-technical-guide-for-employers#funding-for-your-apprenticeship" target="_blank" rel="external">More information about funding</a>
+            </dd>
+
+                    <dt>Entry requirements</dt>
+        <dd id="entry-requirements">
+            <div class="markdown"><p>Set by employer.</p>
+
+</div>        </dd>
+
+                    <dt>What apprentices will learn</dt>
+        <dd id="will-learn">
+            <div class="markdown"><ul>
+<li>project planning</li>
+<li>commercial environment</li>
+<li>process mapping and analysis</li>
+<li>Six Sigma and lean concepts and tools</li>
+<li>failure mode avoidance</li>
+<li>root cause analysis</li>
+</ul>
+
+</div>        </dd>
+
+                    <dt>Qualifications</dt>
+        <dd id="qualifications">
+            <div class="markdown"><p>Before taking their end-point assessment, apprentices must have achieved level 2 English and maths (equivalent to GCSE grades 3 to 1 or D to G)</p>
+
+</div>        </dd>
+
+                    <dt>Professional registration</dt>
+        <dd id="professional-registration">
+            <div class="markdown"><p>None specified.</p>
+
+</div>        </dd>
+
+
+
+                <dt>End Point Assessment</dt>
+                <dd>
+                    <details>
+                        <summary><span class="summary" style="text-decoration: none">View a list of end point assessment organisations for this standard</span></summary>
+                        <table class="responsive">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Organisation</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                        <td class="organisation-name" data-label="organisation">
+Michael D Akers Management Consulting                                        </td>
+                                        <td class="phone-number" data-label="phone-number">07986 157649</td>
+                                        <td class="email" data-label="email"><a href="mailto:michael.d.akers@icloud.com" target="_blank">michael.d.akers@icloud.com</a></td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </details>
+                </dd>
+
+                    <dt>More Information</dt>
+        <dd id="more-information"><div class="markdown"><p>The Institute for Apprenticeships has more detailed information about this apprenticeship.</p>
+
+</div></dd>
+
+        </dl>
+
+
+        <div id="bottom-actions">
+                <a class="govuk-button button btn-find-trng-prov" rel="nofollow" id="ga-find-provider-bottom" href="title?training_level">
+                  Select this apprenticeship training
+    </a>
+
+    </section>
+</div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+{{super()}}
+{% endblock %}

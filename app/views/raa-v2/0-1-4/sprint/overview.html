@@ -1,0 +1,85 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">RAA-v2 Prototypes</span>
+        <h1 class="govuk-heading-xl">0-1-4 Testing versions and Sprint stories</h1>
+        <h2 class="govuk-heading-s">Customer</h2>
+        <p class="govuk-body">
+          <a class="govuk-link" href="ALL/dashboard-multiple?vacancies=multiple">All designs (testing version)</a><br>
+          <a class="govuk-link" href="ALL/dashboard-none?vacancies=none">All designs with no vacancies</a>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">New design</h2>
+        <p clss=govuk-body>
+          <a class="govuk-link " href="new-flow/dashboard-new?user=provider">Provider new design</a><br>
+          <a class="govuk-link " href="new-flow/dashboard-new?user=employer">Employer new design</a><br><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-894 Clone a vacancy {% if data.user == 'provider'%}(Provider journey) <a href="?user=employer" class="govuk-link">Switch to employer</a>{% else %}(Emloyer journey) <a href="? user=provider" class="govuk-link">Switch to provider</a>{% endif %}</h2>
+        <p clss=govuk-body>
+
+          <a class="govuk-link " href="ER-894-clone/dashboard-multiple?user=provider">From dashboard </a><br>
+          <a class="govuk-link " href="ER-894-clone/account/manage-vacancy">Clone a live vacancy</a><br>
+          <!-- <a class="govuk-link " href="ER-894-clone/dashboard-multiple?user=provider">Clone a Pending review vacancy</a><br> -->
+
+          <a class="govuk-link " href="ER-894-clone/account/clone-dates">Change dates question</a><br>
+          <a class="govuk-link " href="ER-894-clone/account/clone-change-dates">Change Dates (from live)</a><br>
+          <a class="govuk-link " href="ER-894-clone/account/clone-change-dates?closingdate=new&startdate=new">Change Dates (vacancy dates in the past)</a><br><br>
+
+            <a class="govuk-link " href="ER-894-clone/account/clone-location">Change location question</a><br>
+          <a class="govuk-link " href="ER-894-clone/account/clone-change-location"">Change Location</a><br><br>
+
+          <a class="govuk-link " href="ER-894-clone/dashboard-multiple?user=provider">Cloned vacancy preview</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-979 Confirmation copy update v2</h2>
+        <p clss=govuk-body>
+          <a class="govuk-link " href="ER-979/confirmation_employer">Provider confirmation</a><br>
+          <a class="govuk-link " href="ER-979/confirmation_provider">Employer confirmation</a><br><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-894 Reports (providers)</h2>
+
+        <p clss=govuk-body>
+          <a class="govuk-link " href="ER-470-report/reports/dashboard">Report Dashbaord</a><br>
+          <a class="govuk-link " href="ER-470-report/reports/period">Select Period</a><br>
+
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-845 - Analytics to employers v2</h2>
+        <p>
+          <a class="govuk-link" href="ER-845-analytics/manage-vacancy">Manage vacancy - Live</a><br>
+          <a class="govuk-link" href="ER-845-analytics/manage-vacancy-closed">Manage vacancy - closed</a><br>
+          <a class="govuk-link" href="ER-845-analytics/manage-vacancy-offline-live">Manage vacancy - offline - live</a><br>
+          <a class="govuk-link" href="ER-845-analytics/manage-vacancy-offline-closed">Manage vacancy - offline - closed</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-1001 - location improvement for providers</h2>
+        <p>
+          <a class="govuk-link" href="ER-1001-location/dashboard-multiple">From dashboard</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-1005 - anonymous for providers</h2>
+        <p>
+          <a class="govuk-link" href="ER-1005-anonymous/dashboard-multiple">From dashboard</a><br>
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}

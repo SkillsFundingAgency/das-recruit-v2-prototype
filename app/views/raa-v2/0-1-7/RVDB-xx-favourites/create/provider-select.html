@@ -1,0 +1,73 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Who is the training provider for this apprencechip?</h1>
+        <form method="post">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+              <div class="govuk-radios__item" >
+                <input class="govuk-radios__input" id="training_provider-{{data.providers[1]}}" name="trainingProvider" type="radio"
+                  value="{{data.providers[1]}}" >
+                <label class="govuk-label govuk-radios__label" for="training_provider-{{data.providers[1]}}">
+                  {{data.providers[1]}} - UKPRN: 434534534
+                  <span class="govuk-hint">last used 15 March 2019</span>
+                </label>
+              </div>
+
+              <div class="govuk-radios__item" >
+                <input class="govuk-radios__input" id="training_provider-{{data.providers[1]}}" name="trainingProvider" type="radio"
+                  value="{{data.providers[1]}}" >
+                <label class="govuk-label govuk-radios__label" for="training_provider-{{data.providers[1]}}">
+                  {{data.providers[2]}} - UKPRN: 434534534
+                  <span class="govuk-hint">last used 12 January 2019</span>
+                </label>
+              </div>
+              <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input id="training_provider-{{data.providers[1]}}" name="trainingProvider" type="radio"
+                value="different" data-aria-controls="choose-a-provider">
+              <label class="govuk-label govuk-radios__label" for="training_provider-{{data.providers[1]}}">
+                choose a different training provider
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="choose-a-provider">
+                <div class="govuk-form-group">
+                <label class="govuk-label" for="contact-by-phone">
+                  Training provider name or UKPRN
+                </label>
+                <input class="govuk-input govuk-input--width-20" id="Ukprn" name="Ukprn" type="text">
+              </div>
+            </div>
+              </div>
+          </fieldset>
+          <div class=" govuk-form-grou govuk-!-margin-top-8">
+            {% if query.edit != "yes"%}
+              <input type="submit" class="govuk-button" name="continueButton" value="Save and continue"/>
+              <a href="../dashboard-new" class="govuk-body das-button--link">Save and exit</a>
+            {%else%}
+            <input type="submit" class="govuk-button" name="previewdButton" value="Save and continue"/>
+            <a href="../vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+            {%endif%}
+          </div>
+        </form>
+
+      </div>
+  </div>
+
+
+
+{% endblock %}

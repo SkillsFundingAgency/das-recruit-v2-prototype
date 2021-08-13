@@ -1,0 +1,52 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <form method="post">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+          <h1 class="govuk-fieldset__heading">
+            How many positions are there for this apprenticeship?
+          </h1>
+        </legend>
+        <div class="govuk-form-group govuk-!-margin-bottom-8">
+          <input class="govuk-input govuk-input--width-4" id="numberOfPositions" name="numberOfPositions" type="text" value="{% if data.numberOfPositions %}{%else%}{%endif%}">
+        </div>
+        <div class="govuk-form-group">
+          {% if query.edit != "yes"%}
+            <input type="submit" class="govuk-button" name="continueButton" value="Save and continue"/>
+            <a href="../dashboard" class="govuk-body das-button--link">Save and exit</a>
+          {%else%}
+          <input type="submit" class="govuk-button" name="previewdButton" value="Save and continue"/>
+          <a href="../vacancy-preview" class="govuk-body das-button--link">Save and exit</a>
+          {%endif%}
+        </div>
+        </fieldset>
+      </form>
+  </div>
+</div>
+{% block help %}
+{% include "includes/service-help.html" %}
+{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#apprenticeship-type').select2();
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Check your vacancy</h1>
+    <p class="govuk-body">This is how applicants will see the vacancy on the <a href="#"> find an apprentice </a> service</p>
+    <p class="govuk-body"> Press the edit button to change any answers.</p>
+    <p class="govuk-body"><a href="vacancy-preview" class="govuk-button">Preview vacancy</a></p>
+</div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

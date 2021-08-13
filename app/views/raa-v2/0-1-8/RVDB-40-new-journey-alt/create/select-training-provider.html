@@ -1,0 +1,131 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="" method="get">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+
+          <h1 class="govuk-fieldset__heading">
+            Who is the training provider?
+          </h1>
+        </legend>
+        <div class="govuk-form-group">
+          <span class="govuk-hint">
+            Enter the training provider's UK provider reference number (UKPRN). This is 8 numbers. For example 12345678.
+          </span>
+          <input class="govuk-input govuk-input--width-10" id="Ukprn" name="Ukprn" type="text">
+        </div>
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Where do I find my number?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            You can get this number from your training provider. They must also have a recruit an apprentice account.
+          </div>
+        </details>
+        <div class="govuk-form-group">
+          <a href="confirm-training-provider" class="govuk-button">continue</a>
+          <a href="../dashboard-multiple" class="govuk-body das-button--link">Save and exit</a>
+        </div>
+      </fieldset>
+
+    </form>
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $('#clear-search').on('click', function() {
+      $('.dates').hide();
+    })
+  })
+
+  function addMembers(event) {
+    document.getElementById("add-members-form").submit();
+  }
+
+  function getUsers() {
+    var names = document.getElementsByClassName("data-name");
+
+    var data = [];
+
+    for (var i = 0; i < names.length; i++) {
+      // var user=names[i].textContent+" - "+email[i].textContent;
+      var user = names[i].textContent
+      data.push(user);
+    }
+
+    return data;
+  }
+
+  function suggest(query, populateResults) {
+    // const results = "Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677".split(",");
+    // const results = Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677
+    // const results = JSON.stringify(Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677)
+    const results = getUsers();
+    const filteredResults = results.filter(
+      result => result.toUpperCase().indexOf(query.trim().toUpperCase()) !== -1
+    )
+    // console.log(filteredResults)
+    populateResults(filteredResults);
+  }
+
+  // Trigger search click.  Taken out the clich for the prototype.
+  function fireSearch() {
+    setTimeout(function() {
+      $('.dates').show();
+      $('#selected-training').text($("#searchClients").val())
+    }, 200);
+
+
+  }
+  // function fireSearch(){
+  // 	// $("#searchClientsSubmit").trigger("click")
+  //   console.log("pressed")
+  // }
+  var myInput = document.querySelector('#searchClients');
+  var myInputID = myInput.id;
+  var element = document.createElement('div');
+  var value = ""
+
+  if (document.getElementById('search-default-value').innerHTML != "") {
+    value = document.getElementById("search-default-value").innerHTML;
+  }
+
+  element.className = "autocomplete__parent_wrapper";
+  myInput.parentNode.insertBefore(element, myInput)
+  // console.log("value"+document.getElementById("search-default-value").innerHTML)
+  accessibleAutocomplete({
+    // other options
+    element: element,
+    id: myInputID,
+    name: myInput.name,
+    source: suggest,
+    defaultValue: value,
+    confirmOnBlur: false,
+    autoselect: true,
+    onConfirm: fireSearch,
+    displayMenu: 'overlay'
+  });
+  myInput.style.display = 'none';
+  myInput.id = myInputID + '-old';
+  myInput.name = '';
+</script>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+            Close vacancy VAC1000001618
+            <span class="govuk-caption-l">Engineering Technician Level 3 Product Design and Development Apprentice</span>
+        </h1>
+
+        <div class="panel panel-border-wide govuk-!-margin-bottom-6 close-vacancy-info">
+
+            <p class="govuk-body">Once the vacancy is closed, you won’t receive any more applications on Find an apprenticeship</p>
+            <p class="govuk-body">It may take up to an hour for this vacancy to be closed.</p>
+            <div class="govuk-inset-text"><p><span class="">This action cannot be undone.</span></p></div>
+        </div>
+        <form  method="post" action="manage-vacancy-closed?alert=yes">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Why are you closing the vacancy?</legend>
+                    <div class="govuk-radios">
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="close-in-error" class="govuk-radios__input" id="close-in-error" name="ConfirmClose">
+                          <label class="govuk-label govuk-radios__label" for="close-in-error">vacancy was posted by mistake</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="close-in-error" class="govuk-radios__input" id="close-amends" name="ConfirmClose">
+                          <label class="govuk-label govuk-radios__label" for="close-amends">vacancy needs to be changed</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="close-in-error" class="govuk-radios__input" id="close-filled" name="ConfirmClose">
+                          <label class="govuk-label govuk-radios__label" for="close-filled">the position is now filled</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="close-in-error" class="govuk-radios__input" id="close-withdrawn" name="ConfirmClose">
+                          <label class="govuk-label govuk-radios__label" for="close-withdrawn">the position is withdrawn</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="close-in-error" class="govuk-radios__input" id="close-other" name="ConfirmClose">
+                          <label class="govuk-label govuk-radios__label" for="close-other">other</label>
+                      </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group">
+                <a href="manage-vacancy-closed?alert=yes" value="Confirm and close vacancy" class="govuk-button" data-module="govuk-button">Confirm and close</a>
+                <a href="manage-vacancy" class="govuk-body das-button--link">Cancel</a>
+            </div>
+        <input name="_csrfToken" type="hidden" value="CfDJ8NobtAlAKkhGh3ZpMiyZ2c8c2V7E4YfTsJCYAAjNlktmeIkv-guHF6OkQ3LIMaInRTrmxoCvmJjXHjTLqG68EkZBR9sT7Az6BV2ce9tym8FORRlM9684RgjlTBoxWwc_Pe1JpudSBzJG5ZiJVqEPkfjigs2caC8h9G3qIrire0I9E0cQDLeJG5NZWQ39qZzbaQ"></form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="#" class="govuk-back-link">Back</a>
+    <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+    <h1 class="govuk-heading-xl">What training programme will the apprentice be doing?</h1>
+    <form action="manage" method="get">
+      <div class="row-group">
+        <div class="search-table column-two-thirds">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group search-field search-field-darker">
+              <input type="hidden" name="clientsFilter" value="new">
+              <div class="search-input ">
+                <label class="form-label" for="searchClients">
+                  <!-- Client reference -->
+                  <span class="govuk-hint">Search for the training programme (framework or standard)</span>
+                </label>
+                <div class="autocomplete__parent_wrapper">
+                  <div class="autocomplete__wrapper">
+                    <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px 0px 0px 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                      <span>No search results.</span>
+                      <span>,,</span>
+                    </div>
+                    <p id="search-default-value" class="hidden">{% if searching %}{{searchtearm}}{% endif%}</p>
+                    <input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="searchClients" placeholder="" role="combobox" type="text" value="{% if searching %}{{searchtearm}}{% endif%}">
+                    <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
+                  </div>
+                </div>
+                <input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+              </div>
+              <div class="search-submit">
+                <button class="button govuk-visually-hidden" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+              </div>
+            </div>
+          </fieldset>
+          <a id="clear-search" class="govuk-link" href="manage?clearSearch=true&user=admin">Clear search</a>
+        </div>
+
+      </div>
+    </form>
+      <div class="" style="display:none;">
+        {% for item in training %}
+        <span class="data-name">{{item}}</span>
+        {% endfor %}
+      </div>
+      <div class="dates" style="display:none;">
+        <div class="govuk-inset-text">
+          The <span id="selected-training" class="govuk-!-font-weight-bold"> Aerospace engineer, Level: 6 (Standard)</span> framework end date is 3rd February 2019. The vacancy start dates must be before the framework end date.
+        </div>
+      </div>
+      <p id="oranisation-list-no-result" style="display:none;">0 matches for <span class="querytext"></span></p>
+<div class="govuk-!-margin-top-8">
+      <a href="training" class="govuk-button">Save and continue</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+</div>
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    $(function(){
+      $('#clear-search').on('click',function(){
+        $('.dates').hide();
+      })
+    })
+
+  	function addMembers(event) {
+  		document.getElementById("add-members-form").submit();
+  	}
+
+  	function getUsers() {
+  		var names = document.getElementsByClassName("data-name");
+
+  		var data = [];
+
+  		for (var i=0; i<names.length; i++) {
+  			// var user=names[i].textContent+" - "+email[i].textContent;
+  			var user= names[i].textContent
+  				data.push(user);
+        }
+
+  		return data;
+  	}
+
+  	function suggest (query, populateResults) {
+  		// const results = "Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677".split(",");
+  		// const results = Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677
+  		// const results = JSON.stringify(Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677)
+  		const results = getUsers();
+  		const filteredResults = results.filter(
+  			result => result.toUpperCase().indexOf(query.trim().toUpperCase()) !== -1
+  		)
+  		// console.log(filteredResults)
+  		populateResults(filteredResults);
+  	}
+
+  	// Trigger search click.  Taken out the clich for the prototype.
+  	function fireSearch() {
+  	   setTimeout(function(){ $('.dates').show();
+       $('#selected-training').text($("#searchClients").val()) }, 200);
+
+
+  	}
+  	// function fireSearch(){
+  	// 	// $("#searchClientsSubmit").trigger("click")
+  	//   console.log("pressed")
+  	// }
+  	var myInput = document.querySelector('#searchClients');
+  	var myInputID = myInput.id;
+  	var element = document.createElement('div');
+  	var value = ""
+
+  	if (document.getElementById('search-default-value').innerHTML != "") {
+  		value = document.getElementById("search-default-value").innerHTML;
+  	}
+
+  	element.className = "autocomplete__parent_wrapper";
+  	myInput.parentNode.insertBefore(element, myInput)
+  	// console.log("value"+document.getElementById("search-default-value").innerHTML)
+  	accessibleAutocomplete({
+  		// other options
+  		element: element,
+  		id: myInputID,
+  		name: myInput.name,
+  		source: suggest,
+  		defaultValue: value,
+  		confirmOnBlur: false,
+  		autoselect: true,
+  		onConfirm: fireSearch,
+  		displayMenu: 'overlay'
+  	});
+  	myInput.style.display = 'none';
+  	myInput.id = myInputID + '-old';
+  	myInput.name = '';
+  </script>
+
+{% endblock %}

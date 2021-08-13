@@ -1,0 +1,53 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">FAA Prototypes</h1>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">0-0-3 | In design
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a class="govuk-link govuk-link--no-visited-state"  href="0-0-3/ER-1412-no-qualifications/application-details">ER-1412 vacancy with no qualifcations</a></li>
+            <li class="govuk-list--item"><a class="govuk-link govuk-link--no-visited-state"  href="0-0-3/RVDB-93-skip-provider/application-details?user=employer">RVDB-93-skip-provider</a></li>
+            <li class="govuk-list--item"><a class="govuk-link govuk-link--no-visited-state"  href="0-0-3/ER-1438-training-section-update/application-details?user=employer&has_training_provider==no">ER-1438-training section update (employer)</a></li>
+            <li class="govuk-list--item"><a class="govuk-link govuk-link--no-visited-state"  href="0-0-3/ER-1438-training-section-update/application-details?user=provider&has_training_provider==no">ER-1438-training section update (provider)</a></li>
+          </ul>
+        </div>
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">0-0-2 | Full vacancy details update
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a class="govuk-link govuk-link--no-visited-state"  href="0-0-2/RVDB-51-main-description/application-details">RVDB-51 full vacancy description change</a></li>
+          </ul>
+        </div>
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">0-0-1 | report this vacancy
+          <span class="govuk-caption-m">From 6th March, 2019 - </span></h2>
+
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a class="govuk-link govuk-link--no-visited-state"  href="0-0-1/ER-1003-report-this-vacancy/results">ER-1003 Report this vacancy</a></li>
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}

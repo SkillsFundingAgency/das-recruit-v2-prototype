@@ -1,0 +1,36 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">RVDB-14 - provider search  </h1>
+        <p class="govuk-body"><a href="https://skillsfundingagency.atlassian.net/browse/RVDB-14" class="govuk-link">View on Jira</a></p>
+
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <!-- <h2 class="govuk-heading-m">Existing provider</h2> -->
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="./dashboard-multiple?user=provider&search=">Filter - all</a></li>
+            <li class="govuk-list--item"><a href="./dashboard-multiple?filter=withApplication&page=1&user=provider&search=">Filter - with applications</a></li>
+            <li class="govuk-list--item"><a href="./dashboard-multiple?filter=new&page=1&user=provider&search=">Filter - with "new" applications</a></li>
+            <li class="govuk-list--item"><a href="./dashboard-multiple?filter=closing&page=1&user=provider&search=">Filter - live vacancies closing soon</a></li>
+            <li class="govuk-list--item"><a href="./dashboard-multiple?filter=closing-no-applications&page=1&user=provider&search=">Filter - live vacancies closing soon</a></li>
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+
+{% endblock %}

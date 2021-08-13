@@ -1,0 +1,44 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+     
+    <h1 class="govuk-heading-xl">Working hours </h1>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-!-font-weight-bold" for="weekly-hours">
+        How many hours will the apprentice work in a week, including training?
+      </label>
+
+      <input class="govuk-input govuk-input--width-4" id="weekly-hours" name="weekly-hours" type="text">
+      <span class="govuk-body">hours</span>
+    </div>
+
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="250">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="workingWeekDescription">
+            How will the time be split between work and training?
+          </label>
+          <span class="govuk-hint">For example, 4 days a week at work and one day a week training.</span>
+          <textarea class="govuk-textarea govuk-!-width-three-quarters js-character-count " id="workingWeekDescription"
+            name="workingWeekDescription" rows="5"></textarea>
+        </div>
+      </div>
+
+
+
+
+      <a href="wages " class="govuk-button">Save and continue</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Save and exit</a>
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

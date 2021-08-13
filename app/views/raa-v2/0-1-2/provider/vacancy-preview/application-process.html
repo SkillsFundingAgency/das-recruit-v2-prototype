@@ -1,0 +1,54 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</h1>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <form method="post">
+          <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  How will candidates apply for this vacancy?
+                  <span class="govuk-hint"> vacancies will be published on Find an apprenticeship</span>
+                </h1>
+              </legend>
+
+              <div class="govuk-form-group" data-module="character-count" data-minlength="50" data-maxlength="500">
+                <label class="govuk-label" for="ApplicationUrl" >
+                  Enter the web address candidates should use to apply for this vacancy
+                </label>
+                <input class="govuk-input govuk-input--width-30" id="ApplicationUrl" name="ApplicationUrl" type="text" value="{% if data.ApplicationUrl %}{{data.ApplicationUrl }}{% else %}{% endif %}">
+              </div>
+              <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+              <div class="govuk-form-group" >
+                <label class="govuk-label" for="TrainingDescription" >
+                  Explain the application process (optional)
+                </label>
+                <textarea class="govuk-textarea js-character-count" id="ApplicationInstructions" name="ApplicationInstructions" rows="5" aria-describedby="more-detail-hint">{% if data.ApplicationInstructions %}{{data.ApplicationInstructions }}{% else %}{% endif %}</textarea>
+              </div>
+              </div>
+              <div class="govuk-form-group">
+                <input type="submit" class="govuk-button" value="Save and continue"/>
+                <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+              </div>
+            </fieldset>
+        </form>
+
+      </div>
+  </div>
+
+
+
+{% endblock %}

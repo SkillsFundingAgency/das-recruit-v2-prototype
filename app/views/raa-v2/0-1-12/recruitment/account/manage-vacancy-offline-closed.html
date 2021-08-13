@@ -1,0 +1,112 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+  <a href="../dashboard-multiple" class="govuk-back-link">Back to your vacancies</a>
+{% endblock %}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+    <h1 class="govuk-heading-xl">Manage vacancy {% if data.user=='provider'%}<span class="govuk-caption-xl">2SourceTalent Limited</span>{%endif%}</h1>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half ">
+        <span class="govuk-body govuk-!-font-weight-bold">Status</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">Closed</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Vacancy title</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">Business Apprenticeship</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Vacancy ref</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">VAC1000000997</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Closing date</span>
+      </div>
+      <div class="govuk-grid-column-one-half ">
+        <span class="govuk-body">01 Jan 2019
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Possible start date</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">01 Feb 2019</span>
+      </div>
+    </div>
+    <div class="grid-row">
+      <div class="column-full">
+        <ul class="govuk-list">
+          <li><a class="govuk-link button-link govuk-link--no-visited-state" target="_blank" href="preview">View vacancy</a></li>
+          <li><a class="govuk-link button-link govuk-link--no-visited-state" href="preview-edit">Edit vacancy</a></li>
+          <li><br><a class="govuk-link button-link govuk-link--no-visited-state" href="close">Close vacancy</a></li>
+        </ul>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">Vacancy analytics
+          <span class="govuk-caption-l">Showing stats from 13th Aug 2018 to 20th Dec 2018</span>
+      </h2>
+      <div id="analytics" class="govuk-grid-row">
+
+        <div class="analytics--block govuk-grid-column-one-third">
+          <h3 class="analytics--header govuk-heading-s">Appeared in search</h3>
+          <div class="analytics--summary">
+            <div  class="analytics--numeric">68 <span class="govuk-visually-hidden">times</span></div>
+          </div>
+        </div>
+        <div class="analytics--block govuk-grid-column-one-third">
+          <h3 class="analytics--header govuk-heading-s">Total times viewed</h3>
+          <div class="analytics--summary">
+            <div  class="analytics--numeric">12</div>
+          </div>
+        </div>
+        <div class="analytics--block govuk-grid-column-one-third">
+          <h3 class="analytics--header govuk-heading-s">Clicked on 'Apply now'</h3>
+          <div class="analytics--summary">
+            <div class="analytics--numeric">7</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">Manage applications</h2>
+      <p class="govuk-body">Applications are managed through an external site.
+      <a href="#">www.yourbusiness.com/applications</a></p>
+
+    </div>
+  </div> -->
+
+{% endblock %}

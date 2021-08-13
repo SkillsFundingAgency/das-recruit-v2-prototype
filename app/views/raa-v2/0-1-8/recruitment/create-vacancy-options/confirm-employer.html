@@ -1,0 +1,76 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Do you want to use these employer details on the vacancy?</h1>
+
+    <form  method="post" novalidate>
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        <p class="govuk-body"><span class="govuk-!-font-weight-bold">Employer</span><br>{% if data.hasTradingName == "yes"%}
+        {{data.tradingName}} (trading name)
+        {% else %}
+        {{data.orgName}}
+        {% endif%}</p>
+        {% if data['savedAddressCount']== 1%}
+          <p class="govuk-body"><span class="govuk-!-font-weight-bold">Where the apprentice will work</span><br>{{data['employerAdress1']}}</p>
+        {% endif%}
+        <p class="govuk-body"><span class="govuk-!-font-weight-bold">Employer website</span><br>{{data['Website']}}</p>
+        <p class="govuk-body"><span class="govuk-!-font-weight-bold">Description</span><br>{{data['EmployerDescription']}}</p>
+        <!-- <p class="govuk-body"><a href="#">Edit the employer profile</a></p> -->
+        <div class="govuk-form-group">
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="changed-name-1" name="change_date" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="changed-name-1">
+              Use these employer details on the vacancy
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="changed-name-2" name="change_date" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="changed-name-2">
+              Edit these employer details
+            </label>
+          </div>
+          <div class="govuk-radios__divider">or</div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="changed-name-2" name="change_date" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="changed-name-2">
+              Choose a different employer
+            </label>
+          </div>
+
+        </div>
+        </div>
+
+      </fieldset>
+      <div class="govuk-form-group">
+        <button type="submit" class="govuk-button">Continue</button>
+        <a href="javascript:history.back()" class="govuk-body das-button--link">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#apprenticeship-type').select2();
+  });
+</script>
+
+{% endblock %}

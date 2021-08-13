@@ -1,0 +1,43 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Location</h1>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-!-font-weight-bold" for="address-postcode">
+        Location
+      </label>
+      <span id="address-postcode-hint" class="govuk-hint">
+        Enter postcode, town or city or use <a href="#">current location</a>
+      </span>
+      <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
+    </div>
+
+    <div class="govuk-form-group">
+      <label for="location-within" class="govuk-label govuk-!-font-weight-bold">Within</label>
+      <select class="govuk-select"  id="location-within">
+        <option value="2">2 miles</option>
+        <option selected="selected" value="5">5 miles</option>
+        <option value="10">10 miles</option>
+        <option value="15">15 miles</option>
+        <option value="20">20 miles</option>
+        <option value="30">30 miles</option>
+        <option value="40">40 miles</option>
+        <option value="0">England</option>
+      </select>
+    </div>
+
+    <a href="options" class="govuk-button">Continue</a>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">ER-1178 remove reference to non-levy</h1>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <p class="govuk-body">Find the strory on Jira: </p>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="dashboard-none?user=employer">Employer dashboard - no vacancies</a></li>
+            <li class="govuk-list--item"><a href="dashboard-multiple?user=employer">Employer dashboard - with vacancies</a></li>
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}

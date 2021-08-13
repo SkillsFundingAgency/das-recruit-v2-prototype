@@ -1,0 +1,238 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="home">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">Recruitment</li>
+      </ol>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- Header -->
+    <div class="govuk-grid-row govuk-!-margin-bottom-0">
+      <div class="govuk-grid-column-two-thirds">
+        <!-- Heading -->
+        <!-- <span class="govuk-caption-xl">Recuitement</span> -->
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Recruitment</h1>
+        <!-- Core actions -->
+        <!-- <a href="../ALL/create-vacancy-options/create-vacancy" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold" name="button">Create a new vacancy</a> -->
+      </div>
+      <div class="govuk-grid-column-one-third" style="text-align: right;">
+        {% if data.user=="employer"%}
+        <a href="create-vacancy-options/create-vacancy" class="govuk-button">Create a new vacancy</a>
+        {%else%}
+        <a href="create-vacancy-options/employers-select" class="govuk-button">Create a new vacancy</a>
+        {%endif%}
+      </div>
+      </div>
+      <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <div class="govuk-grid-column-two-thirds">
+
+        <!-- Search -->
+        <!-- <form action="vacancies" method="GET" class="govuk-!-margin-top-6">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-visually-hidden">Search for a client</legend>
+            <div class="form-group search-field search-field-darker">
+              <div class="search-input search-input-with-button">
+                <label class="govuk-label " for="search">
+                  Search by vacancy title, reference number{%if data.user== "provider"%} or employer{%endif%}
+                </label>
+                <div class="autocomplete__parent_wrapper">
+                  <div class="autocomplete__wrapper">
+                    <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"><span>No
+                        search results.</span><span>,,</span></div><input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="search" name="search" placeholder=""
+                      role="combobox" type="text">
+                    <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
+                  </div>
+                </div><input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+              </div>
+              <div class="search-submit">
+                <button class="button" type="submit" id="searchbutton" name="searchClientsSubmit" value="Search">Search clients</button>
+              </div>
+            </div>
+          </fieldset>
+        </form> -->
+      </div> <!-- Header -  govuk-grid-column-two-thirds -->
+    </div> <!-- header - govuk-grid-row  -->
+
+    <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+
+    <!-- Vacancy -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <div class="card">
+          <div class="card-body active">
+            <h3 class="govuk-heading-m card-heading">
+
+              <a class="card-link" href="../vacancies?filter=any&dashboard=dashboard2">
+                <span class="card-number">6</span>
+                In progress
+              </a>
+            </h3>
+          </div>
+          <div class="card-task">
+            <ul class="govuk-list">
+              <li>
+                <a class="ga-track-anchor-click das-link--error" href="../vacancies?dashboard=dasboard2&filter=rejected">2 vacancies have been rejected</a>
+              </li>
+              <li>
+                <a class="ga-track-anchor-click" href="../vacancies?dashboard=dasboard2&filter=draft" >4 vacancies have not been submitted</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+       <div class="govuk-grid-column-one-third">
+          <div class="card">
+            <div class="card-body active">
+              <h3 class="govuk-heading-m card-heading">
+                <a class="card-link" href="../vacancies?dashboard=dasboard2&filter=live">
+                  <span class="card-number">11</span>
+                  Live vacancies
+                </a>
+              </h3>
+            </div>
+            <div class="card-task">
+              <ul class="govuk-list">
+                <li>
+                  <a class="ga-track-anchor-click" href="../vacancies?dashboard=dasboard2&filter=pending%20review">2 vacancies waiting to be reviewed</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+          <div class="card">
+            <div class="card-body active">
+              <h3 class="govuk-heading-m card-heading">
+
+                <a class="card-link" href="../vacancies?dashboard=dasboard2&filter=new">
+                  <span class="card-number">12</span>
+                  Applications
+                </a>
+              </h3>
+            </div>
+            <div class="card-task">
+              <ul class="govuk-list">
+                <li>
+                  <a class="ga-track-anchor-click" href="../vacancies?dashboard=dasboard2&filter=new" data-ga-event-category="link - click" >6 unread applications to review</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="govuk-grid-column-full">
+          <a href="../vacancies?dashboard=dasboard2&filter=any" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state" name="button">View all your vacancies (36)</a>
+        </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <!-- Other actions  -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third ">
+        <h3 class="govuk-heading-s"><a class="govuk-link  govuk-link--no-visited-state" href="reports/dashboard">Reports</a></h3>
+        <p>Create a report about applicants or vacancies</p>
+      </div>
+    </div>
+
+  </div> <!-- govuk-grid-column-full -->
+</div> <!-- govuk-grid-row -->
+<script type="text/javascript">
+  function defer(method) {
+      if (window.jQuery) {
+          method();
+      } else {
+          setTimeout(function() { defer(method) }, 50);
+      }
+  }
+  defer(function () {
+    console.log("JQuery loaded")
+    var card = (function () {
+      console.log("function called")
+
+      // Capture when a user clicks
+      $('.card-body').on('click', function () {
+        console.log("Clicked")
+        var url = $(this).find('a').attr('href')
+        if (url !== undefined) {
+          window.location.href = url
+        }
+      })
+
+      var checkSize = function () {
+        var maxHeight = getMaxHeight('.card-body')
+        setMaxheight('.card-body', maxHeight)
+      }
+
+      // Check each card. If the card does not contain a .card-action
+      // make .card-body full height
+      var fullHeight = function () {
+        var cardEle = $('.card').not(':has(.card-action)')
+        if (cardEle.length > 0) {
+          cardEle.each(function () {
+            var $cardBody = $(this).children('.card-body')
+            var maxHeight = getMaxHeight('.card')
+            var paddingTop = $cardBody.css('padding-top').replace('px', '')
+            var paddingBottom = $cardBody.css('padding-bottom').replace('px', '')
+            var totalHeight = maxHeight - paddingTop - paddingBottom
+            $cardBody.css('border-bottom', '0')
+            setMaxheight($cardBody, totalHeight)
+          })
+        }
+      }
+
+      isNotMobile(checkSize)
+      $(window).resize(isNotMobile(checkSize))
+
+      isNotMobile(fullHeight)
+      $(window).resize(isNotMobile(fullHeight))
+
+      // set max height for any collection of elements
+      function setMaxheight (ele, maxHeight) {
+        $(ele).height(maxHeight)
+      }
+
+      // get max height for any collection of elements
+      function getMaxHeight (ele) {
+        var height = []
+        $(ele).each(function () {
+          if ($(this).height() > 0)
+            height.push($(this).height())
+        })
+        var maxHeight = height.sort(function (a, b) { return b - a })[0]
+        return maxHeight
+      }
+
+      // Only run fucntion if the screen size is not mobile.
+      function isNotMobile (func) {
+        if (navigator.appVersion.indexOf('MSIE 10') === -1) {
+
+          if ($('.card').css('flex-basis') !== '100%') {
+            return func()
+          }
+        }
+      }
+
+    })()
+
+    var doc = document.documentElement
+    doc.setAttribute('data-useragent', navigator.userAgent)
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,59 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-47 Non-levy Homepage & recuitment flow</h1>
+        <!-- <h3 class="govuk-heading-m"><a href="./provider/config">Configure session</a></h3> -->
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Static content (no API)</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="home-new-none?vac_status=live&no_nav=no">Home page - no vacancies</a></li>
+            <li class="govuk-list--item"><a href="home-new-multiple?vac_status=live&no_nav=no">Home page - multiple vacancies</a></li>
+
+          </ul>
+            <h2 class="govuk-heading-m">RAA pages</h2>
+            <ul class="govuk-list">
+              <li class="govuk-list--item"><a href="dashboard-none?no_nav=no">Dashboard - no vacanices</a></li>
+              <li class="govuk-list--item"><a href="dashboard-one?no_nav=no">Dashboard - one vacancy</a></li>
+              <li class="govuk-list--item"><a href="dashboard-multiple?no_nav=no">Dashboard - multiple vacancies</a></li>
+              <br>
+              <li class="govuk-list--item"><a href="create-vacancy-options/title?return=home&journey=new&no_nav=no">Posting journey first time</a></li>
+              <li class="govuk-list--item"><a href="create-vacancy-options/create-vacancy?return=home&no_nav=no">Posting second time</a></li>
+            </ul>
+            <h2 class="govuk-heading-m">Dynamic content</h2>
+            <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="home?no_nav=no">Home page - no recruitment</a></li>
+            <li class="govuk-list--item"><a href="home-multiple?no_nav=no">Home page - user has multiple vacancies</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="home-one?vac_status=live&no_nav=no">Home page - single vacancy (live)</a></li>
+            <li class="govuk-list--item"><a href="home-one?vac_status=draft&no_nav=no">Home page - single vacancy (draft)</a></li>
+            <li class="govuk-list--item"><a href="home-one?vac_status=pending&no_nav=no">Home page - single vacancy (pending review)</a></li>
+            <li class="govuk-list--item"><a href="home-one?vac_status=rejected&no_nav=no">Home page - single vacancy (rejected)</a></li>
+            <li class="govuk-list--item"><a href="home-one?vac_status=closed&no_nav=no">Home page - single vacancy (closed)</a></li>
+            </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}
