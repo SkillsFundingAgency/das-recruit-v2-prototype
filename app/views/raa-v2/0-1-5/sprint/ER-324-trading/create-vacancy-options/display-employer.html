@@ -1,0 +1,61 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">What employer name do you want to go on the vacancy?</h1>
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="display_name_registered" name="selected_display_name" type="radio"
+                value="organisation" {%if query.updatedLegalEntity == "no" and data.hasTradingName !="yes"%}checked="checked"{%endif%} >
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                {{data.orgName}} (registered name)
+              </label>
+            </div>
+            <div class="govuk-radios__item " data-module="business-name-vacancy-panel">
+              <input class="govuk-radios__input" id="display_name_trading" name="selected_display_name" type="radio"
+                value="tradingName"  data-aria-controls="trading-name-conditional">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                  a trading name
+              </label>
+            </div>
+            <div class="govuk-radios__conditional" id="trading-name-conditional">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold" for="TradingName">Trading name</label>
+                <input class="govuk-input govuk-input--width-20" id="TradingName" name="TradingName" type="text" >
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+        </div>
+        <div class="govuk-form-group">
+
+          {% if query.edit != "yes"%}
+          <input type="submit" class="govuk-button" name="continueButton" value="Save and continue"/>
+            <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
+          {%else%}
+            <input type="submit" class="govuk-button" name="previewButton" value="Save and continue"/>
+            <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+          {%endif%}
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+{% block pageScripts %}
+
+
+{% endblock %}

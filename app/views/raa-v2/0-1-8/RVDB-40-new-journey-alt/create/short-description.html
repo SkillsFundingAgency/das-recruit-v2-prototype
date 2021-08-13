@@ -1,0 +1,42 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <h1 class="govuk-heading-xl">Short description of the vacancy<h1>
+    <form method="post" >
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="350">
+        <div class="govuk-form-group">
+
+          <p class="govuk-body">Write a few sentences about the vacancy to attract applicants. This is an important part of what applicants will see when looking through a list of vacancies, so make it stand out.
+          </p>
+          <p class="govuk-body">This could be: </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>what you are offering </li>
+            <li>why they should apply</li>
+          </ul>
+          <!-- <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+              Write a few sentences to describe your vacancy
+          </label> -->
+          <textarea class="govuk-textarea js-character-count " id="shortDescription" name="shortDescription" rows="5"></textarea>
+        </div>
+      </div>
+      {% if query.edit != "yes"%}
+      <input type="submit" class="govuk-button" name="continueButton" value="Save and continue"/>
+        <a href="../dashboard-multiple" class="govuk-body das-button--link">Save and exit</a>
+      {%else%}
+        <input type="submit" class="govuk-button" name="previewButton" value="Save and preview"/>
+        <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+      {%endif%}
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

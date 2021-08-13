@@ -1,0 +1,34 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Recruitment</h1>
+
+        <h2 class=govuk-heading-m"><a href="config">Config journey</a></h2>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Employer</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="create/vacancy-preview?qualifications=&hasError=&errorType=&Grades=&QualificationType=&Subject=&Weighting=">From vacancy preview</a></li>
+            <li class="govuk-list--item"><a href="create/qualifications?qualifications=&hasError=&errorType=&Grades=&QualificationType=&Subject=&Weighting=">Qualifications page empty (choose GCSE and C and above)</a></li>
+            <li class="govuk-list--item"><a href="create/qualifications?hasError=yes&errorType=grades&Grades=C and above&QualificationType=GCSE or equivalent&Subject=English&Weighting=Essential">Error on qualifications page</a></li>
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+
+{% endblock %}

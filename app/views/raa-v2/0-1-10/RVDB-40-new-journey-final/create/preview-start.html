@@ -1,0 +1,154 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block content %}
+<p><a  href="javascript:history.back()" class="govuk-back-link">Back</a></p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Check your vacancy</h1>
+    <p class="govuk-body">This is how applicants will see the vacancy on the <a href="#"> find an apprentice </a> service</p>
+    <p class="govuk-body"> Press the edit button to change any answers.</p>
+    <p class="govuk-body"><a href="vacancy-preview" class="govuk-button">Preview vacancy</a></p>
+</div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $(document).ready(function() {
+    var page = 1;
+    var max_per_page = 25
+    var total_items = 55
+    var page_total = Math.round(total_items/max_per_page)+1
+    var data_set = $('.selection-item');
+    var pagerControls = $('.pager-controls');
+
+    function updateList(){
+      data_set.each(function( index ) {
+      if($( this ).attr('data-item-id') > max_per_page*page-1 || $( this ).attr('data-item-id') < (max_per_page*page)-max_per_page ){
+        $(this).attr("hidden","hidden")
+        $(this).attr("aria-hidden","true")
+        $(this).hide();
+      }else{
+        $(this).removeAttr("hidden","hidden")
+        $(this).attr("aria-hidden","false")
+        $(this).show();
+      }
+    });
+      buildPager()
+    }
+    function buildPager(){
+      var pager = ""
+      var shown_items_min = (1+max_per_page*page)-max_per_page
+      var shown_items_max = ((max_per_page*page) < total_items)? max_per_page*page : total_items;
+
+
+      if(page > 1){
+        pager +='<a class="pager-prev das-pager-prev" href="#" aria-hidden="false">Prev</a>'
+      }
+
+      pager+='<ul class="pager-items das-pager-items">'
+      for(var i=1;i<=page_total;i++){
+        var pager_link = (i!=page) ? '<li><a href="#">'+i+'</a></li>' : '<li>'+i+'</li>'
+        console.log("building  "+pager_link )
+        pager+=pager_link
+      }
+
+      pager+='</ul>';
+      console.log("total_items:"+page)
+      if(page < page_total){
+        console.log("adding next")
+        pager +='<a class="pager-next das-pager-next" href="#" aria-hidden="false">Next</a>'
+      }
+      pagerControls.html(pager)
+      $('.pager-items a').on('click',function(event){
+        event.preventDefault();
+        console.log("updating page to ="+$(this).text())
+        page = $(this).text()
+        updateList()
+      });
+      $('.pager-next').on('click',function(event){
+        event.preventDefault();
+        page +=1
+        updateList()
+      })
+      $('.pager-prev').on('click',function(event){
+        event.preventDefault();
+        page -=1
+        updateList()
+      })
+      $('.das-pager-summary').html("Showing "+shown_items_min+" - "+shown_items_max+ " of "+total_items+" vacancies")
+    }
+
+    function searchCheck(e){
+      keycount = $('#searchOrgsAuto').val().length
+      $('.querytext').text($('#searchOrgsAuto').val())
+      if(keycount == 2){
+        $("#vacancy-2").show()
+        $("#vacancy-1").hide()
+        $("#vacancy-all").hide()
+        $(".das-pager").hide()
+        $("#vacancy-no-result").hide()
+      }else if(keycount > 2 && keycount < 14){
+        $("#vacancy-1").show()
+        $("#vacancy-2").hide()
+        $("#vacancy-all").hide()
+          $("#vacancy-no-result").hide()
+          $(".das-pager").hide()
+
+        }else if(keycount >= 14){
+          $("#vacancy-1").hide()
+          $("#vacancy-2").hide()
+          $("#vacancy-all").hide()
+          $(".das-pager").hide()
+          $("#vacancy-no-result").show()
+        }else{
+        $("#vacancy-all").show()
+        $("#vacancy-2").hide()
+        $("#vacancy-1").hide()
+        $(".das-pager").show()
+        $("#vacancy-no-result").hide()
+      }
+    }
+    function init(){
+      // Set up autocomplete
+      searchCheck()
+      $('#clearSearch').on('click',function(e){
+        e.preventDefault();
+        $('#searchOrgsAuto').val('')
+        $("#vacancy-all").show()
+        $("#vacancy-2").hide()
+        $("#vacancy-1").hide()
+        $(".das-pager").show()
+      })
+
+      $('#searchOrgsAuto').show()
+      $('#searchOrgsAuto').on('keydown', searchCheck)
+      $('#searchOrgsAuto').on('paste', function () {
+          var element = this;
+          setTimeout(function () {
+            var text = $(element).val();
+            searchCheck()
+          }, 100);
+        });
+      // $('#searchOrgsAuto').on('blur',function(){
+      //   keycount = 0
+      // })
+      $('#searchOrgsQuery').hide();
+      // Hide submit button in this version, only shows if Javascript is not on.
+      $('#searchOrgsSubmit').hide();
+      $('.search-input').removeClass('search-input-with-button')
+
+      buildPager()
+      updateList()
+    }
+    init()
+
+
+
+  });
+</script>
+
+{% endblock %}

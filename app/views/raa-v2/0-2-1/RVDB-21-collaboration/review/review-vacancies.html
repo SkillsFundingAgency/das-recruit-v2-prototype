@@ -1,0 +1,126 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Vacancies
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="../{{data.return_dashboard or 'dashboard3'}}" class="govuk-back-link">Return to recruitment dashboard</a>
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Training provider vacancies for approval</h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <p class="govuk-body"><span class="displayTotal">{% if data.review_complete != "yes" %}4{%else%}3{%endif%}</span> vacancies for approval</p>
+    <table class="govuk-table responsive-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Vacancy title</th>
+          <th class="govuk-table__header" scope="col">Created by</th>
+          <th class="govuk-table__header" scope="col" colspan="2">Submitted on</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <!-- set count to capture other vacancies under the search -->
+
+
+        {% if data.review_complete != "yes" %}
+        <!-- FOR TESTING: remove when user -->
+        <tr class="govuk-table__row" role="row">
+          <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+            <span class="table-heading " aria-hidden="true">Vacancy title</span>
+            <span>Business apprenticeship
+              <br>VAC1000000597
+            </span>
+          </td>
+          <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Training provider </span>PLUMPTON COLLEGE</span></td>
+          <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Submitted on </span>11 Jul 2019</td>
+          <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+            <a href="vacancy-review?has_comments=no&submission_count=First" class="govuk-link">Review</a>
+          </td>
+        </tr>
+        {% endif %}
+        <tr class="govuk-table__row" role="row">
+          <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+            <span class="table-heading " aria-hidden="true">Vacancy title</span>
+            <span>Software developer apprenticeship<br>VAC1000000594</span>
+          </td>
+          <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Training provider </span>PLUMPTON COLLEGE</td>
+          <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Submitted on </span>9 May 2019</td>
+          <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+            <a href="vacancy-review?has_comments=yes&submission_count=Second" class="govuk-link">Review</a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row" role="row">
+          <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+            <span class="table-heading " aria-hidden="true">Vacancy title</span>
+            <span>Engineering Technician Level 3 Product Design and Development Apprentice<br>VAC1000000259</span>
+          </td>
+          <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Training provider </span>NOTTINGHAM COLLEGE</td>
+          <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Submitted on </span>23 Apr 2019</td>
+          <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+            <a href="vacancy-review" class="govuk-link">Review</a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row" role="row">
+          <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+            <span class="table-heading " aria-hidden="true">Vacancy title</span>
+            <span>Web Development Apprentice <br>VAC1000000453</span>
+          </td>
+          <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">NOTTINGHAM COLLEGE</span></td>
+          <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>12 Jul 2019</td>
+          <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+            <a href="review-vacancy" class="govuk-link">Review</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    {% if totalVacancies != (displayCount | length)%}
+    {% set totalVacancies = (displayCount | length)%}
+    {% endif %}
+
+    <div class="pager das-pager" aria-hidden="false" style="margin-top:0" data-paging="">
+      {% if totalVacancies > data.vacanciesPerPage %}
+
+      <div class="pager-controls das-pager-controls">
+        {% if data.page != 1%}
+        <a class="pager-prev das-pager-prev" href="?page={{data.page | int -1}}">Prev</a>
+        {% endif %}
+        <ul class="pager-items das-pager-items">
+
+          {% for count in range(0, totalPages)%}
+          {% if page == (count+1) %}
+          <li data-page-number="count">{{count+1}}</li>
+          {% else %}
+          <li data-page-number="count"><a href="?page={{count+1}}">{{count+1}}</a></li>
+          {% endif %}
+
+          {% endfor %}
+        </ul>
+        {% if data.page != totalPages%}
+        <a class="pager-next das-pager-next" href="?page={{data.page | int +1}}" aria-hidden="false">Next</a>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% if totalVacancies != 0%}
+      <div class="das-pager-summary">Showing {{currentMin}} to {% if currentMax < totalVacancies %}{{currentMax}}{%else%}{{totalVacancies}}{%endif%} of <span id="totalVacancies">{{totalVacancies}}</span> vacancies</div>
+      {% else %}
+
+
+      <span id="totalVacancies" style="display:none">0</span>
+
+      {% endif %}
+
+    </div>
+    <!-- END table -->
+  </div>
+</div>
+{% endblock %}

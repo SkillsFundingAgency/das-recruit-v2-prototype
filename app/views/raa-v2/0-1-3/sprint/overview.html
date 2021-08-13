@@ -1,0 +1,65 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">RAA-v2 Prototypes</span>
+        <h1 class="govuk-heading-xl">0-1-3 Testing versions and Sprint stories</h1>
+        <h2 class="govuk-heading-s">Customer</h2>
+        <a class="govuk-heading-m" href="ALL/dashboard-multiple?vacancies=multiple">All designs (testing version)</a>
+        <a class="govuk-heading-m" href="ALL/dashboard-none?vacancies=none">All designs with no vacancies</a><br>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-442 Dashboard</h2>
+
+        <p>
+          <a class="govuk-link" href="dashboard/new-dashboard">Dashboard (new)</a><br>
+          <a class="govuk-link" href="dashboard/new-vacancies">vacancies</a><br>
+        </p>
+        <h2 class="govuk-heading-s">Proivider</h2>
+        <p>
+          <a class="govuk-link" href="provider/home">Start from home page</a><br>
+          <a class="govuk-link" href="provider/new-dahsboard">New dashboard design</a><br>
+          <a class="govuk-link" href="provider/new-vacancies?status=all">New vacancy page with filters</a><br>
+        </p>
+        <h2 class="govuk-heading-s">ER-966 - Default the duration to Months instead of Years</h2>
+        <p>
+          <a class="govuk-link " href="ER-966/wage-employer">Duration and wages page - Employers</a><br>
+          <a class="govuk-link " href="ER-979/wage-provider">Duration and wages page - Provider</a><br>
+        </p>
+
+        <h2 class="govuk-heading-s">ER-979 - Submission confirmation page content</h2>
+        <p>
+          <a class="govuk-link " href="ER-979/confirmation_employer">Submission confirmation - Employer</a><br>
+          <a class="govuk-link " href="ER-979/confirmation_provider">Submission confirmation - Provider</a><br>
+        </p>
+        <h2 class="govuk-heading-s">New design</h2>
+        <p>
+          <a class="govuk-link " href="reports/dashboard-new?user=provider">Dashboard</a><br>
+          </p>
+
+        <h2 class="govuk-heading-s">New design</h2>
+        <p>
+          <a class="govuk-link " href="new-design2/dashboard-new?user=provider">Provider new design</a><br>
+          <a class="govuk-link " href="new-design2/dashboard-new?user=employer">Employer new design</a><br><br>
+          <span class="govuk-hint">Other designs</span>
+          <a class="govuk-link " href="new-design/create/tasks?completed=">Task list pattern</a><br>
+          <a class="govuk-link " href="new-design2/dashboard-multiple">Progress bar design</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">RVDB-94 - Revoke provider permisions  </h1>
+        <p class="govuk-body"><a href="https://skillsfundingagency.atlassian.net/browse/RVDB-14" class="govuk-link">View on Jira</a></p>
+
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Employer</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="#">Revoke permissions(figma)</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="./dashboard-multiple?user=employer&alert=transferred&filter=any&multipe_revokes=no&user=employer">Employer dashboard:  vacancy transferred</a></li>
+            <li class="govuk-list--item"><a href="./dashboard-multiple?user=employer&alert=transferred&multiple_revokes=yes&user=employer">Employer dashboard:  multiple provider vacancy transfer</a></li>
+            <p class="govuk-body">individual pages</p>
+            <li class="govuk-list--item"><a href="./dashboard-multiple?user=employer&alert=transferred&multiple_revokes=yes&user=employer">Manage vacancy of transferred vacancy</a></li>
+            <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions=&user=employer">Draft (from preview)</a></li>
+            <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview-referred?user=employer">referred vacancy</a></li>
+          </ul>
+          <h2 class="govuk-heading-m">Provider</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="./dashboard-multiple-provider?alert=transferred&multiple_revokes=no&user=provider">dashboard (provider) Single revoke</a></li>
+            <li class="govuk-list--item"><a href="./vacancies?alert=transferred&multiple_revokes=yes&user=provider">dashboard (provider) Single revoke</a></li>
+            <br>
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+
+{% endblock %}

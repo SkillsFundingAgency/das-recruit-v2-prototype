@@ -1,0 +1,35 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+The vacancy has been submitted
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        The vacancy has been submitted
+      </h1>
+      <div class="govuk-panel__body">
+        The vacancy reference number is
+        <br><strong>VAC1000000965</strong>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m">Next steps</h2>
+    <p class="govuk-body">We will check the vacancy and tell you within 24 hours if the vacancy has been approved on <a class="govuk-link" href="../../provider/dashboard-multiple">the vacancy dashboard</a>. If the vacancy is not approved, we will tell you the changes that you need to make.</p>
+    <p class="govuk-body">Once the vacancy is approved it will go live on the <a class="govuk-link" href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch">find an apprenticeship service (opens in new tab)</a>.</p>
+    <form method="post">
+    <div class="form-group inline">
+      <div class="form-group">
+          <a class="govuk-button" href="#">Finish</a>
+          <a class="govuk-body das-button--link" href="#">Create another vacancy</a>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

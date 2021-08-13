@@ -1,0 +1,121 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">VAA-v2 Prototypes</span>
+        <h1 class="govuk-heading-xl">0-1-1 Sprint stories and other designs</h1>
+        <a class="govuk-heading-m" href="ALL/dashboard-multiple?vacancies=multiple">All designs (testing version)</a>
+        <a class="govuk-heading-m" href="ALL/dashboard-none?vacancies=none">All designs with no vacancies</a><br>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-442 - Dashboard v1</h2>
+        <p>
+          <a class="govuk-link" href="ER-442/">Dashboard home page</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-603 - Select level of Disability confident</h2>
+        <p>
+          <a class="govuk-link" href="disability/dashboard">From Dashboard</a><br>
+          <a class="govuk-link" href="disability/create-vacancy-options/title">New designed vacancy summary - with disability confident choice</a><br><br>
+          <a class="govuk-link" href="disability/create-vacancy-options/search-results-preview?disability_confident_level=level1">Vacancy Summary - Level 1 COMMITED</a><br>
+          <a class="govuk-link" href="disability/create-vacancy-options/search-results-preview?disability_confident_level=level2">Vacancy Summary - Level 2 EMPLOYER</a><br>
+          <a class="govuk-link" href="disability/create-vacancy-options/search-results-preview?disability_confident_level=level3">Vacancy Summary - Level 3 LEADER</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-XXX - Training selection move</h2>
+        <p>
+          <span class="govuk-hint govuk-!-margin-bottom-0">Better version</span>
+          <a class="govuk-link" href="training/dashboard-multiple">from Dashboard</a><br>
+          <a class="govuk-link" href="training/create-vacancy-options/training-level">New training page</a><br>
+          <a class="govuk-link" href="training/create-vacancy-options/training">Important dates update - with information about end date</a><br>
+          <a class="govuk-link" href="training/create-vacancy-options/training">Update to short description page</a><br><br>
+
+          <span class="govuk-hint govuk-!-margin-bottom-0">Basic version. move current trainging selection to the vacancy details page.</span>
+          <a class="govuk-link" href="training/create-vacancy-options/title-alt">Training input on vacancy details page</a><br>
+          <a class="govuk-link" href="training/create-vacancy-options/training-alt">Important dates without the training selection</a><br>
+
+
+        </p>
+        <!-- BLOCK START -->
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-324 Create an Anonymous employer vacancy
+        <span class="govuk-caption-m">Includes: ER-788 Redesign location & ER-487 - trading name</span>
+        </h2>
+
+        <p>
+          <a class="govuk-link" href="ER-324/dashboard">From dashboard</a><br>
+            <a class="govuk-link" href="ER-324/create-vacancy-options/display-employer">Select anonymous vacancy</a><br>
+            <a class="govuk-link" href="ER-324/create-vacancy-options/search-results-preview?description_name=Anonymous name">Vacancy summary anonymous</a><br>
+            <a class="govuk-link" href="ER-324/vacancy-preview/vacancy-preview?description_name=Anonymous name">Vacancy preview anonymous</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-319 - Creation of a "Nationwide" vacancy v2</h2>
+        <p>
+          <a class="govuk-link" href="ER-319/dashboard">From dashboard</a><br>
+          <a class="govuk-link" href="ER-319/create-vacancy-options/location">Nationwide location select</a><br><br>
+          <a class="govuk-link" href="ER-319/create-vacancy-options/search-results-preview-no-map">Nationwide search preview - no map</a><br>
+          <a class="govuk-link" href="ER-319/create-vacancy-options/location-with-alt">Full preview - no map and no address</a>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-487 - Specify a trading name</h2>
+        <p>
+          <a class="govuk-link" href="ER-487/dashboard">From dashboard</a><br>
+          <a class="govuk-link" href="ER-487/create-vacancy-options/display-employer">Trading name input</a><br>
+          <a class="govuk-link" href="ER-487/create-vacancy-options/display-employer-saved">trading name - saved </a><br><br>
+          <a class="govuk-link" href="ER-487/create-vacancy-options/search-results-preview?hasTradingName=yes">Search summary with trading name</a><br>
+          <a class="govuk-link" href="ER-487/vacancy-preview/vacancy-preview?hasTradingName=yes">Preview Vacancy with trading name</a><br><br>
+          <a class="govuk-link" href="ER-487/vacancy-preview/vacancy-preview?hasTradingName=yes">QA review page with trading name</a><br><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-471 - System notification V2</h2>
+        <p>
+          <a class="govuk-link" href="ER-471/dashboard-none?vacancies=multiple">Start with no vacancies</a><br>
+          <a class="govuk-link" href="ER-471/dashboard-multiple?vacancies=multiple">Start with vacancies (never set up notificaitons)</a><br><br>
+          <span class="govuk-hint govuk-!-margin-bottom-0">New pages</span>
+          <a class="govuk-link" href="ER-471/notifications/notification-preferences-new">Notification preferences - set up</a><br>
+          <a class="govuk-link" href="ER-471/notifications/notification-preferences?has_notifications=yes">Notification preferences - update</a><br>
+          <a class="govuk-link" href="ER-471/notifications/notificaiton-confirmation?new=yes">Confirmation - Notifications successfully set up</a><br>
+          <a class="govuk-link" href="ER-471/notifications/notificaiton-confirmation?new=no">Confirmation - Notifications successfully updated (CHANGED)</a><br>
+          <a class="govuk-link" href="ER-471/notifications/notificaiton-confirmation-unsubscribe">Confirmation - Notifications successfully unsubscribed</a><br>
+          <a class="govuk-link" href="ER-471/notifications/receive-notifications">Do you want to receive emails</a><br><br>
+          <span class="govuk-hint govuk-!-margin-bottom-0">Updated existing pages</span>
+          <a class="govuk-link" href="ER-471/create-vacancy-options/create-vacancy?firstVacancy=no&returnDashaboard=dashboard&has_notifications=no">Create a vacancy - approved/rejected email preference NOT set</a><br>
+          <a class="govuk-link" href="ER-471/create-vacancy-options/create-vacancy?firstVacancy=no&returnDashaboard=dashboard&has_notifications=yes">Create a vacancy - approved/rejected email preference set</a><br>
+          <a class="govuk-link" href="ER-471/vacancy-preview/confirmation?has_notifications=no">Vacancy submitted confirmation - approved/rejected email NOT set</a><br>
+          <a class="govuk-link" href="ER-471/vacancy-preview/confirmation?has_notifications=yes">Vacancy submitted confirmation - approved/rejected email set</a><br><br>
+        </p>
+
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-845 - Analytics to employers</h2>
+        <p>
+          <a class="govuk-link" href="ER-845/dashboard">From dashboard</a><br>
+          <a class="govuk-link" href="ER-845/manage-vacancy">Manage vacancy (with Analytics) - version 1</a><br>
+          <a class="govuk-link" href="ER-845/manage-vacancy-2">Manage vacancy (with Analytics) - version 2</a><br>
+          <a class="govuk-link" href="ER-845/manage-vacancy-3">Manage vacancy (with tabs) - version 3 (simple)</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">Webchat - for testing
+          <span class="govuk-caption-m">Only for testing purposes.It uses zendesk webchat for ease of implementaiton.</span>
+        </h2>
+        <p>
+          <a class="govuk-link" href="webchat/dashboard">From dashboard</a><br>
+          <a class="govuk-link" href="webchat/">Example page</a><br>
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Successfully unsubscribed from email notifcations
+      </h1>
+    </div>
+    <p>We will no longer send email notifications when you have updates to your vacancies. Updates will now be viewed through your recruitment page only.</p>
+    <div class="govuk-inset-text">
+      You can re-subscribe at anytime from the recuitement dashboard.
+    </div>
+    <form method="post">
+    <div class="form-group inline">
+      <div class="govuk-form-group">
+        	<button class="govuk-button submit" type="submit">Finish</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

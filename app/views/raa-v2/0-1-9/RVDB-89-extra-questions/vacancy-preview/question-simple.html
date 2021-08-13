@@ -1,0 +1,43 @@
+  {% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+  {% block pageTitle %}
+  Manage apprentices
+  {% endblock %}
+
+  {% block content %}
+
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-xl"><span class="govuk-caption-l">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</span>
+                Would you like to add any questions to the application process (optional)?
+
+              </h1>
+                <p class="govuk-body">Add some extra questions for the candidate to answer when they apply through the Find an apprenticeship service</p>
+              <form method="post">
+                <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+                  <div class="govuk-form-group" style="position:relative">
+                    <label class="govuk-label govuk-!-font-weight-bold" for="question{{loop.index}}">
+                      Question 1 (optional)
+                    </label>
+                    <input class="govuk-input  js-character-count" id="question{{loop.index}}" name="question1" type="text" {% if data.question1 %} value="{{data.question1}}"{% endif %}>
+                  </div>
+                </div>
+                <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+                  <div class="govuk-form-group" style="position:relative">
+                    <label class="govuk-label govuk-!-font-weight-bold" for="question2">
+                      Question 2 (optional)
+                    </label>
+                    <input class="govuk-input  js-character-count" id="question2" name="question2" type="text" {% if data.question2 and (data.questions | length) == 2 %} value="{{data.question2}}"{% endif %}>
+                  </div>
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" value="Save and preview" class="govuk-button save-button" data-automation="btn-continue">
+                      <a class="govuk-body das-button--link" href="vacancy-preview-simple?edit=no" data-automation="link-cancel">Cancel</a>
+                  </div>
+                </form>
+            </div>
+        </div>
+
+  {% block help %}{% include "includes/service-help.html" %}{% endblock %}
+  {% endblock %}

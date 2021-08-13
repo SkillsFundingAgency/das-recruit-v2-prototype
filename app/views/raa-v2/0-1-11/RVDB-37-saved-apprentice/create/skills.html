@@ -1,0 +1,160 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+        <h1 class="govuk-heading-xl">What skills and personal qualities does the applicants need to have?</h1>
+        <form method="post" action="skills">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s" id="SkillsHeading"></legend>
+          {{data.Skills}}
+          <p class="govuk-hint">Select all that apply or add your own</p>
+          <div class="govuk-visually-hidden">
+            {%  for skill in data.Skills %}
+            <li class="data-checked">{{skill}}</li>
+            {% endfor %}
+          </div>
+            <div class="two-column-checkbox-container">
+             <div class="govuk-checkboxes">
+               <fieldset class="govuk-fieldset">
+                 <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-half">
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="col1-0" type="checkbox" name="Skills" value="Communication skills" >
+                          <label class="govuk-label govuk-checkboxes__label" for="col1-0">Communication skills</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col1-1" type="checkbox" value="IT skills">
+                          <label class="govuk-label govuk-checkboxes__label" for="col1-1">IT skills</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col1-2" type="checkbox" value="Attention to detail">
+                          <label class="govuk-label govuk-checkboxes__label" for="col1-2">Attention to detail</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col1-3" type="checkbox" value="Organisation skills">
+                          <label class="govuk-label govuk-checkboxes__label" for="col1-3">Organisation skills</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col1-4" type="checkbox" value="Customer care skills">
+                          <label class="govuk-label govuk-checkboxes__label" for="col1-4">Customer care skills</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col1-5" type="checkbox" value="Problem solving skills">
+                          <label class="govuk-label govuk-checkboxes__label" for="col1-5">Problem solving skills</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col1-6" type="checkbox" value="Presentation skills">
+                          <label class="govuk-label govuk-checkboxes__label" for="col1-6">Presentation skills</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col1-7" type="checkbox" value="Administrative skills">
+                          <label class="govuk-label govuk-checkboxes__label" for="col1-7">Administrative skills</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col1-8" type="checkbox" value="Number skills">
+                          <label class="govuk-label govuk-checkboxes__label" for="col1-8">Number skills</label>
+                      </div>
+                    </div>
+
+                    <div class="govuk-grid-column-one-half">
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col2-0" type="checkbox" value="Analytical skills">
+                          <label class="govuk-label govuk-checkboxes__label" for="col2-0">Analytical skills</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col2-1" type="checkbox" value="Logical">
+                          <label class="govuk-label govuk-checkboxes__label" for="col2-1">Logical</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col2-2" type="checkbox" value="Team working">
+                          <label class="govuk-label govuk-checkboxes__label" for="col2-2">Team working</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col2-3" type="checkbox" value="Creative">
+                          <label class="govuk-label govuk-checkboxes__label" for="col2-3">Creative</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col2-4" type="checkbox" value="Initiative">
+                          <label class="govuk-label govuk-checkboxes__label" for="col2-4">Initiative</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col2-5" type="checkbox" value="Non judgemental">
+                          <label class="govuk-label govuk-checkboxes__label" for="col2-5">Non judgemental</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col2-6" type="checkbox" value="Patience">
+                          <label class="govuk-label govuk-checkboxes__label" for="col2-6">Patience</label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" name="Skills" id="col2-7" type="checkbox" value="Physical fitness">
+                          <label class="govuk-label govuk-checkboxes__label" for="col2-7">Physical fitness</label>
+                      </div>
+                    </div>
+                  </div>
+               </fieldset>
+               <p class="govuk-body govuk-!-margin-top-4">or</p>
+               <div class="govuk-form-group ">
+                <label class="govuk-label" for="AddCustomSkillName">Add a new skill or personal quality</label>
+                <span class="error-message field-validation-valid" data-valmsg-for="AddCustomSkillName" data-valmsg-replace="true"></span>
+                <input value="" type="text" class="govuk-input govuk-input--width-20" maxlength="30" id="AddCustomSkillName" name="AddCustomSkillName">
+                <button name="AddCustomSkillAction" id="add-custom-skill" value="AddCustomSkill" type="submit" class="govuk-button das-button-secondary save-button">+ Add this skill</button>
+            </div>
+              </div>
+              <br>
+              <div class="govuk-form-group">
+                {% if data.edit != "yes"%}
+                <input type="submit" class="govuk-button" name="continueButton" value="Save and continue" />
+                <a href="qualifications" class="govuk-button das-button-secondary govuk-!-margin-left-2" name="continueButton" value="Do this later">Skip</a>
+                <a href="../vacancies-one?vac_status=draft" class="govuk-body das-button--link">cancel</a>
+                {%else%}
+                <input type="submit" class="govuk-button" name="previewButton" value="Save and preview" />
+                <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+                {%endif%}
+              </div>
+            </div>
+        </form>
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}
+
+{% block pageScripts %}
+{{super()}}
+<script>
+
+
+$(document).ready(function() {
+  var skills=[]
+  function checkExisting($value){
+    console.log($('[data-name = '+'$value'+']').val())
+  }
+  $('.data-checked').each(function( index ) {
+    $('[data = "Skills"]').each(function(i){
+      console.log("working")
+    })
+  })
+
+})
+
+  </script>
+
+
+{% endblock %}

@@ -1,0 +1,138 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">What period do you want to create a report for?</h1>
+    <form method="POST">
+
+    <h2 class="govuk-heading-s">Select the options</h2>
+      <div id="oranisation-list" class="govuk-form-group" data-amount="{{data.NumberOfEntities}}">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-form-group">
+          <div  class="govuk-radios govuk-radios--conditional" data-module="radios">
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Coventry" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                last 7 days
+              </label>
+            </div>
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Coventry" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                last 14 days
+              </label>
+            </div>
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Coventry" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                last 30 days
+              </label>
+            </div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Coventry" data-aria-controls="conditional-custom-date">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                a custom date range
+              </label>
+            </div>
+
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-custom-date" >
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+                Date from
+              </label>
+              <span id="closing-hint" class="govuk-hint">
+                For example, 19 01 2019
+              </span>
+              <div class="govuk-date-input" id="closing">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="closing-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="closing-day" name="closing-day"
+                      type="number" pattern="[0-9]*" value="">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="closing-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="closing-month" name="closing-month"
+                      type="number" pattern="[0-9]*" value="">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="closing-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="closing-year" name="closing-year"
+                      type="number" pattern="[0-9]*" value="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+                Date to
+              </label>
+              <span id="closing-hint" class="govuk-hint">
+                For example, 19 01 2019
+              </span>
+              <div class="govuk-date-input" id="closing">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="closing-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="closing-day" name="closing-day"
+                      type="number" pattern="[0-9]*" value="">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="closing-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="closing-month" name="closing-month"
+                      type="number" pattern="[0-9]*" value="">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="closing-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="closing-year" name="closing-year"
+                      type="number" pattern="[0-9]*" value="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          </div>
+
+        </fieldset>
+
+      </div>
+      <div class="govuk-form-group">
+              <a href="confirmation " class="govuk-button">Generate report</a>
+      </div>
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

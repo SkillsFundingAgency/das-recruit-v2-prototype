@@ -1,0 +1,101 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Where {% if data.numberOfPositions > 1 %}will the 6 positions{% else %}will the apprentice{% endif %} work?</h1>
+
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="selected-organisation-id" name="selected-organisation-id" type="radio"
+                value="Organisation {{i}}" data-search-value="Organisation">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                Cheylesmore House, 5 Quinton Rd, Coventry CV1 2WT
+              </label>
+            </div>
+            <div class="govuk-radios__item" data-target="business-name-vacancy-panel">
+              <input class="govuk-radios__input" id="selected-organisation-id" name="selected-organisation-id" type="radio"
+                value="Organisation {{i}}" data-search-value="Organisation" data-aria-controls="other-location-conditional">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">a different location</label>
+            </div>
+            <div class="govuk-radios__conditional" id="other-location-conditional">
+                                <div id="address-details" class="address-manual-input">
+                                    <label class="govuk-label govuk-!-font-weight-bold">Enter the address where the apprentice will work</label>
+                                    <div class="govuk-form-group-compound address-item govuk-form-group">
+                                        <label class="govuk-visually-hidden" for="AddressLine1">Address line 1</label>
+                                        <span class="govuk-error-message field-validation-valid" id="error-message-AddressLine1" data-valmsg-for="AddressLine1" data-valmsg-replace="true"></span>
+                                        <input class="govuk-input postcode-lookup ui-autocomplete-input" maxlength="100" type="text" id="AddressLine1" name="AddressLine1" value="" autocomplete="off">
+                                    </div>
+                                    <div class="govuk-form-group-compound address-item govuk-form-group">
+                                        <label class="govuk-visually-hidden" for="AddressLine2">Address line 2</label>
+                                        <span class="govuk-error-message field-validation-valid" id="error-message-AddressLine2" data-valmsg-for="AddressLine2" data-valmsg-replace="true"></span>
+                                        <input class="govuk-input" maxlength="100" type="text" id="AddressLine2" name="AddressLine2" value="">
+                                    </div>
+                                    <div class="govuk-form-group-compound address-item govuk-form-group">
+                                        <label class="govuk-visually-hidden" for="AddressLine3">Address line 3</label>
+                                        <span class="govuk-error-message field-validation-valid" id="error-message-AddressLine3" data-valmsg-for="AddressLine3" data-valmsg-replace="true"></span>
+                                        <input class="govuk-input" maxlength="100" type="text" id="AddressLine3" name="AddressLine3" value="">
+                                    </div>
+                                    <div class="govuk-form-group-compound address-item govuk-form-group">
+                                        <label class="govuk-visually-hidden" for="AddressLine4">Address line 4</label>
+                                        <span class="govuk-error-message field-validation-valid" id="error-message-AddressLine4" data-valmsg-for="AddressLine4" data-valmsg-replace="true"></span>
+                                        <input class="govuk-input" maxlength="100" type="text" id="AddressLine4" name="AddressLine4" value="">
+                                    </div>
+                                    <div class="govuk-form-group address-item govuk-form-group">
+                                        <label class="govuk-label govuk-!-font-weight-bold" for="Postcode">Postcode</label>
+                                        <span class="govuk-error-message field-validation-valid" id="error-message-Postcode" data-valmsg-for="Postcode" data-valmsg-replace="true"></span>
+                                        <input class="govuk-input govuk-input--width-10 postcode-lookup ui-autocomplete-input" maxlength="8" type="text" id="Postcode" name="Postcode" value="" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+            <!-- <div class="govuk-radios__divider">or</div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="selected-organisation-id" name="selected-organisation-id" type="radio"
+                value="nationwide" data-aria-controls="nationwide-conditional">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                The apprenticeship is in different locations across England
+                <span class="govuk-hint">For example, if the applicant has a choice of location</span>
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="nationwide-conditional">
+              <ul class="govuk-list govuk-list--bullet">
+                <li>No map will be displayed on the vacancy</li>
+                <li>Your vacancy will only show when a candidate selects "vacancies across England".</li>
+              </ul>
+
+            </div> -->
+          </div>
+        </fieldset>
+      </div>
+      {% if data.edit != "yes"%}
+      <input type="submit" class="govuk-button" name="continueButton" value="Save and continue" />
+
+      <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
+      {%else%}
+      <input type="submit" class="govuk-button" name="previewButton" value="Save and preview" />
+      <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+      {%endif%}
+    </form>
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

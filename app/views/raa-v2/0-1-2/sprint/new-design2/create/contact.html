@@ -1,0 +1,69 @@
+ {% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+What name do you want to display on the vacancy and search results?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+      <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+    <h1 class="govuk-heading-xl">Do you want to add your contact details?</h1>
+    <p class="govuk-body">Adding your contact details will allow canditates to ask you questions about the vacancy</p>
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+            <div class="govuk-radios__item" data-module="business-name-vacancy-panel">
+              <input class="govuk-radios__input" id="display-name-registered" name="selected_display_name" type="radio"
+                value="registered" data-aria-controls="trading-name-conditional">
+              <label class="govuk-label govuk-radios__label" for="display-name-registered">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__conditional" id="trading-name-conditional">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold" for="tradingName">Contact Name (optional)</label>
+                <span class="govuk-hint">You can add a trading name if different to your registered name</span>
+                <input class="govuk-input govuk-input--width-20" id="tradingName" name="tradingName" type="text">
+              </div>
+              <div class="govuk-form-group" >
+                <label class="govuk-label govuk-!-font-weight-bold" for="tradingName">Contact Email (optional)</label>
+                <input class="govuk-input govuk-input--width-20" id="tradingName" name="tradingName" type="text">
+              </div>
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold" for="tradingName">Contact number (optional)</label>
+                <input class="govuk-input govuk-input--width-20" id="tradingName" name="tradingName" type="text">
+              </div>
+            </div>
+            <div class="govuk-radios__item " >
+              <input class="govuk-radios__input" id="display-name-trading" name="selected_display_name" type="radio"
+                value="trading" >
+              <label class="govuk-label govuk-radios__label" for="display-name-trading">
+                No
+              </label>
+            </div>
+
+
+          </div>
+
+        </fieldset>
+
+        <div class="govuk-form-group">
+          <br>
+          <a href="application-process" class="govuk-button">Save and continue</a>
+          <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+{% block pageScripts %}
+
+
+{% endblock %}

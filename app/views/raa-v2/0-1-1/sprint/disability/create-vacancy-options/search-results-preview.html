@@ -1,0 +1,80 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Your vacancy summary</h1>
+    <div class="das-todo govuk-body govuk-!-margin-bottom-6">
+      <h2  class="govuk-heading">{% if data.title %}{{ data.title }}{% else %}Developer Apprentice{% endif %}</h2>
+
+      <ul class="govuk-list">
+        <li class="govuk-caption-l">{{data.orgname | upper}}</li>
+        <li class="govuk-caption-m">1 position available</li>
+      </ul>
+      <p class="govuk-body">We have an exciting opportunity for you to join our team as a Service Technician Apprentice, working with vehicles that use some of the most advanced technology in the world. As a team member in our prestigious retailer you will be involved in all aspects of vehicle maintenance from routine services to complex diagnostics and repairs.</p>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <ul class="govuk-list">
+                <li>
+                    <span class="govuk-!-font-weight-bold">Closing date:</span>
+                    <span>01 Jan 2019</span>
+                </li>
+                <li>
+                    <span class="govuk-!-font-weight-bold">Possible start date:</span>
+                    <span>01 Feb 2019</span>
+                </li>
+                <li>
+                    <span class="govuk-!-font-weight-bold">Apprenticeship level:</span>
+                    <span>Master's Degree</span>
+                </li>
+                <li>
+                    <span class="govuk-!-font-weight-bold">Wage:</span>
+                    <span>£8,736 - £16,286.40</span><span> yearly</span>
+                </li>
+            </ul>
+            {% if data.is_disability_confident == "yes" %}
+            <div class="disability-confident-container">
+              {% if data.disability_confident_level == "level3" %}
+              <img src="/public/images/disability-confident-leader-logo@x2.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident">
+              {% elseif data.disability_confident_level == "level2" %}
+              <img src="/public/images/disability-confident-employer-logo@x2.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident">
+              {% else %}
+              <img src="/public/images/disability-confident-commited-logo@x2.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident">
+              {% endif %}
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    About disability confident
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <p>Disabled candidates are generally guaranteed an interview if you meet the minimum requirements for this vacancy. Contact the employer for full details.</p>
+
+                  <p>Employers may need to limit the number of interviews offered to both disabled and non-disabled people if they receive high numbers of applications.</p>
+
+                  <p>The disability confident scheme supports employers to make the most of the talents disabled people can bring to your workplace.provide your nationality, you’ll have to send copies of identity documents through the post.</p>
+                </div>
+              </details>
+          </div>
+          {% endif %}
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <img id="static-map" class="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=50.827153,-0.167566&amp;size=190x125&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=CBxo6DzPLoJ_ZZST6AKnHjgBl30=">
+        </div>
+      </div>
+
+    </div>
+    <a href="../vacancy-preview/vacancy-preview" class="govuk-button">Add full vacancy details</a>
+      <a href="title" class="govuk-body das-button--link">Make changes</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Return to dashboard</a>
+  </div>
+</div>
+{% block help %}
+  {% include "includes/service-help.html" %}
+{% endblock %}
+{% endblock %}

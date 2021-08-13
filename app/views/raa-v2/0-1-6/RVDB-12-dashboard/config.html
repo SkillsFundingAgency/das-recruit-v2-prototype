@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">Config session</h1>
+
+    <form method="post">
+      <div class="govuk-form-group govuk-!-margin-bottom-8">
+      <div class="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="user-provider" name="user" type="radio" value="provider" checked="checked">
+          <label class="govuk-label govuk-radios__label" for="user-provider">
+            Provider
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="user-employer" name="user" type="radio" value="employer" >
+          <label class="govuk-label govuk-radios__label" for="user-employer">
+            Employer
+          </label>
+        </div>
+      </div>
+
+      </div>
+      <div class="govuk-form-group govuk-!-margin-bottom-8">
+      <div class="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="dashboard-1" name="dashboard" type="radio" value="dashboard1">
+          <label class="govuk-label govuk-radios__label" for="user-provider">
+            Dashboard design 1 (status focused)
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="dashboard-2" name="dashboard" type="radio" value="dashboard2" checked="checked">
+          <label class="govuk-label govuk-radios__label" for="user-employer">
+            Dashboard design 2 (task and alert focused)
+          </label>
+        </div>
+      </div>
+    </div>
+        <div class="govuk-form-group govuk-!-margin-bottom-8">
+          <label class="govuk-label govuk-!-font-weight-bold" for="userName">
+            Name of users comnpany (provider or employer)
+          </label>
+          <input class="govuk-input govuk-!-width-three-quarters" id="userName" name="orgName" type="text" value="ABC options">
+        </div>
+
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+     <h1 class="govuk-fieldset__heading">
+       How do you want to start the session?
+     </h1>
+   </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-1" name="journey" type="radio" value="new">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-1">
+          As a new user
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-2" name="journey" type="radio" value="existing" checked>
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+          As an exisiting user
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+</div>
+      <div class="govuk-form-group govuk-!-margin-bottom-8">
+        <label class="govuk-label govuk-!-font-weight-bold" for="NumberOfEntities">
+          Number of legal entities linked to the employer account
+          <span class="govuk-hint">Enter a number under ten for the user to skip selection of legal entitiy</span>
+        </label>
+        <input class="govuk-input govuk-input--width-4" id="employerAmount" name="employerAmount" type="text" value="5">
+      </div>
+      <div class="govuk-form-group govuk-!-margin-bottom-8">
+        <label class="govuk-label govuk-!-font-weight-bold" for="NumberOfEntities">
+          Number of employer accounts for the training provider
+        </label>
+        <input class="govuk-input govuk-input--width-4" id="NumberOfEntities" name="NumberOfEntities" type="text" value="8">
+      </div>
+
+
+      <div class="govuk-form-group">
+        <button type="submit" class="govuk-button">Start</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% block help %}
+{% include "includes/service-help.html" %}
+{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#apprenticeship-type').select2();
+  });
+</script>
+
+{% endblock %}

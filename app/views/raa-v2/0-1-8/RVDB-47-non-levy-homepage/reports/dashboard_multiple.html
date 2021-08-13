@@ -1,0 +1,103 @@
+{% extends "non-levy-layout.html" %}
+
+{% block pageTitle %}
+  Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<a href="../dashboard-multiple" class="govuk-back-link">Return to vacancy dashboard </a>
+{% endblock %}
+{% block content %}
+<style>
+  span.das-tag {
+    background: transparent;
+    border:3px solid #bfc1c3;
+    color: #0b0c0c;
+    font-weight:400;
+  }
+
+  span.das-tag--new{
+    border-color: #005ea5;
+    color:#000000;
+  }
+
+</style>
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Reports</h1>
+        <a href="period" class="govuk-button">Create new report</a>
+        {% if query.state=='processing'%}
+        <p class="govuk-body">You have {%if query.downloads=="multiple"%}3 reports{% else %}1 report{% endif %} being processed. <a href="dashboard_multiple?state=new">Check if your {%if query.downloads=="multiple"%}3 reports are{% else %}report is{% endif %}  ready to download</a></p>
+        {% endif %}
+        {% if query.state=='new'%}
+        <p class="govuk-body govuk-visually-hidden">{%if query.downloads=="multiple"%}3 reports are{% else %}1 report is{% endif %} now ready to download</p>
+        {% endif %}
+      </div>
+
+      <div class="govuk-grid-column-one-third das-grid-column--right">
+
+      </div>
+    </div>
+
+
+      <table class="govuk-table responsive-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+
+              <th class="govuk-table__header" scope="col">Report period</th>
+              <th class="govuk-table__header" scope="col">Created</th>
+              <th class="govuk-table__header" scope="col">Created by</th>
+              <th class="govuk-table__header"style="text-align:right" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% if query.state=='new'%}
+            <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Report Period</span>1 Jan 2019 to 7 Jan 2019<br><span class="das-tag das-tag--new">new</span></td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Created on</span>25 Feb 2018 9:55am</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Created by</span>Richard Hatton</td>
+              <td class="govuk-table__cell numeric" role="gridcell" style="text-align:right"><a class="download-new" href="/public/files/ApplicationreceivedReport.csv" class="govuk-link">Download CSV</a></td>
+            </tr>
+            {% endif %}
+            {% if query.state=='done'%}
+            <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Report Period</span>1 Jan 2019 to 7 Jan 2019</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Created on</span>25 Feb 2018 9:55am</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Created by</span>Richard Hatton</td>
+              <td class="govuk-table__cell numeric" role="gridcell" style="text-align:right"><a href="/public/files/ApplicationreceivedReport.csv" class="download-new" class="govuk-link">Download CSV</a></td>
+            </tr>
+            {% endif %}
+            {% if query.state=='processing'%}
+            <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Report Period</span>1 Jan 2019 to 7 Jan 2019<br><span class="das-tag das-tag--new">new</span></td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Created on</span>25 Feb 2018 9:55am</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Created by</span>Richard Hatton</td>
+              <td class="govuk-table__cell numeric" role="gridcell" style="text-align:right">Processing</td>
+            </tr>
+            {% endif %}
+            <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Report Period</span>7 Dec 2018 to 14 Dec 2018</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Created on</span>15 Dec 2018 10:20pm</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Created by</span>Laura Palfreyman</td>
+              <td class="govuk-table__cell numeric" role="gridcell" style="text-align:right"><a href="/public/files/ApplicationreceivedReport.csv" class="govuk-link">Download CSV</a></td>
+            </tr>
+          </tbody>
+        </table>
+          <p class="govuk-body">The files will be kept for 7 days from the date created</p>
+    </div>
+</div>
+
+{% endblock %}
+{% block pageScripts %}
+<!--
+<script>
+
+
+$(document).ready(function() {
+$('.download-new').on('click',function(e){
+  $('.das-tag--new').hide();
+})
+
+})
+</script> -->
+
+  {% endblock %}

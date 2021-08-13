@@ -1,0 +1,40 @@
+{% if data.no_nav == "yes" %}{% extends "non-levy-layout.html" %}{% else %}{% extends "ma-layout.html"%}{% endif %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Vacancy submitted for approval
+      </h1>
+      <div class="govuk-panel__body">
+        The vacancy reference number is
+        <br><strong>VAC1000000965</strong>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m">Next steps</h2>
+    {% if data.user == employer %}{% set pronoun = "your" %}{%else%}{% set pronoun = "the" %}{%endif%}
+    <p class="govuk-body">We will check {{pronoun}} vacancy and tell you within 24 hours if it has been approved or not on the vacancy dashboard. If {{pronoun}} vacancy is not approved, we will tell you the changes you need to make on the dashboard.</p>
+    <p class="govuk-body">When {{pronoun}} vacancy is approved it will go live on the Find an apprenticeship service.</p>
+    <form method="post">
+    <div class="form-group inline">
+      <div class="form-group">
+          {% if data.journey=='new' %}
+            <a href="../dashboard-one?vac_status=pending" class="govuk-button" type="submit">Finish</a>
+          {% else %}
+            <a href="../dashboard-multiple" class="govuk-button" type="submit">Finish</a>
+          {% endif %}
+            <a class="govuk-body das-button--link" href="../create-vacancy-options/clone-vacancy">Create another vacancy</a>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

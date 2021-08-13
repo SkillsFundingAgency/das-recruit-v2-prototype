@@ -1,0 +1,28 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block content %}
+<p><a  href="javascript:history.back()" class="govuk-back-link">Back</a></p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Agreement not signed</h1>
+    <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    MUSECRAFT LTD must have a signed Education and Skills Funding Agency apprenticeship agreement before you can post vacancies on their behalf.
+  </strong>
+</div>
+{% if data.user == "employer" %}
+  <p class="govuk-body">Your vacancy has been saved as a draft, once you have signed the agreement, you can submit it from your vacancies dashboard.</p>
+  <p class="govuk-body"><a href="about-your-agreement" class="govuk-button">Sign agreement</a></p>
+{% else %}
+    <!-- <p class="govuk-body">The vacancy has been saved as a draft, once the employer has signed the agreement, you can submit it from the vacancies dashboard.</p> -->
+    <p class="govuk-body"><a href="location" class="govuk-button">Continue</a></p>
+{% endif %}
+</div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

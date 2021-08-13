@@ -1,0 +1,39 @@
+{% if data.no_nav == "yes" %}{% extends "non-levy-layout.html" %}{% else %}{% extends "ma-layout.html"%}{% endif %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block content %}
+<p><a  href="javascript:history.back()" class="govuk-back-link">Back</a></p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Which vacancy do you want to clone?</h1>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="width-20">
+        Search by vacancy title or reference number
+      </label>
+      <input class="govuk-input govuk-input--width-20" id="search-vacancy" name="width-20" value="VAC1000000651" type="text">
+      <a class="govuk-button" href="clone-vacancy-reults" >Search</a>
+        <br><a class="govuk-body govuk-link" href="clone-vacancy">Clear search</a>
+    </div>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+    <table class="govuk-table responsive-table">
+      <caption class="govuk-table__caption">Found 1 result</caption>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy title</span>Developer Apprentice</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>VAC1000000651</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>27 Jan 2019</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--live">Live</span></td>
+              <td class="govuk-table__cell numeric" role="gridcell"><a href="title" class="govuk-link">Clone</a></td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

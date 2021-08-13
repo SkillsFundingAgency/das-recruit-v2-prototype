@@ -1,0 +1,46 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">Find an address where the vacancy will be located</h1>
+
+    <form method="post">
+      <div class="govuk-form-group">
+        <label class="govuk-label " for="number" >
+          Property name or number (optional)
+          <span class="govuk-hint">For example, The Mill, 116 or Flat 37a</span>
+        </label>
+        <input class="govuk-input govuk-input--width-10" id="number" name="number" type="text">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="postcode">
+          UK postcode
+        </label>
+        <input class="govuk-input govuk-input govuk-input--width-5" id="postcode" name="postcode" type="text">
+      </div>
+      <div class="govuk-form-group">
+        <a href="wage" class="govuk-button">Find the address</a>
+        <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#apprenticeship-type').select2();
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">Clone vacancy VC0000324</span>
+    <h1 class="govuk-heading-xl">Change dates</h1>
+    {% if query.edit != "yes" %}
+    <div class="govuk-inset-text">You need to add some new dates, the vacancy you are copying has a closing date orstart date that is in the past.</div>
+    {% endif %}
+
+
+      <!-- {%if query.status=="closed"%}<p>The vacancy you want to clone has a closing date in the past please choose a new date</p>{% endif %} -->
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="closing-hint" role="group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+            Application closing date
+          </label>
+          <span id="closing-hint" class="govuk-hint">
+            For example, 19 01 2019
+          </span>
+          <div class="govuk-date-input">
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="ClosingDay">Day</label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" type="number" min="1" max="31" id="ClosingDay" name="ClosingDay" value="{% if query.edit=="yes" %}10{% endif %}">
+                            </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="ClosingMonth">Month</label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" type="number" min="1" max="12" id="ClosingMonth" name="ClosingMonth" value="{% if query.edit=="yes" %}10{% endif %}">
+                            </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="ClosingYear">Year</label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" type="number" min="2019" id="ClosingYear" name="ClosingYear" value="{% if query.edit=="yes" %}2020{% endif %}">
+                            </div>
+                        </div>
+                    </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="start-hint" role="group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+            When is the apprentice expected to start?
+          </label>
+          <span id="start-hint" class="govuk-hint">
+            For example, 02 02 2019
+          </span>
+          <div class="govuk-date-input" id="dob">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="start-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-day" name="start-day"
+                  type="number" pattern="[0-9]*" value="{% if query.edit=="yes" %}12{% endif %}">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="start-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-month" name="start-month"
+                  type="number" pattern="[0-9]*" value="{% if query.edit=="yes" %}11{% endif %}">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="start-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-year" name="start-year"
+                  type="number" pattern="[0-9]*" value="{% if query.edit=="yes" %}2020{% endif %}">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+
+
+
+      <a href="../create/vacancy-preview-cloned" class="govuk-button" data-module="govuk-button">Continue</a>
+      <a href="manage-vacancy" class="govuk-body das-button--link">Cancel</a>
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+{{super()}}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#apprenticeship-type').select2();
+  });
+</script>
+
+{% endblock %}

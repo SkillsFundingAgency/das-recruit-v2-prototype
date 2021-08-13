@@ -1,0 +1,54 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Vacancy published
+      </h1>
+      <div class="govuk-panel__body">
+        The vacancy reference number is
+        <br><strong>VAC1000000965</strong>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m">Next steps</h2>
+    {% if data.user == employer %}{% set pronoun = "your" %}{%else%}{% set pronoun = "the" %}{%endif%}
+    <p class="govuk-body">This vacancy was approved and published <a href="https://das-recruit-prototype.herokuapp.com/faa/0-0-2/RVDB-51-main-description/application-details">on Find an apprentice</a>.</p>
+    <details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Why was this vacancy approved?
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    When you clone a vacancy that was already approved and make minor changes to the date or location, we will not need to send it for approval again.
+  </div>
+</details>
+    <form method="post">
+    <div class="form-group inline">
+      <div class="form-group">
+
+          {% if data.journey=='new' and data.user=='employer'%}
+          <a href="../dashboard-one" class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
+          {% elseif data.journey=='new' and data.user=='provider'%}
+          <a href="../dashboard-pending" class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
+          {% elseif data.user == 'provider' %}
+          <a href="../dashboard " class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
+          {% else %}
+          <a href="../vacancies?user=employer" class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
+          {% endif %}
+            <a class="govuk-body das-button--link" href="../create-vacancy-options/clone-vacancy">Create another vacancy</a>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

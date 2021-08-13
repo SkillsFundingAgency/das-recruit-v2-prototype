@@ -1,0 +1,50 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+
+{% block content %}
+<style media="screen">
+  .verification-summary {
+    border: 5px solid #00823B;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px 15px 15px;
+}
+</style>
+    <h1 class="govuk-heading-xl">Save this training provider</h1>
+
+    <!-- <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+    <h1 class="govuk-heading-xl">
+      Confirm the training provider
+    </h1> -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+    <div class="verification-summary">
+    <h2 class="govuk-heading-m">{{data.providerName}}<span class="govuk-caption-m">
+      Hayward Industrial Park Vigo Place, Walsall, WS9 8UG
+    <br>
+      UKPRN: {% if data.UKPRN %}{{data.UKPRN}}{%else%}10045372{%endif %}</span></h2>
+    </div>
+
+    <p><a href="select-training-provider?edit=no">Change</a><br></p>
+    <form method="post">
+        <div class="govuk-form-group">
+
+            {% if data.edit != "yes"%}
+            <button type="submit" class="govuk-button" name="previewdButton" value="Save and continue">Save and continue</button>
+            <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
+            {% else %}
+            <a href="../vacancy-preview/vacancy-preview?edit=no" type="submit" class="govuk-button" name="previewdButton" value="Save and preview">Save and preview</a>
+            <a href="../vacancy-preview/vacancy-preview?edit=no" class="govuk-body das-button--link">Cancel</a>
+            {% endif %}
+        </div>
+      </form>
+  </div>
+</div>
+{% block help %}
+{% include "includes/service-help.html" %}
+{% endblock %}
+{% endblock %}

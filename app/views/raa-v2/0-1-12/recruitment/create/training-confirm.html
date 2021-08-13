@@ -1,0 +1,64 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+
+</style>
+{% endblock %}
+{% block content %}
+
+    <h1 class="govuk-heading-xl">Confirm apprenticeship training</h1>
+
+    <!-- <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+    <h1 class="govuk-heading-xl">
+      Confirm the training provider
+    </h1> -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+    <div class="das-confirm-card" style="background-color:#f4f4f4;padding:20px;margin-bottom:30px;">
+    <h2 class="govuk-heading-m">{%if data.training_level %}{{data.training_level}}{% else %}Accountancy Taxation Professional{%endif%}<span class="govuk-caption-m">
+      Level: 3 advanced (equivalent to A levels)
+    <br>
+      Typical duration: 24 months
+      <br>
+      Standard
+        <br>
+      </span>
+
+    </h2>
+    {% if data.expiryDate %}
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Warning</span>
+        <span id="selected-training" class="govuk-!-font-weight-bold">This apprenticeship training closes to new starters from 1 August 2019.
+
+      </strong>
+    </div>
+    {% endif %}
+    <p class="govuk-body govuk-!-margin-bottom-0"><a href="training-select?change=yes">Change apprenticeship training</a><br></p>
+    </div>
+    <form method="post">
+        <div class="govuk-form-group">
+
+            {% if data.edit != "yes"%}
+            <button type="submit" class="govuk-button" name="previewdButton" value="Save and continue">Confirm and continue</button>
+            <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
+            {% else %}
+            <a href="../vacancy-preview/vacancy-preview?edit=no" type="submit" class="govuk-button" name="previewdButton" value="Save and preview">Save and preview</a>
+            <a href="../vacancy-preview/vacancy-preview?edit=no" class="govuk-body das-button--link">Cancel</a>
+            {% endif %}
+        </div>
+      </form>
+  </div>
+</div>
+{% block help %}
+{% include "includes/service-help.html" %}
+{% endblock %}
+{% endblock %}

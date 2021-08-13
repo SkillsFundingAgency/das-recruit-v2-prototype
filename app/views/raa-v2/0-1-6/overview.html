@@ -1,0 +1,144 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">RAA-v2 Prototypes</span>
+        <h1 class="govuk-heading-xl">0-1-6 Testing versions and Sprint stories</h1>
+        <h2 class="govuk-heading-s">Customer</h2>
+        <p class="govuk-body">
+          <a class="govuk-link" href="ALL/dashboard-multiple?vacancies=multiple">All designs (testing version)</a><br>
+          <a class="govuk-link" href="ALL/dashboard-none?vacancies=none">All designs with no vacancies</a>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">New design</h2>
+        <p clss=govuk-body>
+          <a class="govuk-link " href="new-flow/dashboard-new?user=provider">Provider new design</a><br>
+          <a class="govuk-link " href="new-flow/dashboard-new?user=employer">Employer new design</a><br><br>
+        </p>
+
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-979 Confirmation copy update v2</h2>
+        <p clss=govuk-body>
+          <a class="govuk-link " href="ER-979/confirmation_employer">Provider confirmation</a><br>
+          <a class="govuk-link " href="ER-979/confirmation_provider">Employer confirmation</a><br><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-894 Reports (providers)</h2>
+
+        <p clss=govuk-body>
+          <a class="govuk-link " href="ER-470-report/reports/dashboard">Report Dashbaord</a><br>
+          <a class="govuk-link " href="ER-470-report/reports/period">Select Period</a><br>
+          <a class="govuk-link " href="ER-470-report/reports/confirmation">Report generated confirmation page</a><br>
+          <br>
+          <a class="govuk-link " href="ER-470-report/dashboard-new">From new recruitment dashboard</a><br>
+        </p>
+        <!-- BLOCK START -->
+
+        <h2 class="govuk-heading-s">ER-788 - location improvement for employers</h2>
+        <p>
+          <a class="govuk-link" href="ER-1001-location/dashboard-multiple-employers?user=employer&NumberOfEntities=80">From dashboard</a><br>
+          <a class="govuk-link" href="ER-1001-location/create-vacancy-options/employer?user=employer&NumberOfEntities=80">Select organisation (orgs over 10)</a><br>
+          <a class="govuk-link" href="ER-1001-location/create-vacancy-options/employer?user=employer&NumberOfEntities=8">Select organisation (orgs under 10)</a><br>
+          <a class="govuk-link" href="ER-1001-location/create-vacancy-options/employer?user=employer&NumberOfEntities=80&search=hfdsuihiuhasdhfas">Select organisation (No result)</a><br>
+<a class="govuk-link" href="ER-1001-location/create-vacancy-options/employer-result?user=employer&NumberOfEntities=80">Select organisation (No javascript)</a><br>
+<br>
+          <a class="govuk-link" href="ER-1001-location/create-vacancy-options/location?user=employer">Select address</a><br>
+          <a class="govuk-link" href="ER-1001-location/create-vacancy-options/location-with-alt?user=employer">Select address (with saved alternative)</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-1001 - location improvement for providers</h2>
+        <p>
+          <a class="govuk-link" href="ER-1001-location/dashboard-multiple?user=provider&NumberOfEntities=80">From dashboard</a><br>
+          <a class="govuk-link" href="ER-1001-location/create-vacancy-options/employer?user=provider&NumberOfEntities=80">Select organisation (orgs over 10)</a><br>
+          <a class="govuk-link" href="ER-1001-location/create-vacancy-options/employer?user=provider&NumberOfEntities=8">Select organisation (orgs under 10)</a><br>
+          <a class="govuk-link" href="ER-1001-location/create-vacancy-options/employer?user=provide&NumberOfEntities=80&search=hfdsuihiuhasdhfas">Select organisation (No result)</a><br>
+<a class="govuk-link" href="ER-1001-location/create-vacancy-options/employer-result?user=provide&NumberOfEntities=80">Select organisation (No javascript)</a><br>
+<br>
+          <a class="govuk-link" href="ER-1001-location/create-vacancy-options/location?user=provider">Select address</a><br>
+          <a class="govuk-link" href="ER-1001-location/create-vacancy-options/location-with-alt?user=provider">Select address (with saved alternative)</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-1002 - trading name for providers<span class="govuk-caption-m">merged with ER-1005 anonymous</span></h2>
+        <p>
+          <a class="govuk-link" href="ER-324-trading/dashboard-multiple">From dashboard</a><br>
+          <a class="govuk-link" href="ER-324-trading/create-vacancy-options/display-employer?user=provider">Choose trading name</a><br>
+          <a class="govuk-link" href="ER-324-trading/create-vacancy-options/display-employer-tradingname?user=provider">Choose trading name - Trading name already set</a><br>
+          <a class="govuk-link" href="ER-324-trading/create-vacancy-options/search-results-preview?hasTradingName=yes&TradingName=Ducktape%20trading&user=provider">Trading name on summary</a><br>
+          <a class="govuk-link" href="ER-324-trading/vacancy-preview/vacancy-preview?hasTradingName=yes&TradingName=Ducktape%20trading&user=provider">Trading name on preview</a><br>
+
+
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-487 - trading name for employers<span class="govuk-caption-m">merged with ER-1005 anonymous</span></h2>
+        <p>
+          <a class="govuk-link" href="ER-324-trading/dashboard-multiple-employers?user=employer">From dashboard</a><br>
+          <a class="govuk-link" href="ER-324-trading/create-vacancy-options/display-employer?user=employer">Choose trading name</a><br>
+          <a class="govuk-link" href="ER-324-trading/create-vacancy-options/display-employer-tradingname?user=employer">Choose trading name - Trading name already set</a><br>
+          <a class="govuk-link" href="ER-324-trading/create-vacancy-options/search-results-preview?hasTradingName=yes&TradingName=Ducktape%20trading&user=employer">Trading name on summary</a><br>
+          <a class="govuk-link" href="ER-324-trading/vacancy-preview/vacancy-preview?hasTradingName=yes&TradingName=Ducktape%20trading&user=employer">Trading name on preview</a><br>
+
+
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-1005 - anonymous for employers <span class="govuk-caption-m">merged with ER-487 Trading name</span></h2>
+        <p>
+          <a class="govuk-link" href="ER-1005-anonymous/dashboard-multiple-employers?user=employer">From dashboard</a><br>
+          <a class="govuk-link" href="ER-1005-anonymous/create-vacancy-options/display-employer?user=employer">Select anonymous vacancy</a><br>
+          <a class="govuk-link" href="ER-1005-anonymous/create-vacancy-options/location-anonymous?user=employer">choose address (anonymous)</a><br>
+          <a class="govuk-link" href="ER-1005-anonymous/create-vacancy-options/search-results-preview?hasTradingName=yes&TradingName=Ducktape%20trading&user=employer">Anonymous vacancy summary</a><br>
+          <a class="govuk-link" href="ER-1005-anonymous/vacancy-preview/vacancy-preview?hasTradingName=yes&TradingName=Ducktape%20trading&user=employer">Anonymous vacancy preview</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-1005 - anonymous for  <span class="govuk-caption-m">merged with ER-1002 Trading name</span></h2>
+        <p>
+          <a class="govuk-link" href="ER-1005-anonymous/dashboard-multiple?user=provider">From dashboard</a><br>
+          <a class="govuk-link" href="ER-1005-anonymous/create-vacancy-options/display-employer?user=provider">Select anonymous vacancy</a><br>
+          <a class="govuk-link" href="ER-1005-anonymous/create-vacancy-options/location-anonymous?user=provider">choose address (anonymous)</a><br>
+          <a class="govuk-link" href="  ER-1005-anonymous/create-vacancy-options/display-employer-is-anonymous?user=provider">Previous Anonymous vacancy approved</a><br>
+
+          <a class="govuk-link" href="ER-1005-anonymous/create-vacancy-options/search-results-preview?hasTradingName=yes&TradingName=Ducktape%20trading&user=provider">Anonymous vacancy summary</a><br>
+          <a class="govuk-link" href="ER-1005-anonymous/vacancy-preview/vacancy-preview?hasTradingName=yes&TradingName=Ducktape%20trading&user=provider">Anonymous vacancy preview</a><br>
+        </p>
+
+        <h2 class="govuk-heading-s">ER-1012 Additional Content while confirming application outcome</h2>
+
+        <p clss=govuk-body>
+          <a class="govuk-link " href="ER-1012-application-confirm/dashboard-multiple">From recruitment dashboard</a><br>
+          <a class="govuk-link " href="ER-1012-application-confirm/account/application-new">New application</a><br>
+          <a class="govuk-link " href="ER-1012-application-confirm/account/confirm-outcome?state=successful">Mark as successful</a><br>
+          <a class="govuk-link " href="ER-1012-application-confirm/account/confirm-outcome?state=unsuccessful">Mark as unsuccesful</a><br><br>
+          <a class="govuk-link " href="ER-1012-application-confirm/account/manage-vacancy?alert=yes&state=successful">Alert on manage - Successful</a><br>
+          <a class="govuk-link " href="ER-1012-application-confirm/account/manage-vacancy?alert=yes&state=unsuccessful">Alert on manage - Unsuccessful</a><br>
+
+        </p>
+        <h2 class="govuk-heading-s">ER-xxx employer profile</h2>
+        <p clss=govuk-body>
+          <a class="govuk-link " href="provider/dashboard-multiple">From recruitment dashboard</a><br>
+        </p>
+        <!-- BLOCK START -->
+        <h2 class="govuk-heading-s">ER-830 feedback</h2>
+        <p clss=govuk-body>
+          <a class="govuk-link " href="ER-830-feedback/dashboard-multiple?user=provider">Dashboard Provider with feedback</a><br>
+          <a class="govuk-link " href="ER-830-feedback/create-vacancy-options/short-description?user=provider">Part1 Example</a><br>
+          <a class="govuk-link " href="ER-830-feedback/vacancy-preview/vacancy-preview?user=provider">Part2 Example</a><br>
+        </p>
+        <!-- BLOCK START -->
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}

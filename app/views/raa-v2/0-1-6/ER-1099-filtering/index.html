@@ -1,0 +1,36 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">ER-1099 - Vacancy Dashboard  - Filtering Vacancy based on Status </h1>
+        <p class="govuk-body"><a href="https://skillsfundingagency.atlassian.net/browse/ER-1099" class="govuk-link">View on Jira</a></p>
+        <h3 class="govuk-heading-m"><a href="config">Configure session</a></h3>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <!-- <h2 class="govuk-heading-m">Existing provider</h2> -->
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="./vacancies?filter=any&page=1&user=provider">Vacancies dashboard - all</a></li>
+            <li class="govuk-list--item"><a href="./vacancies?filter=live&page=1&user=provider">Vacancies dashboard - Live</a></li>
+            <li class="govuk-list--item"><a href="./vacancies?filter=rejected&page=1&user=provider">Vacancies dashboard - Live</a></li>
+            <li class="govuk-list--item"><a href="./vacancies?filter=pending%20review&page=1&user=provider">Vacancies dashboard - Pending review</a></li>
+            <li class="govuk-list--item"><a href="./vacancies?filter=draft&page=1&user=provider">Vacancies dashboard - draft</a></li>
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,75 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">0-1-5 provider journey</h1>
+        <h3 class="govuk-heading-m"><a href="./provider/config">Configure session</a></h3>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Existing provider</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="./provider/home">Provider home page</a></li>
+            <li class="govuk-list--item"><a href="./provider/dashboard-multiple">Dashboard</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="./provider/vacancy-preview/application-process">Choose online or offline vacancies.</a></li>
+            <li class="govuk-list--item"><a href="./provider/vacancy-preview/vacancy-preview?ApplicationMethod=">Preview: Application process not set</a></li>
+            <li class="govuk-list--item"><a href="./provider/vacancy-preview/vacancy-preview?ApplicationMethod=ThroughFindAnApprenticeship">Preview: Application through FAA</a></li>
+            <li class="govuk-list--item"><a href="./provider/vacancy-preview/vacancy-preview?ApplicationMethod=ThroughExternalApplicationSite">Preview: Application through employer website</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="./provider/account/manage-vacancy">Manage online vacancy - live (with applications)</a></li>
+            <li class="govuk-list--item"><a href="./provider/account/manage-vacancy-no-apprentice">Manage online vacancy - Live (no applications)</a></li>
+            <li class="govuk-list--item"><a href="./provider/account/manage-vacancy-closed">Manage online vacancy - closed</a></li>
+            <li class="govuk-list--item"><a href="./provider/account/close">Close vacancy</a></li>
+            <li class="govuk-list--item"><a href="./provider/account/manage-vacancy-closed?alert=yes">Vacancy closed - alert</a></li>
+
+            <br>
+              <li class="govuk-list--item"><a href="./provider/account/application-new">Application - new</a></li>
+              <li class="govuk-list--item"><a href="./provider/account/application-failed">Application - unsuccessful</a></li>
+              <li class="govuk-list--item"><a href="./provider/account/application-succesful">Application - succesful</a></li>
+              </ul>
+              <h2 class="govuk-heading-m">Clone vacancy</h2>
+              <ul class="govuk-list">
+                <li class="govuk-list--item"><a class="govuk-link" href="./provider/dashboard-multiple?route=clone">From dashbaord</a></li>
+                <li class="govuk-list--item"><a class="govuk-link" href="./provider/account/manage-vacancy?route=clone">Clone from manage page - live</a></li>
+                <li class="govuk-list--item"><a class="govuk-link" href="./provider/account/manage-vacancy-closed?route=clone">Clone from manage page - closed</a></li>
+                </ul>
+              <h2 class="govuk-heading-m">Edit</h2>
+              <ul class="govuk-list">
+                <li class="govuk-list--item"><a class="govuk-link" href="./provider/account/preview-edit">Edit vacancy</a></li>
+                <li class="govuk-list--item"><a class="govuk-link" href="./provider/account/edit-dates">Edit detes</a></li>
+                <li class="govuk-list--item"><a class="govuk-link" href="./provider/account/preview-edit?mode=updated">Edit vacancy - update</a></li>
+                <li class="govuk-list--item"><a class="govuk-link" href="./provider/dashboard-multiple?alert=updated">Dashboard with update alert</a></li><br>
+
+                <li class="govuk-list--item"><a class="govuk-link" href="./provider/account/dates">New design for edit dates page</a></li>
+                </ul>
+
+            <h2 class="govuk-heading-m">Other Designs</h2>
+            <p class="govuk-body">
+              <a href="./provider/new-dashboard">New dashboard</a><br>
+              <a href="./provider/new-vacancies">New dashboard</a>
+            </p>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}

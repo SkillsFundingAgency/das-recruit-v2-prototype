@@ -1,0 +1,44 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-60 Qualifications</h1>
+        <h3 class="govuk-heading-m"><a href="./provider/config">Configure session</a></h3>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="dashboard-multiple?qualifications=">From dashboard (reset)</a></li>
+            <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview?edit=no">From part 2 preview (reset)</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="vacancy-preview/qualifications?qualifications=">Add qualifications</a></li>
+            <li class="govuk-list--item"><a href="vacancy-preview/qualifications-list">Qualifications added </a></li>
+            <br>
+            <li class="govuk-list--item"><a href="vacancy-preview/qualifications-list-referred">Qualifications - Referred</a></li>
+
+
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}

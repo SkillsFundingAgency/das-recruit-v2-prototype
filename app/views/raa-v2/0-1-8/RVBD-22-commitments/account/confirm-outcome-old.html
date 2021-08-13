@@ -1,0 +1,62 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+
+</style>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          {%if query.state == "successful"%}
+            Are you sure you want to tell this applicant that they been accepted?
+          {%else%}
+            Are you sure you want to tell this applicant that they have not been accepted?
+          {%endif%}
+        </h1>
+        <p>This will notify Rolo Tomoasi to say that they have {%if query.state == "successful"%}been accepted for this apprenticeship.{%else%}not been accepted for this apprenticeship.{%endif%}</p>
+          {%if query.state == "unsuccessful"%}
+      <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      View your message to the applicant
+    </span>
+  </summary>
+
+  <div class="govuk-details__text">
+      <p class="govuk-body">You currently dont have high enough grades in English and Maths. These are a must for this apprenticeship.</p>
+  </div>
+  {%endif%}
+</details>
+
+        <div class="govuk-inset-text"><p><span class="">This action cannot be undone</span>.</p></div>
+        <form  method="post">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <div class="govuk-radios">
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="true" class="govuk-radios__input" id="close-yes" name="ConfirmClose">
+                          <label class="govuk-label govuk-radios__label" for="close-yes">Yes, notify the applicant</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="false" class="govuk-radios__input" id="close-no" name="ConfirmClose">
+                          <label class="govuk-label govuk-radios__label" for="close-no">No</label>
+                      </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group">
+                <input type="submit" value="Continue" class="govuk-button">
+            </div>
+          </form>
+    </div>
+</div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

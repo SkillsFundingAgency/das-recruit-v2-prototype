@@ -1,0 +1,38 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+        <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+    <h1 class="govuk-heading-xl">Short description of the vacancy<h1>
+    <form method="post">
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="350">
+        <div class="govuk-form-group">
+
+          <p class="govuk-body">Write a few sentences about the vacancy to attract applicants. This is the only part they will see when looking through a list of vacancies, so make it stand out.
+          </p>
+          <p class="govuk-body">This could be: </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>what you are offering </li>
+            <li>why they should apply</li>
+            <li>what the apprentice will be doing </li>
+          </ul>
+          <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+              Write a few sentences to describe your vacancy
+          </label>
+          <textarea class="govuk-textarea js-character-count " id="shortDescription" name="shortDescription" rows="5"></textarea>
+        </div>
+      </div>
+      <a href="long-description" class="govuk-button">Save and continue</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,42 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-93 Skip provider</h1>
+
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Version 1</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="create/title?has_training_provider=">Start posting journey</a></li>
+            <li class="govuk-list--item"><a href="create/select-training-provider?has_training_provider=">select training provider</a></li>
+            <li class="govuk-list--item"><a href="create/vacancy-preview?has_training_provider=&is_provider_white_listed=">Vacancy preview - no provider selected</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="account/manage-vacancy?has_training_provider=&is_provider_white_listed=">Manage page - provider not set</a></li>
+            <li class="govuk-list--item"><a href="account/preview-edit?has_training_provider=&is_provider_white_listed=">Edit vacancy - provider not set</a></li>
+            <li class="govuk-list--item"><a href="create/select-training-provider?change=yes&has_training_provider=no">Update training provider - from edit vacancy page</a></li>
+          </ul>
+          <h3 class="govuk-heading-small">Other pages</h3>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="/faa/0-0-3/RVDB-93-skip-provider/application-details?has_training_provider=no&user=employer">FAA - provider not set</a></li>
+            <li class="govuk-list--item"><a href="https://das-raa-v2.herokuapp.com/prototypes/public-beta/qa-process-1-1/review/qa-vacancy--no-provider">QA - provider not set</a></li>
+            </ul>
+          </div>
+
+
+      </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">Where will the{% if data.numberOfPositions > 1 %} apprentices{% else %} apprentice {% endif %} work?</h1>
+
+    <div class="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="selected-organisation-id" name="selected-organisation-id" type="radio"
+                value="Organisation {{i}}" data-search-value="Organisation">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                Cheylesmore House, 5 Quinton Rd, Coventry CV1 2WT
+              </label>
+            </div>
+
+            <div class="govuk-radios__item" data-target="business-name-vacancy-panel">
+              <input class="govuk-radios__input" id="selected-organisation-id" name="selected-organisation-id" type="radio"
+                value="Organisation {{i}}" data-search-value="Organisation" data-aria-controls="different-address-conditional">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">somewhere else</label>
+            </div>
+
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="different-address-conditional">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                  <h2 class="govuk-fieldset__heading">
+                      What is the address?
+                  </h2>
+                </legend>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="address-line-1">
+                    Building and street
+                    <span class="govuk-visually-hidden">line 1 of 2</span>
+                  </label>
+                  <input class="govuk-input" id="address-line-1" name="address-line-1" type="text">
+                </div>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="address-line-2">
+                    <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+                  </label>
+                  <input class="govuk-input" id="address-line-2" name="address-line-2" type="text">
+                </div>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="address-town">
+                    Town or city
+                  </label>
+                  <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text">
+                </div>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="address-county">
+                    County
+                  </label>
+                  <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text">
+                </div>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="address-postcode">
+                    Postcode
+                  </label>
+                  <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
+                </div>
+
+              </fieldset>
+            </div>
+        </fieldset>
+      </div>
+
+      <a href="training" class="govuk-button">Save and continue</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

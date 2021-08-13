@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">View options</h1>
+
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+          Text or map view
+        </legend>
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="view-type-1" name="vacviewancy-type" type="radio" value="england">
+            <label class="govuk-label govuk-radios__label" for="view-ype-1">
+              Map
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="view-type-2" name="view-type" type="radio" value="scotland">
+            <label class="govuk-label govuk-radios__label" for="view-type-2">
+              Text and map
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="view-fields-hint">
+        <legend class="govuk-fieldset__legend  govuk-fieldset__legend--s">
+          Fields to show on view?
+        </legend>
+        <span id="view-fields-hint" class="govuk-hint">
+          Select all that apply.
+        </span>
+        <div class="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="view-fields-1" name="view-fields" type="checkbox" value="carcasses">
+            <label class="govuk-label govuk-checkboxes__label" for="view-fields-1">
+              Created date
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="view-fields-2" name="view-fields" type="checkbox" value="mines">
+            <label class="govuk-label govuk-checkboxes__label" for="view-fields-2">
+              Employer name
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="view-fields-3" name="view-fields" type="checkbox" value="farm">
+            <label class="govuk-label govuk-checkboxes__label" for="view-fields-3">
+              Interviews commence
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="view-fields-4" name="view-fields" type="checkbox" value="farm">
+            <label class="govuk-label govuk-checkboxes__label" for="view-fields-4">
+              Possible start date
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="view-fields-5" name="view-fields" type="checkbox" value="farm">
+            <label class="govuk-label govuk-checkboxes__label" for="view-fields-5">
+              Wage
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="view-fields-6" name="view-fields" type="checkbox" value="farm">
+            <label class="govuk-label govuk-checkboxes__label" for="view-fields-6">
+              Working week
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <a href="preview" class="govuk-button">Continue</a>
+  </div>
+</div>
+
+{% endblock %}

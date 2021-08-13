@@ -1,0 +1,42 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+
+<style media="screen">
+  .verification-summary {
+    border: 5px solid #00823B;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px 15px 15px;
+}
+</style>
+        <div class="govuk-grid-row">
+
+          <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">
+              <span class="govuk-caption-l">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</span>
+            Save this training provider</h1>
+            <div class="verification-summary">
+              <h3 class="govuk-heading-s">IN-COMM TRAINING AND BUSINESS SERVICES LIMITED</h3>
+              <p class="govuk-body govuk-!-margin-bottom-0">Hayward Industrial Park Vigo Place, Walsall, WS9 8UG<br>UKPRN: 10003280</p>
+          </div>
+            <form method="post">
+              <div class="govuk-form-group">
+                <p>
+                  <button type="submit" value="Confirm training provider" class="govuk-button" data-automation="btn-continue">Save and preview</button>
+                  <a class="das-button--link" href="select-training-provider" data-automation="link-change">Change training provider</a>
+                  <a class="das-button--link" href="vacancy-preview" data-automation="link-cancel">Cancel</a>
+                </p>
+              </div>
+          </form>
+          </div>
+      </div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

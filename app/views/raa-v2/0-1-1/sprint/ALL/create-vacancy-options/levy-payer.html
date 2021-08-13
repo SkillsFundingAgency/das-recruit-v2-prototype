@@ -1,0 +1,43 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post">
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading">
+            Are you a levy-paying employer?
+          </h1>
+        </legend>
+        <p>If you are not a levy-paying employer your vacancy will be rejected after submition.</p>
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="clone" name="create_option" type="radio" value="clone">
+            <label class="govuk-label govuk-radios__label" for="clone">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="clone" name="create_option" type="radio" value="new">
+            <label class="govuk-label govuk-radios__label" for="create-new">
+              No
+            </label>
+          </div>
+
+      </fieldset>
+    </div>
+    <a href="title" class="govuk-button">Continue</a>
+    <a href="../dashboard-no-vacancy" class="govuk-body das-button--link">Cancel</a>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

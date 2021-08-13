@@ -1,0 +1,38 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Permissions updated
+      </h1>
+      <div class="govuk-panel__body">
+        You've successfully saved permissions for
+        <br><strong>{{data.set_permission_provider or "PLUMPTON COLLEGE"}}</strong><br>
+
+      </div>
+    </div>
+    <h2 class="govuk-heading-m">Next steps</h2>
+    <p class="govuk-body">{{data.set_permission_provider or "PLUMPTON COLLEGE"}} will be notified of the changes</p>
+
+    <p class="govuk-body">
+      Once your provider has submitted a vacancy to review, it will show on your recruitment dashboard <a href="../notifications/notification-preferences-new">Manage your recruitment emails</a> if you’d like to get an email.</p>
+
+    <form method="post">
+    <div class="form-group inline">
+      <div class="form-group">
+        <a href="providers" class="govuk-button" type="submit">Return to permissions homepage</a>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

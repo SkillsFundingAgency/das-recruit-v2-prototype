@@ -1,0 +1,89 @@
+  {% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+  {% block pageTitle %}
+  Manage apprentices
+  {% endblock %}
+  {% block beforeContent %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    </div>
+  </div>
+  {% endblock %}
+  {% block content %}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">Have you already found a appropriate training course for this apprenticeship?</h1>
+          <p class="govuk-body">If you are looking to take on apprentices you will need to provide training through an registered provider, if you havent found any yet you will need to find appropriate training first.</p>
+          <form method="post">
+            <fieldset class="govuk-fieldset">
+              <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                <div class="govuk-radios__item" >
+                  <input class="govuk-radios__input" id="hasTrainingProvider_yes" name="hasTrainingProvider" type="radio"
+                    value="yes" >
+                  <label class="govuk-label govuk-radios__label" for="hasTrainingProvider_yes">
+                    Yes, I found appropriate traininng
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional {% if not data.has_training_provider == " yes" and data.edit=="yes" %}govuk-radios__conditional--hidden{% endif %}" id="conditional-how-contacted-conditional-1">
+                  <div class="govuk-form-group search-field search-field-darker">
+                    <input type="hidden" name="clientsFilter" value="new">
+                    <div class="search-input ">
+                      <label class="govuk-label" for="contact-by-email">
+                        <span class="govuk-hint">
+                          Enter the apprenticeship trining title or search by role
+                        </span>
+                      </label>
+                      <div class="autocomplete__parent_wrapper govuk-!-margin-bottom-2">
+                        <div class="autocomplete__wrapper">
+                          <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px 0px 0px 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                            <span>No search results.</span>
+                            <span>,,</span>
+                          </div>
+                          <p id="search-default-value" class="govuk-visually-hidden">{% if data.edit=="yes" and data.has_training_provider == "yes" %}{{data.providerName}} {{data.UKPRN}}{%endif%}</p>
+                          <input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="providerName" placeholder="" role="combobox" type="text" value="{% if data.edit==" yes" %}{{data.providerName}}
+                            {{data.UKPRN}} {%endif%}">
+                          <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
+                        </div>
+                      </div>
+                      <input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+                    </div>
+                    <div class="search-submit ">
+                      <button class="button govuk-visually-hidden" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+                    </div>
+
+                    <p class="govuk-body"><a href="#" id="clear-search" class="govuk-link">Clear search</a></p>
+                  </div>
+
+                </div>
+
+                <div class="govuk-radios__item " >
+                  <input class="govuk-radios__input" id="hasTrainingProvider_no" name="hasTrainingProvider" type="radio"
+                    value="no">
+                  <label class="govuk-label govuk-radios__label" for="hasTrainingProvider_no">
+                    No, help me find one
+                  </label>
+                </div>
+
+              </div>
+
+            </fieldset>
+            <div class=" govuk-form-grou govuk-!-margin-top-8">
+              {% if query.edit != "yes"%}
+                <input type="submit" class="govuk-button" name="continueButton" value="Save and continue"/>
+                <a href="../dashboard-new" class="govuk-body das-button--link">Save and exit</a>
+              {%else%}
+              <input type="submit" class="govuk-button" name="previewdButton" value="Save and continue"/>
+              <a href="../vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+              {%endif%}
+            </div>
+          </form>
+
+        </div>
+    </div>
+
+
+
+  {% endblock %}

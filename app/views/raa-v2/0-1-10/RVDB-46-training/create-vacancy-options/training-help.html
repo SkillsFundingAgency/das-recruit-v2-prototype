@@ -1,0 +1,41 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            Find apprenticeship training
+        </h1>
+            <hgroup>
+
+            </hgroup>
+            <p>For employers looking to take on apprentices you will need to find appropriate training any apprentice. You will also need to find training providers who offer the apprenticeship training you choose.</p>
+            <p>You can contact the National Apprenticeship Service for advice or help using the service.</p>
+            <div class="contact">
+                <p>
+                    <strong>National Apprenticeship Service</strong><br>
+                    Telephone: 0800 015 0600
+                    <a href="https://www.gov.uk/call-charges">Find out about call charges</a>
+                </p>
+            </div>
+
+            <a class="govuk-button" href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/" id="start-button">Find apprenticeship training</a>
+
+        </div>
+  </div>
+
+
+
+{% endblock %}

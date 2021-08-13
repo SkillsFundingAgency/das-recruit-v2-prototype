@@ -1,0 +1,93 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Change the location of the apprenticeship</h1>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+            Which organisation is the vacancy for?
+          </label>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="selected-organisation-id-1" name="selected-organisation-id" type="radio"
+                value="First organisation">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-1">
+                {% if data.orgName %}{{data.orgName}} Coventry{% else %}First organisation{% endif %}
+
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected-organisation-id" type="radio"
+                value="Second organisation">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                  {% if data.orgName %}{{data.orgName}} London{% else %}First organisation{% endif %}
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <fieldset class="govuk-fieldset">
+        <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+          Enter the address where the apprentice will work
+        </label>
+        <div class="govuk-form-group">
+          <input class="govuk-input govuk-!-width-three-quarters postcode-lookup" id="AddressLine1" name="AddressLine1" type="text">
+        </div>
+        <div class="govuk-form-group">
+          <input class="govuk-input govuk-!-width-three-quarters" id="AddressLine2" name="AddressLine2" type="text">
+        </div>
+        <div class="govuk-form-group">
+          <input class="govuk-input govuk-!-width-three-quarters" id="AddressLine3" name="AddressLine3" type="text">
+        </div>
+        <div class="govuk-form-group">
+          <input class="govuk-input govuk-!-width-three-quarters" id="AddressLine4" name="AddressLine4" type="text">
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-postcode">
+            Postcode
+          </label>
+          <input class="govuk-input govuk-input--width-10 postcode-lookup" id="postcode" name="address-postcode" type="text">
+        </div>
+      </fieldset>
+
+      <a href="../vacancy-preview/vacancy-preview-cloned" class="govuk-button">Continue</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+    </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+
+<script src="/public/javascripts/jquery-ui.min.js"></script>
+<script>
+    var key = "JY37-NM56-JA37-WT99";
+    $('#selected-organisation-id-1').click(function() {
+   if($('#selected-organisation-id-1').is(':checked')) {
+       $('#AddressLine1').val('Cheylsmore House')
+       $('#AddressLine2').val('5 Quinton Road')
+       $('#AddressLine3').val('Coventry')
+       $('#AddressLine4').val('')
+       $('#postcode').val('CV1 2WT')
+   }
+});
+$('#selected-organisation-id-2').click(function() {
+if($('#selected-organisation-id-2').is(':checked')) {
+   $('#AddressLine1').val('Unit 6, 6-17')
+   $('#AddressLine2').val('Tottenham Court Rd')
+   $('#AddressLine3').val('Fitzrovia')
+   $('#AddressLine4').val('London')
+   $('#postcode').val('W1T 1BG')
+}
+});
+</script>
+<script src="/public/javascripts/lookupservice.js"></script>
+
+{% endblock %}

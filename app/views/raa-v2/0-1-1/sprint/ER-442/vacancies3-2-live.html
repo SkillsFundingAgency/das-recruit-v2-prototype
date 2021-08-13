@@ -1,0 +1,317 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<style>.accordion-controls{display:none !important;}</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="dashboard3-2">Back to Recuitment dashboard</a>
+        </li>
+
+      </ol>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-4">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">Vacancies</h1>
+
+      <a href="create-vacancy-options/create-vacancy-choice" class="govuk-heading-m">Create vacancy</a>
+    <form action="manage" method="get" class="govuk-!-margin-bottom-4">
+
+      <div class="row-group">
+
+        <div class="search-table column-two-thirds">
+          <fieldset class="govuk-fieldset">
+
+            <div class="form-group search-field search-field-darker">
+              <input type="hidden" name="clientsFilter" value="new">
+
+              <div class="search-input search-input-with-button">
+                <label class="form-label" for="searchClients">
+                  <!-- Client reference -->
+                  <!-- <span class="">Search for a team member by name, role or email</span> -->
+                </label>
+
+                <div class="autocomplete__parent_wrapper">
+
+                  <div class="autocomplete__wrapper">
+
+                    <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px 0px 0px 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                      <span>No search results.</span>
+                      <span>,,</span>
+                    </div>
+
+                    <p id="search-default-value" class="hidden">{% if searching %}{{searchtearm}}{% endif%}</p>
+                    <input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="searchClients" placeholder="Search for vacancy by title or vacancy ID" role="combobox" type="text" value="{% if searching %}{{searchtearm}}{% endif%}">
+                    <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
+                  </div>
+
+                </div>
+
+                <input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+              </div>
+
+              <div class="search-submit">
+                <button class="button" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+
+              </div>
+
+            </div>
+
+          </fieldset>
+        </div>
+
+      </div>
+    </form>
+
+
+
+  </div>
+  <!-- <div class="govuk-grid-column-one-thirds" style="text-align:right;">
+    <a href="create-vacancy-options/create-vacancy-choice" class="govuk-button">Create vacancy</a>
+  </div> -->
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- DATA -->
+    <div class="govuk-visually-hidden">
+      {% for i in locations %}
+      <span class="data-orgs">ABC Opticians {{i}}</span>
+      {% endfor %}
+    </div>
+
+    <div class="govuk-visually-hidden">
+      {% for p in providers %}
+      <span class="data-providers">{{p}}</span>
+      {% endfor %}
+    </div>
+    <!-- accordion -->
+    <div class="accordion" id="accordion-default">
+
+      <div class="accordion-section">
+
+        <div class="accordion-section-header">
+          <h2 class="heading-medium">Add filter (1 applied)</h2>
+          <span class="govuk-body">Showing only live vacanices</span>
+        </div>
+        <div class="accordion-section-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half govuk-!-margin-top-4">
+              <div class="govuk-form-group">
+                <h3 class="govuk-heading-s">Filter by status</h3>
+                <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+                  <div class="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                      <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                        Draft (1)
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                      <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                        Pending review (3)
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                      <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                        Rejected (3)
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                      <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                        Live (3)
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                      <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                        Closed (3)
+                      </label>
+                    </div>
+
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            <div class="govuk-grid-column-one-half govuk-!-margin-top-4">
+              <div class="govuk-form-group">
+                <h3 class="govuk-heading-s">Sort vacancies by</h3>
+                <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+
+                  <div class="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="waste-3" name="waste" type="radio" value="farm" selected>
+                      <label class="govuk-label govuk-radios__label" for="waste-3">
+                        Date created
+                      </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="waste-3" name="waste" type="radio" value="farm">
+                      <label class="govuk-label govuk-radios__label" for="waste-3">
+                        Number of applications
+                      </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="waste-3" name="waste" type="radio" value="farm">
+                      <label class="govuk-label govuk-radios__label" for="waste-3">
+                        Closing date
+                      </label>
+                    </div>
+                    </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="govuk-button">Filter vacancies</a>
+        </div>
+
+      </div>
+    </div>
+    <!-- accordion -->
+    <p class="govuk-body"><br><a href="vacancies3-2" class="govuk-link">Clear all filters</a></p>
+    <!-- START table -->
+    <table class="govuk-table responsive-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+
+          <th class="govuk-table__header" scope="col">Vacancy title</th>
+          <th class="govuk-table__header" scope="col">Vacancy ref</th>
+          <th class="govuk-table__header" scope="col">Closing date</th>
+          <th class="govuk-table__header" scope="col">Status</th>
+          <th class="govuk-table__header" style="text-align:right" scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for vacancy in vacancies %}
+        {% if vacancy.status == 'Live' %}
+        <tr class="govuk-table__row" role="row">
+            <td class="govuk-table__cell" role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>{{vacancy.title}} Apprentice
+            {%if vacancy.applications > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+              <br><span class="govuk-!-font-weight-bold">Applications {{vacancy.applications}}</span>
+            {% endif%}
+            </td>
+            <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>{{vacancy.VAC}}</td>
+            <td class="govuk-table__cell" role="gridcell" style="width:15%"><span class="table-heading" aria-hidden="true">Closing date</span>23 Dec 2018</td>
+            <td class="govuk-table__cell" style="width:15%" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+            <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Manage</a></td>
+          </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="pager das-pager" aria-hidden="false" style="margin-top:0" data-paging="">
+      <div class="pager-controls das-pager-controls">
+        <a class="pager-prev das-pager-prev hidden" href="#" aria-hidden="true" hidden="hidden">Prev</a>
+        <ul class="pager-items das-pager-items"><li data-page-number="1">1</li><li data-page-number="2"><a href="#">2</a></li><li data-page-number="3"><a href="#">3</a></li><li data-page-number="4"><a href="#">4</a></li><li data-page-number="5"><a href="#">5</a></li></ul>
+        <a class="pager-next das-pager-next" href="#" aria-hidden="false">Next</a>
+      </div>
+      <div class="das-pager-summary">Showing 1 - 25 of 55 vacancies</div>
+    </div>
+    <!-- END table -->
+    <p class="govuk-body"><a href="vacancies3-2" class="govuk-link">Show all vacances</a></p>
+  </div>
+</div>
+<script src="/public/javascripts/accordion.js"></script>
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  new Accordion(document.getElementById('accordion-default'))
+
+</script>
+
+<script type="text/javascript">
+  function addMembers(event) {
+  document.getElementById("add-members-form").submit();
+}
+
+function getUsers() {
+
+  var names = document.getElementsByClassName("data-name");
+  var id = document.getElementsByClassName("data-id");
+  var orgs = document.getElementsByClassName("data-orgs");
+  var providers = document.getElementsByClassName("data-providers");
+  var data = [];
+
+  for (var i=0; i<names.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var user="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>VAC1000000697: </span>"+names[i].textContent
+      data.push(user);
+  }
+  for (var i=0; i<orgs.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var org="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>Organisation: </span>" + orgs[i].textContent;
+    data.push(org);
+  }
+  for (var i=0; i<providers.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var provider="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>Provider: </span>" + providers[i].textContent;
+    data.push(provider);
+  }
+  return data;
+}
+
+function suggest (query, populateResults) {
+  // const results = "Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677".split(",");
+  // const results = Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677
+  // const results = JSON.stringify(Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677)
+  const results = getUsers();
+  const filteredResults = results.filter(
+    result => result.toUpperCase().indexOf(query.trim().toUpperCase()) !== -1
+  )
+  // console.log(filteredResults)
+  populateResults(filteredResults);
+}
+
+// Trigger search click.  Taken out the clich for the prototype.
+function fireSearch() {
+  setTimeout(function(){ $("#searchClientsSubmit").trigger("click") }, 200);
+// console.log($('.autocomplete__option--focused').html ())
+}
+// function fireSearch(){
+// 	// $("#searchClientsSubmit").trigger("click")
+//   console.log("pressed")
+// }
+var myInput = document.querySelector('#searchClients');
+var myInputID = myInput.id;
+var element = document.createElement('div');
+var value = ""
+
+if (document.getElementById('search-default-value').innerHTML != "") {
+  value = document.getElementById("search-default-value").innerHTML;
+}
+
+element.className = "autocomplete__parent_wrapper";
+myInput.parentNode.insertBefore(element, myInput)
+// console.log("value"+document.getElementById("search-default-value").innerHTML)
+accessibleAutocomplete({
+  // other options
+  element: element,
+  id: myInputID,
+  name: myInput.name,
+  source: suggest,
+  defaultValue: value,
+  confirmOnBlur: false,
+  autoselect: true,
+  onConfirm: fireSearch,
+  placeholder: 'Search for vacancy by title or vacancy ID',
+  displayMenu: 'overlay'
+});
+myInput.style.display = 'none';
+myInput.id = myInputID + '-old';
+myInput.name = '';
+</script>
+{% endblock %}

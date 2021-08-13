@@ -1,0 +1,197 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+
+
+  <div class="govuk-grid-column-two-thirds">
+    {% if data.hasError and data.errorType == "provider" %}
+    <div class="validation-summary-errors govuk-error-summary" role="alert" data-valmsg-summary="true" tabindex="-1">
+        <h2 class="govuk-error-summary__title">
+            Please fix these errors
+        </h2>
+        <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                    <a href="#provider-need-update" data-focuses="#provider-need-update" class="summary-link">{{data.providerName}} can no longer be used as a training provider</a>
+                </li>
+
+            </ul>
+        </div>
+      </div>
+    {% endif %}
+    <form action="" method="post">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+
+          <h1 class="govuk-fieldset__heading">
+            Have you found a training provider?
+          </h1>
+        </legend>
+        <p class="govuk-body">You will need to use a registered training provider who offers <span class="govuk-!-font-weight-bold">"Aviation ground operative, Level: 2 (Standard)"</span> training.
+          <!-- "<span class="govuk-!-font-weight-bold">{{data.training_level}}</span>"</p> -->
+          <div class="govuk-form-group">
+            <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="found_training_provider" name="has_training_provider" type="radio" value="yes" {% if data.has_training_provider=="yes" %}checked="checked" {%endif%}data-aria-controls="conditional-how-contacted-conditional-1">
+                <label class="govuk-label govuk-radios__label" for="found_training_provider">
+                  Yes
+                </label> </div>
+              <div class="govuk-radios__conditional {% if not data.has_training_provider == " yes" and data.edit=="yes" %}govuk-radios__conditional--hidden{% endif %}" id="conditional-how-contacted-conditional-1">
+                <div class="govuk-form-group search-field search-field-darker {%if data.hasError and data.errorType == 'provider'%}govuk-form-group--error{% endif%}">
+                  <input type="hidden" name="clientsFilter" value="new">
+                  <div class="search-input ">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter the training provider name or reference number (UKPRN).
+                      <span class="govuk-hint">
+
+                      </span>
+                    </label>
+                    {% if data.hasError and data.errorType == "provider" %}
+                    <span id="provider-need-update" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{data.providerName}} can no longer be used as a training provider.
+                    </span>
+                    {% endif %}
+                    <div class="autocomplete__parent_wrapper govuk-!-margin-bottom-2">
+                      <div class="autocomplete__wrapper">
+                        <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px 0px 0px 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                          <span>No search results.</span>
+                          <span>,,</span>
+                        </div>
+                        <p id="search-default-value" class="govuk-visually-hidden">{% if (data.edit=="yes" and data.has_training_provider == "yes") or data.hasError %}{{data.providerName}} {{data.UKPRN}}{%endif%}</p>
+                        <input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="providerName" placeholder="" role="combobox" type="text" value="{% if data.edit==" yes" %}{{data.providerName}}
+                          {{data.UKPRN}} {%endif%}">
+                        <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
+                      </div>
+                    </div>
+                    <input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+                  </div>
+                  <div class="search-submit ">
+                    <button class="button govuk-visually-hidden" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+                  </div>
+
+                  <p class="govuk-body"><a href="#" id="clear-search" class="govuk-link">Clear search</a></p>
+                </div>
+
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="not_found_training_provider" name="has_training_provider" type="radio" value="no" data-aria-controls="conditional-not-found" {% if data.has_training_provider=="no" and data.edit=="yes" %}checked="checked"
+                  {%endif%}>
+                <label class="govuk-label govuk-radios__label" for="not_found_training_provider">
+                  No, I will choose one later
+                </label> </div>
+              <div class="govuk-radios__conditional {% if data.has_training_provider == " no" and data.edit=="yes" %}govuk-radios__conditional--hidden{%endif%}" id="conditional-not-found">
+                <div class="govuk-form-group">
+                  <p class="govuk-body">You will need to add a training provider before submitting the vacancy. If you need help, you can <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/Apprenticeship/SearchForFrameworkProviders?frameworkId=539-2-14">find a training provider (opens
+                      in new tab)</a> based on the apprenticeship training.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+      </fieldset>
+      <div class="govuk-form-group">
+        <button type="submit" class="govuk-button">Continue</button>
+        <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+<div class="govuk-visually-hidden">
+  {% for provider in data.providers %}
+  <span class="data-item">{{provider.name}} {{provider.UKPRN}}</span>
+  {% endfor %}
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+{{super()}}
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $('#clear-search').on('click', function() {
+      $('#searchClients').val("");
+    })
+  })
+
+  function addMembers(event) {
+    document.getElementById("add-members-form").submit();
+  }
+
+  function getProviders() {
+    var items = document.getElementsByClassName("data-item");
+
+    var data = [];
+
+    for (var i = 0; i < items.length; i++) {
+      // var user=names[i].textContent+" - "+email[i].textContent;
+      var provider = items[i].textContent
+      data.push(provider);
+    }
+
+    return data;
+  }
+
+  function suggest(query, populateResults) {
+    const results = getProviders();
+    const filteredResults = results.filter(
+      result => result.toUpperCase().indexOf(query.trim().toUpperCase()) !== -1
+    )
+    populateResults(filteredResults);
+  }
+
+  // Trigger search click.  Taken out the clich for the prototype.
+  function fireSearch() {
+    setTimeout(function() {
+      $('.dates').show();
+      $('#selected-training').text($("#searchClients").val())
+    }, 200);
+
+
+  }
+  // function fireSearch(){
+  // 	// $("#searchClientsSubmit").trigger("click")
+  //   console.log("pressed")
+  // }
+  var myInput = document.querySelector('#searchClients');
+  var myInputID = myInput.id;
+  var element = document.createElement('div');
+  var value = ""
+
+  if (document.getElementById('search-default-value').innerHTML != "") {
+    value = document.getElementById("search-default-value").innerHTML;
+  }
+
+  element.className = "autocomplete__parent_wrapper";
+  myInput.parentNode.insertBefore(element, myInput)
+  // console.log("value"+document.getElementById("search-default-value").innerHTML)
+  accessibleAutocomplete({
+    // other options
+    element: element,
+    id: myInputID,
+    name: myInput.name,
+    source: suggest,
+    defaultValue: value,
+    confirmOnBlur: false,
+    autoselect: true,
+    onConfirm: fireSearch,
+    displayMenu: 'inline',
+    minLength: 3
+  });
+  myInput.style.display = 'none';
+  myInput.id = myInputID + '-old';
+  myInput.name = '';
+</script>
+
+{% endblock %}

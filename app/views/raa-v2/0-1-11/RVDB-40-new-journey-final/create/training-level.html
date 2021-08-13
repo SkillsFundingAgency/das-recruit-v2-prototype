@@ -1,0 +1,87 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+  <form method="post">
+      <div class="row-group">
+        <div class="search-table column-two-thirds">
+
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                What is the apprentichip role or training for this vacancy?
+              </h1>
+            </legend>
+            <div class="govuk-form-group search-field search-field-darker">
+              <input type="hidden" name="clientsFilter" value="new">
+              <div class="search-input ">
+                <label class="form-label" for="searchClients">
+                  <!-- Client reference -->
+                  <span class="govuk-hint">Search by apprenticeship title or role</span>
+                </label>
+                <div class="autocomplete__parent_wrapper">
+                  <div class="autocomplete__wrapper">
+                    <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px 0px 0px 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                      <span>No search results.</span>
+                      <span>,,</span>
+                    </div>
+                    <p id="search-default-value" class="hidden">{% if searching %}{{searchtearm}}{% endif%}</p>
+                    <input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="training_level" placeholder="" role="combobox" type="text" value="{% if searching %}{{searchtearm}}{% endif%}">
+                    <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
+                  </div>
+                </div>
+                <input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+              </div>
+              <div class="search-submit">
+                <button class="button govuk-visually-hidden" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+              </div>
+            </div>
+          </fieldset>
+          <!-- <p class="govuk-body">
+            <a id="clear-search" class="govuk-link" href="manage?clearSearch=true&user=admin">Clear search</a>
+          </p> -->
+        </div>
+
+      </div>
+      <div class="" style="display:none;">
+        {% for item in data.training %}
+        <span class="data-name">{{item}}</span>
+        {% endfor %}
+      </div>
+      <div class="dates" style="display:none;">
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            <span id="selected-training" class="govuk-!-font-weight-bold"> Aerospace engineer, Level: 6 (Standard)</span> is closed to new starters from 1 August 2020
+          </strong>
+        </div>
+      </div>
+      <p id="oranisation-list-no-result" style="display:none;">0 matches for <span class="querytext"></span></p>
+<div class="govuk-!-margin-top-8">
+  {% if query.edit != "yes"%}
+    <input type="submit" class="govuk-button" name="continueButton" value="Save and continue"/>
+    <a href="../dashboard-new" class="govuk-body das-button--link">Save and exit</a>
+  {%else%}
+  <input type="submit" class="govuk-button" name="previewdButton" value="Save and continue"/>
+  <a href="../vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+  {%endif%}
+</div>
+  </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl">test test apprenticeship</h1>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+        <form method="post">
+          <div class="govuk-form-group">
+              <label class="govuk-label" id="QualificationsHeading" for="QualificationType">Add qualifications applicants should have</label>
+              <select class="govuk-select" id="QualificationType" name="QualificationType">
+                  <option value="">Select from list</option>
+                      <option value="GCSE">GCSE</option>
+                      <option value="AS Level">AS Level</option>
+                      <option value="A Level">A Level</option>
+                      <option value="BTEC">BTEC</option>
+                      <option value="NVQ or SVQ Level 1">NVQ or SVQ Level 1</option>
+                      <option value="NVQ or SVQ Level 2">NVQ or SVQ Level 2</option>
+                      <option value="NVQ or SVQ Level 3">NVQ or SVQ Level 3</option>
+                      <option value="Other">Other</option>
+              </select>
+          </div>
+
+          <div class="govuk-form-group">
+              <label class="govuk-label" for="Subject">Subject</label>
+              <input class="govuk-input govuk-input--width-20" value="" type="text" maxlength="50" id="Subject" name="Subject">
+          </div>
+
+          <div class="govuk-form-group" data-bind="parentvalElement:grade">
+              <label class="govuk-label " for="Grade">Grade</label>
+              <input class="govuk-input govuk-input--width-20" value="" type="text" maxlength="30" id="Grade" name="Grade">
+          </div>
+
+          <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">Is this qualification essential?</h1>
+                  </legend>
+                  <div class="govuk-radios govuk-radios--inline">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="WeightingYes" type="radio" value="Essential" data-display="Essential" name="Weighting" data-automation="radio-weighting-yes">
+                      <label class="govuk-label govuk-radios__label" for="WeightingYes">Yes</label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="WeightingNo" type="radio" value="Desired" data-display="Desired" name="Weighting" data-automation="radio-weighting-no">
+                      <label class="govuk-label govuk-radios__label" for="WeightingNo">No</label>
+                    </div>
+                  </div>
+              </fieldset>
+          </div>
+
+          <div class="govuk-form-group">
+              <button type="submit" name="AddQualificationAction" id="add-qualification" value="AddQualification" class="govuk-button das-button-secondary save-button">+ Add this qualification</button>
+          </div>
+
+
+
+          <br>
+
+          <button type="submit" class="govuk-button" data-automation="btn-continue">Save and continue</button>
+          <a class="govuk-body das-button--link" href="/accounts/VN4XKG/vacancies/fd4e5bb8-f31c-48ec-aa3f-8e2529205140/preview/" data-automation="link-cancel">Cancel</a>
+            <input name="_csrfToken" type="hidden" value="CfDJ8ENtk0Jot7lJtkCKgKex305psD7Oglp2o5hpvMf--g7YB8k_YRAj_zLiPScvKVcIOm6QsRaQVqlUvfUtaxggZxPrsV0p3NImcGiMrcP6G-YCPJDdFhFGhkvGguJKs3Jkt4H-0J-fic75cVvzDlcbZXeXo_j6eOefzVT53S12XqVDZtLg27Wop7JrzJBLelZL4A"></form>
+          </div>
+      </div>
+      </div>
+  </div>
+
+  </main>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

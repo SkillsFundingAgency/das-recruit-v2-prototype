@@ -1,0 +1,25 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Report generated
+      </h1>
+    </div>
+      <p>We have generated a csv file with information on all applications from 1 Jan 2018 to 2 Feb 2018 covering 28 days</p>
+    <p class="govuk-body">
+      <a class="govuk-button" href="/public/files/download.csv">Download report</a><a class="govuk-body das-button--link" href="../dashboard-new">Back to recruitment dashboard</a></p>
+
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

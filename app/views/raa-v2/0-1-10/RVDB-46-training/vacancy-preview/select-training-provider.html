@@ -1,0 +1,37 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+        <h1 class="govuk-heading-xl"><span class="govuk-caption-l">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</span>
+
+        Choose a training provider</h1>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+             <form  method="post">
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold" for="Ukprn">Enter the training provider UK Provider Reference Number (UKPRN)</label>
+                <span class="govuk-hint">
+                    You will be able to get this from your training provider<br>
+                    Your provider must also have a recruit an apprentice account<br>
+                    The UKPRN must only be 8 digits (For example, 12345678)
+                </span>
+                <span class="govuk-error-message field-validation-valid" id="error-message-Ukprn" data-valmsg-for="Ukprn" data-valmsg-replace="true"></span>
+                <input type="text" maxlength="8" class="govuk-input govuk-input--width-10" id="UKPRN" name="UKPRN" value="">
+            </div>
+            <div class="govuk-form-group">
+                <input type="submit" value="Continue" class="govuk-button" data-automation="btn-continue" >
+                <a class="das-button--link" href="vacancy-preview" data-automation="link-cancel">Cancel</a>
+            </div>
+        </form>
+          </div>
+      </div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

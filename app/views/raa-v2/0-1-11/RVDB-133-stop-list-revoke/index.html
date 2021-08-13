@@ -1,0 +1,65 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-133 Provider placed on stop list</h1>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h3 class="govuk-heading-m">Employer alerts</h3>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="vacancies?alert=transferred&filter=any&search=&user=employer&multiple_revokes=&has_multiple_closed=&has_multiple_transferred=">Single transferred vacancy from single provider</a></li>
+            <li class="govuk-list--item"><a href="vacancies?alert=transferred&filter=any&search=&user=employer&multiple_revokes=&has_multiple_closed=&has_multiple_transferred=yes">Multiple transferred vacancies from single provider</a></li>
+            <li class="govuk-list--item"><a href="vacancies?alert=transferred&filter=any&search=&user=employer&multiple_revokes=yes&has_multiple_closed=&has_multiple_transferred=yes">Multiple transferred vacancies from multiple providers</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="vacancies?alert=withdrawn&filter=any&search=&user=employer&multiple_revokes=&has_multiple_closed=&has_multiple_transferred=">Single withdrawn (closed by QA )vacancy from single provider</a></li>
+            <li class="govuk-list--item"><a href="vacancies?alert=withdrawn&filter=any&search=&user=employer&multiple_revokes=&has_multiple_closed=yes&has_multiple_transferred=">Multiple withdrawn vacancies from single provider</a></li>
+            <li class="govuk-list--item"><a href="vacancies?alert=withdrawn&filter=any&search=&user=employer&multiple_revokes=yes&has_multiple_closed=yes&has_multiple_transferred=">Multiple withdrawn vacancies from multiple providers</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="vacancies?alert=transferred,withdrawn&filter=any&search=&user=employer&multiple_revokes=yes&has_multiple_closed=yes&has_multiple_transferred=yes">Both alerts - multiple revokes and multiple closures</a></li>
+          </ul>
+            <h3 class="govuk-heading-m">Other employer pages</h3>
+            <ul class="govuk-list">
+              <li class="govuk-list--item"><a href="account/manage-vacancy-closed?is_withdrawn=yes&is_transferred=no">Manage vacancy of withdrawn / closed vacancy</a></li>
+              <li class="govuk-list--item"><a href="account/manage-vacancy-closed?is_withdrawn=no&is_transferred=yes">Manage vacancy of transferred vacancy</a></li>
+
+            <br>
+              <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview-error?providerName=PLUMPTON%20COLLEGE&has_training_provider=yes&user=employer">Vacancy preview - with error</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="create-vacancy-options/select-training-provider?edit=yes&hasError=no&errorType=none&has_training_provider=&edit=no&user=employer">Select provider no error (Choose plumpton college)</a></li>
+            <li class="govuk-list--item"><a href="create-vacancy-options/select-training-provider?edit=yes&hasError=yes&errorType=provider&providerName=PLUMPTON%20COLLEGE&has_training_provider=yes&user=employer">provider select (cannot select blocked provider)</a></li>
+            <br>
+          </ul>
+
+          <h3 class="govuk-heading-m">Provider</h3>
+          <ul class="govuk-list">
+
+            <li class="govuk-list--item"><a href="home_providers">Blacklisted Provider from home page </a></li>
+            <li class="govuk-list--item"><a href="access-to-permissions">Blacklisted Provider - stop page </a></li>
+
+
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}
