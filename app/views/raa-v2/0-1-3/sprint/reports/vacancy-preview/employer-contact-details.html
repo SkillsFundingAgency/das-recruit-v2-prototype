@@ -1,0 +1,51 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</h1>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <form method="post" class="dirty">
+              <div class="govuk-form-group">
+                  <label class="govuk-label" for="EmployerContactName">Contact name (optional)</label>
+                  <input class="govuk-input govuk-input--width-20" maxlength="100" type="text" id="EmployerContactName" name="EmployerContactName" value="{% if data.EmployerContactName %}{{data.EmployerContactName}}{%endif%}">
+              </div>
+              <div class="govuk-form-group">
+                  <label class="govuk-label" for="EmployerContactEmail">Contact email (optional)</label>
+                  <input class="govuk-input govuk-input--width-20" maxlength="100" type="text" id="EmployerContactEmail" name="EmployerContactEmail" value="{% if data.EmployerContactEmail %}{{data.EmployerContactEmail}}{%endif%}">
+              </div>
+              <div class="govuk-form-group">
+                  <label class="govuk-label" for="EmployerContactPhone">Contact number (optional)</label>
+                  <input class="govuk-input govuk-input--width-20" type="tel" maxlength="16" id="EmployerContactPhone" name="EmployerContactPhone" value="{% if data.EmployerContactPhone %}{{data.EmployerContactPhone}}{%endif%}">
+              </div>
+              <div class="govuk-form-group">
+                  <input type="submit" value="Save and continue" class="govuk-button save-button" data-automation="btn-continue">
+                  <a class="govuk-body das-button--link" href="vacancy-preview/" data-automation="link-cancel">Cancel</a>
+              </div>
+            </form>
+          </div>
+      </div>
+      </div>
+  </div>
+
+
+
+{% endblock %}

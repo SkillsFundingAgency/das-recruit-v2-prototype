@@ -1,0 +1,464 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Vacancies
+{% endblock %}
+{% block beforeContent %}
+<style>
+  .search-field-darker .search-input input {
+    border-color: #0b0c0c;
+    height: 41px;
+  }
+  .search-submit button{
+    background-color: 	#005ea5;
+    height: 41px;
+  }
+  .search-submit{
+    height: 41px;
+
+  }
+
+  .accordion-controls{display:none !important;}
+  .das-table__header--sort{font-weight: normal}
+  .annotate{
+  	font-style: italic;
+  	color: #366ED4;
+  }
+
+
+
+
+  .hidden {
+  	display: none;
+  }
+
+  .toolbar {
+  	font-size: 0;
+  }
+
+  .toolbar-item {
+  	border: 1px solid #aaa;
+  	background: #ccc;
+  }
+
+  .toolbar-item[aria-disabled="false"]:focus {
+  	background-color: #eee;
+  }
+
+  .offscreen {
+  	clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+  	font-size: 18px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  .das-button-filter{
+    display:inline-block;
+    margin-bottom: 0;
+  }
+  .lottery-ticket{
+    margin-top:30px;
+    margin-left:1px;
+    padding: 10px 10px 10px 0;
+  }
+  .lottery-ticket--number{
+    display:inline-block;
+    font-size: 18px;
+    margin-right:5px;
+  }
+  @media (min-width: 40.0625em){
+  .lottery-ticket--number{
+    font-size: 21px;
+    font-size: 1.15rem;
+    display:block;
+    color:#6f777bx;
+    }
+  }
+  .das-filter-tab--group{
+    margin-left:1px;
+    margin-bottom:31px;
+  }
+  .das-filter-tab--group:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+  .das-filter-tab, .das-filter-tab--non-link{
+    display:inline-block;
+    text-decoration:none;
+    padding:15px 30px;
+    float:left;
+    border: 1px solid #bfc1c3;
+    font-size: 18px;
+    font-size: 1.125rem;
+    margin-left:-1px;
+
+  }
+  .das-filter-tab:hover{
+    background-color: #f8f8f8;
+  }
+  a.lottery-ticket--link .lottery-ticket--title{
+    text-decoration: none;
+  }
+  a.lottery-ticket--active{
+    background: #005EA5 !important;
+    color: #ffffff !important;
+
+  }
+  a.lottery-ticket--active .lottery-ticket--title{
+    color: #ffffff !important;
+  }
+  .lottery-ticket--title{
+    display:inline-block;
+    font-size: 18px;
+    font-size: 1.125rem;
+    color: #0b0c0c;
+  }
+  @media (min-width: 40.0625em){
+  .lottery-ticket--title{
+    display:block;
+    font-size: 18px;
+    font-size: 1.125rem;
+
+    }
+  }
+
+
+  .lottery-ticket--action{
+
+    display:block;
+
+    color:#6f777bx;
+    text-decoration: underline;
+    /* margin-bottom:10px; */
+  }
+
+  /* .lottery-ticket a:hover{
+    background-color: #dee0e2;
+
+  } */
+
+  .lottery-ticket-danger {
+    color: #b10e1e!important;
+  }
+
+  .lottery-ticket--muted{
+    color: #6f777b;
+  }
+  .govuk-grid-column-border-left{
+    border-right: 1px solid #bfc1c3;
+  }
+  .das-link-divider{
+    display: inline-block;
+    color:#6f777b;
+    padding:0 10px;
+  }
+  .govuk-grid-column-half-border-right{border-right-color: transparent;}
+  .govuk-grid-column-third-border-right{border-right-color: transparent;}
+
+  @media (min-width: 40.0625em){
+    .govuk-grid-column-one-third {
+        width: 33.3333%;
+        float: left;
+    }
+    .govuk-grid-column-third-border-right{border-right: 1px solid #bfc1c3;}
+
+  }
+
+  @media (min-width: 40.0625em)
+    and (max-width : 865px) {
+  .dashboard-row .govuk-grid-column-one-third{
+    width: 50%;
+    float: left;
+  }
+</style>
+<a href="dashboard-multiple" class="govuk-back-link">Return to vacancy dashboard </a>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Vacancies recently transferred   </h1>
+    <p class="govuk-uk">Vacancies that have been transferred to you from a provider after revoking their permissions.</p>
+
+    <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+      3 transferred vacancies were live and were closed automatically and 1 transferred vacancy pending review was returned to draft.
+  </strong>
+</div>
+    <!-- <a href="create-vacancy-options/create-vacancy" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold">Create a new vacancy</a> -->
+  </div>
+
+</div>
+<!-- Set the pagination variables -->
+{% if data.page %}{% set page = data.page %}{% else %}{% set page = 1 %}{% endif %}
+{% set totalVacancies = data.vacancies.length %}
+{% set currentMax= data.page*data.vacanciesPerPage%}
+{% set currentMin =(((data.page-1)*data.vacanciesPerPage)+1) | int %}
+{% set totalPages = (data.vacancies.length/data.vacanciesPerPage) | round(0,"ceil") %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <table class="govuk-table responsive-table das-table--small">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Vacancy title</th>
+            <th class="govuk-table__header" scope="col">Transferred from</th>
+            <th class="govuk-table__header" scope="col">Applications</th>
+            <th class="govuk-table__header" scope="col">Closing date</th>
+            <th class="govuk-table__header" scope="col" colspan="2">Status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <!-- set count to capture other vacancies under the search -->
+          <tr class="govuk-table__row" role="row">
+            <td class="govuk-table__cell das-table-colomn-45" role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>Business/Data Administration Apprentice <br>VAC1000000293
+            </td>
+            <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Transferred from</span>NOTTINGHAM COLLLEGE</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric das-table-colomn-10" role="gridcell">
+              <span class="table-heading " aria-hidden="true">Applications</span>
+              -
+            </td>
+            <td class="govuk-table__cell  das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>1 Mar 2019</td>
+            <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--draft">Draft</span></td>
+            <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+                <a href="vacancy-preview/vacancy-preview" class="govuk-link">Edit and submit</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row" role="row">
+            <td class="govuk-table__cell " role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>Engineering Technician Level 3 Product Design and Development Apprentice <br>VAC1000000293
+            </td>
+            <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Transferred from</span>NOTTINGHAM COLLLEGE</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric das-table-colomn-10" role="gridcell">
+              <span class="table-heading " aria-hidden="true">Applications</span>
+              -
+            </td>
+            <td class="govuk-table__cell  das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>16 May 2019</td>
+            <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--closed">closed</span></td>
+            <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+              <a href="account/manage-vacancy-closed" class="govuk-link">Manage</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row" role="row">
+            <td class="govuk-table__cell das-table-colomn-45" role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>Business/Data Administration Apprentice <br>VAC1000000293
+            </td>
+            <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Transferred from</span>NOTTINGHAM COLLLEGE</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric das-table-colomn-10" role="gridcell">
+              <span class="table-heading " aria-hidden="true">Applications</span>
+              -
+            </td>
+            <td class="govuk-table__cell  das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>1 Mar 2019</td>
+            <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--draft">Draft</span></td>
+            <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+                <a href="vacancy-preview/vacancy-preview" class="govuk-link">Edit and submit</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row" role="row">
+            <td class="govuk-table__cell " role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>Engineering Technician Level 3 Product Design and Development Apprentice <br>VAC1000000293
+            </td>
+            <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Transferred from</span>NOTTINGHAM COLLLEGE</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric das-table-colomn-10" role="gridcell">
+              <span class="table-heading " aria-hidden="true">Applications</span>
+              4
+            </td>
+            <td class="govuk-table__cell  das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>16 May 2019</td>
+            <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--closed">closed</span></td>
+            <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+              <a href="account/manage-vacancy-closed" class="govuk-link">Manage</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row" role="row">
+            <td class="govuk-table__cell " role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>Engineering Technician Level 3 Product Design and Development Apprentice <br>VAC1000000293
+            </td>
+            <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Transferred from</span>NOTTINGHAM COLLLEGE</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric das-table-colomn-10" role="gridcell">
+              <span class="table-heading " aria-hidden="true">Applications</span>
+              3
+            </td>
+            <td class="govuk-table__cell  das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>16 May 2019</td>
+            <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--closed">closed</span></td>
+            <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+              <a href="account/manage-vacancy-closed" class="govuk-link">Manage</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row" role="row">
+            <td class="govuk-table__cell " role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>Engineering Technician Level 3 Product Design and Development Apprentice <br>VAC1000000293
+            </td>
+            <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Transferred from</span>NOTTINGHAM COLLLEGE</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric das-table-colomn-10" role="gridcell">
+              <span class="table-heading " aria-hidden="true">Applications</span>
+              2
+            </td>
+            <td class="govuk-table__cell  das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>16 May 2019</td>
+            <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--closed">closed</span></td>
+            <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+              <a href="account/manage-vacancy-closed" class="govuk-link">Manage</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row" role="row">
+            <td class="govuk-table__cell " role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>Engineering Technician Level 3 Product Design and Development Apprentice <br>VAC1000000293
+            </td>
+            <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Transferred from</span>NOTTINGHAM COLLLEGE</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric das-table-colomn-10" role="gridcell">
+              <span class="table-heading " aria-hidden="true">Applications</span>
+              0
+            </td>
+            <td class="govuk-table__cell  das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>16 May 2019</td>
+            <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--closed">closed</span></td>
+            <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+              <a href="account/manage-vacancy-closed" class="govuk-link">Manage</a>
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row" role="row">
+            <td class="govuk-table__cell " role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title</span>Engineering Technician Level 3 Product Design and Development Apprentice <br>VAC1000000293
+            </td>
+            <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Transferred from</span>NOTTINGHAM COLLLEGE</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric das-table-colomn-10" role="gridcell">
+              <span class="table-heading " aria-hidden="true">Applications</span>
+              -
+            </td>
+            <td class="govuk-table__cell  das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>16 May 2019</td>
+            <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--closed">closed</span></td>
+            <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+              <a href="account/manage-vacancy-closed" class="govuk-link">Manage</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+        </div>
+        <!-- END table -->
+      </div>
+    </div>
+    <script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+
+<script type="text/javascript">
+  window.addEventListener('load', function () {
+    document.getElementById('filter-submit').style.display = "none";
+    function filter_list() {
+    var selector = document.getElementById('filter');
+    var value = selector[selector.selectedIndex].value;
+    var search
+    if (document.getElementById('search').value != "") {
+      search = document.getElementById("search").value;
+    }
+    console.log("Sesarch = "+document.getElementById('search').value )
+    if(search){
+        document.location.href = "./dashboard-multiple?filter="+value+"&page=1&search="+search
+    }else{
+      document.location.href = "./dashboard-multiple?filter="+value+"&page=1&search= "
+    }
+
+
+    }
+
+    document.getElementById('filter').onchange = function() {filter_list()};
+    var total = $('#totalVacancies').text()
+
+    $('.displayTotal').text(total)
+      console.log('total = '+ total)
+      if(total == 0){
+        $('.govuk-table__head').hide();
+      }
+})
+
+
+function getUsers() {
+
+  var titles = document.getElementsByClassName("data-name");
+  var ids = document.getElementsByClassName("data-id");
+  var orgs = document.getElementsByClassName("data-orgs");
+  var providers = document.getElementsByClassName("data-providers");
+  var data = [];
+  for (var i=0; i<titles.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var name=titles[i].textContent
+    if(! data.includes(name)){
+        data.push(name);
+    }
+
+  }
+  for (var i=0; i<ids.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var name=ids[i].textContent
+      data.push(name);
+  }
+  for (var i=0; i<orgs.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var org=orgs[i].textContent;
+    if (data.indexOf(org) == -1) {
+      // no duplicate
+      data.push(org);
+    }
+
+  }
+  // for (var i=0; i<providers.length; i++) {
+  //   // var user=names[i].textContent+" - "+email[i].textContent;
+  //   var provider="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>Provider: </span>" + providers[i].textContent;
+  //   data.push(provider);
+  // }
+  return data;
+}
+
+function suggest (data, populateResults) {
+  console.log("suggest is triggered")
+  // const results = "Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677".split(",");
+  // const results = Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677
+  // const results = JSON.stringify(Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677)
+  const results = getUsers();
+  const filteredResults = results.filter(
+    result => result.toUpperCase().indexOf(data.trim().toUpperCase()) !== -1
+  )
+  // console.log(filteredResults)
+  populateResults(filteredResults);
+}
+
+// Trigger search click.  Taken out the clich for the prototype.
+function fireSearch() {
+  setTimeout(function(){ $("#searchSubmit").trigger("click") }, 200);
+// console.log($('.autocomplete__option--focused').html ())
+}
+// function fireSearch(){
+// 	// $("#searchClientsSubmit").trigger("click")
+//   console.log("pressed")
+// }
+var myInput = document.querySelector('#search');
+var myInputID = myInput.id;
+var element = document.createElement('div');
+var value = ""
+
+if (document.getElementById('search-default-value').innerHTML != "") {
+  value = document.getElementById("search-default-value").innerHTML;
+}
+
+element.className = "autocomplete__parent_wrapper";
+myInput.parentNode.insertBefore(element, myInput)
+// console.log("value"+document.getElementById("search-default-value").innerHTML)
+accessibleAutocomplete({
+  // other options
+  element: element,
+  id: myInputID,
+  name: myInput.name,
+  source: suggest,
+  defaultValue: value,
+  confirmOnBlur: false,
+  autoselect: true,
+  minLength: 3,
+  onConfirm: fireSearch,
+  placeholder: 'Search by title, reference number or employer',
+  displayMenu: 'overlay'
+});
+myInput.style.display = 'none';
+myInput.id = myInputID + '-old';
+myInput.name = '';
+</script>
+{% endblock %}

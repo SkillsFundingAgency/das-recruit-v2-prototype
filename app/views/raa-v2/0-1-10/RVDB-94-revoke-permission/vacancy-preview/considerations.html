@@ -1,0 +1,44 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</h1>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <form method="post">
+              <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+                <div class="govuk-form-group">
+                    <label class="govuk-label visiual" for="ThingsToConsider">Things to consider (optional)</label>
+                    <span class="govuk-hint">For example, if the vacancy will involve working outdoors, or lifting heavy objects</span>
+                    <textarea class="govuk-textarea js-character-count"  rows="5" data-val-length-max="350" id="ThingsToConsider" name="ThingsToConsider"></textarea>
+                </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save and continue" class="govuk-button save-button" data-automation="btn-continue">
+                    <a class="govuk-body das-button--link" href="/accounts/VN4XKG/vacancies/fd4e5bb8-f31c-48ec-aa3f-8e2529205140/preview/" data-automation="link-cancel">Cancel</a>
+                </div>
+              </form>
+          </div>
+      </div>
+      </div>
+  </div>
+
+  </main>
+</div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

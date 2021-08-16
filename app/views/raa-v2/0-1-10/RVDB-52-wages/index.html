@@ -1,0 +1,45 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-52 wages</h1>
+        <h3 class="govuk-heading-m"><a href="./provider/config">Configure session</a></h3>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+
+              <ul class="govuk-list">
+                <li class="govuk-list--item"><a class="govuk-link" href="">Edit vacancy</a></li>
+
+                </ul>
+
+            <h2 class="govuk-heading-m">Other Designs</h2>
+            <p class="govuk-body">
+              <a href="vacancies?user=employer">from dashaboard</a>
+              <a href="create-vacancy-options/working_hours?user=employer">duration and working hours (remove wages)</a>
+              
+            </p>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}

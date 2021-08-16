@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+<style media="screen">
+  #global-header-bar {
+    height: 10px;
+    background-color: #005ea5;
+}
+</style>
+<div id="global-header-bar"></div>
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Report this vacacncy</h1>
+    <p>Tell us what's wrong with the 'Business Administration Apprentice (VAC001464690)' vacancy.</p>
+    <form name="report"  method="POST">
+      <input type="hidden" name="id" id="reportId" value="1688883">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+              Why do you want to report this vacancy?
+            </h2>
+
+          </legend>
+          <span class="govuk-hint">We'll investigate and may remove it</span>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" type="radio" name="reason" id="reason-1" value="discrimination">
+              <label class="govuk-label govuk-radios__label" for="reason-1">It is discriminatory</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" type="radio" name="reason" id="reason-2" value="scam_fraud">
+              <label class="govuk-label govuk-radios__label" for="reason-2">I suspect it is a scam or fraud</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" type="radio" name="reason" id="reason-3" value="job_unavailable">
+              <label class="govuk-label govuk-radios__label" for="reason-3">It is no longer available</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" type="radio" name="reason" id="reason-4" value="other">
+              <label class="govuk-label govuk-radios__label" for="reason-4">I have another issue</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+        <div class="govuk-form-group">
+          <label for="reportText" class="govuk-label">
+            <h3 class="heading-medium">Tell us more about this issue</h3>
+          </label>
+          <textarea class="govuk-textarea js-character-count" name="text" id="reportText" rows="5" maxlength="500" aria-required="true" rows="5" aria-describedby="more-detail-hint"></textarea>
+        </div>
+      </div>
+      <div class="govuk-form-group">
+        <label for="email" class="govuk-label">Your email address (optional)</label>
+        <span class="govuk-hint">We'll only contact you if we need more information</span>
+        <input class="govuk-input" type="email" id="email" name="email">
+      </div>
+
+      <div class="govuk-form-group">
+        <a href="confirmation" value="Report this job" class="govuk-button">Report the vacancy</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

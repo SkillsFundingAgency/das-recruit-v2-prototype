@@ -1,0 +1,390 @@
+{% if data.no_nav == "yes" %}{% extends "non-levy-layout.html" %}{% else %}{% extends "ma-layout.html"%}{% endif %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% if data.return == "home" %}
+    <a class="govuk-back-link" href="../home-one?vac_status=draft&no_nav=no">Return to home</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+<style media="screen">
+  .govuk-heading-s{
+    margin-bottom: .3125em;
+  }
+  .das-edit-link{margin-top:-10px}
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Complete the vacancy</h1>
+    <p class="govuk-body">This is how the vacancy will appear to candidates on <a href="https://www.gov.uk/apply-apprenticeship" rel="noopener" target="_blank">Find an apprenticeship</a></p>
+
+    <div class="govuk-info-summary" aria-labelledby="info-summary-title" role="alert" tabindex="-1" data-module="info-summary">
+      <p class="govuk-body">
+        You need to complete these sections:
+      </p>
+      <div class="govuk-info-summary__body">
+        <ul class="govuk-list">
+          {% if not data.VacancyDescription %}<li><a href="#">What will you do in your working day</a></li>
+          <li><a href="#">The training you will be getting</a></li>
+          <li><a href="#">What to expect at the end of your apprenticeship</a></li>
+          {% endif %}
+          {% if not data.Skills %}<li><a href="#">Desired skills and personal qualities</a></li>{%endif%}
+          {% if not data.Qualifications %}<li><a href="#">Qualifications</a></li>{%endif%}
+          {% if not data.ApplicationMethod %}<li><a href="#">Application process</a></li>{% endif %}
+        </ul>
+        <p class="govuk-body">
+          You may wish to complete these optional sections:
+        </p>
+        <div class="govuk-info-summary__body">
+          <ul class="govuk-list">
+            {% if not data.ThingsToConsider %}<li><a href="#">Things to consider</a></li>{% endif %}
+            {%if not data.EmployerWebsiteUrl %}<li><a href="#">Employer website</a></li>{%endif%}
+            {% if not data.HasEmployerContactDetails %}<li><a href="#">Contact details</a></li>{%endif%}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">
+      {% if data.title %}{{data.title}}{%else%}Business Apprenticeship{%endif%}
+      <span class="govuk-caption-l">{{data.orgName}}</span>
+    </h2>
+    <a href="#" class="govuk-link das-edit-link">Edit</a>
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+    <h3 class="govuk-heading-s">Brief overview</h3>
+    <p class="govuk-body">Brief overview needs to be engaging to make the candidate want to view the full vacancy</p>
+    <a href="#" class="govuk-link das-edit-link">Edit</a>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">Closing date</h3>
+    <p class="govuk-body">01 Jan 2019</p>
+    <a href="#" class="govuk-link das-edit-link">Edit</a>
+  </div>
+</div>
+
+<div class="govuk-grid-row" id="apprenticeshipSummary">
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l">Apprenticeship summary</h2>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <ul class="govuk-list">
+      <li>
+        <h3 class="govuk-heading-s">Working week</h3>
+        <p class="govuk-body">Monday to Friday 9am to 5pm</p>
+        <p class="govuk-body">Total hours per week: 40</p>
+        <p><a href="#" class="govuk-link das-edit-link">Edit</a></p>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s">Yearly wage</h3>
+        <p class="govuk-body">£3,494.40 - £6,514.56</p>
+        <p><a href="#" class="govuk-link das-edit-link">Edit</a></p>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s">Expected duration</h3>
+        <p class="govuk-body">1 Year</p>
+        <p><a href="#" class="govuk-link das-edit-link">Edit</a></p>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s">Possible start date</h3>
+        <p class="govuk-body">24 Dec 2018</p>
+        <p><a href="#" class="govuk-link das-edit-link">Edit</a></p>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s">Apprenticeship level</h3>
+        <p class="govuk-body">Advanced Level Apprenticeship</p>
+        <p><a href="#" class="govuk-link das-edit-link">Edit</a></p>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s">Positions</h3>
+        <p class="govuk-body">2 positions available</p>
+        <p><a href="#" class="govuk-link das-edit-link">Edit</a></p>
+      </li>
+    </ul>
+  </div>
+  <div class="govuk-grid-column-one-half" id="vacancyDescription">
+    {% if not data.VacancyDescription %}
+    <div class="panel das-preview-empty">
+      <h3 class="govuk-heading-s">What you will do in your working day</h3>
+      <h3 class="govuk-heading-s">The training you will be getting</h3>
+      <h3 class="govuk-heading-s">What to expect at the end of your apprenticeship</h3>
+      <p class="govuk-body"></p>
+      <!-- <a href="#" class="govuk-link">Edit</a> -->
+      <a class="das-button-secondary" data-automation="link-things-to-consider" href="vacancy-description">Add</a>
+    </div>
+
+    {% else %}
+    <ul class="govuk-list">
+      <li>
+        <h3 class="govuk-heading-s">What you will do in your working day</h3>
+        <p class="govuk-body">{{data.VacancyDescription}}</p>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s">The training you will be getting</h3>
+        <p class="govuk-body">{{data.TrainingDescription}}</p>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s">What to expect at the end of your apprenticeship</h3>
+        <p class="govuk-body">{{data.OutcomeDescription}}</p>
+      </li>
+    </ul>
+    <p><a href="vacancy-description" class="govuk-link das-edit-link">Edit</a></p>
+    {% endif %}
+  </div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l">Requirements and prospects</h2>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    {% if not data.Skills %}
+    <div class="das-preview-empty">
+      <h3 class="govuk-heading-s">Desired skills and personal qualities</h3>
+      <p class="govuk-body"></p>
+      <!-- <a href="#" class="govuk-link">Edit</a> -->
+      <a class="das-button-secondary" data-automation="link-things-to-consider" href="skills">Add</a>
+    </div>
+    {% else %}
+    <h3 class="govuk-heading-s">Desired skills and personal qualities</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      {% for skill in data.Skills %}
+      <li>{{skill}}</li>
+      {% endfor%}
+    </ul>
+    <!-- <p class="govuk-body">{{data.Skills}}</p> -->
+    <a class="govuk-link" data-automation="link-things-to-consider" href="qualifications">Edit</a>
+    {% endif %}
+    <div class="das-preview-empty">
+      <h3 class="govuk-heading-s">Qualifications</h3>
+      <p class="govuk-body"></p>
+      <!-- <a href="#" class="govuk-link">Edit</a> -->
+      <a class="das-button-secondary" data-automation="link-things-to-consider" href="qualifications">Add</a>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-half">
+    {% if not data.ThingsToConsider %}
+    <div class="das-preview-empty">
+      <h3 class="govuk-heading-s">Things to consider (optional)</h3>
+      <p class="govuk-body"></p>
+      <!-- <a href="#" class="govuk-link">Edit</a> -->
+      <a class="das-button-secondary" data-automation="link-things-to-consider" href="considerations">Add</a>
+    </div>
+    {% else %}
+    <h3 class="govuk-heading-s">Things to consider (optional)</h3>
+    <p class="govuk-body">{{data.ThingsToConsider}}</p>
+    {% endif %}
+  </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l">About the employer</h2>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <ul class="govuk-list">
+      <li>
+        <h3 class="govuk-heading-s">Description</h3>
+        <p class="govuk-body">{% if data.EmployerDescription %}{{data.EmployerDescription}}{% endif %}</p>
+        <p><a href="about-employer" class="govuk-link">Edit</a></p>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s">Employer</h3>
+        <p class="govuk-body">Organisation 1</p>
+        <p><a href="#" class="govuk-link">Edit</a></p>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s">Disability Confident (optional)</h3>
+        <img src="https://recruit.test-eas.apprenticeships.sfa.bis.gov.uk/img/disability-confident_545x172.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident">
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              About disability confident
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p>Disabled candidates are generally guaranteed an interview if you meet the minimum requirements for this vacancy. Contact the employer for full details.</p>
+
+            <p>Employers may need to limit the number of interviews offered to both disabled and non-disabled people if they receive high numbers of applications.</p>
+
+            <p>The disability confident scheme supports employers to make the most of the talents disabled people can bring to your workplace.provide your nationality, you’ll have to send copies of identity documents through the post.</p>
+          </div>
+        </details>
+        <p><a href="#" class="govuk-link">Edit</a></p>
+      </li>
+      <li>
+        {%if not data.EmployerWebsiteUrl %}
+        <div class="das-preview-empty">
+
+          <h3 class="govuk-heading-s">Website (optional)</h3>
+          <p class="govuk-body">{%if data.EmployerWebsiteUrl %}{{data.EmployerWebsiteUrl}} {%endif%}</p>
+          <!-- <a href="#" class="govuk-link">Edit</a> -->
+          <a class="das-button-secondary" data-automation="link-things-to-consider" href="about-employer">Add</a>
+        </div>
+        {% else %}
+
+        <h3 class="govuk-heading-s">Website (optional)</h3>
+        <p class="govuk-body">{%if data.EmployerWebsiteUrl %}{{data.EmployerWebsiteUrl}} {%endif%}</p>
+        <!-- <a href="#" class="govuk-link">Edit</a> -->
+        <a class="govuk-link" data-automation="link-things-to-consider" href="about-employer">Edit</a>
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+  {% if data.user == 'employer' %}
+  <div class="govuk-grid-column-one-third">
+    {% if not data.HasEmployerContactDetails %}
+    <div class="das-preview-empty">
+      <h3 class="govuk-heading-s">Contact details (optional)</h3>
+      <p class="govuk-body"></p>
+      <!-- <a href="#" class="govuk-link">Edit</a> -->
+      <a class="das-button-secondary" data-automation="link-things-to-consider" href="employer-contact-details">Add</a>
+    </div>
+    {% else %}
+    <h3 class="govuk-heading-s">Contact details (optional)</h3>
+    <p class="govuk-body">
+      {% if data.EmployerContactName %}{{data.EmployerContactName}}<br>{%endif%}
+      {% if data.EmployerContactEmail %}{{data.EmployerContactEmail}}<br>{%endif%}
+      {% if data.EmployerContactPhone %}{{data.EmployerContactPhone}}{%endif%}
+    </p>
+    <p><a href="employer-contact-details" class="govuk-link">Edit</a></p>
+    {% endif %}
+  </div>
+  {% endif %}
+
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <h3 class="govuk-heading-s">Location</h3>
+    <ul class="govuk-list">
+      <li>Cheylsmore House</li>
+      <li>5 Quinton Road</li>
+      <li>Coventry</li>
+      <li>West Midlands</li>
+      <li>CV1 2WT</li>
+    </ul>
+    <p><a href="#" class="govuk-link">Edit</a></p>
+  </div>
+  <div class="govuk-grid-column-one-half">
+    <img id="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=52.400997,-1.508122&amp;size=465x256&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=lCuCTEI-K25bn1YgDLOSpzopvFk=" alt="Location map">
+  </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l">Training provider</h2>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+    <div>
+      <h3 class="govuk-heading-s">Training provider</h3>
+      <p class="govuk-body">{{data.providerName}}</p>
+    </div>
+    <ul class="govuk-list">
+      <li>
+        <h3 class="govuk-heading-s">Apprenticeship Framework</h3>
+        <p class="govuk-body">Technical Theatre, Lighting, Sound and Stage: Lighting</p>
+        <p><a href="#" class="govuk-link">Edit</a></p>
+      </li>
+    </ul>
+  </div>
+    {% if data.user == 'provider' %}
+    <div class="govuk-grid-column-one-third">
+      {% if not data.HasEmployerContactDetails %}
+      <div class="das-preview-empty">
+        <h3 class="govuk-heading-s">Contact details (optional)</h3>
+        <p class="govuk-body"></p>
+        <!-- <a href="#" class="govuk-link">Edit</a> -->
+        <a class="das-button-secondary" data-automation="link-things-to-consider" href="employer-contact-details">Add</a>
+      </div>
+      {% else %}
+      <h3 class="govuk-heading-s">Contact details (optional)</h3>
+      <p class="govuk-body">
+        {% if data.EmployerContactName %}{{data.EmployerContactName}}<br>{%endif%}
+        {% if data.EmployerContactEmail %}{{data.EmployerContactEmail}}<br>{%endif%}
+        {% if data.EmployerContactPhone %}{{data.EmployerContactPhone}}{%endif%}
+      </p>
+      <p><a href="employer-contact-details" class="govuk-link">Edit</a></p>
+      {% endif %}
+    </div>
+    {% endif %}
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l">
+        {% if data.ApplicationMethod == 'ThroughFindAnApprenticeship' %}Application process{%else%}Employer's Application Instructions{%endif%}
+
+    </h2>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+    {% if not data.ApplicationMethod %}
+    <div class="das-preview-empty">
+      <h3 class="govuk-heading-s">How will the candidates apply for this vacancy?</h3>
+      <p class="govuk-body"></p>
+      <a class="das-button-secondary" data-automation="link-things-to-consider" href="application-process">Add</a>
+    </div>
+    {% else %}
+    {% if data.ApplicationMethod == 'ThroughFindAnApprenticeship'%}
+    <p class="govuk-body">
+
+              Candidates will apply through the <a href="https://www.gov.uk/apply-apprenticeship" rel="noopener" target="_blank">Find an apprenticeship service</a>
+          </p>
+          <p><a href="application-process" class="govuk-link">Edit</a></p>
+      {% else %}
+      <p class="govuk-body">This apprenticeship requires you to apply through the employer's website.</p>
+      <h3 class="govuk-heading-s">Apply now web address</h3>
+      <p class="govuk-body">
+        {% if data.ApplicationUrl %}{{data.ApplicationUrl}}
+        {% else %}
+        https://recruit.test-eas.apprenticeships.sfa.bis.gov.uk
+        {% endif %}
+      </p>
+      <p><a href="application-process" class="govuk-link">Edit</a></p>
+      <h3 class="govuk-heading-s">Explain the application process (optional)</h3>
+      <p class="govuk-body">
+        {% if data.ApplicationInstructions %}{{data.ApplicationInstructions}}
+        {% else %}
+        Apply online at https://superdrug.sunesis.uk.net Click 'Apply' and follow the application instructions providing as much information as possible.
+        {% endif %}
+        <p><a href="application-process" class="govuk-link">Edit</a></p>
+      {% endif %}
+      {%endif%}
+  </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form method="post">
+      <input type="submit" class="govuk-button" value="Submit vacancy">
+      <a href="../dashboard" class="govuk-body das-button--link">Return to dashboard</a>
+      <a href="delete" class="govuk-button das-delete-button">Delete</a>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

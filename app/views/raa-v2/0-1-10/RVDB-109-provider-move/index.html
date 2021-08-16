@@ -1,0 +1,47 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-109 Provider selection to move to part 1</h1>
+        <h3 class="govuk-heading-m"><a href="./provider/config">Configure session</a></h3>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <ul class="govuk-list">
+            <br>
+            <li class="govuk-list--item"><a href="create-vacancy-options/title?has_training_provider=&edit=no">Start posting journey (from title)</a></li>
+            <li class="govuk-list--item"><a href="create-vacancy-options/select-training-provider?has_training_provider=&edit=no">Select provider page (in journey)</a></li>
+            <li class="govuk-list--item"><a href="create-vacancy-options/confirm-training-provider?edit=no">Confirm provider page (in journey)</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview?has_training_provider=yes&UKPRN=1000293&edit=no">Vacancy preview - selected (edit part 1)</a></li>
+            <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview?has_training_provider=no&edit=no">Vacancy preview - not selected (edit part 1)</a></li>
+
+            <br>
+            <li class="govuk-list--item"><a href="create-vacancy-options/select-training-provider?has_training_provider=yes&edit=yes">Select provider page "yes" (edit from pt2)</a></li>
+            <li class="govuk-list--item"><a href="create-vacancy-options/select-training-provider?has_training_provider=no&edit=yes">Select provider page "no" (edit from pt2)</a></li>
+            <li class="govuk-list--item"><a href="create-vacancy-options/confirm-training-provider?edit=yes&UKPRN=1000293&providerName=WALLSALL COLLEGE">Confirm provider page (edit from pt2)</a></li>
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}

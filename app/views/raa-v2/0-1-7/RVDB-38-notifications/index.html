@@ -1,0 +1,46 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">RVDB-38 Email notifications</h1>
+        <!-- <h3 class="govuk-heading-m">Configure your Journey</h3> -->
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <!-- <h2 class="govuk-heading-m">Existing provider</h2> -->
+          <h3 class="govuk-heading-s">Designs</h3>
+            <ul class="govuk-list">
+              <li class="govuk-list--item"><a href="./dashboard?user=provider&force_notifcation_setup=yes&has_notifications=no">New provider dashboard  - with notification link</a></li>
+              <a class="govuk-link" href="./vacancies?user=employer&force_notifcation_setup=yes&has_notifications=no">Employer dashboard  - with notification link</a><br>
+              <!-- <a class="govuk-link" href="./dashboard-multiple?vacancies=multiple">Start with vacancies (never set up notificaitons)</a><br><br> -->
+              <span class="govuk-hint govuk-!-margin-bottom-0">New pages</span>
+              <a class="govuk-link" href="./notifications/notification-preferences-new">Notification preferences - set up</a><br>
+              <a class="govuk-link" href="./notifications/notification-preferences?has_notifications=yes&notifications=[rejected,closingSoon,newApplications]&emailFrequency=weekly">Notification preferences - update</a><br>
+              <a class="govuk-link" href="./notifications/notificaiton-confirmation?notifications_updated=no&notifications=[rejected,closingSoon,newApplications]&emailFrequency=weekly">Confirmation - Notifications successfully set up</a><br>
+              <a class="govuk-link" href="./notifications/notificaiton-confirmation?notifications_updated=yes&notifications=[rejected,closingSoon,newApplications]&emailFrequency=weekly">Confirmation - Notifications successfully updated (CHANGED)</a><br>
+              <a class="govuk-link" href="./notifications/unsubscribe">Confirm unsubscribe</a><br>
+              <a class="govuk-link" href="./notifications/notificaiton-confirmation-unsubscribe">Confirmation - Notifications successfully unsubscribed</a><br>
+              <a class="govuk-link" href="./notifications/receive-notifications">Do you want to receive emails</a><br><br>
+              <span class="govuk-hint govuk-!-margin-bottom-0">Updated existing pages</span>
+              <a class="govuk-link" href="./vacancy-preview/confirmation?has_notifications=no">Vacancy submitted confirmation - approved/rejected email NOT set</a><br>
+              <a class="govuk-link" href="./vacancy-preview/confirmation?has_notifications=yes">Vacancy submitted confirmation - approved/rejected email set</a><br><br>
+              <span class="govuk-hint govuk-!-margin-bottom-0">Emails</span>
+              <a class="govuk-link" href="./emails/email-templates">All emails</a><br>
+            </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+
+{% endblock %}

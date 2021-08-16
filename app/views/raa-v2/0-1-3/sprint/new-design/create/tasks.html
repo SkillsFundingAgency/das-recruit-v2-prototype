@@ -1,0 +1,167 @@
+{% extends "create-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+  .affix {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    display: none;
+    height: 80px;
+    background-color: #fff;
+    border-top: 4px solid #6f777b;
+}
+.affix .das-preview-bar{
+  max-width:980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding:10px;
+}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">Important information</h1>
+
+    <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> Vacancy details
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="title" aria-describedby="eligibility-completed">
+                Vacancy title
+              </a>
+              {% if "title" in query.completed%}
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {%endif%}
+
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+                Number of positions
+              </a>
+              {% if "positions" in query.completed%}
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {%endif%}
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="training-level" aria-describedby="read-declaration-completed">
+                Training standard or framework
+              </a>
+              {% if "training" in query.completed%}
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {%endif%}
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="dates" aria-describedby="read-declaration-completed">
+                Vacancy closing date
+              </a>
+              {% if "closing" in query.completed%}
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {%endif%}
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span>Apprenticeship summary
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="vacancy-description" aria-describedby="company-information-completed">
+                Apprenticeship description
+              </a>
+              {% if "ap_description" in query.completed%}
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {%endif%}
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="wages" aria-describedby="contact-details-completed">
+                Salary
+              </a>
+                {% if "wages" in query.completed%}
+              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                {%endif%}
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="#">
+                Duration and working hours
+              </a>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="#">
+                Provide financial evidence
+              </a>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="#" aria-describedby="medical-information-completed">
+                Give medical information
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="medical-information-completed">Completed</strong>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> Apply
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="#">
+                Submit and pay
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <div class="das-preview-bar">
+        <button class="govuk-button">Submit</button> <button class="govuk-button">Preview vacancy</button>
+      </div>
+  </div>
+</div>
+{% block help %}
+{% include "includes/service-help.html" %}
+{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var target = $('.das-preview-bar')
+  target.after('<div class="affix" id="affix"></div>')
+
+  var affix = $('.affix')
+  affix.append(target.clone(true))
+
+  // Show affix on scroll.
+  var element = document.getElementById('affix')
+  if (element !== null) {
+    var position = target.position()
+    window.addEventListener('scroll', function () {
+      var height = $(window).scrollTop()+$(window).height()
+      console.log(height + " : "+position.top)
+      if (height < position.top) {
+        console.log("Affix")
+        target.css('visibility', 'hidden')
+        affix.css('display', 'block')
+      } else {
+        affix.css('display', 'none')
+        target.css('visibility', 'visible')
+      }
+    })
+  }
+  });
+</script>
+
+{% endblock %}

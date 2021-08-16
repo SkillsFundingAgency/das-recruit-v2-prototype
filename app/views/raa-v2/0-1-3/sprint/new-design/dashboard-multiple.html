@@ -1,0 +1,110 @@
+
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+  Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Your vacancies</h1>
+        <a href="create-vacancy-options/create-vacancy?firstVacancy=no&returnDashaboard=dashboard{% if data.seup_notifications == 'no' %}&seup_notifications=yes{%endif%}" class="govuk-button">Create vacancy</a>
+      </div>
+      <div class="govuk-grid-column-one-third das-grid-column--right">
+        <p class="govuk-body"><a href="notifications/notification-preferences" class="govuk-link">Email notificaiton preferences</a></p>
+      </div>
+    </div>
+
+      <table class="govuk-table responsive-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+
+              <th class="govuk-table__header" scope="col">Vacancy title</th>
+              <th class="govuk-table__header" scope="col">Vacancy ref</th>
+              <th class="govuk-table__header" scope="col">Closing date</th>
+                <th class="govuk-table__header" scope="col">Status</th>
+              <th class="govuk-table__header"style="text-align:right" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row" role="row">
+
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy title</span>Apprentice Software Tester</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>Not available</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span></td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--draft">Draft</span></td>
+              <td class="govuk-table__cell numeric" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Manage</a></td>
+            </tr>
+            <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy title</span>Developer Apprentice</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>VAC1000000651</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>27 Jan 2019</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="das-tag das-tag--live">Live</span></td>
+              <td class="govuk-table__cell numeric" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Clone</a> &nbsp; <a href="details" class="govuk-link">Manage</a></td>
+            </tr>
+            <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell"><span class="table-heading" aria-hidden="true">Vacancy title</span>Apprentice Software Tester</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>VAC1000000652</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>03 Jan 2019</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--draft">Draft</span></td>
+              <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Manage</a></td>
+            </tr>
+            <tr class="govuk-table__row" role="row">
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy title</span>Business Analyst Apprentice</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>VAC1000000656</td>
+              <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>07 Jan 2019</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--submitted">Pending review</span></td>
+              <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Clone</a> &nbsp; <a href="details" class="govuk-link">Manage</a></td>
+            </tr>
+            <tr class="govuk-table__row" role="row">
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy title</span>Apprentice Front End Developer</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>VAC1000000657</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>29 Dec 2018</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--submitted">Pending review</span></td>
+                <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Clone</a> &nbsp;  <a href="details" class="govuk-link">Manage</a></td>
+              </tr>
+            <tr class="govuk-table__row" role="row">
+
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy title</span>Interaction Designer Apprentice</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>VAC1000000668</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>23 Dec 2018</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--closed">Closed</span></td>
+                <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Manage</a></td>
+              </tr>
+            <tr class="govuk-table__row" role="row">
+
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy title</span>Apprentice Software Developer</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>VAC1000000689</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>11 Dec 2018</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--referred">Rejected</span></td>
+                <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link"><a href="details" class="govuk-link">Manage</a></td>
+              </tr>
+              <tr class="govuk-table__row" role="row">
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy title</span>User Researcher Apprentice</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>VAC1000000693</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>12 Nov 2018</td>
+                <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--live">Live</span></td>
+                <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Clone</a> &nbsp; <a href="details" class="govuk-link">Manage</a></td>
+              </tr>
+              <tr class="govuk-table__row" role="row">
+                  <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy title</span>Software Developer Apprentice</td>
+                  <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>VAC1000000697</td>
+                  <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>31 Oct 2018</td>
+                  <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--referred">Rejected</span></td>
+                  <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Manage</a></td>
+                </tr>
+              <tr class="govuk-table__row" role="row">
+                  <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy title</span>Apprentice Technical Architect</td>
+                  <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>VAC1000000702</td>
+                  <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>07 Sep 2018</td>
+                  <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--closed">Closed</span></td>
+                  <td class="govuk-table__cell" role="gridcell" style="text-align:right"><a href="details" class="govuk-link">Manage</a></td>
+                </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">RVDB-148 Employer clone vacancy from manage page</h1>
+    <div class="version govuk-!-margin-bottom-8">
+      <ul class="govuk-list">
+        <li class="govuk-list--item"><a href="account/manage-vacancy?user=employer&alert=">Live vacnacy manage page</a></li>
+        <li class="govuk-list--item"><a href="account/manage-vacancy-closed?user=employer&alert=">Closed vacnacy manage page</a></li>
+        <li class="govuk-list--item"><a href="account/clone-dates?alert=">Clone vacancy</a></li>
+        <br>
+        <li class="govuk-list--item"><a href="account/clone-change-dates?alert=&edit=yes">Change dates of vacancy - edit</a></li>
+        <li class="govuk-list--item"><a href="account/clone-change-dates?alert=&edit=">Change dates of vacancy - dates in the past</a></li>
+        <li class="govuk-list--item"><a href="create/vacancy-preview-cloned">Vacancy cloned</a></li>
+          <br>
+        <h3 class="govuk-heading-m">Create vacancies update</h3>
+        <li class="govuk-list--item"><a href="vacancies?user=employer&alert=clone">Start From Vacancy list</a></li>
+        <li class="govuk-list--item"><a href="create/create-vacancy?alert=clone">create vacancy with alert</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

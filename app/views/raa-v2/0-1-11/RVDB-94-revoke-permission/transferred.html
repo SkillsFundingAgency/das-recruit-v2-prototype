@@ -1,0 +1,47 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Do you want to close live vacancies created by <span class="govuk-!-font-weight-bold">NOTTINGHAM COLLEGE</span>?
+    </h1>
+    <p class="govuk-body">8 vacancies created by the training provider will be transferred to your account</p>
+    <p class="govuk-body">After the transfer you will have 3 vacancies that are live or about to go live using <span class="govuk-!-font-weight-bold">Nottingham College</span> as the training provider</p>
+    <form method="post">
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            Are you sure you want to remove the vacancy?
+          </h1>
+        </legend> -->
+
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="delete_yes" name="ConfirmDeletion" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="delete_yes">
+              Yes, close all live or pending vacancies
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="delete_no" name="ConfirmDeletion" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="delete_no">
+              No, keep the vacancies live
+            </label>
+          </div>
+
+      </fieldset>
+    </div>
+    <a href="https://www.figma.com/proto/TaH5D8VHyIXefkBM2VNgUuSJ/Untitled?node-id=4%3A186&scaling=min-zoom" class="govuk-button">Continue</a>
+    </form>
+  </div>
+</div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,83 @@
+
+{% if data.no_nav == "yes" %}{% extends "non-levy-layout.html" %}{% else %}{% extends "ma-layout.html"%}{% endif %}
+
+{% block pageTitle %}
+  Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <a href="home-multiple?vac_status=draft" class="govuk-back-link">Return to home</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Vacancies</h1>
+    {% if data['user'] == "employer" %}
+    <a href="create/title?return=dashboard&user=employer&has_training=no&has_training_provider=no" class="govuk-button">Create vacancy</a>
+    {% endif %}
+  </div>
+  <div class="govuk-grid-column-one-third" style="text-align:right;">
+    {% if data['user'] == "provider" %}
+    <a href="create/employers-select?returnDashaboard=multiple&user=provider" class="govuk-button ">Create vacancy</a>
+    {% else %}
+      {% if data.has_notifications == "yes" %}
+        <a href="notifications/notification-preferences?user=employer">Manage your recruitment emails</a>
+      {% else %}
+        <a href="notifications/notification-preferences-new?user=employer">Manage your recruitment emails</a>
+      {% endif%}
+    {% endif %}
+  </div>
+</div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <table class="govuk-table responsive-table das-table--small">
+        <thead class="govuk-table__head">
+<tr class="govuk-table__row">
+  <th class="govuk-table__header" scope="col">Vacancy title</th>
+  <th class="govuk-table__header" scope="col">Vacancy ref</th>
+  <th class="govuk-table__header" scope="col">Applications</th>
+  <th class="govuk-table__header" scope="col">Closing date</th>
+  <th class="govuk-table__header" scope="col" colspan="2">Status</th>
+</tr>
+</thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row" role="row">
+  <td class="govuk-table__cell " role="gridcell"><span class="table-heading " aria-hidden="true">Vacancy title </span>{% if data.title %}{{data.title}}{% else %}Web Development Apprentice{% endif %}
+  </td>
+  <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref </span>VAC1000000516</td>
+  <td class="govuk-table__cell govuk-table__cell--numeric das-table-colomn-10" role="gridcell">
+    <span class="table-heading " aria-hidden="true">Applications</span>
+
+
+    -
+
+  </td>
+  <td class="govuk-table__cell  das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date </span>28 Aug 2019</td>
+  <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if data.vac_status == 'pending' %}submitted {%else%}{{vac_status | lower}}{%endif%}">{{data.vac_status  | capitalize }}</span></td>
+  <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+
+    {% if data.vac_status == "draft"%}
+      <a href="vacancy-preview/vacancy-preview" class="govuk-link">Edit and submit</a>
+    {% elseif data.vac_status == "rejected"%}
+      <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+    {% elseif data.vac_status == "closed"%}
+        <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
+    {% elseif data.vac_status == "pending"%}
+      <a href="account/manage-vacancy-no-apprentice" class="govuk-link">Manage</a>
+    {%else%}
+      <a href="account/manage-vacancy" class="govuk-link">Manage</a>
+    {%endif%}
+
+  </td>
+</tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

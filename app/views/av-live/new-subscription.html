@@ -1,0 +1,43 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">New subscription</h1>
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-!-font-weight-bold" for="subscription-title">Title</label>
+      <input class="govuk-input" id="subscription-title" name="subscription-title" type="text">
+    </div>
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              Vacancy type to return
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="vacancy-type-1" name="vacancy-type" type="radio" value="england">
+              <label class="govuk-label govuk-radios__label" for="vacancy-type-1">
+                Apprenticeships
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="vacancy-type-2" name="vacancy-type" type="radio" value="scotland">
+              <label class="govuk-label govuk-radios__label" for="vacancy-type-2">
+                Traineeships
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <a href="training" class="govuk-button">Continue</a>
+
+  </div>
+</div>
+
+{% endblock %}

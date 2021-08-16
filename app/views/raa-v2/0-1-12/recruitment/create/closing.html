@@ -1,0 +1,142 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+    <h1 class="govuk-heading-xl">Important dates</h1>
+
+    <form method="post">
+      <div class="dates">
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            <span id="selected-training" class="govuk-!-font-weight-bold">{% if data.training_level %}{{data.training_level}}{%else%}Aerospace engineer, Level: 6 (Standard){%endif%}</span> is closed to new starters from 1 August 2020.
+            <a class="govuk-link" href="training_level">Change apprenticeship training</a>
+
+          </strong>
+        </div>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="closing-hint" role="group">
+            <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+              What is the closing date for applications?
+            </label>
+            <span id="closing-hint" class="govuk-hint">
+              For example, 01 01 2019
+            </span>
+            <div class="govuk-date-input" id="closing">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="closing-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="closing-day" name="closing_day" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="closing-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="closing-month" name="closing_month" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="closing-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="closing-year" name="closing_year" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="start-hint" role="group">
+            <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+              When do you expect the apprentice to start?
+            </label>
+
+            <span id="start-hint" class="govuk-hint">
+
+
+              <br>Start date must be before 01 08 2020
+              <br>For example, 31 01 2019. This can be changed later.
+            </span>
+            <div class="govuk-date-input" id="dob">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="start-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-day" name="start_day" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="start-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-month" name="start_month" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="start-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-year" name="start_year" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="govuk-form-group">
+          <br>
+          <label class="govuk-label govuk-!-font-weight-bold" for="duration">
+            How long is the whole apprenticeship, including work and training?
+          </label>
+          <span class="govuk-hint">The apprenticeship must last at least 12 months</span>
+          <span class="govuk-hint">For {{data.training_level}},  Typical length is 24 months</span>
+          <input class="govuk-input govuk-input--width-4" id="duration" name="duration" type="text">
+          <select class="govuk-select" id="sort" name="sort">
+
+            <option value="published">Months</option>
+            <option value="published">Year(s)</option>
+          </select>
+        </div>
+
+      </div>
+
+
+      {% if data.edit != "yes"%}
+      <input type="submit" class="govuk-button" name="continueButton" value="Save and continue" />
+       
+      <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
+      {%else%}
+      <input type="submit" class="govuk-button" name="previewButton" value="Save and preview" />
+      <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+      {%endif%}
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+{{super()}}
+<!-- <script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#apprenticeship-type').select2();
+  });
+</script> -->
+
+{% endblock %}

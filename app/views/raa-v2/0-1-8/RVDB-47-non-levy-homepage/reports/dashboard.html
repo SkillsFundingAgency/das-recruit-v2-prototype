@@ -1,0 +1,64 @@
+{% extends "non-levy-layout.html" %}
+
+{% block pageTitle %}
+  Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<a href="../dashboard-multiple" class="govuk-back-link">Return to vacancy dashboard </a>
+{% endblock %}
+
+{% block content %}
+<style>
+  span.das-tag {
+    background: transparent;
+    border:3px solid #bfc1c3;
+    color: #0b0c0c;
+    font-weight:400;
+  }
+
+  span.das-tag--new{
+    border-color: #005ea5;
+    color:#000000;
+  }
+
+</style>
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Reports</h1>
+        <p class="govuk-body">You can create and download a report that gives you information on all the applications you received. You can decide what time period you would like for the report. </p>
+        <a href="period" class="govuk-button">Create new report</a>
+
+              <!-- <table class="govuk-table responsive-table">
+                  <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                      <th class="govuk-table__header" scope="col">Period</th>
+                      <th class="govuk-table__header" scope="col">Days covered</th>
+                      <th class="govuk-table__header"style="text-align:right" scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                    {% if query.state=='new'%}
+                    <tr class="govuk-table__row" role="row">
+                      <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>From 01 Jan 2019<br>to 07 Jan 2019</td>
+                      <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>7 days</td>
+                      <td class="govuk-table__cell numeric" role="gridcell" style="text-align:right"><a href="download" class="govuk-link">Download CSV</a></td>
+                    </tr>
+                    {% endif %}
+                    <tr class="govuk-table__row" role="row">
+
+                      <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Vacancy ref</span>From 01 Jan 2019<br>to 07 Jan 2019</td>
+                      <td class="govuk-table__cell" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>7 days</td>
+                      <td class="govuk-table__cell numeric" role="gridcell" style="text-align:right"><a href="download" class="govuk-link">Download CSV</a></td>
+                    </tr>
+                  </tbody>
+                </table> -->
+      </div>
+      <!-- <div class="govuk-grid-column-one-third das-grid-column--right">
+
+      </div> -->
+    </div>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</h1>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <form method="post">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+                <label class="govuk-label govuk-!-font-weight-bold sfa-govuk-!-margin-bottom-6" id="ApplicationMethodHeading">
+                    How will candidates apply for this vacancy?
+                    <span class="govuk-hint">All vacancies will be published on Find an apprenticeship</span>
+                </label>
+                <span class="govuk-error-message field-validation-valid" id="error-message-ApplicationMethod" data-valmsg-for="ApplicationMethod" data-valmsg-replace="true"></span>
+                <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                    <div class="govuk-radios__item">
+                        <input value="ThroughFindAnApprenticeship" class="govuk-radios__input" id="application-method-faa" type="radio" name="ApplicationMethod" {% if data.ApplicationMethod == 'ThroughFindAnApprenticeship' %} checked="checked"{%endif%}>
+                        <label for="application-method-faa" class="govuk-label govuk-radios__label">
+                            Through the <a href="https://www.gov.uk/apply-apprenticeship" class="govuk-body govuk-link" rel="noopener" target="_blank">Find an apprenticeship service</a>
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item" data-target="application-method-external-panel">
+                          <input value="ThroughExternalApplicationSite" class="govuk-radios__input" id="application-method-external" type="radio" name="ApplicationMethod" aria-controls="application-method-external-panel" aria-expanded="false" {% if data.ApplicationMethod == 'ThroughExternalApplicationSite' %} checked="checked"{%endif%}>
+                        <label for="application-method-external" class="govuk-label govuk-radios__label">
+                            Through an external website
+                        </label>
+                    </div>
+                    <div id="application-method-external-panel" class="govuk-radios__conditional {% if data.ApplicationMethod != 'ThroughExternalApplicationSite' %} govuk-radios__conditional--hidden {%endif%}">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-!-font-weight-bold" for="ApplicationUrl">Enter the web address candidates should use to apply for this vacancy</label>
+                            <span class="govuk-error-message field-validation-valid" id="error-message-ApplicationUrl" data-valmsg-for="ApplicationUrl" data-valmsg-replace="true"></span>
+                            <input class="govuk-input govuk-!-width-one-half" maxlength="200" type="text" id="ApplicationUrl" name="ApplicationUrl" value="{% if data.ApplicationUrl %}{{data.ApplicationUrl}}{%endif%}">
+                        </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-!-font-weight-bold" for="ApplicationInstructions">Explain the application process (optional)</label>
+                            <span class="govuk-error-message field-validation-valid" id="error-message-ApplicationInstructions" data-valmsg-for="ApplicationInstructions" data-valmsg-replace="true"></span>
+                            <textarea class="govuk-textarea character-count" rows="5" data-val-length-max="500" id="ApplicationInstructions" name="ApplicationInstructions"></textarea>
+                            <span class="govuk-body maxchar-count">500</span>
+                            <span class="govuk-body maxchar-text"> characters remaining</span>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+              <div class="govuk-form-group">
+                <input type="submit" class="govuk-button" value="Save and continue"/>
+                <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+              </div>
+        </form>
+
+      </div>
+  </div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

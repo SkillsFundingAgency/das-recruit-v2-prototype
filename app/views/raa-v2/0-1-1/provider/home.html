@@ -1,0 +1,58 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+      PLUMPTON COLLEGE
+      <span class="govuk-caption-m">UKPRN: 10005124</span>
+    </h1>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <div class="box">
+                <h2 class="govuk-heading-m">
+                    <a href="/10005124/apprentices/Cohorts">Your cohorts</a>
+                </h2>
+                <p>Review, edit, approve and add apprentices to new cohorts.</p>
+            </div>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <div class="box">
+                <h2 class="govuk-heading-m">
+                    <a href="/10005124/apprentices/manage/all">Manage your apprentices</a>
+                </h2>
+                <p>View and update approved apprentice records.</p>
+            </div>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <div class="box">
+                <h2 class="govuk-heading-m">
+                    <a href="dashboard-multiple">Recruitment</a>
+                </h2>
+                <p>Recruit an apprentice by creating a vacancy. This vacancy will be advertised on Find an apprenticeship..</p>
+            </div>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <div class="box">
+                <h2 class="govuk-heading-m">
+                    <a href="/10005124/agreements">Organisations and agreements</a>
+                </h2>
+                <p>Find and view organisations and their agreement IDs.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

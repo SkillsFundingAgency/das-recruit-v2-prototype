@@ -1,0 +1,150 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+<!-- {% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %} -->
+{% block content %}
+
+<style media="screen">
+  .analytics--block{
+    margin-bottom:10px;
+  }
+  .analytics--header{
+    background-color:#CAE7E5;
+    padding:6px 10px 5px;
+    margin-bottom: 10px;
+    /* font-size: 16px !important;
+font-size: 1rem !important;
+line-height: 1.25 !important; */
+
+  }
+  .analytics--numeric{
+    font-size: 50px;
+    font-weight: 700;
+  }
+  .analytics--label{font-size:28px;font-weight: 400;}
+  .govuk-icon-small{
+    font-size: 40px;
+    color:#6f777b;
+    margin-right:10px;
+  }
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    {% if query.alert == 'yes'%}
+    <div class="govuk-info-summary ">
+            <p class="govuk-body govuk-!-margin-bottom-0">Rolo Tomasi's application has been marked as {%if query.state %}{{query.state}}{%else%}unsuccesful{% endif %}</p>
+    </div>
+    {% endif %}
+
+    <h1 class="govuk-heading-xl">Manage vacancy</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half ">
+        <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-6">Status</h3>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">Closed</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-6">Vacancy title</h3>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">Apprentice Bricklayer</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-6">Vacancy ref</h3>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">VAC1000000997</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-6">Closing date</h3>
+      </div>
+      <div class="govuk-grid-column-one-half ">
+        <span class="govuk-body">01 Jan 2019
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-6">Possible start date</h3>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">01 Feb 2019</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <ul class="govuk-list das-action-links">
+          <li><a class="govuk-link button-link" href="preview-edit">Edit vacancy</a></li>
+          <li><a class="govuk-link button-link" href="close">Close vacancy</a></li>
+          <li><a class="govuk-link button-link" target="_blank" href="preview">View vacancy</a></li>
+          {% if query.route == 'clone' %}<li><a class="govuk-linkbutton-link" href="../vacancy-preview/vacancy-preview-cloned">Clone vacancy</a></li>{%endif%}
+
+        </ul>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<div class="govuk-grid-row govuk-!-margin-top-6">
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">Manage applications</h2>
+      <table class="govuk-table responsive-table">
+        <thead class="govuk-table__header">
+          <tr class="govuk-table__row" role="row">
+            <th class="govuk-table__cell" role="gridcell" class="bold">Name</th>
+            <th  class="govuk-table__cell" role="gridcell"class="bold">Application ID</th>
+            <th class="govuk-table__cell" role="gridcell" class="bold">Status</th>
+            <th class="govuk-table__cell" role="gridcell" class="bold">Date applied</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="govuk-table__cell" role="gridcell"  data-label="Name"><a href="application-failed">Faizal Dawood</a></td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Application ID">C5662EA</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Status">Successful</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Date applied">18 Oct 2018</td>
+          </tr>
+          <tr>
+            <td class="govuk-table__cell" role="gridcell"  data-label="Name"><a href="application-succesful">Bill Shoggins</a></td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Application ID">C3432TR</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Status">Unsuccessful</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Date applied">18 Oct 2018</td>
+          </tr>
+          <tr>
+            <td class="govuk-table__cell" role="gridcell"  data-label="Name"><a href="application-new">Rolo Tomasi</a></td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Application ID">C8824ED</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Status">New</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Date applied">18 Oct 2018</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <div class="govuk-!-margin-top-6">
+            <a class="govuk-button" href="../vacancies">Return to dashboard</a>
+        </div>
+    </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

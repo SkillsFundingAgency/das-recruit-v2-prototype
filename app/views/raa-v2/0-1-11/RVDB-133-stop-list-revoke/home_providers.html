@@ -1,0 +1,236 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Vacancies
+{% endblock %}
+{% block beforeContent %}
+{% if data['user'] == "provider" %}
+<a href="./dashboard" class="govuk-back-link">Return to recruitment dashboard</a>
+{% endif %}
+<style>
+  @media(min-width:641px) {
+      .boxes {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0 -15px
+      }
+  }
+
+  .box {
+      box-sizing: border-box;
+      border-bottom: 1px solid #bfc1c3
+  }
+
+  @media(min-width:641px) {
+      .box {
+          margin: 0 15px;
+          width: calc(50% - 30px)
+      }
+  }
+
+</style>
+{% endblock %}
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+<div class="grid-row">
+    <div class="column-full home-page">
+        <h1 class="heading-xlarge">CARESKILLS LIMITED</h1>
+        <p class="grey-text">UKPRN: 10001191</p>
+        <hr class="hr-double">
+    </div>
+</div>
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="boxes">
+            <div class="box">
+                <h2 class="heading-medium">
+                    <a href="/10001191/apprentices/cohorts/create">Create a cohort</a>
+                </h2>
+                <p>Create new cohorts on behalf of an employer.</p>
+            </div>
+            <div class="box">
+                <h2 class="heading-medium">
+                    <a href="/10001191/apprentices/Cohorts">Your cohorts</a>
+                </h2>
+                <p>Review, edit, approve and add apprentices to new cohorts.</p>
+            </div>
+
+            <div class="box">
+                <h2 class="heading-medium">
+                    <a href="/10001191/apprentices/manage/all">Manage your apprentices</a>
+                </h2>
+                <p>View and update approved apprentice records.</p>
+            </div>
+            <div class="box">
+                <h2 class="heading-medium">
+                    <a href="access-to-permissions">Recruit apprentices</a>
+                </h2>
+                <p>Create a vacancy to recruit an apprentice and manage applications.</p>
+            </div>
+
+            <div class="box">
+                <h2 class="heading-medium">
+                    <a href="/10001191/agreements">Organisations and agreements</a>
+                </h2>
+                <p>Find and view organisations and their agreement IDs.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-top-4">
+    <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m">Instructions for the apprentices' employer</h3>
+        <p>Employers need to <a href="https://www.gov.uk/guidance/manage-apprenticeship-funds" target="_blank" title="Register to manage their apprenticeship funds">register to manage their apprenticeship funds</a>. </p>
+        <p>Once they've registered they need to:</p>
+        <ol class="govuk-list govuk-list--number">
+            <li>Add the PAYE schemes that the apprentices will be paid through.</li>
+            <li>Added the employer organisations that will contract with the training provider.</li>
+            <li>Sign agreements for their organisations so that they can spend levy funds.</li>
+            <li>Add apprentices to their account so they can authorise payments to you. </li>
+        </ol>
+    </div>
+</div>
+
+
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    document.getElementById('filter-submit').style.display = "none";
+
+    function filter_list() {
+      var selector = document.getElementById('filter');
+      var value = selector[selector.selectedIndex].value;
+      var search
+      if (document.getElementById('search').value != "") {
+        search = document.getElementById("search").value;
+      }
+      console.log("Sesarch = " + document.getElementById('search').value)
+      if (search) {
+        document.location.href = "vacancies?filter=" + value + "&page=1&search=" + search
+      } else {
+        document.location.href = "vacancies?filter=" + value + "&page=1&search= "
+      }
+
+
+    }
+
+    document.getElementById('filter').onchange = function() {
+      filter_list()
+    };
+    var total = $('#totalVacancies').text()
+
+    $('.displayTotal').text(total)
+    console.log('total = ' + total)
+    if (total == 0) {
+      $('.govuk-table__head').hide();
+    }
+  })
+
+
+  function getUsers() {
+
+    var titles = document.getElementsByClassName("data-name");
+    var ids = document.getElementsByClassName("data-id");
+    var orgs = document.getElementsByClassName("data-orgs");
+    var providers = document.getElementsByClassName("data-providers");
+    var data = [];
+    for (var i = 0; i < titles.length; i++) {
+      // var user=names[i].textContent+" - "+email[i].textContent;
+      var name = titles[i].textContent
+      if (!data.includes(name)) {
+        data.push(name);
+      }
+
+    }
+    for (var i = 0; i < ids.length; i++) {
+      // var user=names[i].textContent+" - "+email[i].textContent;
+      var name = ids[i].textContent
+      data.push(name);
+    }
+    for (var i = 0; i < orgs.length; i++) {
+      // var user=names[i].textContent+" - "+email[i].textContent;
+      var org = orgs[i].textContent;
+      if (data.indexOf(org) == -1) {
+        // no duplicate
+        data.push(org);
+      }
+
+    }
+    // for (var i=0; i<providers.length; i++) {
+    //   // var user=names[i].textContent+" - "+email[i].textContent;
+    //   var provider="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>Provider: </span>" + providers[i].textContent;
+    //   data.push(provider);
+    // }
+    return data;
+  }
+
+  function suggest(data, populateResults) {
+    console.log("suggest is triggered")
+    // const results = "Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677".split(",");
+    // const results = Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677
+    // const results = JSON.stringify(Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677)
+    const results = getUsers();
+    const filteredResults = results.filter(
+      result => result.toUpperCase().indexOf(data.trim().toUpperCase()) !== -1
+    )
+    // console.log(filteredResults)
+    populateResults(filteredResults);
+  }
+
+  // Trigger search click.  Taken out the clich for the prototype.
+  function fireSearch() {
+    setTimeout(function() {
+      $("#searchSubmit").trigger("click")
+    }, 200);
+    // console.log($('.autocomplete__option--focused').html ())
+  }
+  // function fireSearch(){
+  // 	// $("#searchClientsSubmit").trigger("click")
+  //   console.log("pressed")
+  // }
+  var myInput = document.querySelector('#search');
+  var myInputID = myInput.id;
+  var element = document.createElement('div');
+  var value = ""
+
+  if (document.getElementById('search-default-value').innerHTML != "") {
+    value = document.getElementById("search-default-value").innerHTML;
+  }
+
+  element.className = "autocomplete__parent_wrapper";
+  myInput.parentNode.insertBefore(element, myInput)
+  // console.log("value"+document.getElementById("search-default-value").innerHTML)
+  accessibleAutocomplete({
+    // other options
+    element: element,
+    id: myInputID,
+    name: myInput.name,
+    source: suggest,
+    defaultValue: value,
+    confirmOnBlur: false,
+    autoselect: true,
+    minLength: 3,
+    onConfirm: fireSearch,
+    displayMenu: 'overlay'
+  });
+  myInput.style.display = 'none';
+  myInput.id = myInputID + '-old';
+  myInput.name = '';
+</script>
+{% endblock %}

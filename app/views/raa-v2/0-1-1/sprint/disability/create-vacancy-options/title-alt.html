@@ -1,0 +1,114 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">Vacancy details</h1>
+    <div class="govuk-info-summary">
+      <p class="govuk-body">Apprentice candidates will see your vacancy in a search along with vacancies from other
+        employers. This is your opportunity to make your vacancy attract the best candidates</p>
+    </div>
+    <form method="post">
+      <div class="govuk-character-count" data-module="character-count" data-maxlength="100">
+        <div class="govuk-form-group govuk-!-margin-bottom-8">
+          <label class="govuk-label govuk-!-font-weight-bold" for="title">
+            What do you want to call this vacancy?
+          </label>
+          <span class="govuk-hint">For example, Software developer apprenticeship. The vacancy title must include the
+            word apprentice or apprenticeship.</span>
+          <input class="govuk-input govuk-!-width-three-quarters js-character-count" id="title" name="title" type="text">
+        </div>
+      </div>
+
+
+
+      <div class="govuk-form-group govuk-!-margin-bottom-8">
+        <label class="govuk-label govuk-!-font-weight-bold" for="numberOfPositions">
+          How many positions do you have for this apprenticeship?
+        </label>
+        <input class="govuk-input govuk-input--width-4" id="numberOfPositions" name="numberOfPositions" type="text">
+      </div>
+        <!-- ADDED Disability -->
+      <div class="govuk-form-group govuk-!-margin-bottom-8">
+        <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
+          <legend class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+            Disability Confident Scheme (optional)?
+          </legend>
+          <span class="govuk-hint">Only check this if you are signed up for the <a href="https://www.gov.uk/government/collections/disability-confident-campaign" rel="noopener" target="_blank" title="Disability Confident employer scheme and guidance (opens in a new window)">Disability
+              Confident Scheme (opens in new tab)</a>.</span>
+          <div class="govuk-checkboxes govuk-!-margin-bottom-4" data-module="checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="is-disability-confident" name="is-disability-confident" type="checkbox" value="on" aria-describedby="is-disability-confident" aria-controls="conditional-disability-conditional" aria-expanded="false">
+              <label class="govuk-label govuk-checkboxes__label" for="is-disability-confident">
+                This vacancy is disability confident
+              </label>
+            </div>
+          </div>
+
+          <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-disability-conditional">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h3 class="govuk-fieldset__heading">Which disability confident level is this position?</h3>
+              </legend>
+            </fieldset>
+            <div class="govuk-form-group">
+              <div class="govuk-radios" data-module="radios">
+                <span class="govuk-hint">You must have signed up for the level you are selecting. If you are unsure please check on your Disability Confident certificate</span>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="selected-organisation-id" name="disability_confident_level" type="radio" value="level1" data-search-value="Organisation">
+                  <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                    Level 1 - Commited (Standard)
+                    <!-- <span class="govuk-hint"><img src="https://recruit.test-eas.apprenticeships.sfa.bis.gov.uk/img/disability-confident_545x172.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident"></span> -->
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="selected-organisation-id" name="disability_confident_level" type="radio" value="level2" data-search-value="Organisation">
+                  <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                    Level 2 - Employer
+                    <!-- <span class="govuk-hint"><img src="https://recruit.test-eas.apprenticeships.sfa.bis.gov.uk/img/disability-confident_545x172.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident"></span> -->
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="selected-organisation-id" name="disability_confident_level" type="radio" value="level3" data-search-value="Organisation">
+                  <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                    Level 3 - Leader
+                    <!-- <span class="govuk-hint"><img src="https://recruit.test-eas.apprenticeships.sfa.bis.gov.uk/img/disability-confident_545x172.png" class="das-disability-confident-logo" alt="A logo confirming that the employer is registered as disability confident"></span> -->
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group">
+        <a href="training-level" class="govuk-button">Save and continue</a>
+        <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% block help %}
+{% include "includes/service-help.html" %}
+{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#apprenticeship-type').select2();
+  });
+</script>
+
+{% endblock %}

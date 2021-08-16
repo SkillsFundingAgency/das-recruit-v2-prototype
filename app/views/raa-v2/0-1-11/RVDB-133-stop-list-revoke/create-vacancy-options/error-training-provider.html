@@ -1,0 +1,33 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span> -->
+    <h1 class="govuk-heading-xl">
+      {{data.providerName}} can no longer be used as a training provider
+    </h1>
+    <p class="govuk-body">You will need to find another training provider for <span class="govuk-!-font-weight-bold">{{data.training_level}}</span>. If you need help in finding a new training provider you can <a class="govuk-link" href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/Apprenticeship/SearchForFrameworkProviders?frameworkId=539-2-14">Get help finding a training provider</a>
+</p>
+
+
+    <form method="post">
+        <div class="govuk-form-group">
+            <a href="select-training-provider" class="govuk-button" name="previewdButton" value="Save and continue">Select a different provider</a>
+        </div>
+      </form>
+  </div>
+</div>
+{% block help %}
+{% include "includes/service-help.html" %}
+{% endblock %}
+{% endblock %}

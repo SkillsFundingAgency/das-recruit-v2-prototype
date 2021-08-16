@@ -1,0 +1,93 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+
+</style>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">
+          Application marked as {{data.state}}
+        </h1>
+      </div>
+        <p>Rolo Tomoasi has been notified to say that they have {%if query.state == "successful"%}been accepted for this apprenticeship.{%else%}not been accepted for this apprenticeship.{%endif%}</p>
+          {%if query.state == "unsuccessful"%}
+      <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      View your message to the applicant
+    </span>
+  </summary>
+
+  <div class="govuk-details__text">
+      <p class="govuk-body">You currently dont have high enough grades in English and Maths. These are a must for this apprenticeship.</p>
+  </div>
+  {%endif%}
+</details>
+        <form  method="post">
+
+            <div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset" aria-describedby="confirm-funding-hint">
+
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-margin-top-4">
+
+    Do you want send Rolo Tomasi's apprentice details to your account?
+
+  </legend>
+
+
+  <span id="confirm-funding-hint" class="govuk-hint">
+    You’ll then be able to apply for funding and start their apprenticeship.
+  </span>
+
+
+  <div class="govuk-radios">
+
+
+
+
+
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="confirm-funding-1" name="addApprentice" type="radio" value="yes">
+      <label class="govuk-label govuk-radios__label" for="confirm-funding-1">
+         Yes, send applicant details to my account
+      </label>
+    </div>
+
+
+
+
+
+
+
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="confirm-funding-2" name="addApprentice" type="radio" value="no">
+      <label class="govuk-label govuk-radios__label" for="confirm-funding-2">
+        No, I will do this later
+      </label>
+    </div>
+
+
+
+  </div>
+  </fieldset>
+
+
+</div>
+            <div class="govuk-form-group">
+                <input type="submit" value="Continue" class="govuk-button">
+            </div>
+          </form>
+    </div>
+</div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

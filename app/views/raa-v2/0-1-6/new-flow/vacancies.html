@@ -1,0 +1,490 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Vacancies
+{% endblock %}
+{% block beforeContent %}
+<style>
+  span.das-tag {
+    background: transparent;
+    border:3px solid #bfc1c3;
+    color: #0b0c0c;
+    font-weight:400;
+  }
+  .exp_elem_list--divider{height:1px; margin:10px 0 20px !important; background-color:#bfc1c3;}
+  span.das-tag--rejected{
+    border-color: #B10E1E;
+    color:#000000;
+  }
+  span.das-tag--closed{
+    border-color: #0b0c0c;
+
+  }
+  span.das-tag--live {
+      border-color: #006435;
+  }
+  span.das-tag--submitted {
+      border-color: #F47738;
+  }
+
+  .accordion-controls{display:none !important;}
+  .das-table__header--sort{font-weight: normal}
+  .annotate{
+  	font-style: italic;
+  	color: #366ED4;
+  }
+
+  .listbox-area {
+  }
+
+  .left-area, .right-area {
+  	box-sizing: border-box;
+  	display: inline-block;
+  	font-size: 18px;
+  	vertical-align: top;
+  	width: 50%;
+  }
+
+  .left-area {
+  	padding-right: 10px;
+  }
+
+  .right-area {
+  	padding-left: 10px;
+  }
+
+  [role="listbox"] {
+  	min-height: 18em;
+  	padding: 0px;
+  	background: white;
+  	border: 1px solid #aaa;
+  }
+
+  [role="option"] {
+  	display: block;
+  	padding: 0 1em 0 1.5em;
+  	position: relative;
+  	line-height: 2.25em;
+  }
+  [role="option"].focused {
+  	background: #005ea5;
+    color: #fff;
+  }
+
+  [role="option"][aria-selected="true"]::before {
+  	content: '✓';
+  	position: absolute;
+  	left: 0.5em;
+  }
+
+  button {
+  	font-size: 16px;
+  }
+
+  button[aria-disabled="true"] {
+  	opacity: 0.5;
+  }
+
+  .move-right-btn {
+  	padding-right: 20px;
+  	position: relative;
+  }
+
+  .move-right-btn::after {
+  	content: ' ';
+  	height: 10px;
+  	width: 12px;
+  	background-image: url('../imgs/Arrows-Right-icon.png');
+  	background-position: center right;
+  	position: absolute;
+  	right: 2px;
+  	top: 6px;
+  }
+
+  .move-left-btn {
+  	padding-left: 20px;
+  	position: relative;
+  }
+
+  .move-left-btn::after {
+  	content: ' ';
+  	height: 10px;
+  	width: 12px;
+  	background-image: url('../imgs/Arrows-Left-icon.png');
+  	background-position: center left;
+  	position: absolute;
+  	left: 2px;
+  	top: 6px;
+  }
+
+  #ss_elem_list {
+  	max-height: 18em;
+  	overflow-y: auto;
+  	position: relative;
+  }
+#exp_wrapper{
+  width:100%;
+}
+  #exp_button {
+    -webkit-appearance: none;
+    border-radius: 0;
+    font-family: "nta", Arial, sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 18px;
+    line-height: 1.25;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 40px 0 10px;
+    display: block;
+    height: 50px;
+    border-color: #6f777b;
+    border-width: 2px !important;
+    line-height: 48px !important;
+    position: relative;
+    width:100%;
+    text-align:left;
+  }
+    #exp_button:hover{
+
+    }
+  #exp_button::after {
+  	width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #2b8cc4;
+    content: " ";
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    z-index:100;
+  }
+  #exp_button:focus, #exp_elem_list:focus{
+    outline: 3px solid #ffbf47;
+    outline-offset: 0;
+}
+
+  #exp_button[aria-expanded="true"]::after {
+  	width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  	border-top: 0;
+    border-bottom: 6px solid #2b8cc4;
+    content: " ";
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    z-index:100;
+  }
+
+  #exp_elem_list {
+  	border-top: 0;
+  	max-height: 10em;
+  	overflow-y: auto;
+  	position: absolute;
+  	margin: 0;
+    width:298px;
+
+  }
+
+  .hidden {
+  	display: none;
+  }
+
+  .toolbar {
+  	font-size: 0;
+  }
+
+  .toolbar-item {
+  	border: 1px solid #aaa;
+  	background: #ccc;
+  }
+
+  .toolbar-item[aria-disabled="false"]:focus {
+  	background-color: #eee;
+  }
+
+  .offscreen {
+  	clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+  	font-size: 18px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-back-link" href="dashboard-new">Back to recruitment dashboard</a>
+        </li>
+
+      </ol>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Vacancies</h1>
+    <!-- <a href="create-vacancy-options/create-vacancy" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold">Create a new vacancy</a> -->
+  </div>
+  <div class="govuk-grid-column-one-third" style="text-align:right;">
+    {% if data['user'] == "employer" %}
+    <a href="create-vacancy-options/create-vacancy?returnDashaboard=multiple&user=employer" class="govuk-button">Create vacancy</a>
+    {% else %}
+    <a href="create-vacancy-options/employers-select?returnDashaboard=multiple&user=employer" class="govuk-button">Create vacancy</a>
+    {% endif %}
+  </div>
+</div>
+<div class="govuk-grid-row govuk-!-margin-bottom-2">
+
+  <div class="govuk-grid-column-one-third">
+    <!-- accordion -->
+
+    <div class="listbox-area">
+          <span id="exp_elem" class="govuk-label">Filter vacancies by:</span>
+          <div id="exp_wrapper">
+            <button aria-haspopup="listbox" aria-labelledby="exp_elem exp_button" id="exp_button">
+              {% if data.status == 'any' or not data.status %}All vacancies
+              {% elseif data.status == 'live' %}Live vacancies
+              {% elseif data.status == 'draft' %}Draft vacancies
+              {% elseif data.status == 'new' %}with applications
+              {% elseif data.status == 'rejected' %}Rejected vacancies
+              {% elseif data.status == 'pending review' %}Pending review vacancies
+              {% elseif data.status == 'closed' %}Closed vacancies
+              {% elseif data.status == 'closing' %}Closing soon (all)
+              {% elseif data.status == 'closing-no-applications' %}Closing soon (no applications)
+              {% endif %}</button>
+            <ul id="exp_elem_list" tabindex="-1" role="listbox" aria-labelledby="exp_elem" class="hidden">
+              <li id="exp_elem_Al" role="option" data-filter="any">All vacancies</li>
+              <li id="exp_elem_Np" role="option" data-filter="live">live vacancies</li>
+              <li id="exp_elem_Cm" role="option" data-filter="new">with new applications</li>
+              <li id="exp_elem_Pu" role="option" data-filter="rejected">rejected vacancies</li>
+              <li id="exp_elem_Cf" role="option" data-filter="closing-no-applications">closing soon (no applications)</li>
+              <li id="exp_elem_Am" role="option" data-filter="draft">draft Vacancies</li>
+              <li id="exp_elem_Pv" role="option" data-filter="pending review">pending review</li>
+              <li id="exp_elem_Cm" role="option" data-filter="new">with applications</li>
+              <li id="exp_elem_Cf" role="option" data-filter="closing">closing soon (all)</li>
+              <li id="exp_elem_Cv" role="option" data-filter="closed">closed vacancies</li>
+            </ul>
+          </div>
+      </div>
+
+    <!-- accordion -->
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+    <form action="manage" method="get" >
+
+      <div class="row-group">
+
+        <div class="search-table column-two-thirds govuk-!-margin-bottom-4">
+          <fieldset class="govuk-fieldset">
+
+            <div class="form-group search-field search-field-darker">
+              <input type="hidden" name="clientsFilter" value="new">
+
+              <div class="search-input search-input-with-button">
+                <label class="govuk-label" for="searchClients">
+                  <!-- Client reference -->
+                  <br>
+                  <span class="govuk-visually-hidden">Search for a team member by name, role or email</span>
+                </label>
+
+                <div class="autocomplete__parent_wrapper">
+
+                  <div class="autocomplete__wrapper">
+
+                    <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px 0px 0px 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                      <span>No search results.</span>
+                      <span>,,</span>
+                    </div>
+
+                    <p id="search-default-value" class="hidden">{% if searching %}{{searchtearm}}{% endif%}</p>
+                    <input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="searchClients" placeholder="Search for vacancy by title or vacancy ID" role="combobox" type="text" value="{%if data.search %}{{data.search}}{%endif%}">
+                    <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
+                  </div>
+
+                </div>
+
+                <input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="{%if data.search %}{{data.search}}{%endif%}" style="display: none;">
+              </div>
+
+              <div class="search-submit">
+                <button class="button" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+
+              </div>
+
+            </div>
+
+          </fieldset>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      {% if data.status == 'any' or not data.status %}<h3 class="govuk-heading-m">{% if data.search%}Searching{%else%}Showing{%endif%} all vacancies {% if data.search %}with "{{data.search}}"<a href="vacancies?status=any" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all vacancies</a>{%endif%} </h3>
+      {% elseif data.status == 'live' %}<h3 class="govuk-heading-m">Showing 11 "Live" vacancies &nbsp; <a href="vacancies?status=any" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all vacancies</a></h3>
+      {% elseif data.status == 'new' %}<h3 class="govuk-heading-m">Showing 2 vacancies "with new applications" &nbsp; <a href="vacancies?status=any" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all vacancies</a></h3>
+      {% elseif data.status == 'rejected' %}<h3 class="govuk-heading-m">Showing 2 "Rejected" vacancies &nbsp; <a href="vacancies?status=any" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all vacancies</a></h3>
+      {% elseif data.status == 'draft' %}<h3 class="govuk-heading-m">Showing 4 "Draft" vacancies. &nbsp; <a href="vacancies?status=any" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all vacancies</a></h3>
+      {% elseif data.status == 'closed' %}<h3 class="govuk-heading-m">Showing 11 "Closed" vacancies.  &nbsp; <a href="vacancies?status=any" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all vacancies</a></h3>
+      {% elseif data.status == 'pending review' %}<h3 class="govuk-heading-m">Showing 2 "Pending review" vacancies &nbsp; <a href="vacancies?status=any" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all vacancies</a></h3>
+      {% elseif data.status == 'closing' %}<h3 class="govuk-heading-m">Showing 3 vacancies "closing soon"&nbsp; <a href="vacancies?status=any" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all vacancies</a></h3>
+      {% elseif data.status == 'closing-no-applications' %}<h3 class="govuk-heading-m">Showing 1 vacancies "closing soon with no applications"&nbsp; <a href="vacancies?status=any" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all vacancies</a></h3>
+      {% endif %}
+      <!-- DATA -->
+      <div class="govuk-visually-hidden">
+        {% for i in locations %}
+        <span class="data-orgs">ABC Opticians {{i}}</span>
+        {% endfor %}
+      </div>
+
+      <div class="govuk-visually-hidden">
+        {% for p in providers %}
+        <span class="data-providers">{{p}}</span>
+        {% endfor %}
+      </div>
+
+      <table class="govuk-table responsive-table">
+        {% if data['user'] == 'employer' %}
+        {% block employertablehead %}{% include "./includes/employer-table-header.html" %}{% endblock %}
+        {% else %}
+        {% block providertablehead %}{% include "./includes/provider-table-header.html" %}{% endblock %}
+        {% endif %}
+
+        <tbody class="govuk-table__body">
+          {% for vacancy in data['vacancies'] %}
+            {% if data['user'] == 'employer' %}
+              {% block employerlist %}{% include "./includes/employer-vacancy.html" %}{% endblock %}
+            {% else %}
+              {% block providerlist %}{% include "./includes/provider-vacancy.html" %}{% endblock %}
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+        <div class="pager das-pager" aria-hidden="false" style="margin-top:0" data-paging="">
+          <div class="pager-controls das-pager-controls">
+            <a class="pager-prev das-pager-prev hidden" href="#" aria-hidden="true" hidden="hidden">Prev</a>
+            <ul class="pager-items das-pager-items"><li data-page-number="1">1</li><li data-page-number="2"><a href="#">2</a></li><li data-page-number="3"><a href="#">3</a></li><li data-page-number="4"><a href="#">4</a></li><li data-page-number="5"><a href="#">5</a></li></ul>
+            <a class="pager-next das-pager-next" href="#" aria-hidden="false">Next</a>
+          </div>
+          <div class="das-pager-summary">Showing 1 - 25 of 55 vacancies</div>
+        </div>
+        <!-- END table -->
+      </div>
+    </div>
+<script src="/public/javascripts/accordion.js"></script>
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script src="/public/javascripts/utils.js"></script>
+<script src="/public/javascripts/listbox.js"></script>
+<script src="/public/javascripts/listbox-collapsibe.js"></script>
+<script type="text/javascript">
+  window.addEventListener('load', function () {
+    var button = document.getElementById('exp_button');
+    var exListbox = new aria.Listbox(document.getElementById('exp_elem_list'));
+    var listboxButton = new aria.ListboxButton(button, exListbox,clicked);
+
+  });
+
+
+  function addMembers(event) {
+  document.getElementById("add-members-form").submit();
+}
+var clicked=function(e){
+  location.href = '?status='+e;
+
+}
+
+
+function getUsers() {
+
+  var names = document.getElementsByClassName("data-name");
+  var id = document.getElementsByClassName("data-id");
+  var orgs = document.getElementsByClassName("data-orgs");
+  var providers = document.getElementsByClassName("data-providers");
+  var data = [];
+
+  for (var i=0; i<names.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var user="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>VAC1000000697: </span>"+names[i].textContent
+      data.push(user);
+  }
+  for (var i=0; i<orgs.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var org="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>Organisation: </span>" + orgs[i].textContent;
+    data.push(org);
+  }
+  for (var i=0; i<providers.length; i++) {
+    // var user=names[i].textContent+" - "+email[i].textContent;
+    var provider="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>Provider: </span>" + providers[i].textContent;
+    data.push(provider);
+  }
+  return data;
+}
+
+function suggest (data, populateResults) {
+  // const results = "Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677".split(",");
+  // const results = Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677
+  // const results = JSON.stringify(Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677)
+  const results = getUsers();
+  const filteredResults = results.filter(
+    result => result.toUpperCase().indexOf(query.trim().toUpperCase()) !== -1
+  )
+  // console.log(filteredResults)
+  populateResults(filteredResults);
+}
+
+// Trigger search click.  Taken out the clich for the prototype.
+function fireSearch() {
+  setTimeout(function(){ $("#searchClientsSubmit").trigger("click") }, 200);
+// console.log($('.autocomplete__option--focused').html ())
+}
+// function fireSearch(){
+// 	// $("#searchClientsSubmit").trigger("click")
+//   console.log("pressed")
+// }
+var myInput = document.querySelector('#searchClients');
+var myInputID = myInput.id;
+var element = document.createElement('div');
+var value = ""
+
+if (document.getElementById('search-default-value').innerHTML != "") {
+  value = document.getElementById("search-default-value").innerHTML;
+}
+
+element.className = "autocomplete__parent_wrapper";
+myInput.parentNode.insertBefore(element, myInput)
+// console.log("value"+document.getElementById("search-default-value").innerHTML)
+accessibleAutocomplete({
+  // other options
+  element: element,
+  id: myInputID,
+  name: myInput.name,
+  source: suggest,
+  defaultValue: value,
+  confirmOnBlur: false,
+  autoselect: true,
+  onConfirm: fireSearch,
+  placeholder: 'Search by title or reference number',
+  displayMenu: 'overlay'
+});
+myInput.style.display = 'none';
+myInput.id = myInputID + '-old';
+myInput.name = '';
+</script>
+{% endblock %}

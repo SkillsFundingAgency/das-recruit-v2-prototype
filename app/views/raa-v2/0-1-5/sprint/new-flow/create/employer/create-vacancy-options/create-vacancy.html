@@ -1,0 +1,92 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Create vacancy</h1>
+    <p class="govuk-body">You can clone vacancies once they've been submitted. Vacancies will be approved or rejected
+      within 24 hours.</p>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            Do you want to create a new vacancy or clone an existing vacancy?
+          </h1>
+        </legend>
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="create-new" name="vacancy-id" type="radio" value="england">
+            <label class="govuk-label govuk-radios__label" for="create-new">
+              Create new vacancy
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="vacancy-id-2" name="vacancy-id" type="radio" value="scotland">
+            <label class="govuk-label govuk-radios__label" for="vacancy-id-2">
+              1000000651
+              <div class="govuk-hint">
+                Developer Apprentice, closing 01 Jan 2019, status: Live, Level: Intermediate (Standard)
+              </div>
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="vacancy-id-2" name="vacancy-id" type="radio" value="scotland">
+            <label class="govuk-label govuk-radios__label" for="vacancy-id-2">
+              1000000656
+              <div class="govuk-hint">
+                Business Analyst Apprentice, closing 07 Jan 2019, status: Pending review, Level: Intermediate
+                (Standard)
+              </div>
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="vacancy-id-3" name="vacancy-id" type="radio" value="wales">
+            <label class="govuk-label govuk-radios__label" for="vacancy-id-3">
+              1000000657
+              <div class="govuk-hint">
+                Apprentice Front End Developer, closing 29 Dec 2018, status: Pending review, Level: Intermediate
+                (Standard)
+              </div>
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="vacancy-id-4" name="vacancy-id" type="radio" value="northern-ireland">
+            <label class="govuk-label govuk-radios__label" for="vacancy-id-4">
+              1000000668
+              <div class="govuk-hint">
+                Interaction Designer Apprentice, closing 23 Dec 2018, status: Closed, Level: Intermediate (Standard)
+              </div>
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="vacancy-id-5" name="vacancy-id" type="radio" value="northern-ireland">
+            <label class="govuk-label govuk-radios__label" for="vacancy-id-5">
+              1000000693
+              <div class="govuk-hint">
+                User Researcher Apprentice closing 12 Nov 2018, status: Live, Level: Intermediate (Standard)
+              </div>
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="vacancy-id-5" name="vacancy-id" type="radio" value="northern-ireland">
+            <label class="govuk-label govuk-radios__label" for="vacancy-id-5">
+              1000000702
+              <div class="govuk-hint">
+                Apprentice Technical Architect closing 07 Sep 2018, status: Closed, Level: Intermediate (Standard)
+              </div>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <a href="title" class="govuk-button">Continue</a>
+  </div>
+</div>
+
+{% endblock %}

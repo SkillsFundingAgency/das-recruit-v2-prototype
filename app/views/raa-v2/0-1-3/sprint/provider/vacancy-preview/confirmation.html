@@ -1,0 +1,36 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Vacancy submitted for approval
+      </h1>
+      <div class="govuk-panel__body">
+        The vacancy reference number is
+        <br><strong>VAC1000000965</strong>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m">Next steps</h2>
+    <p>The vacancy will now be reviewed by an Education and Skills Funding Agency adviser.</p>
+    <p>You'll be notified within 24 hours, through the recruitment page, if you need to make any edits to the  vacancy.</p>
+    <p>We’ll also confirm on the recruitment page, when the vacancy is live.</p>
+    <form method="post">
+    <div class="form-group inline">
+      <div class="form-group">
+          <button class="govuk-button" type="submit">Finish</button>
+          <a class="govuk-body das-button--link" href="../create-vacancy-options/clone-vacancy">Create another vacancy</a>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

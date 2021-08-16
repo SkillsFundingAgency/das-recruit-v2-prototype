@@ -1,0 +1,56 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">About {{data.orgName}}</h1>
+            {% if data.EmployerDescription and data.journey != 'new' %}
+              <p class="govuk-body">Updating the employer information will also update the employer information on any unapproved vacancies eg. draft, pending review or rejected vacancies.</p>
+            {%else%}
+                <p class="govuk-body">You can add information about your organiasation. This information will be saved and automatically applied for any new vacancy for this organisation.</p>
+            {%endif%}
+            <form method="post">
+              <div class="govuk-character-count govuk-input--width-50" data-module="character-count" data-minlength="50" data-maxlength="500">
+                <div class="govuk-form-group">
+                  <label class="govuk-label visiual" for="EmployerDescription">Tell us about the organisation</label>
+                    <textarea class="govuk-textarea js-character-count"  rows="5" data-val-length-max="500" id="EmployerDescription" name="EmployerDescription">{% if data.EmployerDescription and data.journey != 'new' %}{{ data.EmployerDescription}}{%endif%}</textarea>
+                </div>
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="EmployerWebsiteUrl">
+                      The organisation's website (optional)
+                    </label>
+                    <input class="govuk-input govuk-input--width-30" maxlength="100" type="text" id="EmployerWebsiteUrl" name="EmployerWebsiteUrl" value="{% if data.EmployerWebsiteUrl %}{{data.EmployerWebsiteUrl}}{%endif%}">
+                </div>
+              <div class="govuk-form-group">
+                {% if data.change == "yes"%}
+                <a href="employer-check?change=no" class="govuk-button" name="continueButton" value="Save and continue"/>Save and continue<a>
+                  <a href="employer-check?change=no" class="govuk-body das-button--link">Cancel</a>
+                {% elseif data.edit == "yes"%}
+                <input type="submit" value="Save and continue" class="govuk-button save-button" data-automation="btn-continue">
+                {% else%}
+                <a href="preview-start" class="govuk-button">Save and continue</a>
+
+                {% endif %}
+
+
+                <a class="govuk-body das-button--link" href="vacancy-preview/" data-automation="link-cancel">Cancel</a>
+              </div>
+              </form>
+          </div>
+  </div>
+
+  </main>
+</div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

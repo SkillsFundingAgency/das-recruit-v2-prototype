@@ -1,0 +1,45 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">RVDB-12 Recruitment Dashboard</h1>
+        <p class="govuk-body"><a href="https://skillsfundingagency.atlassian.net/browse/ER-1100" class="govuk-link">View on Jira</a></p>
+        <h3 class="govuk-heading-m"><a href="config">Configure session</a></h3>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <!-- <h2 class="govuk-heading-m">Existing provider</h2> -->
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="./{{data.dashboard}}/dashboard ">New dashboard - many vacancies</a></li>
+          </ul>
+          <h3 class="govuk-heading-s">All status dashboard design</h3>
+            <ul class="govuk-list">
+              <li class="govuk-list--item"><a href="./dashboard1/dashboard">Dashboard - multiple</a></li>
+              <li class="govuk-list--item"><a href="./dashboard1/dashboard-draft">Dashboard - only draft </a></li>
+              <li class="govuk-list--item"><a href="./dashboard1/dashboard-pending">Dashboard - only pending </a></li>
+              <li class="govuk-list--item"><a href="./dashboard1/dashboard-rejected">Dashboard -  only rejected</a></li>
+              <li class="govuk-list--item"><a href="./dashboard1/dashboard-closed">Dashboard -  only closed</a></li>
+            </ul>
+            <h3 class="govuk-heading-s">Smart dashboard, rejected focused</h3>
+            <ul class="govuk-list">
+              <li class="govuk-list--item"><a href="./dashboard2/dashboard">Dashboard</a></li>
+
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+
+{% endblock %}

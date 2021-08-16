@@ -1,0 +1,408 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="title" class="govuk-back-link">Back</a>
+<style media="screen">
+  #apprenticeship-govuk-grid-row result s article, #provider-govuk-grid-row result s article {
+    position: relative;
+}
+.result-block{
+    border-bottom: 1px solid #bfc1c3;
+}
+
+.result  {
+
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .result--data-list dt {
+      max-width: none;
+      font-weight: normal;
+      font-size: 19px;
+      font-size: 1.1875rem;
+      line-height: 1.31579;
+  }
+
+  .result--data-list dt {
+      margin-bottom: 0 !important;
+
+  }
+  .result--data-list dt {
+      font-weight: bold;
+      max-width: 30%;
+      padding-right: 7.5px;
+      clear: left;
+      margin-bottom: 1em;
+  }
+  .result--data-list dt, .result--data-list dd {
+      float: left;
+      box-sizing: border-box;
+  }
+  .result--data-list dd {
+    margin-bottom: 0 !important;
+    font-size: 19px;
+font-size: 1.1875rem;
+line-height: 1.31579;
+}
+
+.result--data-list dd {
+    max-width: 70%;
+    margin-bottom: 1em;
+}
+.result--data-list dt, .result--data-list dd {
+    float: left;
+    box-sizing: border-box;
+}
+@media (max-width: 640px){
+  .result--data-list dt {
+      float: left;
+      clear: both;
+      display: inline-block;
+      width: auto;
+      margin-right: .5rem;
+      font-weight: normal;
+      margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 640px){
+  .result--data-list dt, .result--data-list dd {
+      float: none;
+      width: 100%;
+      max-width: none;
+      padding: 0;
+  }
+}
+media (max-width: 640px){
+  .result--data-list dd {
+      width: auto;
+      margin-bottom: 0 !important;
+  }
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Which apprenticeship training will the apprentice take?</h1>
+
+    <form method="GET">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-visually-hidden">Search for the legal entity</legend>
+        <div class="govuk-form-group search-field search-field-darker govuk-input--width-40">
+
+          <div class="search-input search-input-with-button">
+            <label class="govuk-label" for="query">
+              <!--Client reference-->
+              Search by apprenticeship title or role
+            </label>
+            <div class="autocomplete__parent_wrapper">
+              <div class="autocomplete__wrapper">
+                <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                  <span>No search govuk-grid-row result s.</span>
+                  <span>,,</span>
+                </div>
+                <input aria-owns="searchOrgs__listbox" autocomplete="off" class="autocomplete__input" id="searchOrgsAuto" name="query" placeholder="" role="combobox" type="text" style="display:none;" value="{% if search %}{{search}}{% endif %}">
+              </div>
+            </div>
+            <input class="govuk-text" name="searchOrgQuery" id="searchOrgsQuery" value="">
+          </div>
+          <div class="search-submit">
+            <button class="govuk-button" type="submit" id="searchOrgsSubmit" name="searchOrgsSubmit" value="Search Organisations">Search Organisations</button>
+          </div>
+        </div>
+        <p class="" data-clear-filter="" aria-hidden="false"><a id="clearSearch" href="training?query= &title= ">Clear search</a></p>
+      </fieldset>
+    </form>
+    <p class="govuk-body">{{list | length}} apprenticeship{% if list |length != 1 %}s{% endif %} matching <span class="govuk-!-font-weight-bold">'{{search}}'</span>.</p>
+  </div>
+</div>
+
+  {% for training in list%}
+
+    <div class="result-block selection-item" data-item-id="{{loop.index}}">
+      <div class="govuk-grid-row">
+        <article class="result govuk-grid-column-two-thirds" id="training-id-" data-item>
+            <header>
+              <h2 class="result--title">
+                <a  class="result--title-link"  href="/trainingview?title={{training.name}}">{{training.name}}</a>
+              </h2>
+
+            </header>
+            <dl class="result--data-list">
+
+              <dt><b>Level:</b></dt>
+              <dd class="level">3 (equivalent to A levels at grades A to E) </dd>
+
+              <dt><b>Typical length:</b></dt>
+              <dd class="length">42 months</dd>
+
+            </dl>
+        </article>
+        <div class="govuk-grid-column-one-third" style="text-align: right;padding-top:20px">
+          <a href="positions?training_level={{training.name}}" id="filter-submit" class="das-button-filter das-button-secondary govuk-button">select</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+
+<!-- <p id="oranisation-list-no-govuk-grid-row result " style="display:none;">0 matches for <span class="querytext"></span></p> -->
+
+
+<div class="pager das-pager" aria-hidden="false" style="margin-top:0" data-paging="">
+        <div class="pager-controls das-pager-controls">
+          <a class="pager-prev das-pager-prev hidden" href="#" aria-hidden="true" hidden="hidden">Prev</a>
+          <ul class="govuk-list pager-items das-pager-items">
+            <li data-page-number="1">1</li>
+            <li data-page-number="2"><a href="#">2</a></li>
+            <li data-page-number="3"><a href="#">3</a></li>
+            <li data-page-number="4"><a href="#">4</a></li>
+            <li data-page-number="5"><a href="#">5</a></li>
+          </ul>
+          <a class="pager-next das-pager-next" href="#" aria-hidden="false">Next</a>
+        </div>
+        <div class="das-pager-summary">Showing 1 - 25 of 87 legal entities</div>
+      </div>
+<!--
+
+      {% if query.edit != "yes"%}
+      <input type="submit" class="govuk-button" name="continueButton" value="Save and continue" />
+      <a href="../dashboard-multiple" class="govuk-body das-button--link">Save and exit</a>
+      {%else%}
+      <input type="submit" class="govuk-button" name="previewButton" value="Save and continue" />
+      <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+      {%endif%} -->
+
+
+
+</div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+{{super()}}
+<script src="/public/javascripts/checkbox-editing.js"></script>
+
+<script>
+  $(document).ready(function() {
+
+    // TODO call script from file instead
+    // pass this in - 118 - total items - totalCheckboxesCount
+    // pass this in - false - boolean whether to clear down or not
+    // pass this in - 25 - how many items to show per page
+    // checkboxEditing(
+    //   118,
+    //   false,
+    //   25,
+    //   "team member",
+    //   "team members"
+    // )
+
+    var page = 1;
+    var max_per_page = 25
+    var currentlist = []
+    var fullList = []
+    var data_set = $('.selection-item');
+    var pagerControls = $('.pager-controls');
+    var keycount = 0
+
+    function updateList() {
+      var query = $('#searchOrgsAuto').val()
+      getList(query)
+      buildList()
+      data_set.each(function(index) {
+        if ($(this).attr('data-item-id') > max_per_page * page - 1 || $(this).attr('data-item-id') < (max_per_page * page) - max_per_page) {
+          $(this).attr("hidden", "hidden")
+          $(this).attr("aria-hidden", "true")
+          $(this).hide();
+        } else {
+          $(this).removeAttr("hidden", "hidden")
+          $(this).attr("aria-hidden", "false")
+          $(this).show();
+        }
+      });
+      buildPager()
+    }
+
+    function buildPager() {
+      console.log("*** buildpager **")
+      var pager = ""
+      total_items = currentlist.length
+      var shown_items_min = (1 + max_per_page * page) - max_per_page
+      var shown_items_max = ((max_per_page * page) < total_items) ? max_per_page * page : total_items;
+      var page_total = Math.round(total_items / max_per_page) + 1
+      console.log("shown_items_min: " + shown_items_min)
+      console.log("shown_items_max: " + shown_items_max)
+      console.log("page_total: " + page_total)
+      if (page > 1) {
+        pager += '<a class="pager-prev das-pager-prev" href="#" aria-hidden="false">Prev</a>'
+      }
+      pager += '<ul class="pager-items das-pager-items">'
+      console.log("-- Building pager")
+      var startNo = (page_total > 8) ? page : 1;
+      var endNo = (page_total > 8 && (page + 8) < page_total) ? page + 8 : page_total;
+
+
+      for (var i = startNo; i <= endNo; i++) {
+        console.log("page number= " + i)
+        var pager_link = (i != page) ? '<li><a href="#">' + i + '</a></li>' : '<li>' + i + '</li>'
+        pager += pager_link
+      }
+      pager += '</ul>';
+      console.log("--- end building pager")
+      if (page < page_total) {
+        // console.log("adding next")
+        pager += '<a class="pager-next das-pager-next" href="#" aria-hidden="false">Next</a>'
+      }
+      pagerControls.html(pager)
+      $('.pager-items a').on('click', function(event) {
+        event.preventDefault();
+        // console.log("updating page to ="+$(this).text())
+        page = $(this).text()
+        updateList()
+      });
+      $('.pager-next').on('click', function(event) {
+        page += 1
+        updateList()
+      })
+      $('.pager-prev').on('click', function(event) {
+        page -= 1
+        updateList()
+      })
+      $('.das-pager-summary').html("Showing " + shown_items_min + " - " + shown_items_max + " of " + total_items + " apprenticeship training")
+      console.log("*** end ***")
+    }
+
+    function populatelist() {
+      $("[data-item]").each(function(item) {
+        var training = $(this).find('.result--title-link').text()
+        fullList.push(training);
+      })
+      console.log("fullList.length " +fullList.length)
+    }
+
+    function getList($query) {
+
+      currentlist = []
+      console.log("Start: looking for: " + $query)
+      for (var i = 0; i < fullList.length; i++) {
+
+        var training = fullList[i]
+        if (containsSubString($query.toLowerCase(), training.toLowerCase()) !== -1 || $query.toLowerCase() == 'all') {
+          currentlist.push(training)
+        }
+
+      }
+      console.log("End: found: " + currentlist.length)
+
+    }
+
+    function containsSubString(query, text) {
+      if (text.toString().indexOf(query) != -1) {
+        return 1;
+      }
+
+      return -1;
+    }
+    // function getResults(){
+    //   console.log(jQuery.inArray( "Accounting", $(".data-item") ) )
+    // }
+    function searchCheck(e) {
+      keycount = $('#searchOrgsAuto').val().length
+      query = $('#searchOrgsAuto').val()
+      getList(query)
+      $('.querytext').text($('#searchOrgsAuto').val())
+      buildList()
+      // if(keycount == 2){
+      //   $("#oranisation-list-2").show()
+      //   $("#oranisation-list-1").hide()
+      //   $("#oranisation-list").hide()
+      //   $(".das-pager").hide()
+      //   $("#oranisation-list-no-govuk-grid-row result ").hide()
+      // }else if(keycount > 2 && keycount < 9){
+      //   $("#oranisation-list-1").show()
+      //   $("#oranisation-list-2").hide()
+      //   $("#oranisation-list").hide()
+      //     $("#oranisation-list-no-govuk-grid-row result ").hide()
+      //     $(".das-pager").hide()
+      //
+      //   }else if(keycount >= 9){
+      //     $("#oranisation-list-no-govuk-grid-row result ").hide()
+      //     $("#oranisation-list-1").hide()
+      //     $("#oranisation-list-2").hide()
+      //     $("#oranisation-list").hide()
+      //     $(".das-pager").hide()
+      //       $("#oranisation-list-no-govuk-grid-row result ").show()
+      //   }else{
+      //   $("#oranisation-list").show()
+      //   $("#oranisation-list-2").hide()
+      //   $("#oranisation-list-1").hide()
+      //   $(".das-pager").show()
+      //   $("#oranisation-list-no-govuk-grid-row result ").hide()
+      // }
+    }
+
+    function buildList() {
+      var html = ""
+      var shown_items_min = (1 + max_per_page * page) - max_per_page
+      var shown_items_max = ((max_per_page * page) < currentlist.length) ? max_per_page * page : currentlist.length;
+      console.log("*** buildlist ***")
+      console.log("shown_items_max " + shown_items_max)
+      console.log("shown_items_min " + shown_items_min)
+      for (var i = shown_items_min - 1; i < shown_items_max; i++) {
+        html += '<div class="govuk-radios__item selection-item" data-item-id="' + i + '" data-item="' + currentlist[i] + '"><input class="govuk-radios__input" id="selected-organisation-id-' + i + '" name="training_standard" type="radio" value="' +
+          currentlist[i] + '" data-search-value="Organisation ' + i + '"><label class="govuk-label govuk-radios__label" for="selected-organisation-id-' + i + '">' + currentlist[i] + '</label></div>'
+      }
+      $('#training_list').html(html)
+    }
+
+    function sortlist(data) {
+      if (fullList.length > 1) {
+
+        fullList.sort(function(a, b) {
+          var returnValue = a.fullName.toUpperCase() > b.fullName.toUpperCase() ? 1 : b.fullName.toUpperCase() > a.fullName.toUpperCase() ? -1 : 0;
+          return returnValue;
+        })
+      } else {
+        setupdata()
+      }
+    }
+
+    function init() {
+      // Set up autocomplete
+      populatelist()
+      getList("all")
+      // searchCheck()
+
+      $('#searchOrgsAuto').show()
+      $('#searchOrgsAuto').on('keydown', searchCheck)
+      // $('#searchOrgsAuto').on('blur',function(){
+      //   keycount = 0
+      // })
+      $('#searchOrgsQuery').hide();
+      // Hide submit button in this version, only shows if Javascript is not on.
+      $('.search-input').removeClass('search-input-with-button')
+
+      updateList()
+
+
+
+    }
+    init()
+
+
+
+  });
+</script>
+{% endblock %}

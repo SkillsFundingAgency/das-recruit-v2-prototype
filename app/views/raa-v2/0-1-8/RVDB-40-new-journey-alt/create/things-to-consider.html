@@ -1,0 +1,32 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+         
+    <form method="post">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+     <h1 class="govuk-fieldset__heading">
+       What else do you want the applicant to consider? (optional)
+     </h1>
+   </legend>
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="350">
+        <div class="govuk-form-group">
+
+          <p class="govuk-hint">For example, if the vacancy will involve working outdoors or lifting heavy objects</p>
+          <textarea class="govuk-textarea js-character-count " id="shortDescription" name="shortDescription" rows="5"></textarea>
+        </div>
+      </div>
+      <a href="contact" class="govuk-button">Save and continue</a>
+      <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

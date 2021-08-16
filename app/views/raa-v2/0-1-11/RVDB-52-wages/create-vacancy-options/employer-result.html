@@ -1,0 +1,76 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}{%endif%}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Which of {%if data.user == "employer"%}your{%else%}the employers&apos;s{%endif%} organisations is this vacancy for?</h1>
+    <form method="POST">
+				<fieldset class="govuk-fieldset">
+					<legend class="govuk-visually-hidden">Search for the organisation</legend>
+					<div class="govuk-form-group search-field search-field-darker govuk-input--width-30">
+
+						<div class="search-input search-input-with-button">
+							<label class="govuk-label" for="query">
+								<!--Client reference-->
+								Search for the organisation
+							<div class="autocomplete__parent_wrapper">
+                <div class="autocomplete__wrapper">
+                  <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                    <span>No search results.</span>
+                    <span>,,</span>
+                  </div>
+                  <input aria-owns="searchOrgs__listbox" autocomplete="off" class="autocomplete__input" id="searchOrgsAuto" name="query" placeholder="" role="combobox" type="text" style="display:none;" value="cov">
+                </div>
+              </div>
+              <input class="govuk-text" name="searchOrgQuery" id="searchOrgsQuery"   value="coventry">
+						</div>
+						<div class="search-submit">
+							<button class="govuk-button" type="submit" id="searchOrgsSubmit" name="searchOrgsSubmit" value="Search Organisations">Search Organisations</button>
+						</div>
+					</div>
+          <p class="" data-clear-filter="" aria-hidden="false"><a id="clearSearch" href="#">Clear search</a></p>
+				</fieldset>
+
+
+    <h2 class="govuk-heading-s">Select the organisation</h2>
+
+
+      <div id="oranisation-list-2" class="govuk-form-group" >
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios">
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Coventry" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                 ABC opticians Coventry
+              </label>
+            </div>
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Wycombe" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                ABC opticians Wycombe
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+                  <a href="location" class="govuk-button" name="previewButton" value="Save and continue">Save and continue</a>
+                  <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}

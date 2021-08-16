@@ -1,0 +1,241 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+
+  @media (min-width: 40.0625em){
+    .govuk-summary-list {
+        margin-bottom: 30px;
+    }
+  }
+
+  @media (min-width: 40.0625em){
+    .govuk-summary-list {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+  }
+
+  @media (min-width: 40.0625em){
+    .govuk-summary-list {
+        font-size: 19px;
+        font-size: 1.1875rem;
+        line-height: 1.31579;
+    }
+  }
+
+  .govuk-summary-list {
+      font-family: "nta",Arial,sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-weight: 400;
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.25;
+      color: #0b0c0c;
+      margin: 0;
+      margin-bottom: 20px;
+  }
+  @media (min-width: 40.0625em){
+    .govuk-summary-list__row {
+        display: table-row;
+    }
+  }
+  @media (min-width: 40.0625em){
+    .govuk-summary-list__key {
+        width: 30%;
+    }
+  }
+
+
+.govuk-summary-list__key {
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.govuk-summary-list__key, .govuk-summary-list__value {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+@media (min-width: 40.0625em){
+  .govuk-summary-list__key, .govuk-summary-list__value, .govuk-summary-list__actions {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #bfc1c3;
+  }
+}
+
+@media (min-width: 40.0625em){
+  .govuk-summary-list__key, .govuk-summary-list__value, .govuk-summary-list__actions {
+      display: table-cell;
+      padding-right: 20px;
+  }
+}
+
+.govuk-summary-list__key, .govuk-summary-list__value, .govuk-summary-list__actions {
+    margin: 0;
+}
+@media (min-width: 40.0625em){
+  .govuk-summary-list__value {
+      width: 50%;
+  }
+}
+
+
+.govuk-summary-list__key, .govuk-summary-list__value {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+@media (min-width: 40.0625em){
+  .govuk-summary-list__key, .govuk-summary-list__value, .govuk-summary-list__actions {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #bfc1c3;
+  }
+}
+
+@media (min-width: 40.0625em){
+  .govuk-summary-list__key, .govuk-summary-list__value, .govuk-summary-list__actions {
+      display: table-cell;
+      padding-right: 20px;
+  }
+}
+
+.govuk-summary-list__key, .govuk-summary-list__value, .govuk-summary-list__actions {
+    margin: 0;
+}
+@media (min-width: 40.0625em){
+  .govuk-summary-list__actions {
+      width: 20%;
+      padding-right: 0;
+      text-align: right;
+  }
+}
+
+
+.govuk-summary-list__actions {
+    margin-bottom: 15px;
+}
+</style>
+<div class="govuk-grid-row">
+     <div class="govuk-grid-column-two-thirds">
+
+       <h1 class="govuk-heading-xl">Check the employer information for {{data.orgName}}</h1>
+
+       <p class="govuk-body-l">We will automatically add employer infomation to the vacancy for you.</p>
+
+       <dl class="govuk-summary-list govuk-!-margin-bottom-8">
+         <div class="govuk-summary-list__row">
+           <dt class="govuk-summary-list__key">
+             Organisation
+           </dt>
+           <dd class="govuk-summary-list__value">
+             {{data.orgName}}
+           </dd>
+           <dd class="govuk-summary-list__actions">
+             <a class="govuk-link" href="display-name?change=yes">
+               Change<span class="govuk-visually-hidden"> Employer name</span>
+             </a>
+           </dd>
+         </div>
+         <div class="govuk-summary-list__row">
+           <dt class="govuk-summary-list__key">
+             Employer name on the vacancy
+           </dt>
+           <dd class="govuk-summary-list__value">
+             {% if data.tradingName %}{{data.tradingName}}{% else %}{{data.orgName}}{% endif %}
+           </dd>
+           <dd class="govuk-summary-list__actions">
+             <a class="govuk-link" href="display-name?change=yes">
+               Change<span class="govuk-visually-hidden"> Employer name</span>
+             </a>
+           </dd>
+         </div>
+         <div class="govuk-summary-list__row">
+           <dt class="govuk-summary-list__key">
+             Where will the apprentice work?
+           </dt>
+           <dd class="govuk-summary-list__value">
+             Cheylesmore House, 5 Quinton Rd, Coventry CV1 2WT
+           </dd>
+           <dd class="govuk-summary-list__actions">
+             <a class="govuk-link" href="location?change=yes">
+               Change<span class="govuk-visually-hidden"> location</span>
+             </a>
+           </dd>
+         </div>
+         <div class="govuk-summary-list__row">
+           <dt class="govuk-summary-list__key">
+             Contact information
+           </dt>
+           <dd class="govuk-summary-list__value">
+             Name: Richard Hatton<br>
+             Email: richard.hatton@education.gov.uk<br>
+             Phone: 09343343234234
+           </dd>
+           <dd class="govuk-summary-list__actions">
+             <a class="govuk-link" href="contact?change=yes">
+               Change<span class="govuk-visually-hidden"> contact information</span>
+             </a>
+           </dd>
+         </div>
+         <div class="govuk-summary-list__row">
+           <dt class="govuk-summary-list__key">
+             Has the {{orgName}} signed up to the Disability confident scheme?
+           </dt>
+           <dd class="govuk-summary-list__value">
+             Yes
+           </dd>
+           <dd class="govuk-summary-list__actions">
+             <a class="govuk-link" href="disability?change=yes">
+               Change<span class="govuk-visually-hidden"> disability confident status</span>
+             </a>
+           </dd>
+         </div>
+         <div class="govuk-summary-list__row">
+           <dt class="govuk-summary-list__key">
+             About the employer
+           </dt>
+           <dd class="govuk-summary-list__value">
+             Founded in 2005, we have a long history of helping businesses become more efficient, saving time and money, and ultimately opening the door to greater productivity. Our process and products have evolved over our 13-year journey, but our mission has remained the same.
+           </dd>
+           <dd class="govuk-summary-list__actions">
+             <a class="govuk-link" href="display-name?change=yes">
+               Change<span class="govuk-visually-hidden"> employer information</span>
+             </a>
+           </dd>
+         </div>
+         <div class="govuk-summary-list__row">
+           <dt class="govuk-summary-list__key">
+             Employer website
+           </dt>
+           <dd class="govuk-summary-list__value">
+            None added
+           <dd class="govuk-summary-list__actions">
+             <a class="govuk-link" href="display-name?change=yes">
+               Add <span class="govuk-visually-hidden"> emplopyer website</span>
+             </a>
+           </dd>
+         </div>
+
+       </dl>
+
+
+       <form action="/form-handler" method="post" novalidate>
+         
+         <input type="hidden" name="answers-checked" value="true">
+
+         <a href="dates" class="govuk-button" data-module="govuk-button">
+           Add to vacancy and continue
+         </a>
+
+       </form>
+
+     </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

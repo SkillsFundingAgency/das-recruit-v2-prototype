@@ -1,0 +1,130 @@
+
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+  Manage apprentices
+{% endblock %}
+
+{% block content %}
+  <style media="screen">
+    .lottery-ticket{
+      margin-top:30px;
+
+    }
+    .lottery-ticket a{
+
+      background-color:#f8f8f8;
+      padding:20px;
+    }
+    .lottery-ticket a:hover{
+      background-color: #dee0e2;
+
+    }
+    .lottery-ticket a span{
+      text-decoration:none;
+    }
+  </style>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <br>
+      <h1 class="govuk-heading-xl">Recuitement</h1>
+      <a href="create-vacancy-options/create-vacancy" class="govuk-heading-m" >Create a new vacancy</a>
+
+
+      <!-- <h2 style="govuk-heading-l">Overview</h2> -->
+      <form action="clients" method="GET">
+				<fieldset class="govuk-fieldset">
+					<legend class="govuk-visually-hidden">Search for a client</legend>
+					<div class="form-group search-field search-field-darker">
+						<div class="search-input search-input-with-button">
+							<label class="form-label" for="searchClients">
+								<!--Client reference-->Search by vacancy title or reference number
+							</label>
+							<div class="autocomplete__parent_wrapper"><div class="autocomplete__wrapper"><div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"><span>No search results.</span><span>,,</span></div><input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="searchClients" placeholder="" role="combobox" type="text"><ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul></div></div><input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+						</div>
+						<div class="search-submit">
+							<button class="button" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+      </div>
+      <div class="govuk-grid-column-full">
+			<div class="govuk-grid-row" style="100">
+
+        <div class="govuk-grid-column-one-third">
+					<div class=" lottery-ticket">
+            <a style="margin-bottom:10px;display:block; color:#005ea5!important;font-size:18px;" href="#1" class="prototype-link">
+              Total vacancies<span style="display:block;width:100%;font-weight: 700; font-size: 80px;
+        line-height: 1.25;">21</span>
+						</a>
+					</div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="lottery-ticket">
+            <a style="margin-bottom:10px;display:block; color:#005ea5!important;font-size:18px;" href="#1" class="prototype-link">
+              Live
+                <span style="display:block;width:100%;font-weight: 700; font-size: 80px;
+        line-height: 1.25;">7</span>
+
+						</a>
+
+					</div>
+          	</div>
+          <div class="govuk-grid-column-one-third lottery-ticket">
+            <a style="margin-bottom:10px;display:block; color:#b10e1e!important;font-size:18px;" href="#1" class="prototype-link">
+              Rejected
+                <span style="display:block;width:100%;font-weight: 700; font-size: 80px;
+        line-height: 1.25;">1</span>
+
+						</a>
+
+					</div>
+				</div>
+        <div class="govuk-grid-row" style="100">
+
+  					<div class="govuk-grid-column-one-third lottery-ticket">
+              <a style="margin-bottom:10px;display:block; color:#005ea5!important;font-size:18px;" href="#1" class="prototype-link">
+                Pending review
+                  <span style="display:block;width:100%;font-weight: 700; font-size: 80px;
+          line-height: 1.25;">2</span>
+
+  						</a>
+
+  					</div>
+            <div class="govuk-grid-column-one-third lottery-ticket">
+              <a style="margin-bottom:10px;display:block; color:#005ea5!important;font-size:18px;" href="#1" class="prototype-link">
+                Drafts
+                  <span style="display:block;width:100%;font-weight: 700; font-size: 80px;
+          line-height: 1.25;">3</span>
+
+  						</a>
+
+  					</div>
+            <div class="govuk-grid-column-one-third lottery-ticket">
+              <a style="margin-bottom:10px;display:block; color:#005ea5!important;font-size:18px;" href="#1" class="prototype-link">
+                closed
+                  <span style="display:block;width:100%;font-weight: 700; font-size: 80px;
+          line-height: 1.25;">901</span>
+  						</a>
+  					</div>
+  				</div>
+
+		</div>
+
+
+    </div>
+    <br>
+    <br>
+    <div class="govuk-grid-row" style="100">
+      <div class="govuk-grid-column-one-third">
+
+        <h3 class="govuk-heading-s"><a href="#">Set recruitment notifications</a></h3>
+        <p>Set what email notifications you want to receive</p>
+
+        <br><br>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

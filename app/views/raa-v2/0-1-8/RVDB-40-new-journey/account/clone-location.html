@@ -1,0 +1,64 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/form-handler" method="post" novalidate>
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading">
+            Will the apprentice work in the same location?
+          </h1>
+        </legend>
+        <p class="govuk-body">
+          ABC optitions Coventry<br>
+          Cheylesmore House, <br>5 Quinton Rd,<br> Coventry <br>CV1 2WT
+        </p>
+        <div class="govuk-form-group">
+        <div class="govuk-radios govuk-radios--inline">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="change-date-yes" name="change-date" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="change-date-yes">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="change-date-no" name="change-date" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="change-date-yes">
+              No
+            </label>
+          </div>
+        </div>
+        </div>
+      </fieldset>
+
+      <div class="govuk-form-group">
+        <a href="../create/vacancy-preview-cloned" class="govuk-button">Continue</a>
+        <a href="javascript:history.back()" class="govuk-body das-button--link">Cancel</a>
+      </div>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#apprenticeship-type').select2();
+  });
+</script>
+
+{% endblock %}

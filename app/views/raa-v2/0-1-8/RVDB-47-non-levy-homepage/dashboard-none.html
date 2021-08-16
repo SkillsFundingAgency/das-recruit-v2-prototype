@@ -1,0 +1,27 @@
+{% if data.no_nav == "yes" %}{% extends "non-levy-layout.html" %}{% else %}{% extends "ma-layout.html"%}{% endif %}
+
+{% block pageTitle %}
+  Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <a href="home-new-none?vac_status=draft" class="govuk-back-link">Return to home</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Your vacancies</h1>
+      <p class="govuk-body">Your dashboard is empty, start by creating your first vacancy</p>
+      <p class="govuk-body">You can clone vacancies once they've been submitted.</p>
+      <p class="govuk-body">Vacancies will be approved or rejected within 24 hours.</p>
+      <a href="create-vacancy-options/title" class="govuk-button">Create vacancy</a>
+    </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,60 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-46 Apprentichship training</h1>
+        <h3 class="govuk-heading-m"><a href="./provider/config">Configure session</a></h3>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <ul class="govuk-list">
+            <br>
+
+            <li class="govuk-list--item"><a href="create-vacancy-options/title?has_training_provider=&edit=no&journey=new&user=employer">Start posting journey (new user)</a></li>
+            <li class="govuk-list--item"><a href="create-vacancy-options/title?has_training_provider=&edit=no&journey=existing&user=employer">Start posting journey (exisiting)</a></li>
+            <br>
+
+            <li class="govuk-list--item"><a href="create-vacancy-options/training-first-select?has_training_provider=&edit=no&journey=new&user=employer">training select first time. </a></li>
+            <li class="govuk-list--item"><a href="create-vacancy-options/training-select?has_training_provider=&edit=no&journey=new&user=employer">training select - after first time</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="create-vacancy-options/training-confirm?has_training_provider=&edit=no&journey=existing&user=employer&expiryDate=">training selected - posting journey </a></li>
+            <li class="govuk-list--item"><a href="create-vacancy-options/training-confirm?has_training_provider=&edit=no&journey=existing&user=employer&expiryDate=043494">training selected - training is closing </a></li>
+            <br>
+            <li class="govuk-list--item"><a href="create-vacancy-options/training-help?has_training_provider=&edit=no&journey=existing&user=employer&expiryDate=">no apprenticeship training - help find</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="create-vacancy-options/select-training-provider?has_training_provider=&edit=no&journey=existing&user=employer">Provider selection - with replay of selected training</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="create-vacancy-options/training?has_training_provider=yes&edit=no&journey=existing&user=employer&expiryDate=">Important dates (no training )</a></li>
+            <li class="govuk-list--item"><a href="create-vacancy-options/training?has_training_provider=yes&edit=no&journey=existing&user=employer&expiryDate=324324">Important dates - training has closing date</a></li>
+            <li class="govuk-list--item"><a href="create-vacancy-options/training?has_training_provider=yes&edit=no&journey=existing&user=employer&expiryDate=324324&start_year=2020&start_month=9&start_day=1  ">Important dates - ERROR-  training has closing date</a></li>
+
+          <br>
+          <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview?hasError=no&errorType=none&has_training_provider=yes&edit=no&journey=existing&user=employer&expiryDate=324324&start_year=2018&start_month=9&start_day=1">Preview page- no errors - training has closing dates</a></li>
+          <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview?hasError=no&errorType=none&has_training_provider=yes&edit=no&journey=existing&user=employer&expiryDate=&start_year=2019&start_month=9&start_day=1 ">Preview page- no errors - no training closing date but start date is next year</a></li>
+          <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview?hasError=no&errorType=none&has_training_provider=yes&edit=no&journey=existing&user=employer&expiryDate=324324&start_year=2020&start_month=9&start_day=1">Preview page. Start date is after closing date</a></li>
+          <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview-error?hasError=no&errorType=none&has_training_provider=yes&edit=no&journey=existing&user=employer&expiryDate=324324&start_year=2020&start_month=9&start_day=1">Preview page. error after submiting</a></li>
+
+          </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}

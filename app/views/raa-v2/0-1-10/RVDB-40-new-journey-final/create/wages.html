@@ -1,0 +1,124 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+{% set minWage = (data.weeklyHours * 52)*data.nationalMinWage | round %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    {% if data.error == "wages" %}
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#passport-issued-error">The yearly wage must be higher than £{{minWage}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+      <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+    <h1 class="govuk-heading-xl">How much would you like to pay the apprentice?</h1>
+        <p class="govuk-body">Pay will show as a yearly wage on your vacancy. <a href="https://www.gov.uk/national-minimum-wage-rates" rel="noopener" target="_blank">National Minimum Wage for apprentices.</a><br></p>
+        <form method="post">
+            <div class="govuk-form-group ">
+              <fieldset class="govuk-fieldset">
+                <!-- <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+
+                </label> -->
+
+
+                <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="wage-type-national-minimum-wage" name="WageType" type="radio"
+                      value="nationalMinWage" data-aria-controls="MinApprentice-wage-conditional" {% if data.WageType == "nationalMinWage" %}checked="checked"{% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="wage-type-national-minimum-wage">
+                        National Minimum Wage
+
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="MinApprentice-wage-conditional">
+                      <div class="govuk-form-group">
+
+                        <p class="govuk-body">
+                          <span class="govuk-hint">As of April 2019, National Minimum Wage for apprentices is set at an hourly rate from £4.35 to £8.21 depending on the candidates age.<br> <br> On the vacancy this will be displayed as a yearly figure of £8,736 - £16,286.40</span>
+                        </p>
+                      </div>
+                    </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="wage-type-national-minimum-wage-for-apprentices" name="WageType" type="radio"
+                      value="nationalMinApprenticeWage" data-aria-controls="MinNat-wage-conditional"  {% if data.WageType == "nationalMinApprenticeWage" %}checked="checked"{% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="wage-type-national-minimum-wage-for-apprentices">
+                        National Minimum Wage for apprentices
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="MinNat-wage-conditional">
+                      <div class="govuk-form-group">
+                        <p class="govuk-body">
+                          <span class="govuk-hint">As of April 2019, National Minimum Wage is set at an hourly rate of £3.90. <br>This will be displayed as a yearly figure of £{{minWage}}</span>
+                        </p>
+
+
+
+                      </div>
+                    </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="wage-type-fixed" name="WageType" type="radio"
+                      value="fixedWage"  data-aria-controls="fixed-wage-conditional" {% if data.WageType == "fixedWage" %}checked="checked"{% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="wage-type-fixed">
+                      Set wage yourself
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional {% if not data.WageType %}govuk-radios__conditional--hidden{% endif %}" id="fixed-wage-conditional">
+                      <div class="govuk-form-group {% if data.error == "wages" %}govuk-form-group--error{% endif %}">
+
+                          <p class="govuk-body">
+                            This must be more than the <a href="https://www.gov.uk/national-minimum-wage-rates" rel="noopener" target="_blank">National Minimum Wage for apprentices.</a>
+                            Based on the estimated start date you provided, you will need to set a wage higher than £{{minWage}}
+                          </p>
+                            <label class="govuk-label">Yearly wage</label>
+                            {% if data.error == "wages"%}
+                            <span id="passport-issued-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> The yearly wage must be higher than £{{minWage}}
+                            </span>
+                            {% endif %}
+                        <input class="govuk-input govuk-input--width-10" id="FixedWageYearlyAmount" name="FixedWageYearlyAmount" type="text" {% if data.FixedWageYearlyAmount %}value="{{data.FixedWageYearlyAmount}}"{% endif %}>
+
+                      </div>
+                    </div>
+                </div>
+              </fieldset>
+            </div>
+
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="250">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="WageAdditionalInformation">
+            Extra information about pay (optional)
+          </label>
+
+          <span class="govuk-hint">For example bonus schemes, performance increases or benefits</span>
+
+          <textarea class="govuk-textarea govuk-!-width-three-quarters js-character-count " id="WageAdditionalInformation"
+            name="WageAdditionalInformation" rows="5"></textarea>
+        </div>
+      </div>
+
+      {% if data.edit != "yes"%}
+      <a href="preview-start?WageType=fixed"  class="govuk-button" name="continueButton" value="Save and continue" >Save and continue</a>
+      <a href="../dashboard-multiple" class="govuk-body das-button--link">Save and exit</a>
+      {%else%}
+        <a href="vacancy-preview" class="govuk-button" name="previewButton" value="Save and preview" > Save and preview</a>
+      <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+      {%endif%}
+      </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

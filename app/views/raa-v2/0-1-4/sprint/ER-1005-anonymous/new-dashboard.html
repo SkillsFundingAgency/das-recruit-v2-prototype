@@ -1,0 +1,222 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="home">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">Recruitment</li>
+      </ol>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+  .das-filter-tab--group{
+    margin-left:1px;
+  }
+  .das-filter-tab--group:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+  .das-filter-tab, .das-filter-tab--non-link{
+    display:inline-block;
+    text-decoration:none;
+    padding:15px 30px;
+    float:left;
+    border: 1px solid #bfc1c3;
+    font-size: 18px;
+    font-size: 1.125rem;
+    margin-left:-1px;
+    width:25%;
+    margin-top: -1px;
+  }
+  .das-filter-tab:hover{
+    background: #005EA5;
+    color: #ffffff !important;
+  }
+  .das-filter-tab:hover .lottery-ticket--title{
+    color: #ffffff !important;
+  }
+  a.lottery-ticket--link .lottery-ticket--title{
+    text-decoration: none;
+  }
+
+  .lottery-ticket--title{
+    display:inline-block;
+    font-size: 18px;
+    font-size: 1.125rem;
+    color: #0b0c0c;
+  }
+  @media (min-width: 40.0625em){
+  .lottery-ticket--title{
+    display:block;
+    font-size: 18px;
+    font-size: 1.125rem;
+
+    }
+  }
+
+
+  .lottery-ticket--action{
+
+    display:block;
+
+    color:#6f777bx;
+    text-decoration: underline;
+    /* margin-bottom:10px; */
+  }
+
+  /* .lottery-ticket a:hover{
+    background-color: #dee0e2;
+
+  } */
+
+  .lottery-ticket-danger {
+    color: #b10e1e!important;
+  }
+
+  .lottery-ticket--muted{
+    color: #6f777b;
+  }
+  .govuk-grid-column-border-left{
+    border-right: 1px solid #bfc1c3;
+  }
+  .das-link-divider{
+    display: inline-block;
+    color:#6f777b;
+    padding:0 10px;
+  }
+  .govuk-grid-column-half-border-right{border-right-color: transparent;}
+  .govuk-grid-column-third-border-right{border-right-color: transparent;}
+
+  @media (min-width: 40.0625em){
+    .govuk-grid-column-one-third {
+        width: 33.3333%;
+        float: left;
+    }
+    .govuk-grid-column-third-border-right{border-right: 1px solid #bfc1c3;}
+
+  }
+
+  @media (min-width: 40.0625em)
+    and (max-width : 865px) {
+  .dashboard-row .govuk-grid-column-one-third{
+    width: 50%;
+    float: left;
+  }
+  .govuk-grid-column-third-border-right{border-right-color: transparent;}
+  .govuk-grid-column-half-border-right{
+    border-right: 1px solid #bfc1c3;
+  }
+
+
+}
+.das-table__header--sort{
+  font-weight: 400 !important;
+}
+
+
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- Header -->
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-two-thirds">
+        <!-- Heading -->
+        <!-- <span class="govuk-caption-xl">Recuitement</span> -->
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Recruitment</h1>
+        <!-- Core actions -->
+        <a href="../ALL/create-vacancy-options/create-vacancy" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold" name="button">Create a new vacancy</a>
+      </div>
+      <div class="govuk-grid-column-one-third">
+
+      </div>
+
+        <div class="govuk-grid-column-two-thirds">
+        <!-- Search -->
+        <form action="clients" method="GET" class="govuk-!-margin-top-6">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-visually-hidden">Search for a client</legend>
+            <div class="form-group search-field search-field-darker">
+              <div class="search-input search-input-with-button">
+                <label class="govuk-label " for="searchClients">
+                  <!--Client reference-->Search by vacancy title, reference number or employer
+                </label>
+                <div class="autocomplete__parent_wrapper">
+                  <div class="autocomplete__wrapper">
+                    <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"><span>No
+                        search results.</span><span>,,</span></div><input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="searchClients" placeholder=""
+                      role="combobox" type="text">
+                    <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
+                  </div>
+                </div><input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+              </div>
+              <div class="search-submit">
+                <button class="button" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div> <!-- Header -  govuk-grid-column-two-thirds -->
+    </div> <!-- header - govuk-grid-row  -->
+
+    <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+
+    <!-- Vacancy -->
+
+
+    <div class="dashboard-row govuk-grid-row">
+      <div class="govuk-grid-column-full">
+      <div class="das-filter-tab--group govuk-!-margin-bottom">
+          <a class="das-filter-tab govuk-link {% if query.status == 'any' %}lottery-ticket--active{% endif %}" href="new-vacancies?status=any#tabs" class="prototype-link">
+            <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>37</span>
+            <span class="lottery-ticket--title">Total Vacancies</span>
+          </a>
+          <a class="das-filter-tab govuk-link {% if query.status == 'live' %}lottery-ticket--active{% endif %}" href="new-vacancies?status=live#tabs" class="prototype-link">
+            <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>12</span>
+            <span class="lottery-ticket--title">Live vacancies</span>
+          </a>
+          <a class="das-filter-tab govuk-link {% if query.status == 'new' %}lottery-ticket--active{% endif %}" href="new-vacancies?status=new#tabs" class="prototype-link">
+            <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>5</span>
+            <span class="lottery-ticket--title">New applications</span>
+          </a>
+          <a class="das-filter-tab govuk-link {% if query.status == 'rejected' %}lottery-ticket--active{% endif %}" href="new-vacancies?status=rejected#tabs" class="prototype-link">
+            <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>10</span>
+            <span class="lottery-ticket--title">Rejected vacancies</span>
+          </a>
+          <a class="das-filter-tab govuk-link {% if query.status == 'draft' %}lottery-ticket--active{% endif %}" href="new-vacancies?status=draft#tabs" class="prototype-link">
+            <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>4</span>
+            <span class="lottery-ticket--title">Draft vacancies</span>
+          </a>
+          <a class="das-filter-tab govuk-link {% if query.status == 'draft' %}lottery-ticket--active{% endif %}" href="new-vacancies?status=draft#tabs" class="prototype-link">
+            <span class="lottery-ticket--number"><span class="govuk-visually-hidden">You have </span>4</span>
+            <span class="lottery-ticket--title">Vacancies closing soon</span>
+          </a>
+      </div>
+    </div>
+  </div>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <!-- Other actions -->
+    <div class="govuk-grid-row" style="100">
+      <div class="govuk-grid-column-one-third ">
+        <h3 class="govuk-heading-s"><a href="#">Set recruitment notifications</a></h3>
+        <p>Set what email notifications you want to receive</p>
+      </div>
+    </div>
+
+  </div> <!-- govuk-grid-column-full -->
+</div> <!-- govuk-grid-row -->
+
+{% endblock %}

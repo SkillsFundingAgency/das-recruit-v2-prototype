@@ -1,0 +1,20 @@
+
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+  Access Denied
+{% endblock %}
+{% block beforeContent%}
+{{ super() }}
+    <a href="/" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">You don’t have permission to create vacancies.</h1>
+      <p class="govuk-body">An employer can give you permission by logging on to their apprenticeship account and selecting ‘Training provider permissions’ on their dashboard.</p>
+    </div>
+</div>
+
+{% endblock %}
