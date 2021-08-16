@@ -1,0 +1,51 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Vacancy submitted for approval
+      </h1>
+      <div class="govuk-panel__body">
+        The vacancy reference number is
+        <br><strong>VAC1000000965</strong>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m">Next steps</h2>
+    {% if data.user == employer %}{% set pronoun = "your" %}{%else%}{% set pronoun = "the" %}{%endif%}
+    {% if data.has_notifications == "yes"%}
+
+    <p class="govuk-body">We’ll check the vacancy and tell you within 24 hours if you need to make any edits. If the vacancy is not approved, we’ll email the changes immediately. <a href="../notifications/notification-preferences">Manage your recruitment emails</a>.</p>
+    {% else %}
+    <p class="govuk-body">
+      We’ll check the vacancy and tell you within 24 hours if you need to make any edits. If the vacancy is not approved, we’ll let you know on the dashboard what changes you’ll need to make. <a href="../notifications/notification-preferences-new">Manage your recruitment emails</a> if you’d rather get an email.</p>
+    {% endif %}
+    <p class="govuk-body">When the vacancy is approved, it will appear on the Find an apprenticeship service.</p>
+    <form method="post">
+    <div class="form-group inline">
+      <div class="form-group">
+          
+          {% if data.journey=='new' and data.user=='employer'%}
+          <a href="../dashboard-one" class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
+          {% elseif data.journey=='new' and data.user=='provider'%}
+          <a href="../dashboard-pending" class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
+          {% elseif data.user == 'provider' %}
+          <a href="../dashboard " class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
+          {% else %}
+          <a href="../vacancies?user=employer" class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
+          {% endif %}
+            <a class="govuk-body das-button--link" href="../create-vacancy-options/clone-vacancy">Create another vacancy</a>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

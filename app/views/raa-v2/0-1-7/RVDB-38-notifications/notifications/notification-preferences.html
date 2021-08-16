@@ -1,0 +1,134 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="grid-row dashboard-header">
+  		<div class="column-two-thirds">
+        <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  			<h1 class="govuk-heading-xl small-bottom-margin">
+  			     Manage your recruitment emails
+  			</h1>
+
+  		</div>
+  	</div>
+
+
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="when-conditional-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              When do you want to be sent recruitment emails?
+            </h1>
+          </legend>
+          <span id="when-conditional-hint" class="govuk-hint">
+            Choose when you’d like emails
+          </span>
+          <div class="govuk-checkboxes" data-module="checkboxes">
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input checked" id="notifications-rejected" name="notifications" type="checkbox" value="rejected" {% if "rejected" in data.notifications %}checked="checked"{%endif%}  >
+              <label class="govuk-label govuk-checkboxes__label" for="notifications-rejected">
+                <span class="govuk-visually-hidden">Get notifications when </span>vacancies are rejected after review
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input checked" id="notifications-closing" name="notifications" type="checkbox" value="closingSoon" {% if "closingSoon" in data.notifications %}checked="checked"{%endif%} >
+              <label class="govuk-label govuk-checkboxes__label" for="notifications-closing">
+                <span class="govuk-visually-hidden">Get notifications when </span>vacancies are closing soon
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item govuk-checkboxes--conditional">
+              <input class="govuk-checkboxes__input checked" id="notifications-new" name="notifications" type="checkbox" value="newApplication" data-aria-controls="conditional-when-conditional" {% if "newApplication" in data.notifications %}checked="checked"{%endif%} >
+              <label class="govuk-label govuk-checkboxes__label" for="notifications-new">
+                <span class="govuk-visually-hidden">Get notificatios when</span>there’s new applications
+              </label>
+            </div>
+            <div class="govuk-checkboxes__conditional {% if not "newApplication" in data.notifications %}govuk-checkboxes__conditional--hidden{% endif %}" id="conditional-when-conditional">
+              <fieldset class="govuk-fieldset" aria-describedby="when-conditional-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                  <h1 class="govuk-fieldset__heading">
+                    How often do you want to be sent new application emails?
+                  </h1>
+                </legend>
+                <div class="govuk-radios" data-module="checkboxes">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input checked" id="how-conditional-1" name="emailFrequency" type="radio" value="immediately" {% if "immediately" in data.emailFrequency %}checked="checked"{%endif%}>
+                    <label class="govuk-    label govuk-radios__label" for="how-conditional-1" >
+                      <span class="govuk-visually-hidden">Get notifications </span>straight away
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="how-conditional-2" name="emailFrequency" type="radio" value="daily" {% if "daily" in data.emailFrequency %}checked="daily"{%endif%}>
+                    <label class="govuk-label govuk-radios__label" for="how-conditional-2">
+                      <span class="govuk-visually-hidden">Get notifications </span>once a day
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="how-conditional-3" name="emailFrequency" type="radio" value="weekly"  {% if "weekly" in data.emailFrequency %}checked="weekly"{%endif%}>
+                    <label class="govuk-label govuk-radios__label" for="how-conditional-3">
+                      <span class="govuk-visually-hidden">Get notifications </span>once a week
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group">
+        <p class="govuk-body"><a href="unsubscribe">Unsubscribe from all recruitment emails</a></p>
+        </div>
+      <!-- <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Unsubscribe
+            </h1>
+          </legend>
+          <div class="govuk-checkboxes" data-module="checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="unsubscribe" name="unsubscribe" type="checkbox" value="yes">
+              <label class="govuk-label govuk-checkboxes__label" for="when-conditional-1">
+                Unsubscribe from all notifications
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div> -->
+      <div class="govuk-form-group">
+        	<button class="govuk-button submit" type="submit">Continue</button>
+      </div>
+
+    </form>
+
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+{% block pageScripts %}
+
+<script>
+
+
+$(document).ready(function() {
+  $('#unsubscribe').on('change',function(){
+    if($('#unsubscribe').is(':checked')){
+      $('.checked').removeAttr('checked')
+    }else{
+      $('.checked').prop("checked", true);
+    }
+  })
+
+})
+
+
+</script>
+{% endblock %}

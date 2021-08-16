@@ -1,0 +1,35 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-147 Employer dashboard</h1>
+
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Employer</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="dashboard-multiple?user=employer&alert=">Multiple vacancies - dashboard</a></li>
+            <li class="govuk-list--item"><a href="dashboard-draft?user=employer">only draft vacancies</a></li>
+            <li class="govuk-list--item"><a href="dashboard-rejected?user=employer">only rejected vacancy</a></li>
+            <li class="govuk-list--item"><a href="dashboard-closed?user=employer">only closed vacancies & with applications</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="dashboard-multiple?user=employer&alert=transferred">example with transfered alert</a></li>
+
+          </ul>
+          </div>
+      </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post">
+    <div class="govuk-form-group">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading">
+            Would you like to be sent recruitment emails to keep you updated about  your vacancies?
+          </h1>
+        </legend>
+        <p class="govuk-body">When there’s a new application or if a vacancy needs your attention, we can send an email to <b>yourname@abcopticions.com<b></p>
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="clone" name="receive_notification" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="clone">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="clone" name="receive_notification" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="create-new">
+              No, skip it for now
+            </label>
+          </div>
+
+      </fieldset>
+    </div>
+
+    <button type="submit" class="govuk-button">Continue</button>
+    <a href="../dashboard-no-vacancy" class="govuk-body das-button--link">Cancel</a>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

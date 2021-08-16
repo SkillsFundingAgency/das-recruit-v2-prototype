@@ -1,0 +1,30 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+        <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+    <h1 class="govuk-heading-xl">Write a few sentences to describe your vacancy</h1>
+    <form method="post">
+      <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="350">
+        <div class="govuk-form-group">
+          <!-- <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+              Write a few sentences to describe your vacancy
+          </label> -->
+          <span class="govuk-hint">This brief description needs to be engaging to make the candidate want to view the full vacancy.</span>
+          <textarea class="govuk-textarea js-character-count " id="shortDescription" name="shortDescription" rows="5"></textarea>
+        </div>
+      </div>
+      <button class="govuk-button">Save and continue</button>
+      <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

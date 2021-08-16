@@ -1,0 +1,95 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% if data.hasError and data.errorType == "grades"%}
+        <div class="validation-summary-errors govuk-error-summary" role="alert" data-valmsg-summary="true"  aria-labelledby="error-summary-title" tabindex="-1">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                Please fix these errors
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#grades-need-update" data-focuses="#grades-need-update" class="summary-link">GCSEs must include the 1-9 grading system</a>
+                    </li>
+
+                </ul>
+            </div>
+          </div>
+          {% endif %}
+        <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-l">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</span>
+          What qualifications would you like the applicant to have?
+        </h1>
+        <form method="post">
+          <div class="govuk-form-group">
+              <label class="govuk-label" id="QualificationsHeading" for="QualificationType">Add qualifications applicants should have</label>
+              <select class="govuk-select" id="QualificationType" name="QualificationType">
+                    <option value="">Select from list</option>
+                        <option value="GCSE or equivalent" {% if data.hasError or  (data.edit=="yes" and  query.editQualificationType == "GCSE or equivalent")%}selected="selected"{% endif %}>GCSE or equivalent</option>
+                        <option value="AS Level or equivalent"{% if data.edit=="yes" and  query.editQualificationType == "AS Level or equivalent" %}selected="selected"{% endif %}>AS Level or equivalent</option>
+                        <option value="A Level or equivalent" {% if data.edit=="yes" and  query.editQualificationType== "A Level or equivalent" %}selected="selected"{% endif %}>A Level or equivalent</option>
+                        <option value="BTEC or equivalent" {% if data.edit=="yes" and  query.editQualificationType == "BTEC or equivalent" %}selected="selected"{% endif %}>BTEC or equivalent</option>
+                        <option value="NVQ or SVQ Level 1 or equivalent"{% if data.edit=="yes" and  query.editQualificationType == "NVQ or SVQ Level 1 or equivalent" %}selected="selected"{% endif %}>NVQ or SVQ Level 1 or equivalent</option>
+                        <option value="NVQ or SVQ Level 2 or equivalent" {% if data.edit=="yes" and  query.editQualificationType == "NVQ or SVQ Level 2 or equivalent" %}selected="selected"{% endif %}>NVQ or SVQ Level 2 or equivalent</option>
+                        <option value="NVQ or SVQ Level 3 or equivalent" {% if data.edit=="yes" and  query.editQualificationType == "NVQ or SVQ Level 3 or equivalent" %}selected="selected"{% endif %}>NVQ or SVQ Level 3 or equivalent</option>
+                        <option value="Other">Other</option>
+                </select>
+          </div>
+
+          <div class="govuk-form-group">
+
+              <label class="govuk-label" for="Subject">Subject</label>
+
+              <input class="govuk-input govuk-input--width-20" value="{% if data.hasError %}{{data.Subject}}{%elseif query.edit == "yes"%}{{query.editSubject}}{% endif %}" type="text" maxlength="50" id="Subject" name="Subject" >
+          </div>
+          <div id="grades-need-update" class="govuk-form-group {%if data.hasError and data.errorType == 'grades'%}govuk-form-group--error{% endif%}" data-bind="parentvalElement:grade">
+              <label class="govuk-label" for="Grade">Grade</label>
+              {% if data.hasError and data.errorType == "grades" %}
+              <span id="provider-need-update" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span>GCSEs must include the 1-9 grading system
+              </span>
+              {% endif %}
+              <input class="govuk-input govuk-input--width-20 {% if data.hasError and data.errorType == "grades" %}govuk-input--error{% endif %}" value="{% if data.hasError %}{{data.Grade}}{% elseif query.edit == "yes"%}{{query.editGrade}}{% endif %}" type="text" maxlength="30" id="Grade" name="Grade">
+          </div>
+
+          <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">Is this qualification essential or desirable?</h1>
+                  </legend>
+                  <div class="govuk-radios govuk-radios--inline">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="WeightingYes" type="radio" value="Essential" data-display="Essential" name="Weighting" data-automation="radio-weighting-yes" {% if (data.hasError and data.Weighting=="Essential") or query.editWeight== "Essential" %}checked="checked"{% endif %}>
+                      <label class="govuk-label govuk-radios__label" for="WeightingYes">Essential <span class="govuk-hint">The applicant must have this qualification to be considered</span></label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="WeightingNo" type="radio" value="Desired" data-display="Desired" name="Weighting" data-automation="radio-weighting-no" {% if (data.hasError and data.Weighting=="Desired" ) or query.editWeight == "Desired"%}checked="checked"{% endif %}>
+                      <label class="govuk-label govuk-radios__label" for="WeightingNo">Desirable<span class="govuk-hint">This qualification would be a nice to have, but is not required</span></label>
+                    </div>
+                  </div>
+              </fieldset>
+          </div>
+
+
+
+          <br>
+          <input type="submit" class="govuk-button" data-automation="btn-continue" name="button" value="Save and continue">
+          {% if data.qualifications | length > 0 %}
+            <a class="govuk-body das-button--link" href="qualifications-list" data-automation="link-cancel">Cancel</a>
+          {% else %}
+            <a class="govuk-body das-button--link" href="vacancy-preview?edit=no" data-automation="link-cancel">Cancel</a>
+          {% endif %}
+
+        </form>
+          </div>
+      </div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,41 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-110 Improved part 2</h1>
+        <h3 class="govuk-heading-m"><a href="./provider/config">Configure session</a></h3>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Existing provider</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions=">Preview with 5 required and 4 others</a></li>
+            <li class="govuk-list--item"><a href="create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=hi&TrainingDescription=hi&Skills=art&qualifications=hi&ApplicationMethod=&VacancyDescription=hi">Preview with 1 required</a></li>
+            <li class="govuk-list--item"><a href="create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=hi&TrainingDescription=hi&Skills=art&qualifications=hi&ApplicationMethod=&ApplicationMethod=ThroughFindAnApprenticeship&VacancyDescription=hi&OutcomeDescription=3&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&VacancyDescription=&OutcomeDescription=">Preview with 0 required</a></li>
+            <li class="govuk-list--item"><a href="create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=hi&TrainingDescription=hi&Skills=art&qualifications=hi&ApplicationMethod=ThroughFindAnApprenticeship&VacancyDescription=hi&OutcomeDescription=3&ThingsToConsider=2&EmployerWebsiteUrl=google&EmployerContactName=richard&disability_confident_level=level2&disability_confident_signed=yes&questions=23">Preview with nothing remaining</a></li>
+            <br>
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}

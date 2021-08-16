@@ -1,0 +1,24 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Create a vacancy
+    </h1>
+    <p class="govuk-inset-text">You must be a levy-paying employer to post a vacancy.</p>
+    <p class="govuk-body">Vacancies will be approved or rejected within 24 hours. You'll be notified through your recruitment page, if you need to make any edits to your vacancy.</p>
+    <form method="post">
+    <a href="title" class="govuk-button">Continue</a>
+    <a href="../dashboard-clone" class="govuk-body das-button--link">Cancel</a>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

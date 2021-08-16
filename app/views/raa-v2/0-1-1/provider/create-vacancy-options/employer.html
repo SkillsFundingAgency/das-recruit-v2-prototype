@@ -1,0 +1,275 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="#" class="govuk-back-link">Back</a>
+    <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span>
+    <h1 class="govuk-heading-xl">Which of your legal entities will the {% if data.numberOfPositions > 1 %} apprentices{% else %}apprentice{% endif %} be working for?</h1>
+    <form method="POST">
+				<fieldset class="govuk-fieldset">
+					<legend class="govuk-visually-hidden">Search for the legal entity</legend>
+					<div class="govuk-form-group search-field search-field-darker govuk-input--width-30">
+
+						<div class="search-input search-input-with-button">
+							<label class="govuk-label" for="query">
+								<!--Client reference-->
+								Search for the legal entity
+							</label>
+							<div class="autocomplete__parent_wrapper">
+                <div class="autocomplete__wrapper">
+                  <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                    <span>No search results.</span>
+                    <span>,,</span>
+                  </div>
+                  <input aria-owns="searchOrgs__listbox" autocomplete="off" class="autocomplete__input" id="searchOrgsAuto" name="query" placeholder="" role="combobox" type="text" style="display:none;" value="{% if query %}{{query}}{% endif %}">
+                </div>
+              </div>
+              <input class="govuk-text" name="searchOrgQuery" id="searchOrgsQuery"   value="">
+						</div>
+						<div class="search-submit">
+							<button class="govuk-button" type="submit" id="searchOrgsSubmit" name="searchOrgsSubmit" value="Search Organisations">Search Organisations</button>
+						</div>
+					</div>
+          <p class="" data-clear-filter="" aria-hidden="false"><a id="clearSearch" href="#">Clear search</a></p>
+				</fieldset>
+
+
+    <h2 class="govuk-heading-s">Select legal entity</h2>
+      <div id="oranisation-list" class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios">
+            {% for i in locations %}
+            <div class="govuk-radios__item selection-item" data-item-id="{{loop.index+1}}">
+              <input class="govuk-radios__input" id="selected-organisation-id-{{loop.index+1}}" name="selected_organisation_id" type="radio"
+                value="ABC opticians {{i}}" data-search-value="Organisation {{loop.index+1}}">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-{{loop.index+1}}">
+                ABC opticians {{i}}
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </fieldset>
+      </div>
+
+      <div id="oranisation-list-1" class="govuk-form-group" style="display:none;">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios">
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Coventry" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                ABC opticians Coventry
+              </label>
+            </div>
+        </fieldset>
+      </div>
+
+
+      <div id="oranisation-list-2" class="govuk-form-group" style="display:none;">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios">
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Coventry" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                 ABC opticians Coventry
+              </label>
+            </div>
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="sselected_organisation_id" type="radio" value="ABC opticians Wycombe" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                ABC opticians Wycombe
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <p id="oranisation-list-no-result" style="display:none;">0 matches for <span class="querytext"></span></p>
+
+
+
+      <div class="pager das-pager" aria-hidden="false" style="margin-top:0" data-paging="">
+				<div class="pager-controls das-pager-controls">
+					<a class="pager-prev das-pager-prev hidden" href="#" aria-hidden="true" hidden="hidden">Prev</a>
+					<ul class="govuk-list pager-items das-pager-items"><li data-page-number="1">1</li><li data-page-number="2"><a href="#">2</a></li><li data-page-number="3"><a href="#">3</a></li><li data-page-number="4"><a href="#">4</a></li><li data-page-number="5"><a href="#">5</a></li></ul>
+					<a class="pager-next das-pager-next" href="#" aria-hidden="false">Next</a>
+				</div>
+				<div class="das-pager-summary">Showing 1 - 25 of 87 legal entities</div>
+			</div>
+      <!-- <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h2 class="govuk-fieldset__heading">
+                          Anonymous vacancies
+                        </h2>
+                      </legend>
+                      <label class="form-label-bold" for="anonymous-vacancy">
+
+                      </label>
+                      <span class="govuk-hint">Your name will not appear on the vacancy or in any searches on <a href-="#">find an apprenticeship.</a> This could mean fewer people see your vacancy</span>
+                      <div class="govuk-checkboxes"">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="anonymous-vacancy" name="anonymous-vacancy" type="checkbox" value="anonymous" aria-controls="anonymous-vacancy-panel" aria-expanded="false">
+                            <label class="govuk-label govuk-checkboxes__label" nfor="anonymous-vacancy">The vacancy is anonymous</label>
+                        </div>
+                    </div>
+                    </fieldset>
+                </div> -->
+
+      <button type="submit" class="govuk-button">Save and continue</button>
+      <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+</form>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/checkbox-editing.js"></script>
+
+<script>
+
+
+$(document).ready(function() {
+
+  // TODO call script from file instead
+  // pass this in - 118 - total items - totalCheckboxesCount
+  // pass this in - false - boolean whether to clear down or not
+  // pass this in - 25 - how many items to show per page
+  // checkboxEditing(
+  //   118,
+  //   false,
+  //   25,
+  //   "team member",
+  //   "team members"
+  // )
+
+  var page = 1;
+  var max_per_page = 25
+  var total_items = 87
+  var page_total = Math.round(total_items/max_per_page)+1
+
+  var data_set = $('.selection-item');
+  var pagerControls = $('.pager-controls');
+  var keycount = 0
+  function updateList(){
+    data_set.each(function( index ) {
+      console.log(max_per_page*(page+1))
+      if($( this ).attr('data-item-id') > max_per_page*page-1 || $( this ).attr('data-item-id') < (max_per_page*page)-max_per_page ){
+        $(this).attr("hidden","hidden")
+        $(this).attr("aria-hidden","true")
+        $(this).hide();
+      }else{
+        $(this).removeAttr("hidden","hidden")
+        $(this).attr("aria-hidden","false")
+        $(this).show();
+      }
+    });
+    buildPager()
+  }
+  function buildPager(){
+    var pager = ""
+    var shown_items_min = (1+max_per_page*page)-max_per_page
+    var shown_items_max = ((max_per_page*page) < total_items)? max_per_page*page : total_items;
+    if(page > 1){
+      pager +='<a class="pager-prev das-pager-prev" href="#" aria-hidden="false">Prev</a>'
+    }
+    pager+='<ul class="pager-items das-pager-items">'
+    for(var i=1;i<=page_total;i++){
+      var pager_link = (i!=page) ? '<li><a href="#">'+i+'</a></li>' : '<li>'+i+'</li>'
+      console.log("building  "+pager_link )
+      pager+=pager_link
+    }
+    pager+='</ul>';
+    console.log("total_items:"+page)
+    if(page < page_total){
+      console.log("adding next")
+      pager +='<a class="pager-next das-pager-next" href="#" aria-hidden="false">Next</a>'
+    }
+    pagerControls.html(pager)
+    $('.pager-items a').on('click',function(event){
+      event.preventDefault();
+      console.log("updating page to ="+$(this).text())
+      page = $(this).text()
+      updateList()
+    });
+    $('.pager-next').on('click',function(event){
+      page +=1
+      updateList()
+    })
+    $('.pager-prev').on('click',function(event){
+      page -=1
+      updateList()
+    })
+    $('.das-pager-summary').html("Showing "+shown_items_min+" - "+shown_items_max+ " of "+total_items+" legal entities")
+  }
+  function searchCheck(e){
+    keycount = $('#searchOrgsAuto').val().length
+    $('.querytext').text($('#searchOrgsAuto').val())
+    if(keycount == 2){
+      $("#oranisation-list-2").show()
+      $("#oranisation-list-1").hide()
+      $("#oranisation-list").hide()
+      $(".das-pager").hide()
+      $("#oranisation-list-no-result").hide()
+    }else if(keycount > 2 && keycount < 9){
+      $("#oranisation-list-1").show()
+      $("#oranisation-list-2").hide()
+      $("#oranisation-list").hide()
+        $("#oranisation-list-no-result").hide()
+        $(".das-pager").hide()
+
+      }else if(keycount >= 9){
+        $("#oranisation-list-no-result").hide()
+        $("#oranisation-list-1").hide()
+        $("#oranisation-list-2").hide()
+        $("#oranisation-list").hide()
+        $(".das-pager").hide()
+          $("#oranisation-list-no-result").show()
+      }else{
+      $("#oranisation-list").show()
+      $("#oranisation-list-2").hide()
+      $("#oranisation-list-1").hide()
+      $(".das-pager").show()
+      $("#oranisation-list-no-result").hide()
+    }
+  }
+  function init(){
+    // Set up autocomplete
+    searchCheck()
+    $('#clearSearch').on('click',function(e){
+      e.preventDefault();
+      $('#searchOrgsAuto').val('')
+      $("#oranisation-list").show()
+      $("#oranisation-list-2").hide()
+      $("#oranisation-list-1").hide()
+        $(".das-pager").show()
+    })
+
+    $('#searchOrgsAuto').show()
+    $('#searchOrgsAuto').on('keydown', searchCheck)
+    // $('#searchOrgsAuto').on('blur',function(){
+    //   keycount = 0
+    // })
+    $('#searchOrgsQuery').hide();
+    // Hide submit button in this version, only shows if Javascript is not on.
+    $('#searchOrgsSubmit').hide();
+    $('.search-input').removeClass('search-input-with-button')
+
+    buildPager()
+    updateList()
+  }
+  init()
+
+
+
+});
+
+</script>
+{% endblock %}

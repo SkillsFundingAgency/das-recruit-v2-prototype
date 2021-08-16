@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="#" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Provider permissions prototype</h1>
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">0-1-13
+
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="0-1-13/home?start=none">Permissions start (no providers)</a></li>
+<li class="govuk-list--item"><a href="0-1-13/home>start=">Permissions start (multiple providers)</a></li>
+<!-- Quicklinks -->
+<li class="govuk-list--item">Other pages</li>
+<li><a class="govuk-link govuk-link--no-visited-state" href="0-1-13/providers">Provider permissions - multiple</a></li>
+<li><a class="govuk-link govuk-link--no-visited-state" href="0-1-13/providers-none">Provider permissions - none</a></li>
+<li><a class="govuk-link govuk-link--no-visited-state" href="0-1-13/providers-one-org">Provider permissions - one provider for one legal entity</a></li>
+              <li><a class="govuk-link govuk-link--no-visited-state" href="0-1-13/set-permissions?set_permission_employer=MUSECRAFT%20%20LTD&has_recruitment_settings=no&collaboration=no&allow_recruitment=">Set permission</a></li>
+              <br>
+              <li><a class="govuk-link govuk-link--no-visited-state" href="0-1-13/confirm-permissions?set_permission_employer=MUSECRAFT%20%20LTD&has_recruitment_settings=no&collaboration=no&allow_recruitment=">Confirm settings</a></li>
+              <br>
+              <li><a class="govuk-link govuk-link--no-visited-state" href="0-1-13/confirmation?set_permission_employer=MUSECRAFT%20%20LTD&has_recruitment_settings=no&collaboration=no&allow_recruitment=">Confirmation</a></li>
+          </ul>
+        </div>
+        <div class="version govuk-!-margin-bottom-8">
+          <ul class="govuk-list">
+
+            <!-- Quicklinks -->
+            <li class="govuk-list--item">Other pages</li>
+            <li><a class="govuk-link govuk-link--no-visited-state" href="0-1-13/providers">Provider permissions home</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+{% endblock %}

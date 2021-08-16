@@ -1,0 +1,57 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-52 wages</h1>
+        <h3 class="govuk-heading-m"><a href="./provider/config">Configure session</a></h3>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+
+              <ul class="govuk-list">
+                <li class="govuk-list--item"><a class="govuk-link" href="">Edit vacancy</a></li>
+
+                </ul>
+
+            <h2 class="govuk-heading-m">Other Designs</h2>
+            <p class="govuk-body">
+              <ul class="govuk-list">
+                <li class="govuk-list--item"><a href="vacancies?user=employer&error=&WageType=&FixedWageYearlyAmount=">from dashaboard</a></li>
+                <li class="govuk-list--item">  <a href="create-vacancy-options/working_hours?user=employer">duration and working hours (remove wages)</a></li>
+                <br>
+                <li class="govuk-list--item">  <a href="create-vacancy-options/wages?user=employer&error=&WageType=&FixedWageYearlyAmount=">Wages (new)</a></li>
+                <li class="govuk-list--item">  <a href="create-vacancy-options/wages?user=employer&error=&WageType=&FixedWageYearlyAmount=&start_year=2020&nationalMinWage=3.93">Wages (start date after new national Min Wage)</a></li>
+                <li class="govuk-list--item">  <a href="create-vacancy-options/wages?user=employer&error=wages&WageType=fixedWage&FixedWageYearlyAmount=1000">Wages (error)</a></li>
+                <br>
+                <li class="govuk-list--item">  <a href="vacancy-preview/vacancy-preview?user=employer&error=&WageType=fixedWage&FixedWageYearlyAmount=8000&yearlyWage=£8,000&weeklyHours=37&start_year=2019">Preview page (fixed wage, no error)</a></li>
+                <li class="govuk-list--item">  <a href="vacancy-preview/vacancy-preview?user=employer&error=wages&WageType=fixedWage&FixedWageYearlyAmount=7000&yearlyWage=£7,000&weeklyHours=37&start_year=2019">Preview page (fixed wage, with Error)</a></li>
+                <li class="govuk-list--item">  <a href="vacancy-preview/vacancy-preview-error?user=employer&error=&WageType=fixedWage&FixedWageYearlyAmount=7000&yearlyWage=£7,000&weeklyHours=37&start_year=2019">Preview page (fixed wage, with error after submiting)</a></li>
+              </ul>
+
+
+
+            </p>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}

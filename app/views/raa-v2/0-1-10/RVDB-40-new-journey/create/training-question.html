@@ -1,0 +1,59 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</span>
+        <h1 class="govuk-heading-xl">Have you already found a appropriate training course for this apprenticeship?</h1>
+        <p class="govuk-body">If you are looking to take on apprentices you will need to provide training through an registered provider, if you havent found any yet you will need to find appropriate training first.</p>
+        <form method="post">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item" >
+                <input class="govuk-radios__input" id="hasTrainingProvider_yes" name="hasTrainingProvider" type="radio"
+                  value="yes" >
+                <label class="govuk-label govuk-radios__label" for="hasTrainingProvider_yes">
+                  Yes, I found appropriate traininng
+                </label>
+              </div>
+
+              <div class="govuk-radios__item " >
+                <input class="govuk-radios__input" id="hasTrainingProvider_no" name="hasTrainingProvider" type="radio"
+                  value="no">
+                <label class="govuk-label govuk-radios__label" for="hasTrainingProvider_no">
+                  No, help me find one
+                </label>
+              </div>
+
+            </div>
+
+          </fieldset>
+          <div class=" govuk-form-grou govuk-!-margin-top-8">
+            {% if query.edit != "yes"%}
+              <input type="submit" class="govuk-button" data-module="govuk-button" name="continueButton" value="Continue"/>
+              <a href="../dashboard-new" class="govuk-body das-button--link">Cancel</a>
+            {%else%}
+            <input type="submit" class="govuk-button" data-module="govuk-button" name="previewdButton" value="Save and continue"/>
+            <a href="../vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+            {%endif%}
+          </div>
+        </form>
+
+      </div>
+  </div>
+
+
+
+{% endblock %}

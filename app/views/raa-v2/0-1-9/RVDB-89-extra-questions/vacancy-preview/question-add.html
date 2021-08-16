@@ -1,0 +1,36 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl"><span class="govuk-caption-l">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</span>
+              What extra questions would you like candidates to answer (optional)?
+            </h1>
+            <form method="post">
+              <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-!-font-weight-bold" for="question1">
+                    Your question
+                  </label>
+                  <!-- <span class="govuk-hint">For example, Software developer apprenticeship. The vacancy title must include the
+                    word apprentice or apprenticeship.</span> -->
+                  <input class="govuk-input  js-character-count" id="question" name="question" type="text">
+                </div>
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save and continue" class="govuk-button save-button" data-automation="btn-continue">
+                    <a class="govuk-body das-button--link" href="question-list" data-automation="link-cancel">Cancel</a>
+                </div>
+              </form>
+          </div>
+      </div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

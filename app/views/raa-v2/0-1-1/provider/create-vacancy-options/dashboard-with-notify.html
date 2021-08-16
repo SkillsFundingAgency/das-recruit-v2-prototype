@@ -1,0 +1,101 @@
+
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+  Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">Your vacancies</h1>
+      <a href="create-vacancy-options/create-vacancy" class="govuk-button">Create vacancy</a>
+
+      <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col">Status</th>
+              <th class="govuk-table__header" scope="col">Vacancy title</th>
+              <th class="govuk-table__header" scope="col">Vacancy ref</th>
+              <th class="govuk-table__header" scope="col">Closing date</th>
+              <th class="govuk-table__header" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><span class="das-tag das-tag--draft">Draft</span></td>
+              <td class="govuk-table__cell">Apprentice Software Tester</td>
+              <td class="govuk-table__cell">Not available</td>
+              <td class="govuk-table__cell"></td>
+              <td class="govuk-table__cell"><a href="vacancy-preview/vacancy-preview" class="govuk-link">Edit and submit</a></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><span class="das-tag das-tag--live">Live</span></td>
+              <td class="govuk-table__cell">Developer Apprentice</td>
+              <td class="govuk-table__cell">VAC1000000651</td>
+              <td class="govuk-table__cell">27 Jan 2019</td>
+              <td class="govuk-table__cell"><a href="details" class="govuk-link">Manage</a></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><span class="das-tag das-tag--draft">Draft</span></td>
+              <td class="govuk-table__cell">Apprentice Software Tester</td>
+              <td class="govuk-table__cell">VAC1000000652</td>
+              <td class="govuk-table__cell">03 Jan 2019</td>
+              <td class="govuk-table__cell"><a href="vacancy-preview/vacancy-preview" class="govuk-link">Edit and submit</a></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><span class="das-tag das-tag--submitted">Pending review</span></td>
+              <td class="govuk-table__cell">Business Analyst Apprentice</td>
+              <td class="govuk-table__cell">VAC1000000656</td>
+              <td class="govuk-table__cell">07 Jan 2019</td>
+              <td class="govuk-table__cell"><a href="details" class="govuk-link">Manage</a></td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="das-tag das-tag--submitted">Pending review</span></td>
+                <td class="govuk-table__cell">Apprentice Front End Developer</td>
+                <td class="govuk-table__cell">VAC1000000657</td>
+                <td class="govuk-table__cell">29 Dec 2018</td>
+                <td class="govuk-table__cell"><a href="details" class="govuk-link">Manage</a></td>
+              </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="das-tag das-tag--closed">Closed</span></td>
+                <td class="govuk-table__cell">Interaction Designer Apprentice</td>
+                <td class="govuk-table__cell">VAC1000000668</td>
+                <td class="govuk-table__cell">23 Dec 2018</td>
+                <td class="govuk-table__cell"><a href="details" class="govuk-link">Manage</a></td>
+              </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="das-tag das-tag--referred">Rejected</span></td>
+                <td class="govuk-table__cell">Apprentice Software Developer</td>
+                <td class="govuk-table__cell">VAC1000000689</td>
+                <td class="govuk-table__cell">11 Dec 2018</td>
+                <td class="govuk-table__cell"><a href="vacancy-preview/vacancy-preview" class="govuk-link">Edit and resubmit</a></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="das-tag das-tag--live">Live</span></td>
+                <td class="govuk-table__cell">User Researcher Apprentice</td>
+                <td class="govuk-table__cell">VAC1000000693</td>
+                <td class="govuk-table__cell">12 Nov 2018</td>
+                <td class="govuk-table__cell"><a href="details" class="govuk-link">Manage</a></td>
+              </tr>
+              <tr class="govuk-table__row">
+                  <td class="govuk-table__cell"><span class="das-tag das-tag--referred">Rejected</span></td>
+                  <td class="govuk-table__cell">Software Developer Apprentice</td>
+                  <td class="govuk-table__cell">VAC1000000697</td>
+                  <td class="govuk-table__cell">31 Oct 2018</td>
+                  <td class="govuk-table__cell"><a href="vacancy-preview/vacancy-preview" class="govuk-link">Edit and resubmit</a></td>
+                </tr>
+              <tr class="govuk-table__row">
+                  <td class="govuk-table__cell"><span class="das-tag das-tag--closed">Closed</span></td>
+                  <td class="govuk-table__cell">Apprentice Technical Architect</td>
+                  <td class="govuk-table__cell">VAC1000000702</td>
+                  <td class="govuk-table__cell">07 Sep 2018</td>
+                  <td class="govuk-table__cell"><a href="details" class="govuk-link">Manage</a></td>
+                </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

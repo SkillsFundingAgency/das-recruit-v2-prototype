@@ -1,0 +1,174 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+  <a href="#" class="govuk-back-link">Back to vacancies</a>
+{% endblock %}
+{% block content %}
+
+<style media="screen">
+  .analytics--block{
+    margin-bottom:10px;
+  }
+  .analytics--header{
+    background-color:#CAE7E5;
+    padding:6px 10px 5px;
+    margin-bottom: 10px;
+    /* font-size: 16px !important;
+font-size: 1rem !important;
+line-height: 1.25 !important; */
+
+  }
+  .analytics--numeric{
+    font-size: 50px;
+    font-weight: 700;
+  }
+  .analytics--label{font-size:28px;font-weight: 400;}
+  .govuk-icon-small{
+    font-size: 40px;
+    color:#6f777b;
+    margin-right:10px;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+    <h1 class="govuk-heading-xl">Manage vacancy</h1>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half ">
+        <span class="govuk-body govuk-!-font-weight-bold">Status</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">Live</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Vacancy title</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">Apprentice Bricklayer</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Vacancy ref</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">VAC1000000997</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half govuk-!-font-weight-bold">
+        <span class="govuk-body">Closing date</span>
+      </div>
+      <div class="govuk-grid-column-one-half ">
+        <span class="govuk-body">01 Jan 2019
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Possible start date</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">01 Feb 2019</span>
+      </div>
+    </div>
+    <div class="grid-row">
+      <div class="column-full">
+        <p class="govuk-body">
+          <a class="govuk-link button-link" href="#">Edit vacancy</a> &nbsp; &nbsp;
+          <a class="govuk-link button-link" href="#">Close vacancy</a> &nbsp; &nbsp;
+          <a class="govuk-linkbutton-link" target="_blank" href="#">View vacancy</a> &nbsp; &nbsp;
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">Vacancy Analytics
+          <span class="govuk-caption-l">01/02/2019 - 28/02/2019</span>
+      </h2>
+      <p class="govuk-body">Analytics show the total amount and the change from the previous 7 days</p>
+      <div id="analytics" class="govuk-grid-row">
+
+        <div class="analytics--block govuk-grid-column-one-third">
+          <h3 class="analytics--header govuk-heading-s">Appeared in search</h3>
+          <div class="analytics--summary">
+            <div  class="analytics--numeric">68</div>
+            <p class="analytics--info"><span class="govuk-!-font-weight-bold">+12</span> Increase</p>
+          </div>
+        </div>
+        <div class="analytics--block govuk-grid-column-one-third">
+          <h3 class="analytics--header govuk-heading-s">Total times viewed</h3>
+          <div class="analytics--summary">
+            <div  class="analytics--numeric">12</div>
+            <p class="analytics--info"><span class="govuk-!-font-weight-bold">+5</span> increase</p>
+          </div>
+        </div>
+        <div class="analytics--block govuk-grid-column-one-third">
+          <h3 class="analytics--header govuk-heading-s">Click through rate</h3>
+          <div class="analytics--summary">
+            <div class="analytics--numeric">5.6%</div>
+            <p class="analytics--info"><span class="govuk-!-font-weight-bold">-0.3%</span> decrease</p>
+          </div>
+        </div>
+        <div class="analytics--block govuk-grid-column-one-third">
+          <h3 class="analytics--header govuk-heading-s">Average time on vacancy</h3>
+          <div class="analytics--summary">
+            <div  class="analytics--numeric"><span class="hod-clock side-space govuk-icon-small"></span>1<span class="analytics--label govuk-!-font-weight-bold">m</span>25<span class="analytics--label govuk-!-font-weight-bold">s</span></div>
+            <p class="analytics--info"><span class="govuk-!-font-weight-bold">-7s</span> decrease</p>
+          </div>
+        </div>
+        <div class="analytics--block govuk-grid-column-one-third">
+          <h3 class="analytics--header govuk-heading-s">Total applications started</h3>
+          <div class="analytics--summary">
+            <div class="analytics--numeric">7</div>
+            <p class="analytics--info"><span class="govuk-!-font-weight-bold">+1</span> increase</p>
+          </div>
+        </div>
+        <div class="analytics--block govuk-grid-column-one-third">
+          <h3 class="analytics--header govuk-heading-s">Total applications submitted</h3>
+          <div class="analytics--summary">
+            <div  class="analytics--numeric">1</div>
+            <p class="analytics--info"><span class="govuk-!-font-weight-bold">No</span> increase</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">Manage applications</h2>
+      <table class="govuk-table responsive-table">
+        <thead class="govuk-table__header">
+          <tr class="govuk-table__row" role="row">
+            <th class="govuk-table__cell" role="gridcell" class="bold">Name</th>
+            <th  class="govuk-table__cell" role="gridcell"class="bold">Application ID</th>
+            <th class="govuk-table__cell" role="gridcell" class="bold">Status</th>
+            <th class="govuk-table__cell" role="gridcell" class="bold">Date applied</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="govuk-table__cell" role="gridcell"  data-label="Name"><a href="/accounts/VN4XKG/vacancies/8aa5f512-b70e-4b9c-b9a3-d499277afc33/applications/c5662ea1-acd4-436c-8613-971e927fbbe3/">Faizal Dawood</a></td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Application ID">C5662EA</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Status">Unsuccessful</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Date applied">18 Oct 2018</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+{% endblock %}

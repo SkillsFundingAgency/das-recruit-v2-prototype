@@ -1,0 +1,41 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <div class="govuk-width-container">
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">RVDB-51 Main description</h1>
+        <h3 class="govuk-heading-m"><a href="./provider/config">Configure session</a></h3>
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview?VacancyDescription=&TrainingQualification=&OutcomeDescription=">From preview - No description added</a></li>
+            <li class="govuk-list--item"><a href="vacancy-preview/vacancy-description?VacancyDescription=&TrainingQualification=&OutcomeDescription=">Vacancy Description</a></li>
+            <li class="govuk-list--item"><a href="vacancy-preview/vacancy-preview?VacancyDescription=Content goes here&TrainingQualification=Content goes here&OutcomeDescription=Content goes here">Preview with description added</a></li>
+            <span class="govuk-hint">Other pages</span>
+            <li class="govuk-list--item"><a href="https://das-raa-v2.herokuapp.com/prototypes/public-beta/qa-process/qa-vacancy-provider">QA review</a></li>
+            <li class="govuk-list--item"><a href="https://das-recruit-prototype.herokuapp.com/faa/0-0-2/RVDB-51-main-description/application-details">FAA</a></li>
+        </div>
+
+
+      </div>
+  </div>
+
+  </main>
+</div>
+
+
+{% endblock %}

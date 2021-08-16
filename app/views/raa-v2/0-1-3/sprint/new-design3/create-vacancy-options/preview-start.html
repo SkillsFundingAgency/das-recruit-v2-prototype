@@ -1,0 +1,16 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block content %}
+<p><a  href="javascript:history.back()" class="govuk-back-link">Back</a></p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Complete the vacancy</h1>
+    <p class="govuk-body">We will now generate a preview of your vacancy so far. You can continue to add and edit any section before submiting the vacancy. </p>
+    <p class="govuk-body"><a href="../vacancy-preview/vacancy-preview" class="govuk-button">Genertate vacancy preview</a></p>
+</div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

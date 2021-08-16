@@ -1,0 +1,37 @@
+{% if data.no_nav == "yes" %}{% extends "non-levy-layout.html" %}{% else %}{% extends "ma-layout.html"%}{% endif %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="#" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">Which of {%if data.user == "employer"%}your{%else%}{{data.orgName}}&apos;s{%endif%} organisations is this vacancy for?</h1>
+      <div id="oranisation-list" class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios">
+            {% for i in range(0, 4) %}
+            <div class="govuk-radios__item selection-item" data-item-id="{{loop.index+1}}">
+              <input class="govuk-radios__input" id="selected-organisation-id-{{loop.index+1}}" name="selected-organisation-id" type="radio"
+                value="Organisation {{loop.index+1}}" data-search-value="Organisation {{loop.index+1}}">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-{{loop.index+1}}">
+                ABC opticians {{i}}
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </fieldset>
+      </div>
+
+
+      <a href="location" class="govuk-button">Save and continue</a>
+      <a href="../dashboard-one" class="govuk-body das-button--link">Cancel</a>
+
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

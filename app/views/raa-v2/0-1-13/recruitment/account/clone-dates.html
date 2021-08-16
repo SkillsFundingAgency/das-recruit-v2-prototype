@@ -1,0 +1,56 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">Clone vacancy VC0000324</span>
+    <h1 class="govuk-heading-xl">Does the new vacancy have the same closing date and start date?</h1>
+    <form  method="post" novalidate>
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        <p class="govuk-body"><span class="govuk-!-font-weight-bold">Possible start date</span><br>08 Aug 2019</p>
+        <p class="govuk-body"><span class="govuk-!-font-weight-bold">Closing date</span><br>20 July 2019</p>
+        <div class="govuk-form-group">
+        <div class="govuk-radios govuk-radios--inline">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="changed-name-1" name="change_date" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="changed-name-1">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="changed-name-2" name="change_date" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="changed-name-2">
+              No
+            </label>
+          </div>
+        </div>
+        </div>
+      </fieldset>
+      <div class="govuk-form-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">Continue</button>
+        <a href="javascript:history.back()" class="govuk-body das-button--link">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+{{super()}}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#apprenticeship-type').select2();
+  });
+</script>
+
+{% endblock %}

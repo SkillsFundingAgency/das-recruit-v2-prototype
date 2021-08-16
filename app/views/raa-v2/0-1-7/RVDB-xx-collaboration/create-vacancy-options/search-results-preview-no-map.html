@@ -1,0 +1,51 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Your vacancy summary</h1>
+    <div class="das-todo govuk-body govuk-!-margin-bottom-6">
+      <h2 class="govuk-heading govuk-!-margin-bottom-0 govuk-!-margin-top-0">Developer Apprentice</h2>
+
+      <ul class="govuk-list">
+        <li class="govuk-caption-m">ABC opticians</li>
+        <li class="govuk-caption-m">1 position available</li>
+      </ul>
+
+      <p class="govuk-body">Brief overview of the role.</p>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <ul class="govuk-list">
+            <li>
+              <span class="govuk-!-font-weight-bold">Closing date:</span>
+              <span>01 Jan 2019</span>
+            </li>
+            <li>
+              <span class="govuk-!-font-weight-bold">Possible start date:</span>
+              <span>01 Feb 2019</span>
+            </li>
+            <li>
+              <span class="govuk-!-font-weight-bold">Apprenticeship level:</span>
+              <span>Master's Degree</span>
+            </li>
+            <li>
+              <span class="govuk-!-font-weight-bold">Wage:</span>
+              <span>£8,736 - £16,286.40</span><span> yearly</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="../vacancy-preview/vacancy-preview-no-map" class="govuk-button">Add full vacancy details</a>
+    <a href="title" class="govuk-body das-button--link">Make changes</a>
+    <a href="../dashboard" class="govuk-body das-button--link">Return to dashboard</a>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

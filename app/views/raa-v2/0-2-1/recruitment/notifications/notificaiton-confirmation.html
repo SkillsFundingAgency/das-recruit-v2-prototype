@@ -1,0 +1,48 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+{%endblock%}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        You’ve successfully saved your recruitment email preferences
+      </h1>
+    </div>
+    <p>We'll send emails to <b>yourname@abcopticions.com</b> {% if data.notifications_level == "personal" %}when your submitted vacancies:{%else%}when vacancies:{%endif%}</p>
+    <ul class="govuk-list govuk-list--bullet">
+      {% if "rejected" in data.notifications %}
+      <li>
+           are rejected after review
+      </li>
+      {% endif %}
+      {% if "closingSoon" in data.notifications %}
+      <li>
+           are closing soon
+      </li>
+      {% endif %}
+      {% if "newApplication" in data.notifications %}
+      <li>
+          receive new applications ({% if data.emailFrequency == "immediately" %}immediately{% elseif  data.emailFrequency == "daily" %}daily{% else %}weekly{% endif %})
+      </li>
+      {% endif %}
+    </ul>
+
+    <form method="post">
+    <div class="form-group inline">
+      <div class="form-group">
+          <button class="govuk-button" type="submit">Return to dashboard</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

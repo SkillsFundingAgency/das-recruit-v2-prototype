@@ -1,0 +1,130 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block content %}
+<p><a  href="javascript:history.back()" class="govuk-back-link">Back</a></p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Which vacancy do you want to clone?</h1>
+    <form method="post">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="width-20">
+          Search by vacancy title or reference number
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="search-vacancy" name="searchVacancy" type="text">
+        <a href="clone-vacancy-results-alt" class="govuk-button">Search</a>
+      </div>
+    </form>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table">
+          <tbody class="govuk-table__body">
+            {% for i in range(0, 55) %}
+            <tr class="govuk-table__row selection-item" role="row" data-item-id="{{loop.index}}">
+              <td class="govuk-table__cell" role="gridcell">
+                <span style="font-weight:bold">Developer Apprentice v{{loop.index}}</span> | VAC1000000651<br>
+                Business Analyst Apprentice, Level: Intermediate (Standard)<br>
+                Closing 27 Jan 2019
+              </td>
+              <td class="govuk-table__cell numeric" role="gridcell"><a href="title" class="govuk-link">Clone</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="pager das-pager" aria-hidden="false" style="margin-top:0" data-paging="">
+  				<div class="pager-controls das-pager-controls">
+  					<a class="pager-prev das-pager-prev hidden" href="#" aria-hidden="true" hidden="hidden">Prev</a>
+  					<ul class="pager-items das-pager-items"><li data-page-number="1">1</li><li data-page-number="2"><a href="#">2</a></li><li data-page-number="3"><a href="#">3</a></li><li data-page-number="4"><a href="#">4</a></li><li data-page-number="5"><a href="#">5</a></li></ul>
+  					<a class="pager-next das-pager-next" href="#" aria-hidden="false">Next</a>
+  				</div>
+  				<div class="das-pager-summary">Showing 1 - 25 of 55 vacancies</div>
+  			</div>
+  </div>
+</div>
+
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    var page = 1;
+    var max_per_page = 25
+    var total_items = 55
+    var page_total = Math.round(total_items/max_per_page)+1
+    var data_set = $('.selection-item');
+    var pagerControls = $('.pager-controls');
+
+    function updateList(){
+      data_set.each(function( index ) {
+      if($( this ).attr('data-item-id') > max_per_page*page-1 || $( this ).attr('data-item-id') < (max_per_page*page)-max_per_page ){
+        $(this).attr("hidden","hidden")
+        $(this).attr("aria-hidden","true")
+        $(this).hide();
+      }else{
+        $(this).removeAttr("hidden","hidden")
+        $(this).attr("aria-hidden","false")
+        $(this).show();
+      }
+    });
+      buildPager()
+    }
+    function buildPager(){
+      var pager = ""
+      var shown_items_min = (1+max_per_page*page)-max_per_page
+      var shown_items_max = ((max_per_page*page) < total_items)? max_per_page*page : total_items;
+
+
+      if(page > 1){
+        pager +='<a class="pager-prev das-pager-prev" href="#" aria-hidden="false">Prev</a>'
+      }
+
+      pager+='<ul class="pager-items das-pager-items">'
+      for(var i=1;i<=page_total;i++){
+        var pager_link = (i!=page) ? '<li><a href="#">'+i+'</a></li>' : '<li>'+i+'</li>'
+        console.log("building  "+pager_link )
+        pager+=pager_link
+      }
+
+      pager+='</ul>';
+      console.log("total_items:"+page)
+      if(page < page_total){
+        console.log("adding next")
+        pager +='<a class="pager-next das-pager-next" href="#" aria-hidden="false">Next</a>'
+      }
+      pagerControls.html(pager)
+      $('.pager-items a').on('click',function(event){
+        event.preventDefault();
+        console.log("updating page to ="+$(this).text())
+        page = $(this).text()
+        updateList()
+      });
+      $('.pager-next').on('click',function(event){
+        event.preventDefault();
+        page +=1
+        updateList()
+      })
+      $('.pager-prev').on('click',function(event){
+        event.preventDefault();
+        page -=1
+        updateList()
+      })
+      $('.das-pager-summary').html("Showing "+shown_items_min+" - "+shown_items_max+ " of "+total_items+" vacancies")
+    }
+    function init(){
+
+
+      buildPager()
+      updateList()
+    }
+    init()
+
+
+
+  });
+</script>
+
+{% endblock %}

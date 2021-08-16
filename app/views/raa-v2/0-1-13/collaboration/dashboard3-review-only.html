@@ -1,0 +1,238 @@
+href="./vacancies{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- Header -->
+    <div class="govuk-grid-row govuk-!-margin-top-4">
+      <div class="govuk-grid-column-two-thirds">
+        <!-- Heading -->
+        <!-- <span class="govuk-caption-xl">Recuitement</span> -->
+        <h1 class="govuk-heading-xl ">Recruitment</h1>
+        <!-- Core actions -->
+        <!-- <a href="./ALL/create/create-vacancy" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold" name="button">Create a new vacancy</a> -->
+
+      </div>
+      <!-- <div class="govuk-grid-column-one-thirds" style="text-align:right">
+        {% if data.user=="employer"%}
+        <a href="create/create-vacancy" class="govuk-button govuk-!-margin-top-2" data-module="govuk-button">Create vacancy</a>
+        {%else%}
+        <a href="create/employers-select" class="govuk-button" data-module="govuk-button">Create vacancy</a>
+        {%endif%}
+      </div> -->
+      </div>
+
+      <div class="govuk-grid-row govuk-!-margin-top-4">
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-m">Vacancies for approval</h2>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+      </div>
+</div>
+
+<div class="govuk-grid-row das-card--row">
+  <div class="govuk-grid-column-one-third">
+    <div class="das-card">
+      <div class="das-card--content">
+        <h3 class="govuk-heading-m das-card--heading">
+          <span class="das-card--stat">4</span>
+          <a class="card-link" href="review-vacancies?return_dashboard=dashboard3-review-only&review_complete=">
+            Provider vacancies for approval
+          </a>
+        </h3>
+        <p class="govuk-body das-card--description">Review the vacancies that providers have created.</p>
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+<div class="govuk-grid-row govuk-!-margin-top-6">
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-m">Your vacancies</h2>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body">Recruit an apprentice by creating your own vacancy. Vacancies will be advertised on <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch">Find an apprenticeship</a>.</p>
+
+    <a href="create/title" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+Create vacancy
+</a>
+  </div>
+</div>
+
+
+
+    <!-- For prototype only. Use this to populate the search results -->
+    {% for vacancy in data['vacancies'] %}
+      <div style="display:none;">
+        <span class="data-id">{{vacancy.VAC}}</span>
+        <span class="data-orgs">{{vacancy.employer}}</span>
+        <span class="data-name">{{vacancy.title}} Apprentice</span>
+        <!-- <span class="data-orgs">{%set employer = data.employers | random %}{{employer.businessName}}</span> -->
+      </div>
+    {% endfor %}
+    <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+
+
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <!-- Other actions  -->
+    <div class="govuk-grid-row">
+      {% if data.user == 'provider'%}
+      <div class="govuk-grid-column-one-third ">
+        <h3 class="govuk-heading-s"><a class="govuk-link  govuk-link--no-visited-state" href="reports/dashboard">Reports</a></h3>
+        <p class="govuk-body">Create a report about applicants or vacancies</p>
+      </div>
+      {% endif %}
+      <div class="govuk-grid-column-one-third ">
+        <h3 class="govuk-heading-s">
+          {% if data.has_notifications == "yes" %}
+          <a href="notifications/notification-preferences">Manage your recruitment emails</a>
+          {% else %}
+          <a href="notifications/notification-preferences-new">Manage your recruitment emails</a>
+          {% endif%}
+        </h3>
+        <p class="govuk-body">Set up and manage the emails you’re sent about your vacancies and applications</p>
+      </div>
+    </div>
+
+
+  </div> <!-- govuk-grid-column-full -->
+</div> <!-- govuk-grid-row -->
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  function defer(method) {
+      if (window.jQuery) {
+          method();
+      } else {
+          setTimeout(function() { defer(method) }, 50);
+      }
+  }
+  window.onresize = function(event) {
+    resize()
+
+  };
+  function resize(){
+
+    var maxHeight = 0;
+    $(".das-card--row").attr('data-height', maxHeight)
+    console.log("--- resizing ---")
+
+    $(".das-card").each(function(){
+      var row = $(this).parent().parent();
+       if ($(this).find('.das-card--content').height() > row.attr('data-height') ){
+          row.attr('data-height', $(this).find('.das-card--content').height()+30)
+        }
+    });
+    console.log($(".das-card--row").attr('data-height'))
+    $(".das-card").each(function(){
+      var newHeight = $(this).parent().parent().attr('data-height')
+      $(this).height(newHeight)
+    })
+  }
+  defer(function () {
+    resize()
+  });
+  function getUsers() {
+
+    var titles = document.getElementsByClassName("data-name");
+    var ids = document.getElementsByClassName("data-id");
+    var orgs = document.getElementsByClassName("data-orgs");
+    var providers = document.getElementsByClassName("data-providers");
+    var data = [];
+    for (var i=0; i<titles.length; i++) {
+      // var user=names[i].textContent+" - "+email[i].textContent;
+      var name=titles[i].textContent
+      if(! data.includes(name)){
+          data.push(name);
+      }
+
+    }
+    for (var i=0; i<ids.length; i++) {
+      // var user=names[i].textContent+" - "+email[i].textContent;
+      var name=ids[i].textContent
+        data.push(name);
+    }
+    for (var i=0; i<orgs.length; i++) {
+      // var user=names[i].textContent+" - "+email[i].textContent;
+      var org=orgs[i].textContent;
+      if (data.indexOf(org) == -1) {
+        // no duplicate
+        data.push(org);
+      }
+
+    }
+    // for (var i=0; i<providers.length; i++) {
+    //   // var user=names[i].textContent+" - "+email[i].textContent;
+    //   var provider="<span class='govuk-hint autocomplete__option--hint' style='display:inline'>Provider: </span>" + providers[i].textContent;
+    //   data.push(provider);
+    // }
+    return data;
+  }
+
+  function suggest (data, populateResults) {
+    console.log("suggest is triggered")
+    // const results = "Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677".split(",");
+    // const results = Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677
+    // const results = JSON.stringify(Company Tax Reference: 0029886907,Company Tax Reference: 0066105197,Company Tax Reference: 1468186760,Company Tax Reference: 3606121235,Company Tax Reference: 6704030677)
+    const results = getUsers();
+    const filteredResults = results.filter(
+      result => result.toUpperCase().indexOf(data.trim().toUpperCase()) !== -1
+    )
+    // console.log(filteredResults)
+    populateResults(filteredResults);
+  }
+
+  // Trigger search click.  Taken out the clich for the prototype.
+  function fireSearch() {
+    setTimeout(function(){ $("#searchSubmit").trigger("click") }, 200);
+  // console.log($('.autocomplete__option--focused').html ())
+  }
+  // function fireSearch(){
+  // 	// $("#searchClientsSubmit").trigger("click")
+  //   console.log("pressed")
+  // }
+  var myInput = document.querySelector('#search');
+  var myInputID = myInput.id;
+  var element = document.createElement('div');
+  var value = ""
+
+  if (document.getElementById('search-default-value').innerHTML != "") {
+    value = document.getElementById("search-default-value").innerHTML;
+  }
+
+  element.className = "autocomplete__parent_wrapper";
+  myInput.parentNode.insertBefore(element, myInput)
+  // console.log("value"+document.getElementById("search-default-value").innerHTML)
+  accessibleAutocomplete({
+    // other options
+    element: element,
+    id: myInputID,
+    name: myInput.name,
+    source: suggest,
+    defaultValue: value,
+    confirmOnBlur: false,
+    autoselect: true,
+    minLength: 3,
+    onConfirm: fireSearch,
+    placeholder: 'Search by title, reference number or employer',
+    displayMenu: 'overlay'
+  });
+  myInput.style.display = 'none';
+  myInput.id = myInputID + '-old';
+  myInput.name = '';
+</script>
+{% endblock %}

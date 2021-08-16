@@ -1,0 +1,68 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data.alert=="clone" and data.user=='employer'%}
+    <div class="govuk-info-basic ">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <!-- <span class="govuk-!-font-weight-bold">Activity</span> -->
+            <h3 class="govuk-heading-m">Cloning vacancy</h3>
+            <p class=govuk-body">This page will be removed soon. You will still be able to clone vacancies, from your vacancy list, select 'manage' and 'clone vacancy'.</p>
+            <p class="govuk-body govuk-!-margin-bottom-0"><a href="?alert=none" class="govuk-link--no-visited-state">Dismiss this notification</a></p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Create vacancy</h1>
+
+        <p class="govuk-body">
+            You can clone vacancies once they've been submitted.
+            Vacancies will be approved or rejected within 24 hours.
+        </p>
+        <form method="post">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h1 class="govuk-fieldset__heading">
+                            Do you want to create a new vacancy or clone an existing vacancy?
+                        </h1>
+                    </legend>
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" type="radio" value="00000000-0000-0000-0000-000000000000" id="create-new" data-val="true" data-val-required="You must select either 'Create new vacancy' or clone one of your existing vacancies." name="VacancyId">
+                            <label class="govuk-label govuk-radios__label" for="create-new">Create new vacancy</label>
+                        </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" type="radio" value="e659ea2b-ec12-4d11-ac63-57fb128805b1" id="e659ea2b-ec12-4d11-ac63-57fb128805b1" name="VacancyId">
+                                 <label class="govuk-label govuk-radios__label" for="e659ea2b-ec12-4d11-ac63-57fb128805b1">1000003681
+                                    <div class="govuk-hint">
+                                        Manufacturing Engineering Rail Engineering apprenticeship, closing 01 Jul 2019, status: Pending review, Abattoir Worker, Level: Intermediate (Standard)
+                                    </div>
+                                </label>
+                            </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group">
+                <a href="title" type="submit" value="Continue" class="govuk-button" data-automation="continue-button">Continue</a>
+            </div>
+        <input name="_csrfToken" type="hidden" value="CfDJ8Bj8cnmTmplAogzUotEbRs7SDOC4CwvU7Hi-Wg6vNbq7-UNZSGgETO_jpKh6S3FNDwdwox0w2KVeOfuYDyPrEQC2z0ID2g3Zxfm7vpDzkSNX7xALmZLWN5vP95Sr3QkJVGplTGfzGSrhyIy_HbkxbqnYwjQdCjv3iompYCKAY-8lB0d0LiWYDvBfnbWftcsorQ"></form>
+    </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

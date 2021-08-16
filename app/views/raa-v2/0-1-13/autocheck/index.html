@@ -1,0 +1,36 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Autocheck</h1>
+
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Spell check</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="create/vacancy-preview?edit=no">From vacancy preview</a></li>
+            <li class="govuk-list--item"><a href="create/long-description?edit=yes">Example profanity check - full description</a></li>
+            <li class="govuk-list--item"><a href="create/long-description?edit=yes&hasError=yes&errorType=OutcomeDescription&OutcomeDescription=bum">Full description with error</a></li>
+          </ul>
+          <h2 class="govuk-heading-m">banned words and phrases</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="create/vacancy-preview?edit=no&has_advisory=no">From vacancy preview</a></li>
+            <li class="govuk-list--item"><a href="create/vacancy-preview-advisory?edit=no&has_advisory=yes">Vacancy with advisory</a></li>
+          </ul>
+          </div>
+      </div>
+  </div>
+
+
+{% endblock %}

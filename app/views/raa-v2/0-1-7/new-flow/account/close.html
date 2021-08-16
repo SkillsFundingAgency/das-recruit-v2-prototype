@@ -1,0 +1,48 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+            Business Apprenticeship
+            <span class="heading-secondary">VAC<span>1000001618</span>
+        </span></h1>
+
+        <div class="panel panel-border-wide govuk-!-margin-bottom-6 close-vacancy-info">
+            <h2 class="bold govuk-heading-m govuk-!-margin-top-0">Closing a vacancy</h2>
+            <p>By continuing with this action you will be closing this vacancy to further applications on Find an apprenticeship.</p>
+            <p>It may take up to an hour to take effect on Find an apprenticeship.</p>
+            <div class="govuk-inset-text"><p><span class="">This action cannot be undone</span>.</p></div>
+        </div>
+        <form  method="post">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Do you want to close this vacancy?</legend>
+                    <div class="govuk-radios">
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="true" class="govuk-radios__input" id="close-yes" name="ConfirmClose">
+                          <label class="govuk-label govuk-radios__label" for="close-yes">Yes, close this vacancy now</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="false" class="govuk-radios__input" id="close-no" name="ConfirmClose">
+                          <label class="govuk-label govuk-radios__label" for="close-no">No, take me back to manage vacancy</label>
+                      </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group">
+                <input type="submit" value="Continue" class="govuk-button">
+            </div>
+        <input name="_csrfToken" type="hidden" value="CfDJ8NobtAlAKkhGh3ZpMiyZ2c8c2V7E4YfTsJCYAAjNlktmeIkv-guHF6OkQ3LIMaInRTrmxoCvmJjXHjTLqG68EkZBR9sT7Az6BV2ce9tym8FORRlM9684RgjlTBoxWwc_Pe1JpudSBzJG5ZiJVqEPkfjigs2caC8h9G3qIrire0I9E0cQDLeJG5NZWQ39qZzbaQ"></form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% if data.hasError == "yes"%}
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              {% if 'VacancyDescription' in data.errorType %}
+              <li>
+                <a href="#VacancyDescription-error">What the apprentice will be doing must not contain a banned word or phrase</a>
+              </li>
+              {% endif %}
+              {% if 'TrainingQualification' in data.errorType %}
+              <li>
+                <a href="#TrainingQualification-error">Training and qualifications must not contain contain a banned word or phrase</a>
+              </li>
+              {% endif %}
+              {% if 'OutcomeDescription' in data.errorType %}
+              <li>
+                <a href="#OutcomeDescription-error">Expected career progression must not contain contain a banned word or phrase</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        {% endif%}
+
+        <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-l">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</span>
+          Description of the apprenticeship
+        </h1>
+        <form method="post">
+          <fieldset class="govuk-fieldset">
+
+              <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+              <div class="govuk-form-group {% if 'VacancyDescription' in data.errorType %}govuk-form-group--error{% endif %}">
+                <label class="govuk-label govuk-!-font-weight-bold" for="VacancyDescription" >
+                  What will the apprentice be doing?
+                </label>
+                <span class="govuk-hint">Describe what an average day or week will be like and what tasks they could be doing.</span>
+                {% if 'VacancyDescription' in data.errorType %}
+                <span id="passport-issued-error" class="govuk-error-message">
+      <span class="govuk-visually-hidden">Error:</span> What the apprentice will be doing must not contain a banned word or phrase
+    </span>
+                {% endif %}
+                <textarea class="govuk-textarea js-character-count {% if 'VacancyDescription' in data.errorType %}govuk-textarea--error{% endif %}" id="VacancyDescription" name="VacancyDescription" rows="5" aria-describedby="more-detail-hint">{% if data['VacancyDescription'] %}{{data['VacancyDescription'] }}{% else %}{% endif %}</textarea>
+              </div>
+              </div>
+              <!-- <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold" for="TrainingDescription" >
+                  What will the training consist of?
+                </label>
+                <span id="more-detail-hint" class="govuk-hint ">
+                  Describe the training you will be giving and the training they will get from the training provider.
+                </span>
+                <textarea class="govuk-textarea js-character-count" id="TrainingDescription" name="TrainingDescription" rows="5" aria-describedby="more-detail-hint">{% if data['TrainingDescription']%}{{data['TrainingDescription']}}{% else %}{% endif %}</textarea>
+              </div>
+</div> -->
+
+<div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+<div class="govuk-form-group {% if 'TrainingQualification' in data.errorType %}govuk-form-group--error{% endif %}">
+  <label class="govuk-label govuk-!-font-weight-bold" for="TrainingQualification" >
+    What training will the apprentice take and what qualification will the apprentice get at the end?
+  </label>
+  <span id="more-detail-hint" class="govuk-hint ">
+    You may want to have a look at the <a href="https://www.gov.uk/what-different-qualification-levels-mean/list-of-qualification-levels" class="govuk-link">types of qualifications available (opens in new tab)</a>.
+  </span>
+  {% if 'TrainingQualification' in data.errorType %}
+  <span id="passport-issued-error" class="govuk-error-message">
+<span class="govuk-visually-hidden">Error:</span> Training and qualifications must not contain contain a banned word or phrase
+</span>
+  {% endif %}
+  <textarea class="govuk-textarea js-character-count {% if 'TrainingQualification' in data.errorType %}govuk-textarea--error{% endif %}" id="TrainingQualification" name="TrainingQualification" rows="5" aria-describedby="more-detail-hint">{% if data['TrainingQualification']%}{{data['TrainingQualification']}}{% else %}{% endif %}</textarea>
+</div>
+</div>
+<div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+              <div class="govuk-form-group {% if 'OutcomeDescription' in data.errorType %}govuk-form-group--error{% endif%}">
+                <label class="govuk-label govuk-!-font-weight-bold" for="OutcomeDescription" >
+                  What is the expected career progression after this apprenticeship?
+                </label>
+                <span id="more-detail-hint" class="govuk-hint ">
+                  You may want to mention specific routes they could take once qualified.
+                </span>
+                {% if 'OutcomeDescription' in data.errorType %}
+                <span id="passport-issued-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Expected career progression must not contain contain a banned word or phrase
+              </span>
+                {% endif %}
+                <textarea class="govuk-textarea js-character-count {% if 'OutcomeDescription' in data.errorType %}govuk-textarea--error{% endif %}" id="OutcomeDescription" name="OutcomeDescription" rows="5" aria-describedby="more-detail-hint" >{% if data['OutcomeDescription'] %}{{data['OutcomeDescription']}}{% else %}{% endif %}</textarea>
+              </div>
+              </div>
+              <div class="govuk-form-group">
+                <input type="submit" class="govuk-button" data-module="govuk-button" value="Save and preview"/>
+                <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+              </div>
+            </fieldset>
+        </form>
+
+      </div>
+  </div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

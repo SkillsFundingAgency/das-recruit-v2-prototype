@@ -1,0 +1,52 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">What do you want to create a report on?</h1>
+    <form method="POST">
+
+    <h2 class="govuk-heading-s">Select the options</h2>
+      <div id="oranisation-list" class="govuk-form-group" data-amount="{{data.NumberOfEntities}}">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-form-group">
+          <div class="govuk-radios">
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Coventry" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                applications received
+              </label>
+            </div>
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Coventry" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                candidates with applications
+              </label>
+            </div>
+            <div class="govuk-radios__item selection-item" data-item-id="2" aria-hidden="false">
+              <input class="govuk-radios__input" id="selected-organisation-id-2" name="selected_organisation_id" type="radio" value="ABC opticians Coventry" data-search-value="Organisation 2">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id-2">
+                both (generate two files)
+              </label>
+            </div>
+          </div>
+          </div>
+          <div class="govuk-form-group">
+                  <a href="period " class="govuk-button">Save and continue</a>
+          </div>
+        </fieldset>
+      </div>
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

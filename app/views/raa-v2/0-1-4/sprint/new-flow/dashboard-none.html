@@ -1,0 +1,21 @@
+
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+  Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Your vacancies</h1>
+      <p>Your dashboard is empty, start by creating your first vacancy</p>
+      <p class="govuk-body">You must be a levy-paying employer to post a vacancy.</p>
+      <p class="govuk-body">Vacancies will be approved or rejected within 24 hours.</p>
+      <a href="create-vacancy-options/levy-payer?" class="govuk-button">Create vacancy</a>
+
+    </div>
+</div>
+
+{% endblock %}

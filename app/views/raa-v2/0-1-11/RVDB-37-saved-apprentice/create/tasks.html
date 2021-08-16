@@ -1,0 +1,167 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+  .affix {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    display: none;
+    height: 80px;
+    background-color: #fff;
+    border-top: 4px solid #6f777b;
+}
+.affix .das-preview-bar{
+  max-width:980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding:10px;
+}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">New vacancy</h1>
+
+    <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> Vacancy details
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="title" aria-describedby="eligibility-completed">
+                Title and positions
+              </a>
+
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+                Apprenticeship training and provider
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+
+          </ul>
+        </li>
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> Employer information
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="dates" aria-describedby="read-declaration-completed">
+                Location
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="dates" aria-describedby="read-declaration-completed">
+                Employer information
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> Vacancy details
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="training-level" aria-describedby="read-declaration-completed">
+                Dates and duration
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="dates" aria-describedby="read-declaration-completed">
+                Working hours and pay
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="dates" aria-describedby="read-declaration-completed">
+              About the vacancy
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">4. </span> Applicant requirements
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="dates" aria-describedby="read-declaration-completed">
+                Skills and qualifications required
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="dates" aria-describedby="read-declaration-completed">
+                Additional questions
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="dates" aria-describedby="read-declaration-completed">
+                How to receive applications?
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <div class="das-preview-bar">
+        <button class="govuk-button">Submit</button> <a href="vacancy-preview" class="govuk-button das-button-secondary">Preview vacancy</a><a class="govuk-link das-button--link" href="../dahsboard-multiple">cancel</a>
+      </div>
+  </div>
+</div>
+{% block help %}
+{% include "includes/service-help.html" %}
+{% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var target = $('.das-preview-bar')
+  target.after('<div class="affix" id="affix"></div>')
+
+  var affix = $('.affix')
+  affix.append(target.clone(true))
+
+  // Show affix on scroll.
+  var element = document.getElementById('affix')
+  if (element !== null) {
+    var position = target.position()
+    window.addEventListener('scroll', function () {
+      var height = $(window).scrollTop()+$(window).height()
+      console.log(height + " : "+position.top)
+      if (height < position.top) {
+        console.log("Affix")
+        target.css('visibility', 'hidden')
+        affix.css('display', 'block')
+      } else {
+        affix.css('display', 'none')
+        target.css('visibility', 'visible')
+      }
+    })
+  }
+  });
+</script>
+
+{% endblock %}

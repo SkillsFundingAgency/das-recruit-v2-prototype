@@ -1,0 +1,38 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Collaboration</h1>
+
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Employer</h2>
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="dashboard3-none">No vacancies to reveiew</a></li>
+            <li class="govuk-list--item"><a href="dashboard3-review-only">Vacancies to review only</a></li>
+            <li class="govuk-list--item"><a href="dashboard3">Vacancy preview - both reviews and personal vacancies</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="review/vacancy-review?has_comments=no&submission_count=First">Vacancy review - first review</a></li>
+            <li class="govuk-list--item"><a href="review/vacancy-review?has_comments=yes&submission_count=Second">Vacancy review - second review</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="review/review-confirmation?has_comments=no&submission_count=First">Confirmation - Approved</a></li>
+            <li class="govuk-list--item"><a href="review/review-confirmation-rejected?has_comments=yes&submission_count=Second">Confirmation - Rejected</a></li>
+          </ul>
+
+          </div>
+      </div>
+  </div>
+
+
+{% endblock %}

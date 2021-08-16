@@ -1,0 +1,204 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Return to your vacancies</a>
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+  .analytics--block{
+    margin-bottom:10px;
+  }
+  .analytics--header{
+    background-color:#CAE7E5;
+    padding:6px 10px 5px;
+    margin-bottom: 10px;
+    /* font-size: 16px !important;
+font-size: 1rem !important;
+line-height: 1.25 !important; */
+
+  }
+  .analytics--numeric{
+    font-size: 50px;
+    font-weight: 700;
+  }
+  .analytics--label{font-size:28px;font-weight: 400;}
+  .govuk-icon-small{
+    font-size: 40px;
+    color:#6f777b;
+    margin-right:10px;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+    <h1 class="govuk-heading-xl"><span class=govuk-caption-xl>Manage vacancy</span>Business/Data Administration Apprentice</h1>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half ">
+        <span class="govuk-body govuk-!-font-weight-bold">Status</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">Live</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Vacancy ref</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">VAC1000000997</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Employer</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">{{data.orgName}}</span>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Training provider</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        {% if has_training_provider%}
+        <span class="govuk-body">PLUMPTON COLLEGE</span>
+        {% else%}
+        <span class="govuk-body">Not set <a href="add-training-provider"></a></span>
+        {% endif %}
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Closing date</span>
+      </div>
+      <div class="govuk-grid-column-one-half ">
+        <span class="govuk-body">01 Jan 2019
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body govuk-!-font-weight-bold">Possible start date</span>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <span class="govuk-body">01 Feb 2019</span>
+      </div>
+    </div>
+    <div class="grid-row">
+      <div class="column-full">
+        <ul class="govuk-list das-action-links">
+          <li><a class="govuk-link button-link" href="preview-edit">Edit vacancy</a></li>
+          <li><a class="govuk-link button-link" href="close">Close vacancy</a></li>
+          <li><a class="govuk-link button-link" target="_blank" href="preview">View vacancy</a></li>
+          {% if data.user=="provider"%}<li><a class="govuk-linkbutton-link" href="../vacancy-preview/vacancy-preview-cloned">Clone vacancy</a></li>{% endif %}
+
+        </ul>
+        <p class="govuk-body">
+
+        </p>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Vacancy analytics
+          <span class="govuk-caption-l">Showing stats from 20th Jan 2019 to 19th Feb 2019</span>
+      </h2>
+      <p class="govuk-body">Analytics show the total amount and the change from the previous 7 days</p>
+      <div id="analytics" class="govuk-grid-row">
+
+        <div class="analytics--block govuk-grid-column-one-half">
+          <h3 class="analytics--header govuk-heading-s">Appeared in search</h3>
+          <div class="analytics--summary">
+            <div  class="analytics--numeric">68 <span class="govuk-visually-hidden">times</span></div>
+            <p class="analytics--info"><span class="govuk-!-font-weight-bold">+12</span> increase <span class="govuk-visually-hidden"> in the last 7 days</span></p>
+          </div>
+        </div>
+        <div class="analytics--block govuk-grid-column-one-half">
+          <h3 class="analytics--header govuk-heading-s">Total times viewed</h3>
+          <div class="analytics--summary">
+            <div  class="analytics--numeric">12</div>
+            <p class="analytics--info"><span class="govuk-!-font-weight-bold">+5</span> increase <span class="govuk-visually-hidden"> in the last 7 days</span></p>
+          </div>
+        </div>
+        <div class="analytics--block govuk-grid-column-one-half">
+          <h3 class="analytics--header govuk-heading-s">Total applications started</h3>
+          <div class="analytics--summary">
+            <div class="analytics--numeric">7</div>
+            <p class="analytics--info"><span class="govuk-!-font-weight-bold">+1</span> increase <span class="govuk-visually-hidden"> in the last 7 days</span></p>
+          </div>
+        </div>
+        <div class="analytics--block govuk-grid-column-one-half">
+          <h3 class="analytics--header govuk-heading-s">Total applications submitted</h3>
+          <div class="analytics--summary">
+            <div  class="analytics--numeric">1</div>
+            <p class="analytics--info"><span class="govuk-!-font-weight-bold">No</span> increase</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">Manage applications</h2>
+      <table class="govuk-table responsive-table">
+        <thead class="govuk-table__header">
+          <tr class="govuk-table__row" role="row">
+            <th class="govuk-table__cell" role="gridcell" class="bold">Name</th>
+            <th  class="govuk-table__cell" role="gridcell"class="bold">Application ID</th>
+            <th class="govuk-table__cell" role="gridcell" class="bold">Status</th>
+            <th class="govuk-table__cell" role="gridcell" class="bold">Date applied</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="govuk-table__cell" role="gridcell"  data-label="Name"><a href="application-failed">Faizal Dawood</a></td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Application ID">C5662EA</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Status">Successful</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Date applied">18 Oct 2018</td>
+          </tr>
+          <tr>
+            <td class="govuk-table__cell" role="gridcell"  data-label="Name"><a href="application-succesful">Bill Shoggins</a></td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Application ID">C3432TR</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Status">Unsuccessful</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Date applied">18 Oct 2018</td>
+          </tr>
+          <tr>
+            <td class="govuk-table__cell" role="gridcell"  data-label="Name"><a href="application-new">Rolo Tomasi</a></td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Application ID">C8824ED</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Status">New</td>
+            <td  class="govuk-table__cell" role="gridcell" data-label="Date applied">18 Oct 2018</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <div class="govuk-!-margin-top-6">
+            <a class="govuk-button" href="../vacancies">Return to dashboard</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

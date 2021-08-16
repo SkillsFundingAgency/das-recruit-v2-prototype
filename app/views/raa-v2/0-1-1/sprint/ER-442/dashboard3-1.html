@@ -1,0 +1,153 @@
+
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+  Manage apprentices
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">Recuitement</li>
+      </ol>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <style media="screen">
+    .lottery-ticket{
+      margin-top:30px;
+    }
+    .lottery-ticket--link, .lottery-ticket--non-link{
+      background-color:#f8f8f8;
+      padding:20px;
+      font-size: 24px;
+      display:block;
+      font-weight:700;
+      position: relative;
+      overflow: hidden;
+    }
+    .dashboard-task--link{
+      background-color:#f8f8f8;
+      padding:20px;
+      font-size: 24px;
+      display:block;
+      font-weight:700;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .dashboard-task--link:visited{
+
+    }
+    .dashboard-task-danger, .dashboard-task-danger a{
+      color: #ffffff!important;
+      background-color: #b10e1e!important;
+    }
+    .lottery-ticket--number{
+      font-size: 24px;
+      display:block;
+      font-weight:700;
+      position:absolute;
+      right:30px;
+      top:24px;
+      text-alight: right;
+      color:#6f777b;
+
+    }
+    a.lottery-ticket--link .lottery-ticket--title{
+      text-decoration: underline;
+    }
+    /* .lottery-ticket a:hover{
+      background-color: #dee0e2;
+
+    } */
+    .lottery-ticket a span{
+      text-decoration:none;
+      float:left;
+    }
+    .lottery-ticket-danger .lottery-ticket--link{
+      background-color: #b10e1e!important;
+    }
+    .lottery-ticket-danger span, .lottery-ticket-danger a{
+      color: #ffffff!important;
+    }
+    .lottery-ticket--muted{
+      color: #6f777b;
+    }
+    .govuk-grid-column-border-left{
+      border-right: 1px solid #bfc1c3;
+    }
+    .das-link-divider{
+      display: inline-block;
+      color:#6f777b;
+      padding:0 10px;
+    }
+  </style>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <!-- Header -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <!-- Heading -->
+          <!-- <span class="govuk-caption-xl">Recuitement</span> -->
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Recuitement</h1>
+          <!-- Core actions -->
+          <a href="create-vacancy-options/create-vacancy" class="govuk-link govuk-!-font-size-24" name="button">Create a new vacancy</a><span class="das-link-divider govuk-!-font-size-24"> | </span><a href="create-vacancy-options/create-vacancy" class="govuk-link govuk-!-font-size-24" name="button">Manage your vacancies</a>
+
+
+            <!-- Search -->
+            <form action="clients" method="GET" class="govuk-!-margin-top-6">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-visually-hidden">Search for a client</legend>
+                <div class="form-group search-field search-field-darker">
+                  <div class="search-input search-input-with-button">
+                    <label class="form-label" for="searchClients">
+                      <!--Client reference-->Search by vacancy title or reference number
+                    </label>
+                    <div class="autocomplete__parent_wrapper"><div class="autocomplete__wrapper"><div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"><span>No search results.</span><span>,,</span></div><input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="searchClients" placeholder="" role="combobox" type="text"><ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul></div></div><input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+                  </div>
+                  <div class="search-submit">
+                    <button class="button" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+            <div class="das-task">
+              <a href="#1" class="dashboard-task--link dashboard-task-danger">4 rejected applications</a>
+              <a href="#1" class="dashboard-task--link">2 vacancies have new applications</a>
+              <a href="#1" class="dashboard-task--link">Check performance of your 6 live vacancies</a>
+              <a href="#1" class="dashboard-task--link">Continue </a>
+            </div>
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            <!-- Other actions -->
+            <div class="govuk-grid-row" style="100">
+              <div class="govuk-grid-column-one-half govuk-grid-column-border-left">
+                <h3 class="govuk-heading-s"><a href="#">Vacancy Analytics</a></h3>
+                <p>Set what email notifications you want to receive</p>
+              </div>
+              <div class="govuk-grid-column-one-half ">
+                <h3 class="govuk-heading-s"><a href="#">Set recruitment notifications</a></h3>
+                <p>Set what email notifications you want to receive</p>
+              </div>
+            </div>
+
+          </div>  <!-- Header -  govuk-grid-column-two-thirds -->
+        </div>  <!-- header - govuk-grid-row  -->
+
+
+      <!-- Vacancy -->
+
+      </div> <!-- govuk-grid-column-full -->
+  </div>  <!-- govuk-grid-row -->
+
+{% endblock %}

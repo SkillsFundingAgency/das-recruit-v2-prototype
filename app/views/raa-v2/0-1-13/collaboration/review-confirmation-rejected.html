@@ -1,0 +1,36 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Vacancy rejected
+      </h1>
+      <div class="govuk-panel__body">
+        VAC1000000965
+      </div>
+    </div>
+    <h2 class="govuk-heading-m">Next steps</h2>
+    <p class="govuk-body">The vacancy will be sent back to the PLUMPTON COLLEGE with your comments about what they need to amend.
+
+    </p>
+    <form method="post">
+    <div class="form-group inline">
+      <div class="form-group">
+
+        <a href="review-vacancies?review_complete=yes" class="govuk-button" data-module="govuk-button" type="submit">Return to vacancy list</a>
+
+    </div>
+    </div>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
+{% endblock %}

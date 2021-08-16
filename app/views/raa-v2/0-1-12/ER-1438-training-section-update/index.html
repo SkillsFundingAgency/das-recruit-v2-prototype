@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">ER-1438-training-section-update</h1>
+
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <ul class="govuk-list">
+            <li class="govuk-list--item"><a href="create/training-confirm?hasError=&qualifications=&hasError=&errorType=&show_qualifications=&has_training_provider=yes&user=employer">Confirm apprentichip training</a></li>
+            <li class="govuk-list--item"><a href="create/vacancy-preview?hasError=&qualifications=&hasError=&errorType=&show_qualifications=&has_training_provider=yes&user=employer">RAA preview page (employer)</a></li>
+            <li class="govuk-list--item"><a href="create/vacancy-preview?hasError=&qualifications=&hasError=&errorType=&show_qualifications=&has_training_provider=yes&user=provider">RAA preview page (provider)</a></li>
+            <li class="govuk-list--item"><a href="create/vacancy-preview-referred?hasError=&qualifications=&hasError=&errorType=&show_qualifications=&has_training_provider=yes&user=provider">RAA rejected preview page (employer)</a></li>
+            <br>
+            <li class="govuk-list--item"><a href="/faa/0-0-3/ER-1438-training-section-update/application-details?user=employer">FAA - vacancy details page (employer created)</a></li>
+            <li class="govuk-list--item"><a href="/faa/0-0-3/ER-1438-training-section-update/application-details?user=provider">FAA - vacancy details page (provider created)</a></li>
+            <li class="govuk-list--item"><a href="https://das-raa-v2.herokuapp.com/prototypes/public-beta/qa-process-1-1/review/qa-vacancy--training-section">QA - review page</a></li>
+          </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,159 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+  .das-advisory--block{
+    padding: 20px 20px 10px;
+    margin-bottom:20px;
+    background: #f3f2f1;
+  }
+  .govuk-form-group--warning{
+
+    min-height: 80px;
+    padding: 20px 20px 10px;
+    margin-bottom: 20px;
+    background: #f3f2f1;
+  }
+  .das-advisory-text{
+  padding: 20px 20px 10px;
+  margin-bottom: 20px;
+  background: #f3f2f1;
+  font-weight:bold;
+}
+
+  .das-preview-tag{
+    background: #6f777b;
+    color:#ffffff;
+    padding:5px 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .das-preview-tag--todo{
+    background: #1d70b8;
+  }
+  .das-preview-tag--advisory{
+    background: #f47738;
+  }
+  .das-preview-alert{
+
+    border-left: 5px solid #2e358b;
+    min-height: 80px;
+    padding: 20px 20px 10px;
+    margin-bottom: 20px;
+    background: #f3f2f1;
+  }
+  .das-preview-alert--advisory{
+    border-left: 5px solid #f47738;
+
+  }
+  .das-content-check--warning{
+    background-color: #FDE4D7;
+    border-bottom: 3px solid #f47738;
+    display:inline-block;
+  }
+  .das-warning-text{
+    color: #b10e1e;
+  }
+  .accordion-expand-all{
+    display:none;
+  }
+
+  .govuk-heading-s{margin-bottom:10px;}
+  .das-todo-list--header{
+    background:#005ea5;
+    margin-bottom:0;
+    padding:20px;
+  }
+  .das-todo-list--header h2, .das-todo-list--header h2 .govuk-caption-m{
+    margin-bottom:0;
+    color: #fff;
+  }
+  .govuk-link{
+    display: inline-block;
+    position: relative;
+    top: -10px;
+  }
+  .govuk-heading-s{
+    margin-bottom: .3125em;
+  }
+  .das-edit-link{margin-top:-10px}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">2 banneed words detected</h1>
+    <p class="govuk-body">We have detected some potentially discriminating words and phrases.</p>
+    <p class="govuk-body">Please check the following if the word used could descriminate candidates:</p>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+    <h3 class="govuk-heading-m">Brief overview</h3>
+
+    <div class="das-referred--section">
+      <div class="das-advisory--block">
+        <h4 class="govuk-heading-s">2 Advisory notices</h4>
+        <p class="govuk-body">Section contains 1 word that can be discriminatory</p>
+      </div>
+
+      <p class="govuk-body">We are looking for an <span class="das-content-check--warning"><span class="govuk-visually-hidden">Warning: </span>young</span>  apprentice to join our dedicated team of advisors and technical specialists in supporting a forward thinking, diverse and dynamic organisation. Getting involved in all aspects of IT, from helping customers to help being part fo a team who can help hardware and network installations.</p>
+      <p class="govuk-body"><a href="short-description?edit=yes" class="govuk-link das-edit-link">Change</a></p>
+    </div>
+
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <p class="govuk-body">The word <span class="govuk-!-font-weight-bold das-warning-text">Drive</span> can be seen discrimintory, because some candidates cant drive.
+<div class="govuk-inset-text">
+      <h3 class="govuk-heading-s">Brief description</h3>
+        <p class="govuk-body das-content-check">
+          We are looking for an Apprentice to join our dedicated team of advisors and technical specialists in supporting a forward thinking, diverse and dynamic organisation. Getting involved in all aspects of IT, from helping customers to help being part fo a team who <span class="das-content-check--warning"><span class="govuk-visually-hidden">Warning: </span>drive</span> hardware and network installations.
+        </p>
+      </div>
+      <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-6">
+      <form method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Do you want to submit this vacancy for review?
+              </h2>
+            </legend>
+
+
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live" name="reedit-vacancy" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                  Yes, submit vacnacy.
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live" name="reedit-vacancy" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                  no, I want to edit this vacancy
+                </label>
+              </div>
+            </div>
+
+            </fieldset>
+        </div>
+        <div class="govuk-form-group">
+          <button type="submit" class="govuk-button">Submit and continue</button>
+          </div>
+      </form>
+
+
+
+</div>
+</div>
+{% endblock %}

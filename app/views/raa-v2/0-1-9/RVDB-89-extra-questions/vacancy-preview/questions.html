@@ -1,0 +1,46 @@
+  {% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+  {% block pageTitle %}
+  Manage apprentices
+  {% endblock %}
+
+  {% block content %}
+
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-xl"><span class="govuk-caption-l">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</span>
+                What extra questions would you like candidates to answer (optional)?
+              </h1>
+              <form method="post">
+                {% for q in data.questions %}
+                <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+                  <div class="govuk-form-group" style="position:relative">
+                    <label class="govuk-label govuk-!-font-weight-bold" for="question{{loop.index}}">
+                      Question {% if ( data.questions | length ) > 1%}{{loop.index}}{% endif %}
+                    </label>
+
+                    <input class="govuk-input  js-character-count" id="question{{loop.index}}" name="question" type="text">
+                    <p class="govuk-body" style="position: absolute; right:0;top :0;">
+                      {% if (data.questions | length) > 1 %}
+
+                        <a href="questions?remove=yes&removeID={{q.id}}" class="govuk-link" >Remove</a></p>
+                      {% endif %}
+
+                  </div>
+
+                  </div>
+                  {% endfor %}
+                  <p class="govuk-body">
+                    <a href="questions?add=yes" class="govuk-link">Add another question</a>
+                  </p>
+                  <div class="form-group">
+                      <input type="submit" value="Save and continue" class="govuk-button save-button" data-automation="btn-continue">
+                      <a class="govuk-body das-button--link" href="question-list" data-automation="link-cancel">Cancel</a>
+                  </div>
+                </form>
+            </div>
+        </div>
+
+  {% block help %}{% include "includes/service-help.html" %}{% endblock %}
+  {% endblock %}

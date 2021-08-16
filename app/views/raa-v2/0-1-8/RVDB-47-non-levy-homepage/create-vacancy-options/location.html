@@ -1,0 +1,101 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% if data.no_nav == "yes" %}{% extends "non-levy-layout.html" %}{% else %}{% extends "ma-layout.html"%}{% endif %}{%endif%}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Where will the{% if data.numberOfPositions > 1 %} apprentices{% else %} apprentice {% endif %} work?</h1>
+
+    <div class="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="selected-organisation-id" name="selected-organisation-id" type="radio"
+                value="Organisation {{i}}" data-search-value="Organisation">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                {{data.employerAdress1}}
+              </label>
+            </div>
+            {% if data['savedAddressCount'] > 1%}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="selected-organisation-id" name="selected-organisation-id" type="radio"
+                value="Organisation {{i}}" data-search-value="Organisation">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                {{data.employerAdress2}}
+              </label>
+            </div>
+            {% endif %}
+
+            <div class="govuk-radios__item" data-target="business-name-vacancy-panel">
+              <input class="govuk-radios__input" id="selected-organisation-id" name="selected-organisation-id" type="radio"
+                value="Organisation {{i}}" data-search-value="Organisation" data-aria-controls="different-address-conditional">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">a different location</label>
+            </div>
+
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="different-address-conditional">
+
+                    <fieldset class="govuk-fieldset">
+                      <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
+                        Enter the address
+                      </label>
+                      <div class="govuk-form-group">
+                        <input class="govuk-input govuk-!-width-three-quarters postcode-lookup" id="AddressLine1" name="AddressLine1" type="text">
+                      </div>
+                      <div class="govuk-form-group">
+                        <input class="govuk-input govuk-!-width-three-quarters" id="AddressLine2" name="AddressLine2" type="text">
+                      </div>
+                      <div class="govuk-form-group">
+                        <input class="govuk-input govuk-!-width-three-quarters" id="AddressLine3" name="AddressLine3" type="text">
+                      </div>
+                      <div class="govuk-form-group">
+                        <input class="govuk-input govuk-!-width-three-quarters" id="AddressLine4" name="AddressLine4" type="text">
+                      </div>
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="address-postcode">
+                          Postcode
+                        </label>
+                        <input class="govuk-input govuk-input--width-10 postcode-lookup" id="postcode" name="address-postcode" type="text">
+                      </div>
+                    </fieldset>
+            </div>
+            <!-- <div class="govuk-radios__divider">or</div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="selected-organisation-id" name="selected-organisation-id" type="radio"
+                value="nationwide" data-aria-controls="nationwide-conditional">
+              <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
+                This apprenticeship is open to various locations across England
+                <span class="govuk-hint">for example, the successful applicant has a choice of placement</span>
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="nationwide-conditional">
+              <ul class="govuk-list govuk-list--bullet">
+                <li>No map will be displayed on the vacancy</li>
+                <li>Your vacancy will only show when a candidate selects "vacancies across England".</li>
+              </ul>
+
+            </div> -->
+          </div>
+        </fieldset>
+      </div>
+
+      <a href="training" class="govuk-button">Save and continue</a>
+      <a href="../dashboard-one" class="govuk-body das-button--link">Cancel</a>
+    </div>
+
+  </div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

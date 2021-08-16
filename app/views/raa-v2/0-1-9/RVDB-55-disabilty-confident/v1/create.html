@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/vacancy/create" id="create-vacancy-form" method="post" novalidate="novalidate"><input data-val="true" data-val-number="The field AutoSaveTimeoutInSeconds must be a number." id="AutoSaveTimeoutInSeconds" name="AutoSaveTimeoutInSeconds" type="hidden" value="60">
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge">
+                Enter basic vacancy details
+            </h1>
+        </div>
+    </div>
+    <div class="govuk-grid-row">
+        <div class="govuk-column-two-thirds">
+            <input name="__RequestVerificationToken" type="hidden" value="5HQkwqnsnyH0asU7UcWZeTTQOCE7HkIEmxK1zCGsgQ0Wp4ISMfm-62g0esIbjl-Aqw4NgVNF_245V7UinFPhr-qo0cCfA8AS1ieS2osFY1vWh2fnVZFyOZ6XjLWgG18bbMeFgw2">
+            <input id="VacancyLocationType" name="VacancyLocationType" type="hidden" value="Nationwide">
+            <input id="OfflineVacancyType" name="OfflineVacancyType" type="hidden" value="">
+            <input data-val="true" data-val-number="The field NumberOfPositions must be a number." id="NumberOfPositions" name="NumberOfPositions" type="hidden" value="1">
+            <input id="ComeFromPreview" name="ComeFromPreview" type="hidden" value="False">
+            <input id="VacancySource" name="VacancySource" type="hidden" value="Raa">
+            <input data-val="true" data-val-number="The field VacancyReferenceNumber must be a number." id="VacancyReferenceNumber" name="VacancyReferenceNumber" type="hidden" value="1107850">
+            <input id="Ukprn" name="Ukprn" type="hidden" value="">
+            <input data-val="true" data-val-number="The field VacancyOwnerRelationshipId must be a number." id="VacancyOwnerRelationship_VacancyOwnerRelationshipId" name="VacancyOwnerRelationship.VacancyOwnerRelationshipId" type="hidden" value="-67">
+            <input id="VacancyGuid" name="VacancyGuid" type="hidden" value="2a035f04-a270-46c3-a5e3-471e2ecc1111">
+            <input id="Status" name="Status" type="hidden" value="Draft">
+
+            <div class="form-group"><a name="title"></a><label class="form-label-bold" for="Title">Title</label><span class="field-validation-valid error-message" data-valmsg-for="Title" data-valmsg-replace="true" aria-live="polite"></span><textarea class="form-control-4-4 form-control" cols="20" data-val="true" data-val-length="The title must not be more than 100 characters" data-val-length-max="100" data-val-regex="The title contains some invalid characters" data-val-regex-pattern="^[a-zA-Z0-9\u0080-\uFFA7?$@#()&quot;'!,+\-=_:;.&amp;€£*%\s\/\[\]]+$" id="Title" name="Title" rows="2" size="12" type="text" spellcheck="false" aria-invalid="false"></textarea><span class="sfa-form-control-after hide-nojs"><span class="maxchar-count">58</span>
+<span class="maxchar-text"> characters remaining</span></span><span aria-live="polite" class="visuallyhidden aria-limit"></span></div>
+            <span class="field-validation-valid" data-valmsg-for="TitleComment" data-valmsg-replace="true" aria-live="polite"></span>
+
+
+            <div class="form-group"><a name="shortdescription"></a><label class="form-label-bold" for="ShortDescription">Brief overview of vacancy role</label><span class="field-validation-valid error-message" data-valmsg-for="ShortDescription" data-valmsg-replace="true" aria-live="polite"></span><textarea class="form-control form-control-4-4 form-control" cols="20" data-val="true" data-val-length="The brief overview of the role must not be more than 350 characters" data-val-length-max="350" data-val-regex="The brief overview of the role contains some invalid characters" data-val-regex-pattern="^[a-zA-Z0-9\u0080-\uFFA7?$@#()&quot;'!,+\-=_:;.&amp;€£*%\s\/\[\]]+$" id="ShortDescription" name="ShortDescription" rows="5" size="12" type="text" spellcheck="false" aria-invalid="false"></textarea><span class="sfa-form-control-after hide-nojs"><span class="maxchar-count">170</span>
+<span class="maxchar-text"> characters remaining</span></span><span aria-live="polite" class="visuallyhidden aria-limit"></span></div>
+            <span class="field-validation-valid" data-valmsg-for="ShortDescriptionComment" data-valmsg-replace="true" aria-live="polite"></span>
+
+            <div class="govuk-form-group ">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl"
+                        <h3 class="govuk-form-label govuk-!-font-weight-bold sfa-small-bottom-margin">Vacancy type</h3>
+                        <span class="field-validation-valid error-message" data-valmsg-for="VacancyType" data-valmsg-replace="true" aria-live="polite"></span>
+                    </legend>
+
+                    <label for="vacancy-type-apprenticeship" class="govuk-lable selection-button-radio selected">
+                        <input aria-labelledby="vacancy-type-label" id="vacancy-type-apprenticeship" name="VacancyType" type="radio" value="Apprenticeship">
+                        Apprenticeship
+                    </label>
+
+                    <label for="vacancy-type-traineeship" class="block-label selection-button-radio">
+                        <input aria-labelledby="vacancy-type-label" id="vacancy-type-traineeship" name="VacancyType" type="radio" value="Traineeship">
+                        Traineeship
+                    </label>
+                </fieldset>
+            </div>
+
+
+            <div class="form-group">
+                <fieldset>
+                    <a name="isdisabilityconfident"></a>
+
+                    <legend class="form-label-bold sfa-small-bottom-margin">
+                        Disability Confident
+                    </legend>
+
+                    <label for="is-disability-confident" class="block-label selection-button-checkbox">
+                        <input id="is-disability-confident" name="IsDisabilityConfident" type="checkbox" value="true"><input name="IsDisabilityConfident" type="hidden" value="false">
+                        The employer is signed up to the <a href="https://www.gov.uk/government/publications/disability-confident-employers-that-have-signed-up" target="_blank">Disability Confident</a> scheme
+                    </label>
+                </fieldset>
+            </div>
+
+            <span class="field-validation-valid" data-valmsg-for="IsDisabilityConfidentComment" data-valmsg-replace="true" aria-live="polite"></span>
+
+
+            <div class="form-group ">
+                <fieldset>
+                    <legend>
+                        <label class="form-label-bold sfa-small-bottom-margin">
+                            Manage application method
+                            <span class="form-hint">
+                                How will candidates apply for this vacancy?
+                            </span>
+                        </label>
+
+                        <span class="field-validation-valid error-message" data-valmsg-for="OfflineVacancy" data-valmsg-replace="true" aria-live="polite"></span>
+                    </legend>
+
+
+                    <label for="apprenticeship-online-vacancy" class="block-label selection-button-radio" data-target="online-panel">
+                        <input aria-labelledby="apprenticeship-vacancy-management-type-label" id="apprenticeship-online-vacancy" name="OfflineVacancy" type="radio" value="False">
+                        Candidates will apply on this website
+                    </label>
+
+
+                    <label for="apprenticeship-offline-vacancy" class="block-label selection-button-radio" data-target="offline-panel">
+                        <input aria-controls="offline-panel" aria-labelledby="apprenticeship-vacancy-management-type-label" id="apprenticeship-offline-vacancy" name="OfflineVacancy" type="radio" value="True">
+                        Candidates will apply through an external website
+                    </label>
+                </fieldset>
+            </div>
+
+            <div id="offline-panel" class="toggle-content panel panel-border-narrow form-group">
+
+                <a name="offlineapplicationurl"></a>
+
+
+                <div id="multiple-offline-application-urls-div" style="display: none;">
+
+                    <p>Enter the web addresses candidates should use to apply for this vacancy</p>
+                    <p id="single-offline-application-url-para" class="inline-text" style="display: none;">
+                        Alternatively, <button id="single-offline-application-url-button" type="submit" class="no-autosave no-validation sfa-button-as-link" name="CreateVacancy" value="SingleOfflineApplicationUrl">use the same web address for all vacancy locations</button>
+                    </p>
+                    <div class="sfa-xlarge-bottom-margin">
+                        <table id="multiple-offline-application-urls-table">
+                            <colgroup>
+                                <col>
+                                <col>
+                                <col class="sfa-col-1-2">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Location</th>
+                                    <th>Number of positions</th>
+                                    <th>Web address</th>
+                                </tr>
+                            </thead>
+                            <tbody id="location-addresses">
+                                        <tr>
+                                            <td class="location-address">
+                                                137 139
+                                                    <br>
+High Street                                                <br> BR3 1AG
+                                            </td>
+                                            <td class="location-positions">
+                                                1
+                                            </td>
+                                            <td class="location-offline-urls">
+                                                <div class="form-group" style="margin-bottom: 0">
+                                                    <input id="LocationAddresses_0__VacancyLocationId" name="LocationAddresses[0].VacancyLocationId" type="hidden" value="0">
+                                                    <input id="LocationAddresses_0__NumberOfPositions" name="LocationAddresses[0].NumberOfPositions" type="hidden" value="1">
+                                                    <input class="form-control-4-4 form-control" data-val="true" data-val-length="The website address must not be more than 1000 characters" data-val-length-max="1000" data-val-regex="The website address contains some invalid characters" data-val-regex-pattern="^[a-zA-Z0-9\u0080-\uFFA7?$@#()&quot;'!,+\-=_:;.&amp;€£*%\s\/\[\]]+$" id="locationaddresses_0__offlineapplicationurl" name="LocationAddresses[0].OfflineApplicationUrl" size="12" type="text" value="">
+                                                    <span class="field-validation-valid" data-valmsg-for="LocationAddresses[0].OfflineApplicationUrl" data-valmsg-replace="true" aria-live="polite"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="single-offline-application-url-div" class="form-group">
+                    <label class="form-label-bold" for="OfflineApplicationUrl">Enter the web address candidates should use to apply for this vacancy</label>
+                    <span class="field-validation-valid" data-valmsg-for="OfflineApplicationUrl" data-valmsg-replace="true" aria-live="polite"></span>
+                    <p id="multiple-offline-application-urls-para" class="inline-text" style="display: none;">
+                        Alternatively, you can <button id="multiple-offline-application-urls-button" type="submit" class="sfa-button-as-link no-autosave no-validation" name="CreateVacancy" value="MultipleOfflineApplicationUrls">enter a different web address for each vacancy location</button>
+                    </p>
+                    <input class="form-control form-control-3-4" data-val="true" data-val-length="The website address must not be more than 1000 characters" data-val-length-max="1000" id="apprenticeship-offline-application-url" name="OfflineApplicationUrl" size="12" type="text" value="">
+                </div>
+
+
+                <span class="field-validation-valid" data-valmsg-for="OfflineApplicationUrlComment" data-valmsg-replace="true" aria-live="polite"></span>
+
+
+                    <span class="field-validation-valid" data-valmsg-for="OfflineApplicationInstructionsComment" data-valmsg-replace="true" aria-live="polite"></span>
+                    <div class="form-group"><a name="offlineapplicationinstructions"></a><label class="form-label-bold" for="OfflineApplicationInstructions">Explain the external website application process (optional)</label><span class="field-validation-valid error-message" data-valmsg-for="OfflineApplicationInstructions" data-valmsg-replace="true" aria-live="polite"></span><textarea class="form-control form-control-4-4 form-control" cols="20" id="apprenticheship-offline-application-instructions" name="OfflineApplicationInstructions" rows="5" size="12" type="text"></textarea><span class="sfa-form-control-after hide-nojs"><span class="maxchar-count"></span>
+<span class="maxchar-text" style="display: none;"> characters remaining</span></span><span aria-live="polite" class="visuallyhidden aria-limit"></span></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group inline sfa-xlarge-top-margin">
+        <button id="createVacancyButton" type="submit" class="button no-autosave" name="CreateVacancy" value="CreateVacancy">Save and continue</button>
+        <button id="createVacancyAndExit" type="submit" class="button sfa-button-secondary no-autosave" name="CreateVacancy" value="CreateVacancyAndExit">Save and exit</button>
+    </div>
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

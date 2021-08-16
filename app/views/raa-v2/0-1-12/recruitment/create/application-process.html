@@ -1,0 +1,77 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">How do you want to get applications?</h1>
+        <p class="govuk-body">All vacancies will be published on Find an apprenticeship.</p>
+        <form method="post">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group">
+            <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+              <div class="govuk-radios__item" >
+                <input class="govuk-radios__input" id="display-name-registered" name="selected_display_name" type="radio"
+                  value="registered" >
+                <label class="govuk-label govuk-radios__label" for="display-name-registered">
+                   Let candidates apply through the <a href="https://www.gov.uk/apply-apprenticeship" class="govuk-body govuk-link" rel="noopener" target="_blank">Find an apprenticeship</a> service
+                </label>
+              </div>
+
+              <div class="govuk-radios__item " data-module="business-name-vacancy-panel" >
+                <input class="govuk-radios__input" id="display-name-trading" name="selected_display_name" type="radio"
+                  value="trading" data-aria-controls="trading-name-conditional">
+                <label class="govuk-label govuk-radios__label" for="display-name-trading">
+                  Direct applicants to an external site to apply
+                </label>
+              </div>
+              <div class="govuk-radios__conditional" id="trading-name-conditional">
+                <div class="govuk-form-group" data-module="character-count" data-minlength="50" data-maxlength="500">
+                  <label class="govuk-label" for="ApplicationUrl" >
+                    Website address
+                  </label>
+                  <input class="govuk-input govuk-input--width-30" id="ApplicationUrl" name="ApplicationUrl" type="text" value="{% if data.ApplicationUrl %}{{data.ApplicationUrl }}{% else %}{% endif %}">
+                </div>
+                <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+                <div class="govuk-form-group" >
+                  <label class="govuk-label" for="TrainingDescription" >
+                    What does the apprentice need to do? (optional)
+                  </label>
+                  <textarea class="govuk-textarea js-character-count" id="ApplicationInstructions" name="ApplicationInstructions" rows="5" aria-describedby="more-detail-hint">{% if data.ApplicationInstructions %}{{data.ApplicationInstructions }}{% else %}{% endif %}</textarea>
+                </div>
+                </div>
+              </div>
+
+
+            </div>
+            </div>
+          </fieldset>
+          <div class="govuk-form-group">
+          {% if data.edit != "yes"%}
+          <input type="submit" class="govuk-button" name="continueButton" value="Save and continue" />
+          <a href="preview-duration" class="govuk-button das-button-secondary govuk-!-margin-left-2" name="continueButton" value="Do this later">Skip</a>
+          <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
+          {%else%}
+          <input type="submit" class="govuk-button" name="previewButton" value="Save and preview" />
+          <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+          {%endif%}
+          </div>
+        </form>
+
+      </div>
+  </div>
+
+
+
+{% endblock %}

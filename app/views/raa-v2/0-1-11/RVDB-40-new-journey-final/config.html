@@ -1,0 +1,199 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">Config session</h1>
+
+    <form method="post">
+      <div class="govuk-form-group govuk-!-margin-bottom-8">
+      <div class="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="user-provider" name="user" type="radio" value="provider">
+          <label class="govuk-label govuk-radios__label" for="user-provider">
+            Provider
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="user-employer" name="user" type="radio" value="employer" checked="checked">
+          <label class="govuk-label govuk-radios__label" for="user-employer">
+            Employer
+          </label>
+        </div>
+      </div>
+      </div>
+        <div class="govuk-form-group govuk-!-margin-bottom-8">
+          <label class="govuk-label govuk-!-font-weight-bold" for="userName">
+            Name of users comnpany (provider or employer)
+          </label>
+          <input class="govuk-input govuk-!-width-three-quarters" id="userName" name="orgName" type="text" value="ABC options">
+        </div>
+
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+     <h1 class="govuk-fieldset__heading">
+       How do you want to start the session?
+     </h1>
+   </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-1" name="journey" type="radio" value="new">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-1">
+          As a new user
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-2" name="journey" type="radio" value="existing" checked>
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+          As an exisiting user
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+</div>
+      <div class="govuk-form-group govuk-!-margin-bottom-8">
+        <label class="govuk-label govuk-!-font-weight-bold" for="employerAmount">
+          Number of legal entities linked to the employer account
+          <span class="govuk-hint">Enter a number under ten for the user to skip selection of legal entitiy</span>
+        </label>
+        <input class="govuk-input govuk-input--width-4" id="employerAmount" name="employerAmount" type="text" value="5">
+      </div>
+      <div class="govuk-form-group govuk-!-margin-bottom-8">
+        <label class="govuk-label govuk-!-font-weight-bold" for="NumberOfEntities">
+          Number of employer accounts for the training provider
+        </label>
+        <input class="govuk-input govuk-input--width-4" id="NumberOfEntities" name="NumberOfEntities" type="text" value="8">
+      </div>
+      <div class="govuk-form-group search-field search-field-darker">
+        <input type="hidden" name="clientsFilter" value="new">
+        <div class="search-input ">
+          <label class="govuk-label" for="contact-by-email">
+            <span class="govuk-hint">
+              Enter apprenticeship training title or role
+            </span>
+          </label>
+          <div class="autocomplete__parent_wrapper govuk-!-margin-bottom-2">
+            <div class="autocomplete__wrapper">
+              <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px 0px 0px 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+                <span>No search results.</span>
+                <span>,,</span>
+              </div>
+              <p id="search-default-value" class="govuk-visually-hidden">{% if data.edit=="yes" and data.has_training_provider == "yes" %}{{data.training_level}}{%endif%}</p>
+              <input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="searchClients" name="training_last_used" placeholder="" role="combobox" type="text" value="{% if data.edit==" yes" %}{{data.providerName}}
+                {{data.UKPRN}} {%endif%}">
+              <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
+            </div>
+          </div>
+          <input class="form-control form-control-3-4" name="" id="searchClients-old" type="text" value="" style="display: none;">
+        </div>
+        <div class="search-submit ">
+          <button class="button govuk-visually-hidden" type="submit" id="searchClientsSubmit" name="searchClientsSubmit" value="Search clients">Search clients</button>
+        </div>
+
+        <p class="govuk-body"><a href="#" id="clear-search" class="govuk-link">Clear search</a></p>
+      </div>
+
+      <div class="govuk-form-group">
+        <button type="submit" class="govuk-button">Start</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="govuk-visually-hidden">
+  {% for training in data.training_full %}
+  <span class="data-item">{{training.name}}</span>
+  {% endfor %}
+</div>
+  {% block help %}
+  {% include "includes/service-help.html" %}
+  {% endblock %}
+{% endblock %}
+
+{% block pageScripts %}
+{{super()}}
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $('#clear-search').on('click', function() {
+      $('#searchClients').val("");
+    })
+  })
+
+  function addMembers(event) {
+    document.getElementById("add-members-form").submit();
+  }
+
+  function getProviders() {
+    var items = document.getElementsByClassName("data-item");
+
+    var data = [];
+
+    for (var i = 0; i < items.length; i++) {
+      // var user=names[i].textContent+" - "+email[i].textContent;
+      var provider = items[i].textContent
+      data.push(provider);
+    }
+
+    return data;
+  }
+
+  function suggest(query, populateResults) {
+    const results = getProviders();
+    const filteredResults = results.filter(
+      result => result.toUpperCase().indexOf(query.trim().toUpperCase()) !== -1
+    )
+    populateResults(filteredResults);
+  }
+
+  // Trigger search click.  Taken out the clich for the prototype.
+  function fireSearch() {
+    setTimeout(function() {
+      $('.dates').show();
+      $('#selected-training').text($("#searchClients").val())
+    }, 200);
+
+
+  }
+  // function fireSearch(){
+  // 	// $("#searchClientsSubmit").trigger("click")
+  //   console.log("pressed")
+  // }
+  var myInput = document.querySelector('#searchClients');
+  var myInputID = myInput.id;
+  var element = document.createElement('div');
+  var value = ""
+
+  if (document.getElementById('search-default-value').innerHTML != "") {
+    value = document.getElementById("search-default-value").innerHTML;
+  }
+
+  element.className = "autocomplete__parent_wrapper";
+  myInput.parentNode.insertBefore(element, myInput)
+  // console.log("value"+document.getElementById("search-default-value").innerHTML)
+  accessibleAutocomplete({
+    // other options
+    element: element,
+    id: myInputID,
+    name: myInput.name,
+    source: suggest,
+    defaultValue: value,
+    confirmOnBlur: false,
+    autoselect: true,
+    onConfirm: fireSearch,
+    displayMenu: 'inline',
+    minLength: 3
+  });
+  myInput.style.display = 'none';
+  myInput.id = myInputID + '-old';
+  myInput.name = '';
+</script>
+
+{% endblock %}

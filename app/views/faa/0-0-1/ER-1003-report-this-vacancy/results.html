@@ -1,0 +1,526 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div id="global-header-bar"></div>
+<link href="/public/stylesheets/faa.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+
+
+<div class="search-results-wrapper">
+    <div class="sfa-xxlarge-bottom-margin grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge sfa-no-bottom-margin">Search results</h1>
+            <div id="vacancy-result-summary">
+                <p id="result-message" class="sfa-small-bottom-margin">We've found <b class="bold-medium">159</b> apprenticeships in your selected area.</p>
+                <p id="national-results-message">We've also found <a id="nationwideLocationTypeLink" class="update-results" href="/apprenticeships?ApprenticeshipLevel=All&amp;Hash=-218207335&amp;Latitude=52.400997&amp;Longitude=-1.508122&amp;Location=CV1%202WT&amp;LocationType=National&amp;PageNumber=1&amp;ResultsPerPage=5&amp;SearchAction=LocationTypeChanged&amp;SearchField=All&amp;SearchMode=Keyword&amp;SortType=Distance&amp;WithinDistance=5&amp;DisabilityConfidentOnly=False">21 apprenticeships with positions elsewhere in England</a>.</p>
+                    <p class="sfa-small-bottom-margin">
+                        <a id="receiveSaveSearchAlert" href="/apprenticeshipsearch/savesearch?ApprenticeshipLevel=All&amp;Hash=-218207335&amp;Latitude=52.400997&amp;Longitude=-1.508122&amp;Location=CV1%202WT&amp;LocationType=NonNational&amp;PageNumber=1&amp;ResultsPerPage=5&amp;SearchAction=Search&amp;SearchField=All&amp;SearchMode=Keyword&amp;SortType=Distance&amp;WithinDistance=5&amp;DisabilityConfidentOnly=False" onclick="Webtrends.multiTrack({ element: this, argsa: ['DCS.dcsuri', '/apprenticeships/receivealerts', 'WT.dl', '99', 'WT.ti', 'Search Results Receive Alerts'] })"><i class="fa fa-bell-o"></i>Receive alerts for this search</a>
+                    </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-row">
+<form action="/apprenticeships" id="apprenticeship-results-form" method="get" novalidate="novalidate"><section class="column-one-third">
+        <fieldset class="search-filter">
+            <legend class="heading-medium sfa-mob-collpanel-trigger sfa-no-top-margin" id="editSearchToggle">Edit search</legend>
+            <div class="sfa-mob-collpanel toggle-content--mob" id="editSearchPanel">
+
+<div class="form-group"><a name="keywords"></a><label class="form-label-bold" for="Keywords" id="keyword-label">Keywords (optional)</label><span class="field-validation-valid error-message" data-valmsg-for="Keywords" data-valmsg-replace="true" aria-live="polite"></span><select class="refineSearchOption form-control form-control-auto sfa-small-bottom-margin" id="SearchField" name="SearchField"><option selected="selected" value="All">-- Refine search --</option>
+<option value="JobTitle">Job title</option>
+<option value="Description">Description</option>
+<option value="Employer">Employer</option>
+<option value="ReferenceNumber">Ref. number</option>
+</select><input class="form-control form-control-4-4 form-control" id="Keywords" name="Keywords" type="text" value=""></div>
+                <div class="form-group">
+                    <div class="sfa-small-bottom-margin form-group"><a name="location"></a><label class="form-label-bold" for="Location">Your location</label><span class="field-validation-valid error-message" data-valmsg-for="Location" data-valmsg-replace="true" aria-live="polite"></span><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input class="form-control form-control-2-4 form-control ui-autocomplete-input" data-val="true" data-val-length="Location must be 3 or more characters or a postcode" data-val-length-max="99" data-val-length-min="2" data-val-regex="Location contains some invalid characters" data-val-regex-pattern="^[a-zA-Z0-9\u0080-\uFFA7?$@#()&quot;'!,+\-=_:;.&amp;€£*%\s\/\[\]]+$" id="Location" name="Location" type="text" value="CV1 2WT" autocomplete="off"></div>
+                    <a href="#" class="geolocater hide-nojs " id="getLocation">Use current location</a>
+                </div>
+
+
+
+                <details class="hidden form-group" id="locationSuggestions" role="group">
+                    <summary tabindex="0" aria-describedby="locSuggestionsAria" role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">Did you mean:</span></summary>
+                    <p class="visuallyhidden" aria-live="polite" id="locSuggestionsAria">There are 0 locations with similar names, tab down to the suggestions, or collapse this panel</p>
+                    <div class="panel panel-border-narrow sfa-scrollable" id="details-content-0" aria-hidden="true">
+                        <ul id="location-suggestions" class="list">
+                        </ul>
+                    </div>
+                </details>
+
+                <div class="form-group">
+                    <label for="loc-within" class="form-label-bold">Within</label>
+                    <select class="form-control form-control-auto" data-val="true" data-val-number="The field WithinDistance must be a number." id="loc-within" name="WithinDistance"><option value="2">2 miles</option>
+<option selected="selected" value="5">5 miles</option>
+<option value="10">10 miles</option>
+<option value="15">15 miles</option>
+<option value="20">20 miles</option>
+<option value="30">30 miles</option>
+<option value="40">40 miles</option>
+<option value="0">England</option>
+</select>
+                </div>
+                <div class="form-group">
+                    <label for="apprenticeship-level" class="form-label-bold">Apprenticeship level</label>
+                    <select class="form-control form-control-auto" id="apprenticeship-level" name="ApprenticeshipLevel"><option selected="selected" value="All">All levels</option>
+<option value="Intermediate">Intermediate</option>
+<option value="Advanced">Advanced</option>
+<option value="Higher">Higher</option>
+<option value="Foundation">Foundation Degree</option>
+<option value="Degree">Degree</option>
+<option value="Masters">Master's Degree</option>
+</select>
+                </div>
+
+                <div class="form-group">
+                    <span class="form-label-bold" id="disabilityconfidentonlylabel">Only show</span>
+                    <label for="disability-confident-only" class="block-label selection-button-checkbox"><input id="disability-confident-only" name="DisabilityConfidentOnly" type="checkbox" value="true"><input name="DisabilityConfidentOnly" type="hidden" value="false"> Disability Confident</label>
+                </div>
+
+                <div class="form-group form-group-compound">
+                    <button class="button" id="search-button" name="SearchAction" value="Search">Update results</button>
+                </div>
+                <div class="form-group">
+                    <a href="/apprenticeshipsearch?SearchMode=Keyword&amp;reset=True" id="start-again-link">Start again</a>
+                </div>
+                <div class="form-group map-container hide-nojs">
+                    <div id="map-canvas" style="width: 100%; height: 250px; position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"><div tabindex="0" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; touch-action: pan-x pan-y;"><div style="z-index: 1; position: absolute; left: 50%; top: 50%; width: 100%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 984; transform: matrix(1, 0, 0, 1, -248, -137);"><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 30;"><div style="position: absolute; z-index: 984; transform: matrix(1, 0, 0, 1, -248, -137);"><div style="width: 256px; height: 256px; position: absolute; left: 256px; top: 256px;"><canvas width="512" height="512" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: 0px; top: 256px;"><canvas width="512" height="512" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: 0px; top: 0px;"><canvas width="512" height="512" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: 256px; top: 0px;"><canvas width="512" height="512" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div style="position: absolute; z-index: 984; transform: matrix(1, 0, 0, 1, -248, -137);"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 0px;"></div></div></div><div style="width: 20px; height: 32px; overflow: hidden; position: absolute; left: 43px; top: 46px; z-index: 0; animation-duration: 500ms; animation-iteration-count: 1; animation-name: _gm254;"><img alt="" src="/Content/_assets/img/icon-location.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 20px; height: 32px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; opacity: 1;"></div><div style="width: 20px; height: 32px; overflow: hidden; position: absolute; left: 43px; top: 46px; z-index: 78; animation-duration: 500ms; animation-iteration-count: 1; animation-name: _gm254;"><img alt="" src="/Content/_assets/img/icon-location.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 20px; height: 32px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="width: 20px; height: 32px; overflow: hidden; position: absolute; left: 43px; top: 46px; z-index: 78; animation-duration: 500ms; animation-iteration-count: 1; animation-name: _gm254;"><img alt="" src="/Content/_assets/img/icon-location.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 20px; height: 32px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="width: 20px; height: 32px; overflow: hidden; position: absolute; left: 43px; top: 46px; z-index: 78; animation-duration: 500ms; animation-iteration-count: 1; animation-name: _gm254;"><img alt="" src="/Content/_assets/img/icon-location.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 20px; height: 32px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="width: 20px; height: 32px; overflow: hidden; position: absolute; left: -63px; top: -111px; z-index: -79; animation-duration: 500ms; animation-iteration-count: 1; animation-name: _gm254;"><img alt="" src="/Content/_assets/img/icon-location.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 20px; height: 32px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 984; transform: matrix(1, 0, 0, 1, -248, -137);"><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i16!2i32494!3i21528!4i256!2m3!1e0!2sm!3i455165386!3m14!2sen-GB!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0!5m1!5f2&amp;client=gme-skillsfundingagency&amp;channel=findapprenticeship&amp;token=38857" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i16!2i32493!3i21527!4i256!2m3!1e0!2sm!3i455165860!3m14!2sen-GB!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0!5m1!5f2&amp;client=gme-skillsfundingagency&amp;channel=findapprenticeship&amp;token=32531" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i16!2i32493!3i21528!4i256!2m3!1e0!2sm!3i455165848!3m14!2sen-GB!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0!5m1!5f2&amp;client=gme-skillsfundingagency&amp;channel=findapprenticeship&amp;token=87335" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i16!2i32494!3i21527!4i256!2m3!1e0!2sm!3i455165884!3m14!2sen-GB!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0!5m1!5f2&amp;client=gme-skillsfundingagency&amp;channel=findapprenticeship&amp;token=55530" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div class="gm-style-pbc" style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0;"><p class="gm-style-pbt"></p></div><div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;"><div style="z-index: 4; position: absolute; left: 50%; top: 50%; width: 100%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"><div title="Business Administration Apprenticeship (within Human Resources and Finance department)" style="width: 20px; height: 32px; overflow: hidden; position: absolute; opacity: 0; cursor: pointer; touch-action: none; left: 43px; top: 46px; z-index: 0;"><img alt="" src="/Content/_assets/img/icon-location.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 20px; height: 32px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; opacity: 1;"></div><div title="Software Development Apprentice" style="width: 20px; height: 32px; overflow: hidden; position: absolute; opacity: 0; cursor: pointer; touch-action: none; left: 43px; top: 46px; z-index: 78;"><img alt="" src="/Content/_assets/img/icon-location.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 20px; height: 32px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div title="Business Administration Apprentice" style="width: 20px; height: 32px; overflow: hidden; position: absolute; opacity: 0; cursor: pointer; touch-action: none; left: 43px; top: 46px; z-index: 78;"><img alt="" src="/Content/_assets/img/icon-location.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 20px; height: 32px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div title="Business Administration Apprenticeship (Resource Office Management)" style="width: 20px; height: 32px; overflow: hidden; position: absolute; opacity: 0; cursor: pointer; touch-action: none; left: 43px; top: 46px; z-index: 78;"><img alt="" src="/Content/_assets/img/icon-location.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 20px; height: 32px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div title="Project Management - Higher Apprenticeship" style="width: 20px; height: 32px; overflow: hidden; position: absolute; opacity: 0; cursor: pointer; touch-action: none; left: -63px; top: -111px; z-index: -79;"><img alt="" src="/Content/_assets/img/icon-location.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 20px; height: 32px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"><div style="z-index: -202; cursor: pointer; display: none; touch-action: none;"><div style="width: 30px; height: 27px; overflow: hidden; position: absolute;"><img alt="" src="https://maps.gstatic.com/mapfiles/undo_poly.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 90px; height: 27px;"></div></div></div></div></div></div><iframe aria-hidden="true" frameborder="0" style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: none;" src="about:blank"></iframe><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" rel="noopener" href="https://maps.google.com/maps?ll=52.403983,-1.505304&amp;z=16&amp;t=m&amp;hl=en-GB&amp;gl=US&amp;mapclient=apiv3" title="Open this area in Google Maps (opens a new window)" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 279px; height: 180px; position: absolute; left: 5px; top: 35px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Map data ©2019 Google</div><button draggable="false" title="Close" aria-label="Close" type="button" class="gm-ui-hover-effect" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: absolute; cursor: pointer; user-select: none; top: 0px; right: 0px; width: 37px; height: 37px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23000000%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M19%206.41L17.59%205%2012%2010.59%206.41%205%205%206.41%2010.59%2012%205%2017.59%206.41%2019%2012%2013.41%2017.59%2019%2019%2017.59%2013.41%2012z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="pointer-events: none; display: block; width: 13px; height: 13px; margin: 12px;"></button></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 71px; bottom: 0px; width: 121px;"><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="text-decoration: none; cursor: pointer; display: none;">Map Data</a><span>Map data ©2019 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2019 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-GB_US/help/terms_maps.html" target="_blank" rel="noopener" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><button draggable="false" title="Toggle fullscreen view" aria-label="Toggle fullscreen view" type="button" class="gm-control-active gm-fullscreen-control" style="background: none rgb(255, 255, 255); border: 0px; margin: 10px; padding: 0px; position: absolute; cursor: pointer; user-select: none; border-radius: 2px; height: 40px; width: 40px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; overflow: hidden; top: 0px; right: 0px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%20018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"></button><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px; display: none; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_blank" rel="noopener" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@52.403983,-1.5053035,16z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="40" controlheight="81" style="margin: 10px; user-select: none; position: absolute; bottom: 95px; right: 40px;"><div class="gmnoprint" controlwidth="40" controlheight="81" style="position: absolute; left: 0px; top: 0px;"><div draggable="false" style="user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 40px; height: 81px;"><button draggable="false" title="Zoom in" aria-label="Zoom in" type="button" class="gm-control-active" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; overflow: hidden; width: 40px; height: 40px; top: 0px; left: 0px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23333%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23111%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"></button><div style="position: relative; overflow: hidden; width: 30px; height: 1px; margin: 0px 5px; background-color: rgb(230, 230, 230); top: 0px;"></div><button draggable="false" title="Zoom out" aria-label="Zoom out" type="button" class="gm-control-active" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; overflow: hidden; width: 40px; height: 40px; top: 0px; left: 0px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"></button></div></div><div class="gmnoprint" controlwidth="40" controlheight="40" style="display: none; position: absolute;"><div style="width: 40px; height: 40px;"><button draggable="false" title="Rotate map 90 degrees" aria-label="Rotate map 90 degrees" type="button" class="gm-control-active" style="background: none rgb(255, 255, 255); display: none; border: 0px; margin: 0px 0px 32px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 40px; height: 40px; top: 0px; left: 0px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"></button><button draggable="false" title="Tilt map" aria-label="Tilt map" type="button" class="gm-tilt gm-control-active" style="background: none rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 40px; height: 40px; top: 0px; left: 0px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="width: 18px;"></button></div></div></div></div></div></div>
+                </div>
+
+                <input data-val="true" data-val-number="The field Latitude must be a number." id="Latitude" name="Latitude" type="hidden" value="52.400997">
+                <input data-val="true" data-val-number="The field Longitude must be a number." id="Longitude" name="Longitude" type="hidden" value="-1.508122">
+
+                <input id="Hash" name="Hash" type="hidden" value="-218207335">
+                <input id="SearchMode" name="SearchMode" type="hidden" value="Keyword">
+                <input id="Category" name="Category" type="hidden" value="">
+
+                <input id="LocationType" name="LocationType" type="hidden" value="NonNational">
+            </div>
+        </fieldset>
+</section>            <section class="column-two-thirds">
+                <div id="pagedList">
+
+    <fieldset>
+        <legend class="visuallyhidden">Search items</legend>
+        <div class="grid-row">
+            <div class="column-one-third">
+                <div class="width-all-1-3 hide-js inl-block"></div>
+                <div class="hide-nojs form-group">
+                    <details class="sfa-no-bottom-margin sfa-small-top-padding" role="group">
+                        <summary role="button" aria-controls="chooseDetails" aria-expanded="false"><span class="summary">More/less detail</span></summary>
+                        <div class="panel panel-border-narrow" id="chooseDetails" aria-hidden="true">
+                            <ul class="list list-checkradio font-xsmall">
+                                <li class="selected">
+                                    <input checked="checked" type="checkbox" id="DisplayDescription">
+                                    <label for="DisplayDescription">Description</label>
+                                </li>
+                                    <li class="selected">
+                                        <input checked="checked" type="checkbox" id="DisplayDistance">
+                                        <label for="DisplayDistance">Distance</label>
+                                    </li>
+                                <li class="selected">
+                                    <input checked="checked" type="checkbox" id="DisplayClosingDate">
+                                    <label for="DisplayClosingDate">Closing date</label>
+                                </li>
+                                <li class="selected">
+                                    <input checked="checked" type="checkbox" id="DisplayStartDate">
+                                    <label for="DisplayStartDate">Possible start date</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="DisplayApprenticeshipLevel">
+                                    <label for="DisplayApprenticeshipLevel">Apprenticeship level</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="DisplayWage">
+                                    <label for="DisplayWage">Wage</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+            <div class="column-two-thirds sfa-align-right-tablet">
+                <div class="form-group">
+                    <label for="sort-results" class="heading-medium sfa-medium-right-margin">Sort results</label>
+                    <select class="form-control form-control-auto" id="sort-results" name="sortType"><option value="ClosingDate">Closing date</option>
+<option selected="selected" value="Distance">Distance</option>
+<option value="RecentlyAdded">Recently added</option>
+</select>
+                    <noscript>
+                        <button style="float: right; margin-left: 5px;" class="button show-nojs" name="SearchAction" value="Sort">Sort</button>
+                    </noscript>
+                    <input id="SearchAction" name="SearchAction" value="Search" type="hidden">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <ul class="search-results">
+                <li class="search-result sfa-section-bordered">
+                    <h2 class="heading-medium sfa-no-margins">
+                        <a class="vacancy-link" data-is-employer-anonymous="False" data-lat="52.402958" data-lon="-1.504161" data-vacancy-id="-385729" href="application-details" >Business Administration Apprenticeship (within Human Resources and Finance department)</a>
+                    </h2>
+                    <ul class="list">
+                        <li class="secondary-text">EAS CLOUD SERVICES LTD</li>
+
+
+                        <li class="font-xsmall secondary-text">
+                                <span id="posted-date--385729">(Added 06 Feb 2019</span>
+                                <span id="number-of-positions--385729">
+                                        - 2 positions available)
+                                </span>
+
+                        </li>
+                    </ul>
+                    <p data-show="DisplayDescription" class="">
+                        A business administration apprenticeship position at EAS Cloud Services.
+                    </p>
+                    <div class="grid-row">
+                        <div class="column-two-thirds">
+                            <ul class="list sfa-no-margins vacancy-details-list ">
+                                    <li data-show="DisplayDistance">
+                                        <span class="bold-small">Distance:</span> <span id="distance-value">0.2</span> miles
+
+                                        <a href="#" class="summary-style hide-nojs journey-trigger">Journey time</a>
+                                        <div class="detail-content toggle-content hide-nojs">
+                                            <select class="form-control valid select-mode" name="" aria-invalid="false">
+                                                <option value="DRIVING" aria-live="polite">Driving</option>
+                                                <option value="TRANSIT" aria-live="polite">Bus/Train</option>
+                                                <option value="WALKING" aria-live="polite">Walking</option>
+                                                <option value="BICYCLING" aria-live="polite">Cycling</option>
+                                            </select>
+
+                                            <span class="journey-time" aria-live="polite"></span>
+                                        </div>
+                                    </li>
+                                <li data-show="DisplayClosingDate">
+                                    <span class="bold-small ">Closing date:</span> <span id="closing-date-value" data-date="2019-04-15 00:00:00Z">15 Apr 2019</span>
+                                </li>
+                                <li data-show="DisplayStartDate">
+                                    <span class="bold-small ">Possible start date:</span> <span id="start-date-value">22 Apr 2019</span>
+                                </li>
+                                <li data-show="DisplayApprenticeshipLevel" class="toggle-content" style="display: none;">
+                                    <span class="bold-small">Apprenticeship level:</span> Intermediate
+                                </li>
+                                <li data-show="DisplayWage" class="toggle-content" style="display: none;">
+                                    <span class="bold-small">Wage:</span> £211.00 per week
+                                </li>
+
+                                    <li class="sfa-hide-tablet hide-nojs">
+                                        <a href="#1" class="mob-map-trigger summary-style map-closed">Show/hide map</a>
+                                    </li>
+
+                            </ul>
+
+
+                        </div>
+                            <div class="column-one-third map-container hide-nojs sfa-small-bottom-margin toggle-content--mob">
+                                <a href="https://www.google.com/maps/dir/52.400997,-1.508122/'52.402958,-1.504161'" class="map-links fake-link font-xxsmall view-googlemaps">Open map</a>
+                                <div class="map-placeholder"></div>
+                                <img class="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=52.402958,-1.504161&amp;size=190x125&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=VX0b76oyob9kHVuIA9J-UkcfwN4=">
+                            </div>
+                    </div>
+
+                </li>
+                <li class="search-result sfa-section-bordered">
+                    <h2 class="heading-medium sfa-no-margins">
+                        <a class="vacancy-link" data-is-employer-anonymous="False" data-lat="52.402958" data-lon="-1.504161" data-vacancy-id="-388565" href="application-details" >Software Development Apprentice</a>
+                    </h2>
+                    <ul class="list">
+                        <li class="secondary-text">EAS CLOUD SERVICES LTD</li>
+
+
+                        <li class="font-xsmall secondary-text">
+                                <span id="posted-date--388565">(Added 13 Feb 2019</span>
+                                <span id="number-of-positions--388565">
+                                        - 1 position available)
+                                </span>
+
+                        </li>
+                    </ul>
+                    <p data-show="DisplayDescription" class="">
+                        Do you have the enthusiasm required to start your programming career?
+
+Baltic Training and EAS Cloud Services are delighted to be recruiting for an Apprentice Software Developer to join their existing team based in Coventry!
+                    </p>
+                    <div class="grid-row">
+                        <div class="column-two-thirds">
+                            <ul class="list sfa-no-margins vacancy-details-list ">
+                                    <li data-show="DisplayDistance">
+                                        <span class="bold-small">Distance:</span> <span id="distance-value">0.2</span> miles
+
+                                        <a href="#" class="summary-style hide-nojs journey-trigger">Journey time</a>
+                                        <div class="detail-content toggle-content hide-nojs">
+                                            <select class="form-control valid select-mode" name="" aria-invalid="false">
+                                                <option value="DRIVING" aria-live="polite">Driving</option>
+                                                <option value="TRANSIT" aria-live="polite">Bus/Train</option>
+                                                <option value="WALKING" aria-live="polite">Walking</option>
+                                                <option value="BICYCLING" aria-live="polite">Cycling</option>
+                                            </select>
+
+                                            <span class="journey-time" aria-live="polite"></span>
+                                        </div>
+                                    </li>
+                                <li data-show="DisplayClosingDate">
+                                    <span class="bold-small ">Closing date:</span> <span id="closing-date-value" data-date="2019-03-13 00:00:00Z">tomorrow</span>
+                                </li>
+                                <li data-show="DisplayStartDate">
+                                    <span class="bold-small ">Possible start date:</span> <span id="start-date-value">14 Mar 2019</span>
+                                </li>
+                                <li data-show="DisplayApprenticeshipLevel" class="toggle-content" style="display: none;">
+                                    <span class="bold-small">Apprenticeship level:</span> Advanced
+                                </li>
+                                <li data-show="DisplayWage" class="toggle-content" style="display: none;">
+                                    <span class="bold-small">Wage:</span> £11,000.00 per year
+                                </li>
+
+                                    <li class="sfa-hide-tablet hide-nojs">
+                                        <a href="#1" class="mob-map-trigger summary-style map-closed">Show/hide map</a>
+                                    </li>
+
+                            </ul>
+
+
+                        </div>
+                            <div class="column-one-third map-container hide-nojs sfa-small-bottom-margin toggle-content--mob">
+                                <a href="https://www.google.com/maps/dir/52.400997,-1.508122/'52.402958,-1.504161'" class="map-links fake-link font-xxsmall view-googlemaps">Open map</a>
+                                <div class="map-placeholder"></div>
+                                <img class="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=52.402958,-1.504161&amp;size=190x125&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=VX0b76oyob9kHVuIA9J-UkcfwN4=">
+                            </div>
+                    </div>
+
+                </li>
+                <li class="search-result sfa-section-bordered">
+                    <h2 class="heading-medium sfa-no-margins">
+                        <a class="vacancy-link" data-is-employer-anonymous="False" data-lat="52.402958" data-lon="-1.504161" data-vacancy-id="-349355" href="application-details" onclick="Webtrends.multiTrack({ element: this, argsa: ['DCS.dcsuri', '/apprenticeships/results/itemposition/-349355', 'WT.dl', '99', 'WT.ti', 'Apprenticeships Search – Item Position Clicked', 'DCSext.ipos', '3'] })">Business Administration Apprentice</a>
+                    </h2>
+                    <ul class="list">
+                        <li class="secondary-text">Aatom Recruitment Ltd</li>
+
+
+                        <li class="font-xsmall secondary-text">
+                                <span id="posted-date--349355">(Added 16 Oct 2018</span>
+                                <span id="number-of-positions--349355">
+                                        - 2 positions available)
+                                </span>
+
+                        </li>
+                    </ul>
+                    <p data-show="DisplayDescription" class="">
+                        Great position! Aatom Recruitment are seeking an eager to learn and enthusiastic apprentice to join their team as a business administration apprentice. Learning all aspects of the office; apply now!
+                    </p>
+                    <div class="grid-row">
+                        <div class="column-two-thirds">
+                            <ul class="list sfa-no-margins vacancy-details-list ">
+                                    <li data-show="DisplayDistance">
+                                        <span class="bold-small">Distance:</span> <span id="distance-value">0.2</span> miles
+
+                                        <a href="#" class="summary-style hide-nojs journey-trigger">Journey time</a>
+                                        <div class="detail-content toggle-content hide-nojs">
+                                            <select class="form-control valid select-mode" name="" aria-invalid="false">
+                                                <option value="DRIVING" aria-live="polite">Driving</option>
+                                                <option value="TRANSIT" aria-live="polite">Bus/Train</option>
+                                                <option value="WALKING" aria-live="polite">Walking</option>
+                                                <option value="BICYCLING" aria-live="polite">Cycling</option>
+                                            </select>
+
+                                            <span class="journey-time" aria-live="polite"></span>
+                                        </div>
+                                    </li>
+                                <li data-show="DisplayClosingDate">
+                                    <span class="bold-small ">Closing date:</span> <span id="closing-date-value" data-date="2019-03-20 00:00:00Z">20 Mar 2019</span>
+                                </li>
+                                <li data-show="DisplayStartDate">
+                                    <span class="bold-small ">Possible start date:</span> <span id="start-date-value">21 Mar 2019</span>
+                                </li>
+                                <li data-show="DisplayApprenticeshipLevel" class="toggle-content" style="display: none;">
+                                    <span class="bold-small">Apprenticeship level:</span> Advanced
+                                </li>
+                                <li data-show="DisplayWage" class="toggle-content" style="display: none;">
+                                    <span class="bold-small">Wage:</span> £130.00 per week
+                                </li>
+
+                                    <li class="sfa-hide-tablet hide-nojs">
+                                        <a href="#1" class="mob-map-trigger summary-style map-closed">Show/hide map</a>
+                                    </li>
+
+                            </ul>
+
+
+                        </div>
+                            <div class="column-one-third map-container hide-nojs sfa-small-bottom-margin toggle-content--mob">
+                                <a href="https://www.google.com/maps/dir/52.400997,-1.508122/'52.402958,-1.504161'" class="map-links fake-link font-xxsmall view-googlemaps">Open map</a>
+                                <div class="map-placeholder"></div>
+                                <img class="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=52.402958,-1.504161&amp;size=190x125&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=VX0b76oyob9kHVuIA9J-UkcfwN4=">
+                            </div>
+                    </div>
+
+                </li>
+                <li class="search-result sfa-section-bordered">
+                    <h2 class="heading-medium sfa-no-margins">
+                        <a class="vacancy-link" data-is-employer-anonymous="False" data-lat="52.402958" data-lon="-1.504161" data-vacancy-id="-385727" href="application-details">Business Administration Apprenticeship (Resource Office Management)</a>
+                    </h2>
+                    <ul class="list">
+                        <li class="secondary-text">EAS CLOUD SERVICES LTD</li>
+
+
+                        <li class="font-xsmall secondary-text">
+                                <span id="posted-date--385727">(Added 06 Feb 2019</span>
+                                <span id="number-of-positions--385727">
+                                        - 1 position available)
+                                </span>
+
+                        </li>
+                    </ul>
+                    <p data-show="DisplayDescription" class="">
+                        A Business Administration Apprenticeship position at EAS Cloud Services.
+                    </p>
+                    <div class="grid-row">
+                        <div class="column-two-thirds">
+                            <ul class="list sfa-no-margins vacancy-details-list ">
+                                    <li data-show="DisplayDistance">
+                                        <span class="bold-small">Distance:</span> <span id="distance-value">0.2</span> miles
+
+                                        <a href="#" class="summary-style hide-nojs journey-trigger">Journey time</a>
+                                        <div class="detail-content toggle-content hide-nojs">
+                                            <select class="form-control valid select-mode" name="" aria-invalid="false">
+                                                <option value="DRIVING" aria-live="polite">Driving</option>
+                                                <option value="TRANSIT" aria-live="polite">Bus/Train</option>
+                                                <option value="WALKING" aria-live="polite">Walking</option>
+                                                <option value="BICYCLING" aria-live="polite">Cycling</option>
+                                            </select>
+
+                                            <span class="journey-time" aria-live="polite"></span>
+                                        </div>
+                                    </li>
+                                <li data-show="DisplayClosingDate">
+                                    <span class="bold-small ">Closing date:</span> <span id="closing-date-value" data-date="2019-04-15 00:00:00Z">15 Apr 2019</span>
+                                </li>
+                                <li data-show="DisplayStartDate">
+                                    <span class="bold-small ">Possible start date:</span> <span id="start-date-value">22 Apr 2019</span>
+                                </li>
+                                <li data-show="DisplayApprenticeshipLevel" class="toggle-content" style="display: none;">
+                                    <span class="bold-small">Apprenticeship level:</span> Intermediate
+                                </li>
+                                <li data-show="DisplayWage" class="toggle-content" style="display: none;">
+                                    <span class="bold-small">Wage:</span> £211.00 per week
+                                </li>
+
+                                    <li class="sfa-hide-tablet hide-nojs">
+                                        <a href="#1" class="mob-map-trigger summary-style map-closed">Show/hide map</a>
+                                    </li>
+
+                            </ul>
+
+
+                        </div>
+                            <div class="column-one-third map-container hide-nojs sfa-small-bottom-margin toggle-content--mob">
+                                <a href="https://www.google.com/maps/dir/52.400997,-1.508122/'52.402958,-1.504161'" class="map-links fake-link font-xxsmall view-googlemaps">Open map</a>
+                                <div class="map-placeholder"></div>
+                                <img class="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=52.402958,-1.504161&amp;size=190x125&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=VX0b76oyob9kHVuIA9J-UkcfwN4=">
+                            </div>
+                    </div>
+
+                </li>
+                <li class="search-result sfa-section-bordered">
+                    <h2 class="heading-medium sfa-no-margins">
+                        <a class="vacancy-link" data-is-employer-anonymous="False" data-lat="52.405008" data-lon="-1.506446" data-vacancy-id="-398602" href="application-details" >Project Management - Higher Apprenticeship</a>
+                    </h2>
+                    <ul class="list">
+                        <li class="secondary-text">Severn Trent Water Limited</li>
+
+
+                        <li class="font-xsmall secondary-text">
+                                <span id="posted-date--398602">(Added yesterday</span>
+                                <span id="number-of-positions--398602">
+                                        - 1 position available)
+                                </span>
+
+                        </li>
+                    </ul>
+                    <p data-show="DisplayDescription" class="">
+                        This is an opportunity to join our Capital Delivery or Group Transformation teams and develop solutions that will shape the future of the water industry. We have big ambitions for our network, so you’ll be part of large-scale transformation projects from start to finish.
+                    </p>
+                    <div class="grid-row">
+                        <div class="column-two-thirds">
+                            <ul class="list sfa-no-margins vacancy-details-list ">
+                                    <li data-show="DisplayDistance">
+                                        <span class="bold-small">Distance:</span> <span id="distance-value">0.3</span> miles
+
+                                        <a href="#" class="summary-style hide-nojs journey-trigger">Journey time</a>
+                                        <div class="detail-content toggle-content hide-nojs">
+                                            <select class="form-control valid select-mode" name="" aria-invalid="false">
+                                                <option value="DRIVING" aria-live="polite">Driving</option>
+                                                <option value="TRANSIT" aria-live="polite">Bus/Train</option>
+                                                <option value="WALKING" aria-live="polite">Walking</option>
+                                                <option value="BICYCLING" aria-live="polite">Cycling</option>
+                                            </select>
+
+                                            <span class="journey-time" aria-live="polite"></span>
+                                        </div>
+                                    </li>
+                                <li data-show="DisplayClosingDate">
+                                    <span class="bold-small ">Closing date:</span> <span id="closing-date-value" data-date="2019-06-01 00:00:00Z">01 Jun 2019</span>
+                                </li>
+                                <li data-show="DisplayStartDate">
+                                    <span class="bold-small ">Possible start date:</span> <span id="start-date-value">12 Aug 2019</span>
+                                </li>
+                                <li data-show="DisplayApprenticeshipLevel" class="toggle-content" style="display: none;">
+                                    <span class="bold-small">Apprenticeship level:</span> Higher
+                                </li>
+                                <li data-show="DisplayWage" class="toggle-content" style="display: none;">
+                                    <span class="bold-small">Wage:</span> £307.69 per week
+                                </li>
+
+                                    <li class="sfa-hide-tablet hide-nojs">
+                                        <a href="#1" class="mob-map-trigger summary-style map-closed">Show/hide map</a>
+                                    </li>
+
+                            </ul>
+
+
+                        </div>
+                            <div class="column-one-third map-container hide-nojs sfa-small-bottom-margin toggle-content--mob">
+                                <a href="https://www.google.com/maps/dir/52.400997,-1.508122/'52.405008,-1.506446'" class="map-links fake-link font-xxsmall view-googlemaps">Open map</a>
+                                <div class="map-placeholder"></div>
+                                <img class="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=52.405008,-1.506446&amp;size=190x125&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=L5369rPEDgBRgTkyTEE0FCMitpg=">
+                            </div>
+                    </div>
+
+                </li>
+    </ul>
+
+
+    <div class="page-navigation grid-row">
+        <a href="#" style="visibility: hidden" class="page-navigation__btn previous column-one-half">
+            <i class="arrow-button fa fa-angle-left"></i>
+            <span class="description">Previous <span class="sfa-hide-mobile">page</span></span>
+            <span class="counter">0 of 32</span>
+        </a>
+        <a href="/apprenticeships?ApprenticeshipLevel=All&amp;Hash=-218207335&amp;Latitude=52.400997&amp;Longitude=-1.508122&amp;Location=CV1%202WT&amp;LocationType=NonNational&amp;PageNumber=2&amp;ResultsPerPage=5&amp;SearchAction=Sort&amp;SearchField=All&amp;SearchMode=Keyword&amp;SortType=Distance&amp;WithinDistance=5&amp;DisabilityConfidentOnly=False" style="visibility: visible" class="page-navigation__btn next column-one-half">
+            <i class="arrow-button fa fa-angle-right"></i>
+            <span class="description">Next <span class="sfa-hide-mobile">page</span></span>
+            <span class="counter">2 of 32</span>
+        </a>
+    </div>
+        <div class="form-group sfa-medium-top-margin">
+            <label for="results-per-page" class="heading-small inline">Display results</label>
+            <select class="form-control form-control-auto" id="results-per-page" name="resultsPerPage"><option selected="selected" value="5">5 per page</option>
+<option value="10">10 per page</option>
+<option value="25">25 per page</option>
+<option value="50">50 per page</option>
+</select>
+            <noscript>
+                <button class="button show-nojs" name="ChangeResultsPerPageAction" value="ResultsPerPage">View</button>
+            </noscript>
+        </div>
+
+
+
+                </div>
+            </section>
+</form>    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+What name do you want to display on the vacancy and search results?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+    <h1 class="govuk-heading-xl">What name do you want to display on the vacancy and search results?</h1>
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="display-name-registered" name="selected_display_name" type="radio" value="registered">
+              <label class="govuk-label govuk-radios__label" for="display-name-registered">
+                ABC Opticians Coventry (registered name)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="display-name-registered" name="selected_display_name" type="radio" value="registered">
+              <label class="govuk-label govuk-radios__label" for="display-name-registered">
+                ABC Opticians Coventry and Acme lens (trading name)
+              </label>
+            </div>
+            <div class="govuk-radios__item " data-module="business-name-vacancy-panel">
+              <input class="govuk-radios__input" id="display-name-trading" name="selected_display_name" type="radio" value="trading" data-aria-controls="trading-name-conditional">
+              <label class="govuk-label govuk-radios__label" for="display-name-trading">
+                ABC Opticians Coventry and a new trading name
+              </label>
+            </div>
+            <div class="govuk-radios__conditional" id="trading-name-conditional">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold" for="tradingName">Trading or business name</label>
+                <span class="govuk-hint">You can add a trading name if different to your registered name</span>
+                <input class="govuk-input govuk-input--width-10" id="tradingName" name="tradingName" type="text">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group">
+        <button type="submit" class="govuk-button">Save and continue</button>
+        <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
+      </div>
+    </form>
+  </div>
+
+</div>
+</div>
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}
+{% block pageScripts %}
+
+
+{% endblock %}

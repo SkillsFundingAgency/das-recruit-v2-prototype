@@ -1,0 +1,35 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+
+<div class="govuk-grid-row header-index">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-l">MUSECRAFT  LTD</span>
+            About your agreement
+        </h1>
+
+            <p>This agreement creates a legal contract between <span class="bold">MUSECRAFT  LTD</span> and the <span class="bold">Education and Skills Funding Agency (ESFA)</span>. It allows you to transfer funds to other employers and pay training providers for apprenticeships.</p>
+            <p>You need to ensure you have the authority from your organisation before you sign this agreement.</p>
+
+        <form method="get" action="/accounts/VL8KXB/agreements/MXXGRL/sign-your-agreement">
+            <input name="__RequestVerificationToken" type="hidden" value="mxyXyNjRkLxpJlkqXF7N8dJgDql9q3NAT2eEzzK4sPnTjbmnnBJlKkeI_CGn4aMdclwqQfFlFGM4qQBcnQHqCE5xHYcK7SNAbowFVoLUwblkDqwOBLEFxZXzGHJtr5uLF1jesbzjGvdwJapDkGLFZQ2">
+            <input class="govuk-button" type="submit" value="Continue to your agreement">
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

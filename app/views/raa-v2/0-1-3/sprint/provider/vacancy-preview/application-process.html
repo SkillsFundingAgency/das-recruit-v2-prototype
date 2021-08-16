@@ -1,0 +1,53 @@
+{% extends "tp-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{%else%}Developer Apprentice{%endif%}</span>
+        <h1 class="govuk-heading-xl">Where will the candidate apply for this position?</h1>
+        <form method="post">
+          <fieldset class="govuk-fieldset">
+              <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  What is your address?
+                </h1>
+              </legend> -->
+
+              <div class="govuk-form-group" data-module="character-count" data-minlength="50" data-maxlength="500">
+                <label class="govuk-label" for="ApplicationUrl" >
+                  Enter the web address candidates should use to apply for this vacancy
+                </label>
+                <input class="govuk-input govuk-input--width-30" id="ApplicationUrl" name="ApplicationUrl" type="text" value="{% if data.ApplicationUrl %}{{data.ApplicationUrl }}{% else %}{% endif %}">
+              </div>
+              <div class="govuk-character-count" data-module="character-count" data-minlength="50" data-maxlength="500">
+              <div class="govuk-form-group" >
+                <label class="govuk-label" for="TrainingDescription" >
+                  Explain the application process (optional)
+                </label>
+                <textarea class="govuk-textarea govuk-!-width-three-quarters js-character-count" id="ApplicationInstructions" name="ApplicationInstructions" rows="5" aria-describedby="more-detail-hint">{% if data.ApplicationInstructions %}{{data.ApplicationInstructions }}{% else %}{% endif %}</textarea>
+              </div>
+              </div>
+              <div class="govuk-form-group">
+                <input type="submit" class="govuk-button" value="Save and continue"/>
+                <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+              </div>
+            </fieldset>
+        </form>
+
+      </div>
+  </div>
+
+
+
+{% endblock %}

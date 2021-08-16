@@ -1,0 +1,44 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Create a vacancy
+    </h1>
+    <p class="govuk-body">Vacancies will be approved or rejected within 24 hours. You'll be notified through your recruitment page, if you need to make any edits to your vacancy.</p>
+    <form method="post">
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            Do you want to create a new vacancy or clone an existing vacancy?
+        </legend>
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="clone" name="create_option" type="radio" value="new">
+            <label class="govuk-label govuk-radios__label" for="create-new">
+              Create a new vacancy
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="clone" name="create_option" type="radio" value="clone">
+            <label class="govuk-label govuk-radios__label" for="clone">
+              Clone an exisiting vacancy
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <button type="submit" class="govuk-button">Continue</button>
+    <a href="../dashboard-clone" class="govuk-body das-button--link">Cancel</a>
+    </form>
+  </div>
+</div>
+{% block help %}{% include "includes/service-help-chat.html" %}{% endblock %}
+
+{% endblock %}

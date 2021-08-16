@@ -1,0 +1,82 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent%}
+{{super()}}
+<a href="#" class="govuk-back-link">Back</a>
+{% endblock%}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+            Confirm permission settings for {{data.set_permissions_provider or "PLUMPTON COLLEGE"}}
+        </h1>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          {% if data.new_provider == "yes"%}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Training provider
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data.set_permission_provider or "PLUMPTON COLLEGE"}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <!-- <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> name</span>
+                </a> -->
+              </dd>
+            </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              On behalf of
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.set_permission_employer or "MUSECRAFT LTD"}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <!-- <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a> -->
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Recruit apprentices
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Allow, but review vacancies before they go live
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="set-permissions">
+                Change<span class="govuk-visually-hidden"> permission</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Reserve funding and add apprentice records
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Do not allow
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="set-permissions">
+                Change<span class="govuk-visually-hidden"> permission</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+        <form action="confirmation" method=post>
+            <button class="govuk-button" type="submit">Confirm and save permissions</button>
+          </form>
+    </div>
+</div>
+
+{% endblock %}
