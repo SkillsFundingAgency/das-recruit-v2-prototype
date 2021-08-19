@@ -1,0 +1,307 @@
+{% set appCount = vacancy.applications+vacancy.newApplications %}
+
+{% if data.filter == "any" or not data.filter %}
+
+{% if (displayCount | length)+1 >= currentMin and (displayCount | length) <= currentMax%}
+<tr class="govuk-table__row {% if vacancy.owner=="provider"%}das-table--muted{% endif%}" role="row">
+  <th class="govuk-table__cell" role="gridcell"><span class="table-heading " aria-hidden="true">
+    <a href="
+    {% if vacancy.status == "Draft"%}
+      create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions=
+    {% elseif vacancy.status == "Rejected"%}
+      create/vacancy-preview-referred
+    {% elseif vacancy.status == "Closed"%}
+      account/manage-vacancy-closed?alert=no
+    {% elseif vacancy.status == "Pending review"%}
+      account/manage-vacancy-no-apprentice
+    {%else%}
+      account/manage-vacancy
+    {%endif%}
+    " class="govuk-link govuk-link--no-visited-state">
+    Vacancy title</span>{{vacancy.title}} Apprentice</a> <br><span class="govuk-!-font-weight-regular">{{vacancy.VAC}}</span>
+  </th>
+
+
+  {% if user == 'provider'%}
+  <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.employer}}</span></td>
+  {% else %}
+  <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs"></span> {% if vacancy.owner == "provider"%}{{vacancy.created_by}} (provider){% else %}Richard Hatton{% endif%}</td>
+  {% endif%}
+  <td class="govuk-table__cell govuk-table__cell--numeric" role="gridcell" style="width:10%">
+
+    {%if appCount > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+
+    {% if appCount > vacancy.newApplications and vacancy.newApplications > 0 %}{{appCount}} <span class="govuk-!-font-weight-bold">({{vacancy.newApplications}} new )</span>{% else %}{{appCount}} {% endif %}
+    {% elseif vacancy.status != 'Live'%}
+    -
+    {% else %}
+    0
+    {% endif%}
+  <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>{{data.dates | random}}</td>
+  <td class="govuk-table__cell das-table-colomn-10" role="gridcell" >
+    <span class="table-heading" aria-hidden="true">Status</span
+      <span class="das-tag das-tag--{% if vacancy.status == 'with employer' or vacancy.status == 'with QA' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">
+        {% if vacancy.owner == "provider" %}{{vacancy.review_status}}{% else %}{{vacancy.status}}{% endif %}
+      </span>
+    </td>
+
+  </tr>
+  {%else%}
+  Nope
+  {% endif %}
+
+  {% set displayCount = (displayCount.push(1),displayCount) %}
+  {% elseif data.filter == "closing" or data.filter == "closing-no-applications"%}
+  {%set date= data.dates | random%}
+  {%if vacancy.status == 'Live'%}
+
+  {% if 'Mar'in date or 'Apr' in date %}
+  {% if data.filter == "closing-no-applications" and appCount == 0 %}
+  <tr class="govuk-table__row" role="row">
+    <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+      <span class="table-heading " aria-hidden="true">Vacancy title</span>
+      <span>{{vacancy.title}} Apprentice</span><br><span {{vacancy.VAC}} </td> {% if user=='provider' %} <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.employer}}</span></td>
+    {% else %}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.VAC}}</span></td>
+    {% endif%}
+    <td class="govuk-table__cell govuk-table__cell--numeric" role="gridcell" style="width:10%">
+
+      <!-- Applications<br> -->
+      {%if appCount > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+
+      {% if appCount > vacancy.newApplications and vacancy.newApplications > 0 %}{{appCount}} <span class="govuk-!-font-weight-bold">({{vacancy.newApplications}} new )</span>{% else %}{{appCount}} {% endif %}
+      {% elseif vacancy.status != 'Live'%}
+      -
+      {% else %}
+      0
+      {% endif%}
+    <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>{{date}}</td>
+    <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+    <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+      {% if vacancy.status == "Draft"%}
+      <a href="create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+        class="govuk-link">Edit and submit</a>
+      {% elseif vacancy.status == "Rejected"%}
+      <a href="create/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      {% elseif vacancy.status == "Closed"%}
+      <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
+      {% elseif vacancy.status == "Pending review"%}
+      <a href="account/manage-vacancy-no-apprentice" class="govuk-link">Manage</a>
+      {%else%}
+      <a href="account/manage-vacancy" class="govuk-link">Manage</a>
+      {%endif%}
+    </td>
+  </tr>
+  {% elseif data.filter == "closing"%}
+  <tr class="govuk-table__row" role="row">
+    <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+      <span class="table-heading " aria-hidden="true">Vacancy title</span>
+      <span>{{vacancy.title}} Apprentice</span>{%if data.user=='provider'%}<br>{{vacancy.VAC}}{% elseif vacancy.transferred and data.has_transferred %}<br><span class="das-tag das-tag--transferred">Transferred</span>{% endif %}
+    </td>
+
+    {% if user == 'provider'%}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.employer}}</span></td>
+    {% else %}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.VAC}}</span></td>
+    {% endif%}
+    <td class="govuk-table__cell govuk-table__cell--numeric" role="gridcell" style="width:10%">
+      <!-- Applications<br> -->
+      {%if appCount > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+
+      {% if appCount > vacancy.newApplications and vacancy.newApplications > 0 %}{{appCount}} <span class="govuk-!-font-weight-bold">({{vacancy.newApplications}} new )</span>{% else %}{{appCount}} {% endif %}
+      {% elseif vacancy.status != 'Live'%}
+      -
+      {% else %}
+      0
+      {% endif%}
+    <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>{{date}}</td>
+    <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+    <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+      {% if vacancy.status == "Draft"%}
+      <a href="create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+        class="govuk-link">Edit and submit</a>
+      {% elseif vacancy.status == "Rejected"%}
+      <a href="create/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      {% elseif vacancy.status == "Closed"%}
+      <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
+      {% elseif vacancy.status == "Pending review"%}
+      <a href="account/manage-vacancy-no-apprentice" class="govuk-link">Manage</a>
+      {%else%}
+      <a href="account/manage-vacancy" class="govuk-link">Manage</a>
+      {%endif%}
+    </td>
+  </tr>
+  {%endif%}
+  {%endif%}
+  {%endif%}
+  {% elseif data.filter == "new"%}
+  {%if vacancy.newApplications > 0 and vacancy.applications > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Closed' and vacancy.status != 'Rejected'%}
+  <tr class="govuk-table__row" role="row">
+    <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+      <span class="table-heading " aria-hidden="true">Vacancy title</span>
+      <span>{{vacancy.title}} Apprentice</span>{%if data.user=='provider'%}<br>{{vacancy.VAC}}{% elseif vacancy.transferred and data.has_transferred %}<br><span class="das-tag das-tag--transferred">Transferred</span>{% endif %}
+    </td>
+
+    {% if user == 'provider'%}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.employer}}</span></td>
+    {% else %}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.VAC}}</span></td>
+    {% endif%}
+    <td class="govuk-table__cell govuk-table__cell--numeric" role="gridcell" style="width:10%">
+      <!-- Applications<br> -->
+      {%if appCount > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+
+      {% if appCount > vacancy.newApplications and vacancy.newApplications > 0 %}{{appCount}} <span class="govuk-!-font-weight-bold">({{vacancy.newApplications}} new )</span>{% else %}{{appCount}} {% endif %}
+      {% elseif vacancy.status != 'Live'%}
+      -
+      {% else %}
+      0
+      {% endif%}
+    <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>{{date}}</td>
+    <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+    <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+      {% if vacancy.status == "Draft"%}
+      <a href="create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+        class="govuk-link">Edit and submit</a>
+      {% elseif vacancy.status == "Rejected"%}
+      <a href="create/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      {% elseif vacancy.status == "Closed"%}
+      <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
+      {% elseif vacancy.status == "Pending review"%}
+      <a href="account/manage-vacancy-no-apprentice" class="govuk-link">Manage</a>
+      {%else%}
+      <a href="account/manage-vacancy" class="govuk-link">Manage</a>
+      {%endif%}
+    </td>
+  </tr>
+  {% set displayCount = (displayCount.push(1),displayCount) %}
+  {%endif%}
+  {% elseif data.filter == "withApplication"%}
+  {%if appCount > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+  <tr class="govuk-table__row" role="row">
+    <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+      <span class="table-heading " aria-hidden="true">Vacancy title</span>
+      <span>{{vacancy.title}} Apprentice</span>{%if data.user=='provider'%}<br>{{vacancy.VAC}}{% elseif vacancy.transferred and data.has_transferred %}<br><span class="das-tag das-tag--transferred">Transferred</span>{% endif %}
+    </td>
+    {% if user == 'provider'%}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.employer}}</span></td>
+    {% else %}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.VAC}}</span></td>
+    {% endif%}
+    <td class="govuk-table__cell govuk-table__cell--numeric" role="gridcell" style="width:10%">
+      <!-- Applications<br> -->
+      {%if appCount > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+
+      {% if appCount > vacancy.newApplications and vacancy.newApplications > 0 %}{{appCount}} <span class="govuk-!-font-weight-bold">({{vacancy.newApplications}} new )</span>{% else %}{{appCount}} {% endif %}
+      {% elseif vacancy.status != 'Live'%}
+      -
+      {% else %}
+      0
+      {% endif%}
+    <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>{{date}}</td>
+    <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+    <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+      {% if vacancy.status == "Draft"%}
+      <a href="create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+        class="govuk-link">Edit and submit</a>
+      {% elseif vacancy.status == "Rejected"%}
+      <a href="create/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      {% elseif vacancy.status == "Closed"%}
+      <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
+      {% elseif vacancy.status == "Pending review"%}
+      <a href="account/manage-vacancy-no-apprentice" class="govuk-link">Manage</a>
+      {%else%}
+      <a href="account/manage-vacancy" class="govuk-link">Manage</a>
+      {%endif%}
+    </td>
+  </tr>
+  {% set displayCount = (displayCount.push(1),displayCount) %}
+  {%endif%}
+  <!-- This is start -->
+  {% elseif data.filter == "transferred"%}
+  {%if vacancy.transferred %}
+  <tr class="govuk-table__row" role="row">
+    <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+      <span class="table-heading " aria-hidden="true">Vacancy title</span>
+      <span>{{vacancy.title}} Apprentice</span>{%if data.user=='provider'%}<br>{{vacancy.VAC}}{% elseif vacancy.transferred and data.has_transferred %}<br><span class="das-tag das-tag--transferred">Transferred</span>{% endif %}
+    </td>
+    {% if user == 'provider'%}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.employer}}</span></td>
+    {% else %}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.VAC}}</span></td>
+    {% endif%}
+    <td class="govuk-table__cell govuk-table__cell--numeric" role="gridcell" style="width:10%">
+      <!-- Applications<br> -->
+      {%if appCount > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+
+      {% if appCount > vacancy.newApplications and vacancy.newApplications > 0 %}{{appCount}} <span class="govuk-!-font-weight-bold">({{vacancy.newApplications}} new )</span>{% else %}{{appCount}} {% endif %}
+      {% elseif vacancy.status != 'Live'%}
+      -
+      {% else %}
+      0
+      {% endif%}
+    <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>{{date}}</td>
+    <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+    <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+      {% if vacancy.status == "Draft"%}
+      <a href="create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+        class="govuk-link">Edit and submit</a>
+      {% elseif vacancy.status == "Rejected"%}
+      <a href="create/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      {% elseif vacancy.status == "Closed"%}
+      <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
+      {% elseif vacancy.status == "Pending review"%}
+      <a href="account/manage-vacancy-no-apprentice" class="govuk-link">Manage</a>
+      {%else%}
+      <a href="account/manage-vacancy" class="govuk-link">Manage</a>
+      {%endif%}
+    </td>
+  </tr>
+  {% set displayCount = (displayCount.push(1),displayCount) %}
+  {%endif%}
+  <!-- THis is end -->
+  {% else %}
+  {% if vacancy.status|lower == data.filter%}
+  <tr class="govuk-table__row" role="row">
+    <td class="govuk-table__cell das-table-colomn-45" role="gridcell">
+      <span class="table-heading " aria-hidden="true">Vacancy title</span>
+      <span>{{vacancy.title}} Apprentice</span>{%if data.user=='provider'%}<br>{{vacancy.VAC}}{% elseif vacancy.transferred and data.has_transferred %}<br><span class="das-tag das-tag--transferred">Transferred</span>{% endif %}
+    </td>
+
+    {% if user == 'provider'%}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.employer}}</span></td>
+    {% else %}
+    <td class="govuk-table__cell" role="gridcell" style=" width:25%"><span class="data-orgs">{{vacancy.VAC}}</span></td>
+    {% endif%}
+    <td class="govuk-table__cell govuk-table__cell--numeric" role="gridcell" style="width:10%">
+      <!-- Applications<br> -->
+      {%if appCount > 0 and vacancy.status != 'Draft' and vacancy.status != 'Pending review' and vacancy.status != 'Rejected'%}
+
+      {% if appCount > vacancy.newApplications and vacancy.newApplications > 0 %}{{appCount}} <span class="govuk-!-font-weight-bold">({{vacancy.newApplications}} new )</span>{% else %}{{appCount}} {% endif %}
+      {% elseif vacancy.status != 'Live'%}
+      -
+      {% else %}
+      0
+      {% endif%}
+    <td class="govuk-table__cell das-table-colomn-15" role="gridcell"><span class="table-heading" aria-hidden="true">Closing date</span>{{data.dates | random}}</td>
+    <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
+    <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
+      {% if vacancy.status == "Draft"%}
+      <a href="create/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+        class="govuk-link">Edit and submit</a>
+      {% elseif vacancy.status == "Rejected"%}
+      <a href="create/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      {% elseif vacancy.status == "Closed"%}
+      <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
+      {% elseif vacancy.status == "Pending review"%}
+      <a href="account/manage-vacancy-no-apprentice" class="govuk-link">Manage</a>
+      {%else%}
+      <a href="account/manage-vacancy" class="govuk-link">Manage</a>
+      {%endif%}
+    </td>
+  </tr>
+  {% set displayCount = (displayCount.push(1),displayCount) %}
+
+
+  {%endif%}
+  {%endif%}

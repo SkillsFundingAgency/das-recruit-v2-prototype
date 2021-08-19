@@ -1,0 +1,41 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+  <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">RVDB-12 Recruitment Dashboard</h1>
+
+        <!-- Version block start -->
+        <div class="version govuk-!-margin-bottom-8">
+          <!-- <h2 class="govuk-heading-m">Existing provider</h2> -->
+
+
+            <ul class="govuk-list">
+              <li class="govuk-list--item"><a href="./dashboard?user=employer">From home page</a></li>
+              <li><br><h3 class="govuk-heading-m">Dashboards</h3></li>
+              <li class="govuk-list--item"><a class="govuk-link govuk-link-no-visited" href="./dashboard?user=employer">Dashboard - multiple</a></li>
+              <li class="govuk-list--item"><a href="./dashboard-draft?user=employer">Dashboard - only draft </a></li>
+              <li class="govuk-list--item"><a href="./dashboard-pending?user=employer">Dashboard - only pending </a></li>
+              <li class="govuk-list--item"><a href="./dashboard-rejected?user=employer">Dashboard -  only rejected</a></li>
+              <li class="govuk-list--item"><a href="./dashboard-closed?user=employer">Dashboard -  only closed</a></li>
+              <li class="govuk-list--item"><a href="./dashboard-applications-no-new?user=employer">Dashboard -  has applications but no new ones</a></li>
+              <li class="govuk-list--item"><a href="./dashboard-no-js?user=employer">No javascript version</a></li>
+            </ul>
+        </div>
+
+
+      </div>
+  </div>
+
+
+{% endblock %}
