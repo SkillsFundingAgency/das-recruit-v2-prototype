@@ -9,28 +9,33 @@ Manage apprentices
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <a href="javascript:history.back()" class="govuk-back-link">Back</a>
-    <h1 class="govuk-heading-xl">Config session</h1>
+    <h1 class="govuk-heading-xl">RAA v2.1 Prototypes</h1>
 
     <form method="post">
       <div class="govuk-form-group govuk-!-margin-bottom-8">
+        <div class="govuk-form-group govuk-!-margin-bottom-8">
+          <label class="govuk-label govuk-!-font-weight-bold" for="user">
+            Show the journey for
+          </label>
+        </div>
       <div class="govuk-radios">
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="user-provider" name="user" type="radio" value="provider">
           <label class="govuk-label govuk-radios__label" for="user-provider">
-            Provider
+            a Provider
           </label>
         </div>
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="user-employer" name="user" type="radio" value="employer" checked="checked">
           <label class="govuk-label govuk-radios__label" for="user-employer">
-            Employer
+            an Employer
           </label>
         </div>
       </div>
       </div>
         <div class="govuk-form-group govuk-!-margin-bottom-8">
           <label class="govuk-label govuk-!-font-weight-bold" for="userName">
-            Name of users comnpany (provider or employer)
+            Company name to use (provider or employer)
           </label>
           <input class="govuk-input govuk-!-width-three-quarters" id="userName" name="orgName" type="text" value="ABC enterprise">
         </div>
@@ -39,20 +44,20 @@ Manage apprentices
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
      <h1 class="govuk-fieldset__heading">
-       How do you want to start the session?
+       Do you want to start the session as
      </h1>
    </legend>
     <div class="govuk-radios">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="where-do-you-live-1" name="journey" type="radio" value="new">
         <label class="govuk-label govuk-radios__label" for="where-do-you-live-1">
-          As a new user
+          a new user
         </label>
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="where-do-you-live-2" name="journey" type="radio" value="existing" checked>
         <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-          As an exisiting user
+          an exisiting user
         </label>
       </div>
     </div>
