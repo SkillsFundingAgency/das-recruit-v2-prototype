@@ -35,9 +35,7 @@ module.exports = function(router) {
     if (req.session.data.journey == "new") {
       res.redirect(301, '/' + base_url + req.params[0] + '/dashboard-none')
     }
-    if (req.session.data.user == "employer") {
-      res.redirect(301, '/' + base_url + req.params[0] + '/vacancies')
-    } else {
+     else {
       res.redirect(301, '/' + base_url + req.params[0] + '/dashboard')
     }
   })
