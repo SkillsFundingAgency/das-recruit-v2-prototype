@@ -30,7 +30,7 @@ Manage apprentices
     <form method="post">
     <div class="form-group inline">
       <div class="form-group">
-          
+
           {% if data.journey=='new' and data.user=='employer'%}
           <a href="../dashboard-one" class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
           {% elseif data.journey=='new' and data.user=='provider'%}
@@ -38,7 +38,7 @@ Manage apprentices
           {% elseif data.user == 'provider' %}
           <a href="../dashboard " class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
           {% else %}
-          <a href="../vacancies?user=employer" class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
+          <a href="../dashboard?user=employer" class="govuk-button" data-module="govuk-button" type="submit">Return to dashboard</a>
           {% endif %}
             <a class="govuk-body das-button--link" href="../create-vacancy-options/clone-vacancy">Create another vacancy</a>
       </div>
