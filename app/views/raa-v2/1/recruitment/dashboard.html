@@ -23,7 +23,7 @@ Manage apprentices
       </div>
       <div class="govuk-grid-column-one-third" style="text-align: right;">
         {% if data.user=="employer"%}
-        <a href="create/create-vacancy" class="govuk-button" data-module="govuk-button">Create vacancy</a>
+        <a href="create/create-vacancy" class="govuk-button" data-module="govuk-button">Create an advert</a>
         {%else%}
         <a href="create/employers-select" class="govuk-button" data-module="govuk-button">Create vacancy</a>
         {%endif%}
@@ -40,7 +40,7 @@ Manage apprentices
                   <input type="hidden" name="clientsFilter" value="new">
                   <div class="search-input search-input-with-button">
                     <label class="govuk-label " for="search">
-                    Search for vacancy by title {%if data.user== "employer" %}or vacancy ID{%else%}, vacnacy ID or employer name{% endif %}
+                    Search by advert  title {%if data.user== "employer" %}or reference number{%else%}, vacancy ID or employer name{% endif %}
                     </label>
                     <div class="autocomplete__parent_wrapper">
                       <div class="autocomplete__wrapper">
@@ -86,7 +86,7 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">8</span>
               <a class="card-link" href="vacancies?filter=draft">
-                Draft vacancies
+                Draft adverts
               </a>
             </h3>
             <p class="govuk-body das-card--description">Vacancies that need completing and sending for review.</p>
@@ -109,10 +109,32 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">2</span>
               <a class="card-link" href="vacancies?filter=pending review">
+                  Review adverts
+              </a>
+            </h3>
+              <p class="govuk-body das-card--description">Adverts created by training providers that you need to review.</p>
+            <!-- <p class="govuk-body das-card--description"></p> -->
+              <!-- <ul class="das-card--tasks govuk-list">
+                <li>
+                  <a class="ga-track-anchor-click" href="vacancies?status=new" data-ga-event-category="link - click" >6 new applications to look at </a>
+                </li>
+              </ul> -->
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="govuk-grid-column-one-third">
+        <div class="das-card">
+          <div class="das-card--content">
+            <h3 class="govuk-heading-m das-card--heading">
+              <span class="das-card--stat">2</span>
+              <a class="card-link" href="vacancies?filter=pending review">
                   Pending review
               </a>
             </h3>
-              <p class="govuk-body das-card--description">Vacancies that have been sent for review.</p>
+              <p class="govuk-body das-card--description">Adverts that you've sent for review..</p>
             <!-- <p class="govuk-body das-card--description"></p> -->
               <!-- <ul class="das-card--tasks govuk-list">
                 <li>
@@ -130,10 +152,10 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">2</span>
               <a class="card-link" href="vacancies?filter=rejected">
-                  Rejected vacancies
+                  Rejected adverts
               </a>
             </h3>
-              <p class="govuk-body das-card--description">Rejected vacancies will need to be edited and resubmitted.</p>
+              <p class="govuk-body das-card--description">Adverts that you need to edit and resubmit.</p>
           </div>
 
         </div>
@@ -146,18 +168,18 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">11</span>
               <a class="card-link" href="vacancies?filter=live">
-                  Live vacancies
+                  Live adverts
               </a>
             </h3>
-            <p class="govuk-body das-card--description">Vacancies on Find an apprencticeship service.</p>
-              <ul class="das-card--tasks govuk-list">
+            <p class="govuk-body das-card--description">Your adverts on the Find an apprenticeship service.</p>
+            <!--  <ul class="das-card--tasks govuk-list">
                 <li>
                   <a class="govuk-link" href="vacancies?filter=closing">6 live vacancies closing soon</a>
                 </li>
                 <li>
                   <a class="govuk-link" href="vacancies?filter=closing-no-applications">3 live vacancies closing soon with no applications</a>
                 </li>
-              </ul>
+              </ul>-->
           </div>
 
         </div>
@@ -173,11 +195,11 @@ Manage apprentices
 
             </h3>
             <p class="govuk-body das-card--description">Applications from Find an apprenticeship service.</p>
-              <ul class="das-card--tasks govuk-list">
+            <!--  <ul class="das-card--tasks govuk-list">
                 <li>
                   <a class="ga-track-anchor-click" href="vacancies?filter=withApplication" data-ga-event-category="link - click" >View all applications</a>
                 </li>
-              </ul>
+              </ul>-->
           </div>
 
         </div>
@@ -188,10 +210,10 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">11</span>
               <a class="card-link" href="vacancies?filter=any">
-                  Closed vacancies
+                  Closed averts
               </a>
             </h3>
-            <p class="govuk-body das-card--description">Vacancies that have passed the closing date. You can clone these vacancies to republish them.</p>
+            <p class="govuk-body das-card--description">Adverts that have passed the closing date. You can clone these adverts to republish them.</p>
 
           </div>
 
@@ -201,7 +223,7 @@ Manage apprentices
 
 
         <div class="govuk-grid-column-full">
-          <a href="vacancies?filter=any" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state" name="button">View all your vacancies (36)</a>
+          <a href="vacancies?filter=any" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state" name="button">View all your adverts (36)</a>
         </div>
     </div>
 
@@ -214,15 +236,23 @@ Manage apprentices
         <p class="govuk-body">Create a report about applicants or vacancies</p>
       </div>
       {% endif %}
+
+      {% if data.user=="employer"%}
+      <div class="govuk-grid-column-one-third ">
+        <h3 class="govuk-heading-s"><a class="govuk-link  govuk-link--no-visited-state" href="reports/dashboard">Set up permission</a></h3>
+        <p class="govuk-body">Give training providers permission to add apprentice records, recruit apprentices and create job adverts on your behalf.</p>
+      </div>
+      {% endif %}
+
       <div class="govuk-grid-column-one-third ">
         <h3 class="govuk-heading-s">
           {% if data.has_notifications == "yes" %}
-          <a href="notifications/notification-preferences">Manage your recruitment emails</a>
+          <a href="notifications/notification-preferences">Manage your emails</a>
           {% else %}
-          <a href="notifications/notification-preferences-new">Manage your recruitment emails</a>
+          <a href="notifications/notification-preferences-new">Manage your emails</a>
           {% endif%}
         </h3>
-        <p class="govuk-body">Set up and manage the emails you’re sent about your vacancies and applications</p>
+        <p class="govuk-body">Set up and manage the emails you receive about your adverts and applications.</p>
       </div>
     </div>
 
