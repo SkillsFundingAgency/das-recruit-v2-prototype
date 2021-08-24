@@ -19,13 +19,13 @@ Manage apprentices
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
           <h1 class="govuk-fieldset__heading">
-          What do you want to call this vacancy?
+          What do you want to call this advert?
           </h1>
         </legend>
-        <p class="govuk-body">Use a title that relates to the apprenticeship training for this vacancy, this will help it get found in the Find an Apprenticeship search.</p>
+        <p class="govuk-body">To make sure your advert appears in search results, use a title that relates to the apprenticeship training.</p>
       <div class="govuk-character-count" data-module="character-count" data-maxlength="100">
         <div class="govuk-form-group govuk-!-margin-bottom-8">
-          <span class="govuk-hint">Must include the word ‘apprentice’ or ‘apprenticeship’ </span>
+          <span class="govuk-hint">You must include the word ‘apprentice’ or ‘apprenticeship’ </span>
           <input class="govuk-input govuk-!-width-three-quarters js-character-count" id="title" name="title" type="text" value="{% if data.title and data.edit == "yes" %}{{data.title}}{%endif%}">
         </div>
       </div>
@@ -35,7 +35,7 @@ Manage apprentices
         <input type="submit" class="govuk-button" data-module="govuk-button" name="continueButton" value="Save and continue"/>
           <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
         {%else%}
-          <input type="submit" class="govuk-button" data-module="govuk-button" name="previewButton" value="Save and preview"/>
+          <input type="submit" class="govuk-button" data-module="govuk-button" name="previewButton" value="Save and preview"/><br /><br />
           <a href="../vacancy-preview/vacancy-preview" class="govuk-body das-button--link">Cancel</a>
         {%endif%}
       </div>
@@ -43,9 +43,5 @@ Manage apprentices
     </form>
   </div>
 </div>
-{% block help %}
-{% include "includes/service-help.html" %}
-{% endblock %}
-
 
 {% endblock %}
