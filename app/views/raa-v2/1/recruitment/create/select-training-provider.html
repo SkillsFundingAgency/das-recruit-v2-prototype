@@ -50,9 +50,9 @@ Manage apprentices
                   <input type="hidden" name="clientsFilter" value="new">
                   <div class="search-input ">
                     <label class="govuk-label" for="contact-by-email">
-                      Enter the training provider name or reference number (UKPRN).
                       <span class="govuk-hint">
-
+                        Enter the training provider name or reference number (UKPRN).
+                        UKPRN is 8 numbers. For example, 12345678.
                       </span>
                     </label>
                     {% if data.hasError and data.errorType == "provider" %}
@@ -90,8 +90,8 @@ Manage apprentices
                 </label> </div>
               <div class="govuk-radios__conditional {% if data.has_training_provider == " no" and data.edit=="yes" %}govuk-radios__conditional--hidden{%endif%}" id="conditional-not-found">
                 <div class="govuk-form-group">
-                  <p class="govuk-body">You will need to add a training provider before submitting the vacancy. If you need help, you can <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/Apprenticeship/SearchForFrameworkProviders?frameworkId=539-2-14">find a training provider (opens
-                      in new tab)</a> based on the apprenticeship training.</p>
+                  <p class="govuk-body">You will need to add a training provider before submitting the advert. If you need help, you can <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/Apprenticeship/SearchForFrameworkProviders?frameworkId=539-2-14">find a training provider (opens
+                      in new tab or window)</a> based on the apprenticeship training.</p>
                 </div>
 
               </div>
@@ -99,7 +99,7 @@ Manage apprentices
           </div>
       </fieldset>
       <div class="govuk-form-group">
-        <button type="submit" class="govuk-button">Continue</button>
+        <button type="submit" class="govuk-button">Save and continue</button><br /><br />
         <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
       </div>
 
@@ -112,7 +112,7 @@ Manage apprentices
   <span class="data-item">{{provider.ProviderName}} {{provider.Ukprn}}</span>
   {% endfor %}
 </div>
-{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
 {% endblock %}
 
 {% block pageScripts %}
