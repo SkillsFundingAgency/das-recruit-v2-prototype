@@ -232,23 +232,30 @@ Vacancies
         class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all adverts</a>
       {% elseif data.filter == 'new' %}<span class="displayTotal">2</span> adverts <span class="govuk-!-font-weight-bold">with new applications</span> {%if query.search %}with <span class="govuk-!-font-weight-bold">{{query.search}}</span> {%endif%} &nbsp; <a
         href="vacancies?filter=any&page=1" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all adverts</a>
+
       {% elseif data.filter == 'withApplication' %}<span class="displayTotal">2</span> adverts <span class="govuk-!-font-weight-bold">with applications</span> {%if query.search %}with <span class="govuk-!-font-weight-bold">{{query.search}}</span> {%endif%}
       &nbsp; <a href="vacancies?filter=any&page=1" class="govuk-!-font-weight-bold govuk-component__link govuk-!-font-size-19">Show all adverts</a>
+
       {% elseif data.filter == 'rejected' %}<span class="displayTotal">2</span> <span class="govuk-!-font-weight-bold">rejected</span> adverts &nbsp; {%if query.search %}with <span class="govuk-!-font-weight-bold">{{query.search}}</span> {%endif%} <a href="vacancies?filter=any&page=1"
         class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all adverts</a>
       {% elseif data.filter == 'draft' %}<span class="displayTotal">4</span> <span class="govuk-!-font-weight-bold">draft</span> adverts {%if query.search %}with <span class="govuk-!-font-weight-bold">{{query.search}}</span> {%endif%}<a href="vacancies?filter=any&page=1"
         class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all adverts</a>
+
       {% elseif data.filter == 'closed' %}<span class="displayTotal">11</span> <span class="govuk-!-font-weight-bold">closed</span> adverts {%if query.search %}with <span class="govuk-!-font-weight-bold">{{query.search}}</span> {%endif%} &nbsp; <a href="vacancies?filter=any&page=1"
         class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all adverts</a>
       {% elseif data.filter == 'pending review' %}<span class="displayTotal">2</span> <span class="govuk-!-font-weight-bold">adverts pending review</span> {%if query.search %}with <span class="govuk-!-font-weight-bold">{{query.search}}</span> {%endif%}
       &nbsp; <a href="vacancies?filter=any&page=1" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all adverts</a>
+
       {% elseif data.filter == 'closing' %}<span class="displayTotal">3 </span> <span class="govuk-!-font-weight-bold">live</span> adverts <span class="govuk-!-font-weight-bold">closing soon</span><span class="govuk-!-font-weight-bold"> {% if
         search %}with <span class="govuk-!-font-weight-bold">{{query.search}}</span> {%endif%}<a href="vacancies?filter=any&page=1" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all adverts</a>
         {% elseif data.filter == 'closing-no-applications' %}<span class="displayTotal">1</span> <span class="govuk-!-font-weight-bold">live</span> adverts <span class="govuk-!-font-weight-bold">closing soon with no applications</span> {% if
         search %}with <span class="govuk-!-font-weight-bold">{{query.search}}</span>{%endif%}&nbsp; <a href="vacancies?filter=any&page=1" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all adverts</a>
+
         {% elseif data.filter == 'transferred' %}<span class="displayTotal">1</span> adverts <span class="govuk-!-font-weight-bold">transferred from provider</span> {% if
         search %}with <span class="govuk-!-font-weight-bold">{{query.search}}</span>{%endif%}&nbsp; <a href="vacancies?filter=any&page=1" class="govuk-!-font-weight-regular govuk-component__link govuk-!-font-size-19">Show all adverts</a>
+
         {% endif %}
+        
     </p>
     <!-- DATA -->
     <div class="govuk-visually-hidden">
