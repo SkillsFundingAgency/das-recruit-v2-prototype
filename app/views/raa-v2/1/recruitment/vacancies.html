@@ -130,19 +130,13 @@ Vacancies
   <div class="govuk-grid-column-one-third" style="text-align:right;">
     {% if data['user'] == "employer" %}
       {% if data.journey=="new"%}
-      <p class="govuk-body govuk-!-margin-bottom-0"><a href="create/title?returnDashaboard=multiple&user=employer" class="govuk-button govuk-!-margin-bottom-2">Create vacancy</a></p>
+      <p class="govuk-body govuk-!-margin-bottom-0"><a href="create/title?returnDashaboard=multiple&user=employer" class="govuk-button govuk-!-margin-bottom-2">Create an advert</a></p>
       {% else %}
-      <p class="govuk-body govuk-!-margin-bottom-0"><a href="create/create-vacancy?returnDashaboard=multiple&user=employer" class="govuk-button govuk-!-margin-bottom-2">Create vacancy</a></p>
+      <p class="govuk-body govuk-!-margin-bottom-0"><a href="create/create-vacancy?returnDashaboard=multiple&user=employer" class="govuk-button govuk-!-margin-bottom-2">Create an advert</a></p>
       {% endif %}
     {% endif %}
     {% if data['user'] == "provider" %}
     <a href="create/employers-select?returnDashaboard=multiple&user=provider" class="govuk-button ">Create vacancy</a>
-    {% else %}
-      {% if data.has_notifications == "yes" %}
-        <a href="notifications/notification-preferences?user=employer">Manage your recruitment emails</a>
-      {% else %}
-        <a href="notifications/notification-preferences-new?user=employer">Manage your recruitment emails</a>
-      {% endif%}
     {% endif %}
   </div>
 </div>
