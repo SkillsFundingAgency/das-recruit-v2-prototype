@@ -143,7 +143,7 @@ module.exports = function(router) {
   })
   router.post('/' + base_url + '*/create/positions', function(req, res) {
     if (req.session.data.NumberOfEntities > 1) {
-      res.redirect(301, '/' + base_url + req.params[0] + "/create/employer")
+      res.redirect(301, '/' + base_url + req.params[0] + "/create/display-employer")
     }
     res.redirect(301, '/' + base_url + req.params[0] + "/create/display-name")
 
@@ -228,7 +228,8 @@ module.exports = function(router) {
 
     var hasError = false;
     var errorType = "none"
-    var mWage = tools.getMinWage(req.session.data)
+    //var mWage = tools.getMinWage(req.session.data)
+    var mWage = '4000'
 
     if (req.session.data.WageType == "fixedWage") {
       hasError = tools.isUnderMinWage(req.session.data)

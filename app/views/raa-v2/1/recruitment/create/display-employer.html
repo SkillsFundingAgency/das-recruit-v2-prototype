@@ -12,7 +12,7 @@ Manage apprentices
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">What employer name do you want to go on the vacancy?</h1>
+    <h1 class="govuk-heading-xl">Which employer name do you want on your advert?</h1>
     <form method="post">
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
@@ -28,12 +28,13 @@ Manage apprentices
               <input class="govuk-radios__input" id="display_name_trading" name="selected_display_name" type="radio"
                 value="tradingName"  data-aria-controls="trading-name-conditional">
               <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
-                  a trading name
+                  A different trading name
               </label>
             </div>
             <div class="govuk-radios__conditional" id="trading-name-conditional">
               <div class="govuk-form-group">
-                <label class="govuk-label govuk-!-font-weight-bold" for="TradingName">Trading name</label>
+                <label class="govuk-label govuk-!-font-weight-bold" for="TradingName">Add a new trading name</label>
+                <span class="govuk-hint">This will also change the trading name on all your adverts that are in draft or rejected.</span>
                 <input class="govuk-input govuk-input--width-20" id="TradingName" name="TradingName" type="text" >
               </div>
             </div>
@@ -42,8 +43,8 @@ Manage apprentices
               <input class="govuk-radios__input" id="display_name_anonymous" name="selected_display_name" type="radio"
                 value="anonymous" data-aria-controls="anonymous-conditional">
               <label class="govuk-label govuk-radios__label" for="selected-organisation-id">
-                do not display a name (be anonymous)
-                <span class="govuk-hint">This could mean fewer people see your vacancy</span>
+                I do not want an employer name on my advert (be anonymous)
+                <span class="govuk-hint">This could mean fewer people see your advert</span>
               </label>
             </div>
             <div class="govuk-radios__conditional" id="anonymous-conditional">
@@ -51,7 +52,7 @@ Manage apprentices
                 <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
                       <div class="govuk-form-group">
                           <label class="govuk-label" for="description_name">
-                              Brief description of what the employer does
+                              Enter a brief description of what the employer does
                           </label>
                           <span class="govuk-hint">For example, car manufacturer or clothing retailer.</span>
                           <input class="govuk-input govuk-input--width-20" id="description_name" name="description_name" type="text">
@@ -67,9 +68,9 @@ Manage apprentices
                       </div> -->
                       <div class="govuk-form-group">
                           <label class="govuk-label" for="reason">
-                              Reason for being anonymous
+                              Why do you want your advert to be anonymous?
                           </label>
-                          <span class="govuk-hint">This will help our vacancy reviewers validate your request to remain anonymous. This information will not be displayed on the advert.</span>
+                          <span class="govuk-hint">This information will not show on your advert. We'll use it to help us decide whether you can be anonymous.</span>
                           <textarea class="govuk-textarea govuk-!-width-three-quarters js-character-count" data-module="character-count" data-minlength="50" data-maxlength="200" rows="5" id="reason" name="reason" type="text"></textarea>
                           <span style="float:left;">200 characters remaining</span>
                       </div>
@@ -84,7 +85,7 @@ Manage apprentices
         </fieldset>
 
         <div class="govuk-form-group">
-          <button type="submit" class="govuk-button" >Save and continue</button>
+          <button type="submit" class="govuk-button" >Save and continue</button><br /><br />
           <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
         </div>
       </form>
@@ -92,5 +93,4 @@ Manage apprentices
 
   </div>
 </div>
-{% block help %}{% include "includes/service-help.html" %}{% endblock %}
 {% endblock %}

@@ -31,14 +31,12 @@ Manage apprentices
             <button type="submit" class="govuk-button" data-module="govuk-button" name="previewdButton" value="Save and continue">Confirm and continue</button>
             <a href="../dashboard-new" class="govuk-body das-button--link">Cancel</a>
           {%else%}
-            <button type="submit" class="govuk-button" data-module="govuk-button" name="previewdButton" value="Save and continue">Confirm and preview</button>
+            <button type="submit" class="govuk-button" data-module="govuk-button" name="previewdButton" value="Save and continue">Confirm and preview</button><br /><br />
             <a href="vacancy-preview?edit=no" class="govuk-body das-button--link">Cancel</a>
           {%endif%}
         </div>
       </form>
   </div>
 </div>
-{% block help %}
-{% include "includes/service-help.html" %}
-{% endblock %}
+
 {% endblock %}

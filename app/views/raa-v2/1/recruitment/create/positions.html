@@ -25,10 +25,10 @@ Manage apprentices
         </div>
         <div class="govuk-form-group">
           {% if query.edit != "yes"%}
-            <input type="submit" class="govuk-button" data-module="govuk-button" name="continueButton" value="Save and continue"/>
+            <input type="submit" class="govuk-button" data-module="govuk-button" name="continueButton" value="Save and continue"/><br /><br />
             <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
           {%else%}
-          <input type="submit" class="govuk-button" data-module="govuk-button" name="previewdButton" value="Save and continue"/>
+          <input type="submit" class="govuk-button" data-module="govuk-button" name="previewdButton" value="Save and continue"/><br /><br />
           <a href="../vacancy-preview" class="govuk-body das-button--link">Cancel</a>
           {%endif%}
         </div>

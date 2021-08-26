@@ -48,7 +48,7 @@ Manage apprentices
             Application closing date
           </label>
           <span id="closing-hint" class="govuk-hint">
-            For example, 19 01 2019
+            For example, 19 11 2021
           </span>
           <div class="govuk-date-input" id="closing">
             <div class="govuk-date-input__item">
@@ -85,7 +85,8 @@ Manage apprentices
       <div class="govuk-form-group {% if hasError and errorType == "dates" %}govuk-form-group--error{%endif%}">
         <fieldset class="govuk-fieldset" aria-describedby="start-hint" role="group">
           <label class="govuk-label govuk-!-font-weight-bold" for="shortDescription">
-            When is the apprentice expected to start?
+            When do you expect the apprentice to start?
+
           </label>
           {% if hasError and errorType == "dates" %}
           <span id="dates-need-update" class="govuk-error-message">
@@ -98,7 +99,7 @@ Manage apprentices
             {% elseif data.expiryDate and hasError %}
             You may want to <a href="training-select{% if data.edit=="yes" %}?edit=yes"{% else %}?edit=no"{% endif %} class="govuk-link">find different apprenticeship training</a> that doesnt have an ending date.<br><br>
             {% endif %}
-            For example, 02 02 2019
+            For example, 02 12 2021
           </span>
           <div class="govuk-date-input" id="dob">
             <div class="govuk-date-input__item">
@@ -155,16 +156,14 @@ Manage apprentices
         </fieldset>
       </div>
       {% if data.edit != "yes"%}
-        <input type="submit" class="govuk-button" data-module="govuk-button" name="continueButton" value="Save and continue"/>
+        <input type="submit" class="govuk-button" data-module="govuk-button" name="continueButton" value="Save and continue"/><br /><br />
         <a href="../dashboard-new" class="govuk-body das-button--link">Cancel</a>
       {%else%}
       <input type="submit" class="govuk-button" data-module="govuk-button" name="previewdButton" value="Save and preview"/>
       <a href="../vacancy-preview" class="govuk-body das-button--link">Cancel</a>
       {%endif%}
       </form>
-
-
   </div>
 </div>
-{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
 {% endblock %}

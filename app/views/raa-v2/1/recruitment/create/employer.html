@@ -12,7 +12,7 @@ Manage apprentices
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">Which of {%if data.user == "employer"%}your{%else%}{{data.orgName}}'s{%endif%} organisations is the vacancy for?</h1>
+    <h1 class="govuk-heading-xl">Which employer name do you want on your advert?</h1>
     <form method="POST">
         {% if  data.NumberOfEntities > 10 %}
 				<fieldset class="govuk-fieldset">
@@ -129,10 +129,10 @@ Manage apprentices
                 {% endif %}
 
                 {% if query.edit != "yes"%}
-                <a href="display-employer" type="submit" class="govuk-button" data-module="govuk-button" name="continueButton" value="Save and continue">Save and continue</a>
+                <a href="display-employer" type="submit" class="govuk-button" data-module="govuk-button" name="continueButton" value="Save and continue">Save and continue</a><br /><br />
                   <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
                 {%else%}
-                  <input type="submit" class="govuk-button" data-module="govuk-button" name="previewButton" value="Save and continue"/>
+                  <input type="submit" class="govuk-button" data-module="govuk-button" name="previewButton" value="Save and continue"/><br /><br />
                   <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
                 {%endif%}
 
@@ -140,8 +140,7 @@ Manage apprentices
 
   </div>
 </div>
-{% block help %}{% include "includes/service-help.html" %}{% endblock %}
-{% endblock %}
+
 
 {% block pageScripts %}
 {{super()}}
