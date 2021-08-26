@@ -174,7 +174,8 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">11</span>
               <a class="card-link" href="vacancies?filter=live">
-                  Live adverts
+          
+                  {%if data.user== "employer" %}  Live adverts{%else%}Live vacancies{%endif%}
               </a>
             </h3>
             <p class="govuk-body das-card--description">Your {%if data.user== "employer" %}adverts{%else%}vacancies{%endif%} on the Find an apprenticeship service.</p>
@@ -218,7 +219,7 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">11</span>
               <a class="card-link" href="vacancies?filter=any">
-                  Closed averts
+                  {%if data.user== "employer" %}Closed adverts{%else%}Closed vacancies{%endif%}
               </a>
             </h3>
             <p class="govuk-body das-card--description">{%if data.user== "employer" %}Adverts{%else%}Vacancies{%endif%} that have passed the closing date. You can clone these adverts to republish them.</p>
