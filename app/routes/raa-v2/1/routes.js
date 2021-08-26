@@ -251,7 +251,7 @@ module.exports = function(router) {
     })
   })
   router.post('/' + base_url + '*/create/vacancy-preview', function(req, res) {
-    res.redirect(301, '/' + base_url + req.params[0] + '/create/confirmation')
+    res.redirect(301, '/' + base_url + req.params[0] + '/create/delete')
   })
   router.post('/' + base_url + '*/create/long-description', function(req, res) {
     res.redirect(301, '/' + base_url + req.params[0] + "/create/vacancy-preview?edit=no")
