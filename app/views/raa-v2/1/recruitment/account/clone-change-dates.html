@@ -15,10 +15,10 @@ Manage apprentices
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-xl">Clone vacancy VC0000324</span>
-    <h1 class="govuk-heading-xl">Change dates</h1>
+    <span class="govuk-caption-xl">Clone advert VC0000324</span>
+    <h1 class="govuk-heading-xl">Change the closing date or start date</h1>
     {% if query.edit != "yes" %}
-    <div class="govuk-inset-text">You need to add some new dates, the vacancy you are copying has a closing date orstart date that is in the past.</div>
+    <div class="govuk-inset-text">You need to add some new dates, the advert you are copying has a closing date orstart date that is in the past.</div>
     {% endif %}
 
 
@@ -29,7 +29,7 @@ Manage apprentices
             Application closing date
           </label>
           <span id="closing-hint" class="govuk-hint">
-            For example, 19 01 2019
+            For example, 19 11 2021
           </span>
           <div class="govuk-date-input">
                         <div class="govuk-date-input__item">
@@ -41,13 +41,13 @@ Manage apprentices
                         <div class="govuk-date-input__item">
                             <div class="govuk-form-group">
                                 <label class="govuk-label govuk-date-input__label" for="ClosingMonth">Month</label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" type="number" min="1" max="12" id="ClosingMonth" name="ClosingMonth" value="{% if query.edit=="yes" %}10{% endif %}">
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" type="number" min="1" max="12" id="ClosingMonth" name="ClosingMonth" value="{% if query.edit=="yes" %}11{% endif %}">
                             </div>
                         </div>
                         <div class="govuk-date-input__item">
                             <div class="govuk-form-group">
                                 <label class="govuk-label govuk-date-input__label" for="ClosingYear">Year</label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" type="number" min="2019" id="ClosingYear" name="ClosingYear" value="{% if query.edit=="yes" %}2020{% endif %}">
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" type="number" min="2019" id="ClosingYear" name="ClosingYear" value="{% if query.edit=="yes" %}2021{% endif %}">
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@ Manage apprentices
             When is the apprentice expected to start?
           </label>
           <span id="start-hint" class="govuk-hint">
-            For example, 02 02 2019
+            For example, 02 12 2021
           </span>
           <div class="govuk-date-input" id="dob">
             <div class="govuk-date-input__item">
@@ -69,7 +69,7 @@ Manage apprentices
                   Day
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-day" name="start-day"
-                  type="number" pattern="[0-9]*" value="{% if query.edit=="yes" %}12{% endif %}">
+                  type="number" pattern="[0-9]*" value="{% if query.edit=="yes" %}02{% endif %}">
               </div>
             </div>
             <div class="govuk-date-input__item">
@@ -87,7 +87,7 @@ Manage apprentices
                   Year
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-year" name="start-year"
-                  type="number" pattern="[0-9]*" value="{% if query.edit=="yes" %}2020{% endif %}">
+                  type="number" pattern="[0-9]*" value="{% if query.edit=="yes" %}2021{% endif %}">
               </div>
             </div>
           </div>
@@ -97,12 +97,12 @@ Manage apprentices
 
 
 
-      <a href="../create/vacancy-preview-cloned" class="govuk-button" data-module="govuk-button">Continue</a>
+      <a href="../create/vacancy-preview-cloned" class="govuk-button" data-module="govuk-button">Save and continue</a><br /><br />
       <a href="manage-vacancy" class="govuk-body das-button--link">Cancel</a>
 
   </div>
 </div>
-{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
 {% endblock %}
 
 {% block pageScripts %}
