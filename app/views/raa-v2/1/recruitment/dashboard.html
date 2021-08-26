@@ -1,5 +1,7 @@
 href="./vacancies{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
 
+
+
 {% block pageTitle %}
 Manage apprentices
 {% endblock %}
@@ -39,8 +41,8 @@ Manage apprentices
                 <div class="form-group search-field search-field-darker">
                   <input type="hidden" name="clientsFilter" value="new">
                   <div class="search-input search-input-with-button">
-                    <label class="govuk-label " for="search">
-                    Search by advert  title {%if data.user== "employer" %}or reference number{%else%}, vacancy ID or employer name{% endif %}
+                    <label class="govuk-label " for="search">{%if data.user== "employer" %}
+                    Search by advert  title or reference number{%else%}Search vacancies{% endif %}
                     </label>
                     <div class="autocomplete__parent_wrapper">
                       <div class="autocomplete__wrapper">
@@ -86,7 +88,7 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">8</span>
               <a class="card-link" href="vacancies?filter=draft">
-                Draft adverts
+                Draft {%if data.user== "employer" %}adverts{%else%}vacancies{%endif%}
               </a>
             </h3>
             <p class="govuk-body das-card--description">Vacancies that need completing and sending for review.</p>
@@ -112,7 +114,7 @@ Manage apprentices
                   Review adverts
               </a>
             </h3>
-              <p class="govuk-body das-card--description">Adverts created by training providers that you need to review.</p>
+              <p class="govuk-body das-card--description">{%if data.user== "employer" %}Adverts{%else%}Vacancies{%endif%} created by training providers that you need to review.</p>
             <!-- <p class="govuk-body das-card--description"></p> -->
               <!-- <ul class="das-card--tasks govuk-list">
                 <li>
@@ -134,7 +136,7 @@ Manage apprentices
                   Pending review
               </a>
             </h3>
-              <p class="govuk-body das-card--description">Adverts that you've sent for review.</p>
+              <p class="govuk-body das-card--description">{%if data.user== "employer" %}Adverts{%else%}Vacancies{%endif%} that you've sent for review.</p>
             <!-- <p class="govuk-body das-card--description"></p> -->
               <!-- <ul class="das-card--tasks govuk-list">
                 <li>
@@ -156,7 +158,7 @@ Manage apprentices
                   Rejected adverts
               </a>
             </h3>
-              <p class="govuk-body das-card--description">Adverts that you need to edit and resubmit.</p>
+              <p class="govuk-body das-card--description">{%if data.user== "employer" %}Adverts{%else%}Vacancies{%endif%} that you need to edit and resubmit.</p>
           </div>
 
         </div>
@@ -172,7 +174,7 @@ Manage apprentices
                   Live adverts
               </a>
             </h3>
-            <p class="govuk-body das-card--description">Your adverts on the Find an apprenticeship service.</p>
+            <p class="govuk-body das-card--description">Your {%if data.user== "employer" %}adverts{%else%}vacancies{%endif%} on the Find an apprenticeship service.</p>
             <!--  <ul class="das-card--tasks govuk-list">
                 <li>
                   <a class="govuk-link" href="vacancies?filter=closing">6 live vacancies closing soon</a>
@@ -216,14 +218,14 @@ Manage apprentices
                   Closed averts
               </a>
             </h3>
-            <p class="govuk-body das-card--description">Adverts that have passed the closing date. You can clone these adverts to republish them.</p>
+            <p class="govuk-body das-card--description">{%if data.user== "employer" %}Adverts{%else%}Vacancies{%endif%} that have passed the closing date. You can clone these adverts to republish them.</p>
           </div>
         </div>
       </div>
     </div>
 
         <div class="govuk-grid-column-full">
-          <a href="vacancies?filter=any" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state" name="button">View all your adverts (36)</a>
+          <a href="vacancies?filter=any" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state" name="button">View all your {%if data.user== "employer" %}adverts{%else%}vacancies{%endif%} (36)</a>
         </div>
 
    <div class="govuk-grid-column-full">
@@ -234,7 +236,7 @@ Manage apprentices
       {% if data.user=="provider"%}
       <div class="govuk-grid-column-one-third ">
         <h3 class="govuk-heading-s"><a class="govuk-link  govuk-link--no-visited-state" href="reports/dashboard">Reports</a></h3>
-        <p class="govuk-body">Create a report about applicants or vacancies</p>
+        <p class="govuk-body">Create a report about applicants or {%if data.user== "employer" %}adverts{%else%}vacancies{%endif%}</p>
       </div>
       {% endif %}
 
@@ -253,7 +255,7 @@ Manage apprentices
           <a href="notifications/notification-preferences-new">Manage your emails</a>
           {% endif%}
         </h3>
-        <p class="govuk-body">Set up and manage the emails you receive about your adverts and applications.</p>
+        <p class="govuk-body">Set up and manage the emails you receive about your {%if data.user== "employer" %}adverts{%else%}vacancies{%endif%} and applications.</p>
       </div>
     </div>
 
