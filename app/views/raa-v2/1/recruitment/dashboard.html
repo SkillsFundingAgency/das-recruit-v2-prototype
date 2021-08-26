@@ -18,7 +18,11 @@ Manage apprentices
       <div class="govuk-grid-column-two-thirds">
         <!-- Heading -->
         <!-- <span class="govuk-caption-xl">Recuitement</span> -->
-        <h1 class="govuk-heading-xl ">Your apprenticeship adverts</h1>
+        <h1 class="govuk-heading-xl ">{%if data.user== "employer" %}Your apprenticeship adverts{%else%}LRecruitment{%endif%}</h1>
+
+
+
+
         <!-- Core actions -->
         <!-- <a href="./ALL/create/create-vacancy" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold" name="button">Create a new vacancy</a> -->
 
@@ -174,7 +178,7 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">11</span>
               <a class="card-link" href="vacancies?filter=live">
-          
+
                   {%if data.user== "employer" %}  Live adverts{%else%}Live vacancies{%endif%}
               </a>
             </h3>
