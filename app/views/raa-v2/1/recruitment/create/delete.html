@@ -43,14 +43,10 @@ Manage apprentices
    </div>
 </div>
 
-      {% if data.edit != "yes"%}
-      <input type="submit" class="govuk-button" name="continueButton" value="Save and continue" />
-<br /><br />
-      <a href="../dashboard-multiple" class="govuk-body das-button--link">Cancel</a>
-      {%else%}
-      <input type="submit" class="govuk-button" name="previewButton" value="Save and preview" />
-      <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
-      {%endif%}
+
+      <input type="submit" class="govuk-button" name="continueButton" value="continue" href="../vacancies" />
+      <br /><br />
+      <a a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>
     </form>
 
   </div>
