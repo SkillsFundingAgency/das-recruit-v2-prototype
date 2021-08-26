@@ -12,7 +12,7 @@ Manage apprentices
   		<div class="column-two-thirds">
         <!-- <a href="javascript:history.back()" class="govuk-back-link">Back</a> -->
   			<h1 class="govuk-heading-xl small-bottom-margin">
-  			     Manage your recruitment emails
+  			     Manage your emails
   			</h1>
 
   		</div>
@@ -25,36 +25,36 @@ Manage apprentices
         <fieldset class="govuk-fieldset" aria-describedby="when-conditional-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h1 class="govuk-fieldset__heading">
-              When do you want to be sent recruitment emails?
+              hen do you want to receive emails about your adverts and applications?
             </h1>
           </legend>
           <span id="when-conditional-hint" class="govuk-hint">
-            Choose when you’d like emails
+            Select all that apply.
           </span>
           <div class="govuk-checkboxes" data-module="checkboxes">
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input checked" id="notifications-rejected" name="notifications" type="checkbox" value="rejected" {% if "rejected" in data.notifications %}checked="checked"{%endif%}  >
               <label class="govuk-label govuk-checkboxes__label" for="notifications-rejected">
-                <span class="govuk-visually-hidden">Get notifications when </span>Vacancies are rejected after review
+                <span class="govuk-visually-hidden">Get notifications when </span>When an advert is rejected after review
               </label>
             </div>
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input checked" id="notifications-closing" name="notifications" type="checkbox" value="closingSoon" {% if "closingSoon" in data.notifications %}checked="checked"{%endif%} >
               <label class="govuk-label govuk-checkboxes__label" for="notifications-closing">
-                <span class="govuk-visually-hidden">Get notifications when </span>Vacancies are closing soon
+                <span class="govuk-visually-hidden">Get notifications when </span>When a provider sends an advert for review
               </label>
             </div>
             <div class="govuk-checkboxes__item govuk-checkboxes--conditional">
               <input class="govuk-checkboxes__input checked" id="notifications-new" name="notifications" type="checkbox" value="newApplication" data-aria-controls="conditional-when-conditional" {% if "newApplication" in data.notifications %}checked="checked"{%endif%} >
               <label class="govuk-label govuk-checkboxes__label" for="notifications-new">
-                <span class="govuk-visually-hidden">Get notificatios when</span>There are new applications
+                <span class="govuk-visually-hidden">Get notifications when</span>When you have new applications
               </label>
             </div>
             <div class="govuk-checkboxes__conditional {% if not "newApplication" in data.notifications %}govuk-checkboxes__conditional--hidden{% endif %}" id="conditional-when-conditional">
               <fieldset class="govuk-fieldset" aria-describedby="when-conditional-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
                   <h1 class="govuk-fieldset__heading">
-                    How often do you want to be sent new application emails?
+                    How often do you want to receive emails about new applications?
                   </h1>
                 </legend>
                 <div class="govuk-radios" data-module="checkboxes">
@@ -86,20 +86,21 @@ Manage apprentices
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h2 class="govuk-fieldset__heading">
-                What emails would you like to get?
+                Which adverts do you want to receive emails about?
+
               </h2>
             </legend>
             <div class="govuk-radios" data-module="radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="notifications-level-personal" name="notifications_level" type="radio" value="personal"  {% if data.notifications_level == "personal" %}checked="checked"{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="notifications-level-personal">
-                Only emails about vacancies I have submitted
+                Only the adverts you submitted
                 </label>
               </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="notifications-level-group" name="notifications_level" type="radio" value="group" {% if data.notifications_level == "group" %}checked="checked"{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="notifications-level-group">
-                  Emails about all vacancies
+                  All apprenticeship adverts for your organisation
                 </label>
               </div>
             </div>
@@ -127,7 +128,7 @@ Manage apprentices
       </div> -->
       <div class="govuk-form-group">
         <div class="govuk-form-group">
-            <button class="govuk-button submit" type="submit">Save and continue</button><a href="{% if data.user=="provider" %}../dashboard{% else %}../vacancies?filter=all {% endif %}" class="govuk-body das-button--link">Return to dashboard</a>
+            <button class="govuk-button submit" type="submit">Save and continue</button><br /><br /><a href="{% if data.user=="provider" %}../dashboard{% else %}../vacancies?filter=all {% endif %}" class="govuk-body das-button--link">Return to dashboard</a>
         </div>
       </div>
 
@@ -136,7 +137,7 @@ Manage apprentices
 
   </div>
 </div>
-{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+
 {% endblock %}
 {% block pageScripts %}
 {{super()}}
