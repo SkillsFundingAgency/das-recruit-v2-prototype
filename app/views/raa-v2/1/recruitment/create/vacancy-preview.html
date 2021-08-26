@@ -486,13 +486,14 @@ Manage apprentices
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <form method="post">
-      <input type="submit" class="govuk-button" data-module="govuk-button" value="Submit vacancy">
-      <a href="../vacancies" class="govuk-body das-button--link">Return to dashboard</a>
-      <a href="delete" class="govuk-button das-delete-button">Delete</a>
+        <a href="delete" class="govuk-button das-delete-button">Delete</a><br />
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      <input type="submit" class="govuk-button" data-module="govuk-button" value="Submit vacancy"><br />
+      <a href="../vacancies" class="govuk-body das-button--link">Save and return to your adverts</a>
+
     </form>
   </div>
 </div>
-{% block help %}{% include "includes/service-help.html" %}{% endblock %}
 {% endblock %}
 {% block pageScripts %}
 {{super()}}
