@@ -255,7 +255,7 @@ module.exports = function(router) {
     //If press delete show delete screen
     //If submit go to confirmation
     //res.redirect(301, '/' + base_url + req.params[0] + '/create/deleteRICKY')
-    res.redirect(301, '/' + base_url + req.params[0] + '/create/confirm')
+    res.redirect(301, '/' + base_url + req.params[0] + '/create/confirmation')
     //Ricky
   })
   router.post('/' + base_url + '*/create/long-description', function(req, res) {
