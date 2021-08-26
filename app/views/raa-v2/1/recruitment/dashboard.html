@@ -111,7 +111,8 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">2</span>
               <a class="card-link" href="vacancies?filter=pending review">
-                  Review adverts
+
+                  {%if data.user== "employer" %}Review adverts{%else%}Pending employer review{%endif%}
               </a>
             </h3>
               <p class="govuk-body das-card--description">{%if data.user== "employer" %}Adverts{%else%}Vacancies{%endif%} created by training providers that you need to review.</p>
@@ -133,10 +134,12 @@ Manage apprentices
             <h3 class="govuk-heading-m das-card--heading">
               <span class="das-card--stat">2</span>
               <a class="card-link" href="vacancies?filter=pending review">
-                  Pending review
+
+                {%if data.user== "employer" %}Pending review{%else%}Pending ESFA review{%endif%}
+
               </a>
             </h3>
-              <p class="govuk-body das-card--description">{%if data.user== "employer" %}Adverts{%else%}Vacancies{%endif%} that you've sent for review.</p>
+              <p class="govuk-body das-card--description">{%if data.user== "employer" %}Adverts that you've sent for review.{%else%}Vacancies that have been sent for review.{%endif%} </p>
             <!-- <p class="govuk-body das-card--description"></p> -->
               <!-- <ul class="das-card--tasks govuk-list">
                 <li>
