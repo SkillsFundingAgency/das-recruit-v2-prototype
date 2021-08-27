@@ -31,9 +31,9 @@
   {% if appCount > 0 %}account/manage-vacancy{% else %}account/manage-vacancy-no-apprentice{% endif %}
   " style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
   {% if vacancy.status == "Draft"%}
-    <a href="vacancy-preview/vacancy-preview" class="govuk-link">Edit and submit</a>
+    <a href="vacancy-preview" class="govuk-link">Edit and submit</a>
   {% elseif vacancy.status == "Rejected"%}
-    <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Manage</a>
+    <a href="vacancy-preview-referred" class="govuk-link">Manage</a>
   {% elseif vacancy.status == "Closed"%}
       <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
   {% elseif vacancy.status == "Pending review"%}

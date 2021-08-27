@@ -161,11 +161,11 @@
 
                               <li>
                                 {% if data.vac_status == "rejected"%}
-                                <a href="vacancy-preview/vacancy-preview-referred?user=employer&return=home">Edit and re-submit vacancy</a>
+                                <a href="vacancy-preview-referred?user=employer&return=home">Edit and re-submit vacancy</a>
                                   {% elseif data.vac_status == "pending"%}
                                   <a href="account/preview?user=employer&return=home">Preview vacancy</a>
                                   {% elseif data.vac_status == "draft"%}
-                                  <a href="vacancy-preview/vacancy-preview?user=employer&return=home">Edit and submit vacancy</a>
+                                  <a href="vacancy-preview?user=employer&return=home">Edit and submit vacancy</a>
                                   {% elseif data.vac_status == "closed"%}
                                   <a href="account/manage-vacancy-closed?user=employer&return=home">Manage vacancy</a>
                                   {% else %}

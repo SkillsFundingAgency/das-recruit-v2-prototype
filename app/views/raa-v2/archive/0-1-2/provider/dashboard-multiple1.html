@@ -112,9 +112,9 @@ Manage apprentices
             {%if vacancy.status == "Live" %}
             <a href="preview?title={{vacancy.title}}&orgName={{employer}}" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">View</a>
             {%elseif vacancy.status == "Draft"%}
-            <a href="vacancy-preview/vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Edit</a>
+            <a href="vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Edit</a>
             {%elseif vacancy.status == "Rejected"%}
-            <a href="vacancy-preview/vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Edit</a>
+            <a href="vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Edit</a>
             {% else %}
             <a href="preview?title={{vacancy.title}}&orgName={{employer}}" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">View</a>
             {%endif%}

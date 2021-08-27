@@ -27,10 +27,10 @@
   <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'with employer' or vacancy.status == 'with QA' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
   <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
     {% if vacancy.status == "Draft"%}
-    <a href="vacancy-preview/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+    <a href="vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
       class="govuk-link">Edit and submit</a>
     {% elseif vacancy.status == "Rejected"%}
-    <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+    <a href="vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
     {% elseif vacancy.status == "Closed"%}
     <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
     {% elseif vacancy.status == "Pending review"%}
@@ -73,10 +73,10 @@
     <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
     <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
       {% if vacancy.status == "Draft"%}
-      <a href="vacancy-preview/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+      <a href="vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
         class="govuk-link">Edit and submit</a>
       {% elseif vacancy.status == "Rejected"%}
-      <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      <a href="vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
       {% elseif vacancy.status == "Closed"%}
       <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
       {% elseif vacancy.status == "Pending review"%}
@@ -112,10 +112,10 @@
     <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
     <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
       {% if vacancy.status == "Draft"%}
-      <a href="vacancy-preview/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+      <a href="vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
         class="govuk-link">Edit and submit</a>
       {% elseif vacancy.status == "Rejected"%}
-      <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      <a href="vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
       {% elseif vacancy.status == "Closed"%}
       <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
       {% elseif vacancy.status == "Pending review"%}
@@ -155,10 +155,10 @@
     <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
     <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
       {% if vacancy.status == "Draft"%}
-      <a href="vacancy-preview/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+      <a href="vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
         class="govuk-link">Edit and submit</a>
       {% elseif vacancy.status == "Rejected"%}
-      <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      <a href="vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
       {% elseif vacancy.status == "Closed"%}
       <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
       {% elseif vacancy.status == "Pending review"%}
@@ -196,10 +196,10 @@
     <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
     <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
       {% if vacancy.status == "Draft"%}
-      <a href="vacancy-preview/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+      <a href="vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
         class="govuk-link">Edit and submit</a>
       {% elseif vacancy.status == "Rejected"%}
-      <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      <a href="vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
       {% elseif vacancy.status == "Closed"%}
       <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
       {% elseif vacancy.status == "Pending review"%}
@@ -238,10 +238,10 @@
     <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
     <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
       {% if vacancy.status == "Draft"%}
-      <a href="vacancy-preview/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+      <a href="vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
         class="govuk-link">Edit and submit</a>
       {% elseif vacancy.status == "Rejected"%}
-      <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      <a href="vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
       {% elseif vacancy.status == "Closed"%}
       <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
       {% elseif vacancy.status == "Pending review"%}
@@ -281,10 +281,10 @@
     <td class="govuk-table__cell das-table-colomn-10" role="gridcell"><span class="table-heading" aria-hidden="true">Status</span><span class="das-tag das-tag--{% if vacancy.status == 'Pending review' %}submitted {%else%}{{vacancy.status | lower}}{%endif%}">{{vacancy.status}}</span></td>
     <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
       {% if vacancy.status == "Draft"%}
-      <a href="vacancy-preview/vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
+      <a href="vacancy-preview?WageType=fixed&duration=24&start_day=4&closing_day=3&shortDescription=&TrainingDescription=&Skills=&qualifications=&ApplicationMethod=&VacancyDescription=&OutcomeDescription=&ThingsToConsider=&EmployerWebsiteUrl=&EmployerContactName=&disability_confident_level=&disability_confident_signed=&questions="
         class="govuk-link">Edit and submit</a>
       {% elseif vacancy.status == "Rejected"%}
-      <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      <a href="vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
       {% elseif vacancy.status == "Closed"%}
       <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
       {% elseif vacancy.status == "Pending review"%}

@@ -35,9 +35,9 @@
   {% if appCount > 0 %}account/manage-vacancy{% else %}account/manage-vacancy-no-apprentice{% endif %}
   " style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
     {%elseif vacancy.status == "Draft"%}
-    <a href="vacancy-preview/vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+    <a href="vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
     {%elseif vacancy.status == "Rejected"%}
-    <a href="vacancy-preview/vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+    <a href="vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
     {%elseif vacancy.status == 'Pending review'%}
     <a href="account/manage-vacancy-pending?title={{vacancy.title}}&orgName={{employer}}" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
     {% else %}
@@ -81,9 +81,9 @@ Nope
     {% if appCount > 0 %}account/manage-vacancy{% else %}account/manage-vacancy-no-apprentice{% endif %}
     " style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {%elseif vacancy.status == "Draft"%}
-      <a href="vacancy-preview/vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+      <a href="vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {%elseif vacancy.status == "Rejected"%}
-      <a href="vacancy-preview/vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+      <a href="vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {%elseif vacancy.status == 'Pending review'%}
       <a href="account/manage-vacancy-pending?title={{vacancy.title}}&orgName={{employer}}" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {% else %}
@@ -117,9 +117,9 @@ Nope
   {% if appCount > 0 %}account/manage-vacancy{% else %}account/manage-vacancy-no-apprentice{% endif %}
   " style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
     {%elseif vacancy.status == "Draft"%}
-    <a href="vacancy-preview/vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+    <a href="vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
     {%elseif vacancy.status == "Rejected"%}
-    <a href="vacancy-preview/vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+    <a href="vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
     {%elseif vacancy.status == 'Pending review'%}
     <a href="account/manage-vacancy-pending?title={{vacancy.title}}&orgName={{employer}}" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
     {% else %}
@@ -157,9 +157,9 @@ Nope
     {% if appCount > 0 %}account/manage-vacancy{% else %}account/manage-vacancy-no-apprentice{% endif %}
     " style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {%elseif vacancy.status == "Draft"%}
-      <a href="vacancy-preview/vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+      <a href="vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {%elseif vacancy.status == "Rejected"%}
-      <a href="vacancy-preview/vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+      <a href="vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {%elseif vacancy.status == 'Pending review'%}
       <a href="account/manage-vacancy-pending?title={{vacancy.title}}&orgName={{employer.businessName}}" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {% else %}
@@ -195,9 +195,9 @@ Nope
       {% if appCount > 0 %}account/manage-vacancy{% else %}account/manage-vacancy-no-apprentice{% endif %}
       " style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
         {%elseif vacancy.status == "Draft"%}
-        <a href="vacancy-preview/vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+        <a href="vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
         {%elseif vacancy.status == "Rejected"%}
-        <a href="vacancy-preview/vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+        <a href="vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
         {%elseif vacancy.status == 'Pending review'%}
         <a href="account/manage-vacancy-pending?title={{vacancy.title}}&orgName={{employer.businessName}}" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
         {% else %}
@@ -233,9 +233,9 @@ Nope
     {% if appCount > 0 %}account/manage-vacancy{% else %}account/manage-vacancy-no-apprentice{% endif %}
     " style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {%elseif vacancy.status == "Draft"%}
-      <a href="vacancy-preview/vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+      <a href="vacancy-preview" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {%elseif vacancy.status == "Rejected"%}
-      <a href="vacancy-preview/vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
+      <a href="vacancy-preview-referred" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {%elseif vacancy.status == 'Pending review'%}
       <a href="account/manage-vacancy-pending?title={{vacancy.title}}&orgName={{employer.businessName}}" style="display:inline-block;" class="govuk-link govuk-link govuk-link--no-visited-state">Manage</a>
       {% else %}

@@ -53,9 +53,9 @@
   <td class="govuk-table__cell das-table-colomn-5" role="gridcell" style="text-align:right">
 
     {% if data.vac_status == "draft"%}
-      <a href="vacancy-preview/vacancy-preview" class="govuk-link">Edit and submit</a>
+      <a href="vacancy-preview" class="govuk-link">Edit and submit</a>
     {% elseif data.vac_status == "rejected"%}
-      <a href="vacancy-preview/vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
+      <a href="vacancy-preview-referred" class="govuk-link">Edit and resubmit</a>
     {% elseif data.vac_status == "closed"%}
         <a href="account/manage-vacancy-closed?alert=no" class="govuk-link">Manage</a>
     {% elseif data.vac_status == "pending"%}

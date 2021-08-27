@@ -82,7 +82,7 @@ module.exports = function (router) {
   })
   router.post('/' + base_url + '/vacancy-preview/qualifications-list', function (req, res) {
     if(req.body.button == "Preview"){
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no");
+      res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no");
     }else{
       res.redirect(301, '/' + base_url + "/vacancy-preview/qualifications-list");
 

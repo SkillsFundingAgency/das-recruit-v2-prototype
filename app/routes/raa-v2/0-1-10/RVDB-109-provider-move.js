@@ -29,7 +29,7 @@ module.exports = function (router) {
     }
     req.session.data.providerName == req.body.providerName.slice(0,index)
     if(req.query.edit=="yes" && req.body.has_training_provider == "no"){
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no")
+      res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no")
 
     }
     if(req.body.has_training_provider == "yes"){
@@ -44,7 +44,7 @@ module.exports = function (router) {
   router.post('/' + base_url + '/create-vacancy-options/confirm-training-provider', function (req, res) {
     if(req.session.data.edit=="yes"){
 
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview")
+      res.redirect(301, '/' + base_url + "/vacancy-preview")
     }
     res.redirect(301, '/' + base_url + "/create-vacancy-options/positions")
   })
@@ -65,7 +65,7 @@ module.exports = function (router) {
   })
   router.post('/' + base_url + '/vacancy-preview/short-description', function (req, res) {
 
-      res.redirect(301, '/' + base_url + '/vacancy-preview/vacancy-preview?edit=no')
+      res.redirect(301, '/' + base_url + '/vacancy-preview?edit=no')
 
 
   })

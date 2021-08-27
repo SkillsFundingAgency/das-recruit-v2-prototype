@@ -45,13 +45,13 @@ module.exports = function (router) {
 
 
   // EMPLOYER | PREVIEW
-  router.get('/' + employer_base_url + '/employer/vacancy-preview/vacancy-preview', function (req, res) {
-    res.render(employer_base_url + '/employer/vacancy-preview/vacancy-preview', {
+  router.get('/' + employer_base_url + '/employer/vacancy-preview', function (req, res) {
+    res.render(employer_base_url + '/employer/vacancy-preview', {
       "data" : req.session,
       }
     )
   })
-  router.post('/' + employer_base_url + '/vacancy-preview/vacancy-preview', function (req, res) {
+  router.post('/' + employer_base_url + '/vacancy-preview', function (req, res) {
     res.redirect(301, '/' + employer_base_url + '/vacancy-preview/confirmation')
   })
 
@@ -76,7 +76,7 @@ module.exports = function (router) {
     req.session.VacancyDescription = req.body.VacancyDescription
     req.session.TrainingDescription = req.body.TrainingDescription
     req.session.OutcomeDescription = req.body.OutcomeDescription
-    res.redirect(301, '/' + employer_base_url + '/vacancy-preview/vacancy-preview')
+    res.redirect(301, '/' + employer_base_url + '/vacancy-preview')
   })
 
   // *SKILLS*
@@ -88,7 +88,7 @@ module.exports = function (router) {
   })
   router.post('/' + employer_base_url + '/vacancy-preview/skills', function (req, res) {
   req.session.Skills = req.body.Skills
-    res.redirect(301, '/' + employer_base_url + '/vacancy-preview/vacancy-preview')
+    res.redirect(301, '/' + employer_base_url + '/vacancy-preview')
   })
 
   // *QUALIFICATIONS*
@@ -99,29 +99,29 @@ module.exports = function (router) {
     )
   })
   router.post('/' + employer_base_url + '/vacancy-preview/qualifications', function (req, res) {
-    res.redirect(301, '/' + employer_base_url + '/vacancy-preview/vacancy-preview')
+    res.redirect(301, '/' + employer_base_url + '/vacancy-preview')
   })
   router.post('/' + employer_base_url + '/vacancy-preview/disability', function (req, res) {
     console.log("this is working too")
     req.session.disability_confident_level = req.body.disability_confident_level || "level1";
-    res.redirect(301, '/' + employer_base_url + '/vacancy-preview/vacancy-preview');
+    res.redirect(301, '/' + employer_base_url + '/vacancy-preview');
   })
   router.post('/' + employer_base_url + '/vacancy-preview/considerations', function (req, res) {
     req.session.ThingsToConsider = req.body.ThingsToConsider;
-    res.redirect(301, '/' + employer_base_url + '/vacancy-preview/vacancy-preview')
+    res.redirect(301, '/' + employer_base_url + '/vacancy-preview')
   })
   router.post('/' + employer_base_url + '/vacancy-preview/employer-contact-details', function (req, res) {
     req.session.EmployerContactName = req.body.EmployerContactName;
     req.session.EmployerContactEmail = req.body.EmployerContactEmail;
     req.session.EmployerContactPhone = req.body.EmployerContactPhone;
-    res.redirect(301, '/' + employer_base_url + '/vacancy-preview/vacancy-preview')
+    res.redirect(301, '/' + employer_base_url + '/vacancy-preview')
   })
   // delete
   router.post('/' + employer_base_url + '/vacancy-preview/delete', function (req, res) {
     if(req.body.ConfirmDeletion == "yes"){
       res.redirect(301, '/' + employer_base_url + '/dashboard')
     }else{
-      res.redirect(301, '/' + employer_base_url + '/vacancy-preview/vacancy-preview')
+      res.redirect(301, '/' + employer_base_url + '/vacancy-preview')
     }
   })
 

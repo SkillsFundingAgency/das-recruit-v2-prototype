@@ -35,7 +35,7 @@ module.exports = function (router) {
 
 
     if(req.query.edit=="yes" && req.body.has_training_provider == "no"){
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no")
+      res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no")
 
     }
     if(req.body.has_training_provider == "yes"){

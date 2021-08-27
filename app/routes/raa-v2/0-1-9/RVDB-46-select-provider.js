@@ -28,7 +28,7 @@ module.exports = function (router) {
     res.redirect(301, '/' + base_url + req.params[0]+"/confirm-training-provider?providerName="+name+"&UKPRN="+ukprn)
   })
   router.post('/' + base_url + '/vacancy-preview/confirm-training-provider', function (req, res) {
-    res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview")
+    res.redirect(301, '/' + base_url + "/vacancy-preview")
   })
 
 

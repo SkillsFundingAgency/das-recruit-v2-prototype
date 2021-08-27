@@ -36,7 +36,7 @@ module.exports = function (router) {
     req.session.data.edit="no";
     if(req.query.edit=="yes"){
       console.log(req.session.data.is_disability_confident)
-      res.redirect(301, '/' + base_url + 'vacancy-preview/vacancy-preview')
+      res.redirect(301, '/' + base_url + 'vacancy-preview')
     }else{
       res.redirect(301, '/' + base_url + req.params[0] + '/training')
     }

@@ -48,7 +48,7 @@ module.exports = function (router) {
   })
   router.post('/' + base_url + '/create-vacancy-options/training-confirm', function (req, res) {
       if(req.session.data.edit == "yes"){
-          res.redirect(301, '/' + base_url + '/vacancy-preview/vacancy-preview')
+          res.redirect(301, '/' + base_url + '/vacancy-preview')
       }else{
           res.redirect(301, '/' + base_url + '/create-vacancy-options/select-training-provider')
       }
@@ -86,7 +86,7 @@ module.exports = function (router) {
     }
     req.session.data.providerName == req.body.providerName.slice(0,index)
     if(req.query.edit=="yes" && req.body.has_training_provider == "no"){
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no")
+      res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no")
 
     }
     if(req.body.has_training_provider == "yes"){
@@ -101,7 +101,7 @@ module.exports = function (router) {
   router.post('/' + base_url + '/create-vacancy-options/confirm-training-provider', function (req, res) {
     if(req.session.data.edit=="yes"){
 
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview")
+      res.redirect(301, '/' + base_url + "/vacancy-preview")
     }
     res.redirect(301, '/' + base_url + "/create-vacancy-options/positions")
   })
@@ -165,7 +165,7 @@ module.exports = function (router) {
     }
     console.log("changing the minWage = "+req.session.data.nationalMinWage)
     if(req.session.data.edit=="yes"){
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no");
+      res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no");
     }else{
       res.redirect(301, '/' + base_url + "/create-vacancy-options/working_hours");
     }
@@ -186,7 +186,7 @@ module.exports = function (router) {
       }
     }
     if(req.session.data.edit=="yes"){
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no");
+      res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no");
     }else{
       res.redirect(301, '/' + base_url + "/create-vacancy-options/preview-start");
     }
@@ -195,14 +195,14 @@ module.exports = function (router) {
   })
   router.post('/' + base_url + '/create-vacancy-options/working_hours', function (req, res) {
     if(req.session.data.edit=="yes"){
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no");
+      res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no");
     }else{
       res.redirect(301, '/' + base_url + "/create-vacancy-options/wages");
     }
   })
 
   router.post('/' + base_url + '/vacancy-preview/short-description', function (req, res) {
-      res.redirect(301, '/' + base_url + '/vacancy-preview/vacancy-preview?edit=no')
+      res.redirect(301, '/' + base_url + '/vacancy-preview?edit=no')
   })
 
   // router.get('/' + base_url + '/vacancy-preview/question-list', function (req, res) {
@@ -217,7 +217,7 @@ module.exports = function (router) {
   //   res.render(base_url + "/vacancy-preview/question-list")
   // })
 
-  router.get('/' + base_url + '/vacancy-preview/vacancy-preview*', function (req, res) {
+  router.get('/' + base_url + '/vacancy-preview*', function (req, res) {
     // create a new array if no array exists.
     var hasError = false;
     var errorType = "none"
@@ -235,7 +235,7 @@ module.exports = function (router) {
     console.log("inWage="+getMinWage(req.session.data))
     console.log("WageType="+req.session.data.WageType)
     console.log("nat min wage="+req.session.data.nationalMinWage)
-    res.render(base_url + "/vacancy-preview/vacancy-preview"+req.params[0],{
+    res.render(base_url + "/vacancy-preview"+req.params[0],{
       "hasError" : hasError,
       "errorType" : errorType,
       "minWage": makeCurrancyValue(getMinWage(req.session.data))

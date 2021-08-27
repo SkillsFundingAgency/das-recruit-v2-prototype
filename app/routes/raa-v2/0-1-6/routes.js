@@ -242,7 +242,7 @@ require('./RVDB-12-dashboard.js')(router);
       }
 
     }else{
-      res.redirect(301,  '/' + base_url + '/'+ req.params[0] +'vacancy-preview/vacancy-preview')
+      res.redirect(301,  '/' + base_url + '/'+ req.params[0] +'vacancy-preview')
     }
 
   })
@@ -257,13 +257,13 @@ require('./RVDB-12-dashboard.js')(router);
     req.session.VacancyDescription = req.body.VacancyDescription
     req.session.TrainingDescription = req.body.TrainingDescription
     req.session.OutcomeDescription = req.body.OutcomeDescription
-    res.redirect(301, '/' + base_url + '/vacancy-preview/vacancy-preview')
+    res.redirect(301, '/' + base_url + '/vacancy-preview')
   })
   router.post('/' + base_url + '/vacancy-preview/application-process', function (req, res) {
     req.session.ApplicationUrl = req.body.ApplicationUrl
     req.session.ApplicationInstructions = req.body.ApplicationInstructions
     req.session.ApplicationMethod = req.body.ApplicationMethod
-    res.redirect(301, '/' + base_url + '/vacancy-preview/vacancy-preview')
+    res.redirect(301, '/' + base_url + '/vacancy-preview')
   })
 
 

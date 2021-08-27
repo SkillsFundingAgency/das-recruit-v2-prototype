@@ -51,7 +51,7 @@ module.exports = function (router) {
     req.session.data.questions = req.session.data.questions || []
 
     if(req.body.button == "Save and continue"){
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no");
+      res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no");
     }else{
         res.redirect(301, '/' + base_url + "/vacancy-preview/question-add")
     }
@@ -62,9 +62,9 @@ module.exports = function (router) {
     // create new array if none exists
     req.session.data.questions = req.session.data.questions || []
     if(req.session.data.question_simple == "yes"){
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview-simple?edit=no");
+      res.redirect(301, '/' + base_url + "/vacancy-preview-simple?edit=no");
     }else{
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no");
+      res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no");
     }
 
 
@@ -78,7 +78,7 @@ module.exports = function (router) {
     if(req.body.question2){
         req.session.data.questions.push(req.body.question2)
     }
-    res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview-simple?edit=no");
+    res.redirect(301, '/' + base_url + "/vacancy-preview-simple?edit=no");
 
 
   })

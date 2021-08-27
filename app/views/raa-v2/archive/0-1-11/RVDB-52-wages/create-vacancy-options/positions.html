@@ -5,7 +5,7 @@ Manage apprentices
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
-<a href="{%if data.edit != "yes" %}title{%else%}../vacancy-preview/vacancy-preview?edit=no{%endif%}" class="govuk-back-link">Back</a>
+<a href="{%if data.edit != "yes" %}title{%else%}../vacancy-preview?edit=no{%endif%}" class="govuk-back-link">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -29,7 +29,7 @@ Manage apprentices
             <a href="../dashboard" class="govuk-body das-button--link">Cancel</a>
           {%else%}
           <input type="submit" class="govuk-button" name="previewdButton" value="Save and preview"/>
-          <a href="../vacancy-preview/vacancy-preview" class="govuk-body das-button--link">Cancel</a>
+          <a href="../vacancy-preview" class="govuk-body das-button--link">Cancel</a>
           {%endif%}
         </div>
         </fieldset>

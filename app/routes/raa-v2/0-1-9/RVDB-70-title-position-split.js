@@ -9,7 +9,7 @@ module.exports = function (router) {
   router.post('/' + base_url + '/create-vacancy-options/title', function (req, res) {
     //reset the disibility confiendnt setting if createing a new one.
     if(req.query.edit == "yes"){
-      res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no");
+      res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no");
     }else{
       res.redirect(301, '/' + base_url + "/create-vacancy-options/positions");
 
@@ -20,7 +20,7 @@ module.exports = function (router) {
   router.post('/' + base_url + '/create-vacancy-options/positions', function (req, res) {
     req.session.data.numberOfPositions = req.body.numberOfPositions || 1
     if(req.query.edit == "yes"){
-        res.redirect(301, '/' + base_url + "/vacancy-preview/vacancy-preview?edit=no");
+        res.redirect(301, '/' + base_url + "/vacancy-preview?edit=no");
     }else{
         res.redirect(301, '/' + base_url + "/create-vacancy-options/short-description")
 

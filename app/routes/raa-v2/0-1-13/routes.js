@@ -502,7 +502,7 @@ module.exports = function(router) {
   router.post('/' + base_url + '*/account/clone-location', function (req, res) {
     req.session.ApplicationMethod = 'ThroughFindAnApprenticeship'
     if(req.body.change_location == "yes"){
-      res.redirect(301, '/' + base_url + '/vacancy-preview/vacancy-preview-cloned')
+      res.redirect(301, '/' + base_url + '/vacancy-preview-cloned')
     }else{
       res.redirect(301, '/' + base_url + '/account/clone-change-location')
 
