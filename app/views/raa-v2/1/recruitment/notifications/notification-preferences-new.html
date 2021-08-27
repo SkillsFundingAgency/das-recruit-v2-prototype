@@ -152,13 +152,9 @@ Manage apprentices
         </fieldset>
       </div> -->
       <div class="govuk-form-group">
-        	<button class="govuk-button submit" type="submit">Save and continue</button><a href="{% if data.user=="provider" %}../dashboard-mulitple{% else %}../vacancies?filter=all {% endif %}" class="govuk-body das-button--link">Return to dashboard</a>
+        	<button class="govuk-button submit" type="submit">Save and continue</button><a href="../dashboard" class="govuk-body das-button--link">Return to dashboard</a>
       </div>
-
     </form>
-
-
   </div>
 </div>
-{% block help %}{% include "includes/service-help.html" %}{% endblock %}
 {% endblock %}
