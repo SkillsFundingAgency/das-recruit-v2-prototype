@@ -1,0 +1,115 @@
+{% extends "qa-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+
+{{super()}}
+
+<div id="js-breadcrumbs" class="breadcrumbs"><a href="#" class="link-back">Back</a></div>
+{% endblock %}
+
+{% block main %}
+{{super}}
+<style media="screen">
+  .panel-filled {
+    background: #dee0e2;
+}
+.panel {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    border-left-style: solid;
+    border-color: #bfc1c3;
+    padding: .78947em;
+    margin-bottom: .78947em;
+}
+  hr.dashboard-heading-separator {
+    border-bottom: 5px solid #bfc1c3;
+    margin: 10px 0 40px;
+  }
+  .dashboard-heading-company {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
+
+<div class="govuk-width-container">
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Which training provider would you like to remove?</h1>
+        <p class="govuk-body">Removing a training provider will prevent them from using the recruitment service.</p>
+        <form action="provider-confirm" method="post">
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="Ukprn">
+                    Provider UKPRN
+                </label>
+                <span class="govuk-hint">For example, ‘10000812’.</span>
+                <span class="govuk-error-message field-validation-valid" id="error-message-Ukprn" data-valmsg-for="Ukprn" data-valmsg-replace="true"></span>
+                <input type="text" maxlength="8" class="govuk-input govuk-input--width-10" id="Ukprn" name="Ukprn" value="">
+            </div>
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="Postcode">
+                    Provider postcode
+                    <span class="govuk-hint">
+                    For example, ‘PE21 6JF’.
+                    </span>
+                </label>
+                <span class="govuk-error-message field-validation-valid" id="error-message-Postcode" data-valmsg-for="Postcode" data-valmsg-replace="true"></span>
+                <input type="text" maxlength="8" class="govuk-input govuk-input--width-10" id="Postcode" name="Postcode" value="">
+            </div>
+            <div class="govuk-form-group">
+                <button type="submit" class="govuk-button">Find provider</button>
+
+                <a class="govuk-link das-button-link" href="index" style="font-size:120%; margin:10px 0 0 12px; position:absolute;">Cancel</a>
+            </div>
+      </form>
+    </div>
+</div>
+        </main>
+    </div>
+
+<div id="global-app-error" class="app-error hidden"></div>
+<script src="/bundles/sfajs?v=epUSgYeWCRVXQtkrz6ow5Oe4hq4jkScFpxymodtHb7M1"></script>
+
+
+<div style="display: none; visibility: hidden;">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+    jQuery.noConflict();
+    (function(b) {
+      b(function() {
+        b("body").on("click", function(a) {
+          dataLayer.push({
+            "gtm.element": a.target,
+            "gtm.elementClasses": b(a.target).attr("class"),
+            "gtm.elementId": b(a.target).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.target).attr("href"),
+            event: "gtm.click"
+          })
+        });
+        b(document).on("click", "a", function(a) {
+          dataLayer.push({
+            "gtm.element": a.currentTarget,
+            "gtm.elementClasses": b(a.currentTarget).attr("class"),
+            "gtm.elementId": b(a.currentTarget).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.currentTarget).attr("href"),
+            event: "gtm.linkClick"
+          })
+        })
+      })
+    })(jQuery);
+  </script>
+</div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,204 @@
+{% extends "qa-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+{{super()}}
+
+<div id="js-breadcrumbs" class="breadcrumbs"><a href="#" class="link-back">Back</a></div>
+{% endblock %}
+
+{% block main %}
+{{super}}
+<style media="screen">
+  .panel-filled {
+    background: #dee0e2;
+}
+.panel {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    border-left-style: solid;
+    border-color: #bfc1c3;
+    padding: .78947em;
+    margin-bottom: .78947em;
+}
+  hr.dashboard-heading-separator {
+    border-bottom: 5px solid #bfc1c3;
+    margin: 10px 0 40px;
+  }
+  .dashboard-heading-company {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
+<div class="govuk-width-container">
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+            <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-xl">Choose the time period for the report</h1>
+        <form action="reports-create-created" method="post">
+            <h2 class="govuk-heading-s">Select the period</h2>
+            <div class="govuk-form-group">
+                <div class="govuk-form-group">
+                    <span class="govuk-error-message field-validation-valid" id="error-message-DateRange" data-valmsg-for="DateRange" data-valmsg-replace="true"></span>
+                    <fieldset class="govuk-fieldset">
+                        <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                            <div class="govuk-radios__item">
+                                <input value="Last7Days" id="daterange-7" class="govuk-radios__input" type="radio" name="DateRange">
+                                <label for="daterange-7" class="govuk-label govuk-radios__label">
+                                    last 7 days
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input value="Last14Days" id="daterange-14" class="govuk-radios__input" type="radio" name="DateRange">
+                                <label for="daterange-14" class="govuk-label govuk-radios__label">
+                                    last 14 days
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input value="Last30Days" id="daterange-30" class="govuk-radios__input" type="radio" name="DateRange">
+                                <label for="daterange-30" class="govuk-label govuk-radios__label">
+                                    last 30 days
+                                </label>
+                            </div>
+                            <div class="govuk-radios__divider">or</div>
+                            <div class="govuk-radios__item" data-target="custom-range-panel">
+                                <input value="Custom" id="daterange-custom" class="govuk-radios__input" type="radio" data-aria-controls="custom-range-panel" name="DateRange">
+                                <label for="daterange-custom" class="govuk-label govuk-radios__label">
+                                    choose a date range
+                                    <span class="govuk-hint">Maximum of 3 months</span>
+                                </label>
+                            </div>
+                            <div id="custom-range-panel" class="govuk-radios__conditional govuk-radios__conditional--hidden">
+                                <div class="govuk-form-group">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label govuk-!-font-weight-bold">
+                                            Date from
+                                        </label>
+                                        <span class="govuk-hint">
+                                            For example, 12 07 2021
+                                        </span>
+                                        <span class="govuk-error-message field-validation-valid" id="error-message-FromDate" data-valmsg-for="FromDate" data-valmsg-replace="true"></span>
+                                        <div class="govuk-date-input">
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="FromDay">
+                                                        Day
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" type="number" pattern="[0-9]*" id="FromDay" name="FromDay" value="">
+                                                </div>
+                                            </div>
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="FromMonth">
+                                                        Month
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" type="number" pattern="[0-9]*" id="FromMonth" name="FromMonth" value="">
+                                                </div>
+                                            </div>
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="FromYear">
+                                                        Year
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" type="number" pattern="[0-9]*" id="FromYear" name="FromYear" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="govuk-form-group">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label govuk-!-font-weight-bold">
+                                            Date to
+                                        </label>
+                                        <span class="govuk-hint">
+                                            For example, 12 09 2021
+                                        </span>
+                                        <span class="govuk-error-message field-validation-valid" id="error-message-ToDate" data-valmsg-for="ToDate" data-valmsg-replace="true"></span>
+                                        <div class="govuk-date-input">
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="ToDay">
+                                                        Day
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" type="number" pattern="[0-9]*" id="ToDay" name="ToDay" value="">
+                                                </div>
+                                            </div>
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="ToMonth">
+                                                        Month
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" type="number" pattern="[0-9]*" id="ToMonth" name="ToMonth" value="">
+                                                </div>
+                                            </div>
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="ToYear">
+                                                        Year
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" type="number" pattern="[0-9]*" id="ToYear" name="ToYear" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="govuk-form-group">
+                <button type="submit" class="govuk-button">Generate report</button>
+                <a class="govuk-link das-button-link" href="reports-dashboard">Cancel</a>
+            </div>
+        <input name="_csrfToken" type="hidden" value="CfDJ8JAWEZWKl7BLi1nDsw5hWIQrA5XgwOla64FKVTYep4g8lo67Oa78OP5cKtxsQbxPGJlls4XqWb8svKmOoERugi7mH6toQqUUyb4tgE10HW5SfnMLsJ4nFy7NcNMtUgNYGdyn7AapLqQaM2Osyx_wxbc9u1ZVJbTuszKYwCRAtGPuyW5kI9WhPX4QVvhcEUK3iQ" /></form>
+    </div>
+</div>
+
+        </main>
+    </div>
+
+
+<div id="global-app-error" class="app-error hidden"></div>
+<script src="/bundles/sfajs?v=epUSgYeWCRVXQtkrz6ow5Oe4hq4jkScFpxymodtHb7M1"></script>
+<div style="display: none; visibility: hidden;">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+    jQuery.noConflict();
+    (function(b) {
+      b(function() {
+        b("body").on("click", function(a) {
+          dataLayer.push({
+            "gtm.element": a.target,
+            "gtm.elementClasses": b(a.target).attr("class"),
+            "gtm.elementId": b(a.target).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.target).attr("href"),
+            event: "gtm.click"
+          })
+        });
+        b(document).on("click", "a", function(a) {
+          dataLayer.push({
+            "gtm.element": a.currentTarget,
+            "gtm.elementClasses": b(a.currentTarget).attr("class"),
+            "gtm.elementId": b(a.currentTarget).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.currentTarget).attr("href"),
+            event: "gtm.linkClick"
+          })
+        })
+      })
+    })(jQuery);
+  </script>
+</div>
+</body>
+
+{% endblock %}

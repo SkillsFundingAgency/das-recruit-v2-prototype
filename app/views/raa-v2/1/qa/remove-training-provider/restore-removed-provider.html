@@ -1,0 +1,122 @@
+{% extends "qa-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+{{super()}}
+
+<div id="js-breadcrumbs" class="breadcrumbs"><a href="#" class="link-back">Back</a></div>
+{% endblock %}
+
+{% block main %}
+{{super}}
+<style media="screen">
+  .panel-filled {
+    background: #dee0e2;
+}
+.panel {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    border-left-style: solid;
+    border-color: #bfc1c3;
+    padding: .78947em;
+    margin-bottom: .78947em;
+}
+  hr.dashboard-heading-separator {
+    border-bottom: 5px solid #bfc1c3;
+    margin: 10px 0 40px;
+  }
+  .dashboard-heading-company {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
+
+<div class="govuk-width-container">
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+            <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Restore access for BOSTON COLLEGE</h1>
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <p class="govuk-body">
+            Restoring access to the recruitment service will allow the training provider to create or manage vacancies on behalf of employers.
+        </p>
+        <p class="govuk-body">
+            The employer will need to add permissions again.
+        </p>
+        <h2 class="govuk-heading-s">Are you sure you want to restore access for this training provider?</h2>
+        <form action="restore-removed-provider-confirmed" method="post">
+            <input type="hidden" data-val="true" data-val-required="The Ukprn field is required." id="Ukprn" name="Ukprn" value="10000812">
+            <input type="hidden" id="ProviderName" name="ProviderName" value="BOSTON COLLEGE">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <span class="govuk-error-message field-validation-valid" id="error-message-RestoreAccess" data-valmsg-for="RestoreAccess" data-valmsg-replace="true"></span>
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="restore-access-yes" type="radio" value="true" data-val="true" data-val-required="Please select an option to confirm" name="RestoreAccess">
+                            <label for="restore-access-yes" class="govuk-label govuk-radios__label">Yes</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="restore-access-no" type="radio" value="false" name="RestoreAccess">
+                            <label for="restore-access-no" class="govuk-label govuk-radios__label">No</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group">
+                <input type="submit" value="Confirm" class="govuk-button" />
+                <a class="govuk-link das-button-link" style="font-size:120%; margin-left:20px; margin-top:10px; position:absolute;" href="index">Cancel</a>
+            </div>
+        <input name="_csrfToken" type="hidden" value="CfDJ8JAWEZWKl7BLi1nDsw5hWIRt1_1AyxJRJZjQgVpmGEvOHLjuFdIypYnpBmf0xMKEb9TvPGmuj3v3_l8__9r6EEv1O65vFuUzFwzPX_LrSfBkHYw_9EyuOuvyNNujwrSObgo0pWr4jwrgBJr-L4HfA6PhHr-QIo4-ZSyPApeSQA5X58saYsMPWw-ldrYQC_6Oyw" /></form>
+    </div>
+</div>
+
+        </main>
+    </div>
+
+<div id="global-app-error" class="app-error hidden"></div>
+<script src="/bundles/sfajs?v=epUSgYeWCRVXQtkrz6ow5Oe4hq4jkScFpxymodtHb7M1"></script>
+
+
+<div style="display: none; visibility: hidden;">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+    jQuery.noConflict();
+    (function(b) {
+      b(function() {
+        b("body").on("click", function(a) {
+          dataLayer.push({
+            "gtm.element": a.target,
+            "gtm.elementClasses": b(a.target).attr("class"),
+            "gtm.elementId": b(a.target).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.target).attr("href"),
+            event: "gtm.click"
+          })
+        });
+        b(document).on("click", "a", function(a) {
+          dataLayer.push({
+            "gtm.element": a.currentTarget,
+            "gtm.elementClasses": b(a.currentTarget).attr("class"),
+            "gtm.elementId": b(a.currentTarget).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.currentTarget).attr("href"),
+            event: "gtm.linkClick"
+          })
+        })
+      })
+    })(jQuery);
+  </script>
+</div>
+</body>
+
+{% endblock %}
