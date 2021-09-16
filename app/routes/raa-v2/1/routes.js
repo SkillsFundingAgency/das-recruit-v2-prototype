@@ -74,7 +74,7 @@ module.exports = function(router) {
 
   router.post('/' + base_url + '*/create/training-select', function(req, res) {
     if (req.body.training_level == "different") {
-      console.log("workning")
+      console.log("working")
 
       req.body.training_level = req.body.training_level_new
       req.session.data.training_level = req.body.training_level_new
@@ -83,8 +83,13 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + req.params[0] + '/create/training-confirm')
   })
 
+
   router.post('/' + base_url + '*/create/training-confirm', function(req, res) {
+      if (req.session.data.user=="employer"){
     res.redirect(301, '/' + base_url + req.params[0] + '/create/select-training-provider')
+    console.log("emp")}
+else{res.redirect(301, '/' + base_url + req.params[0] + '/create/positions')
+    console.log("prov")}
   })
 
 
