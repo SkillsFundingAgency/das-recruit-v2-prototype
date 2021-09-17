@@ -100,6 +100,7 @@ Manage apprentices
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">
+      <!--this needs - if emplyer hsow this - otherwise if provider, use the one slected in radio buttons-->
       {% if data.title %}{{data.title}}{%else%}Business Apprenticeship{%endif%}
       <span class="govuk-caption-l">{{data.orgName}}</span>
     </h2>
@@ -123,7 +124,7 @@ Manage apprentices
   </div>
   <div class="govuk-grid-column-one-third">
     <h3 class="govuk-heading-s">Closing date</h3>
-    <p class="govuk-body">01 Jan 2019</p>
+    <p class="govuk-body">01 Jan 2022</p>
     <p class="govuk-body"><a href="../create/training?edit=yes" class="govuk-link das-edit-link">Change</a></p>
   </div>
 </div>
@@ -296,8 +297,15 @@ Manage apprentices
       </li>
       <li>
         <h3 class="govuk-heading-s">Employer</h3>
-        <p class="govuk-body">Organisation 1</p>
-        <p><a href="#" class="govuk-link">Change</a></p>
+
+          {% if data.user == 'employer' %}
+        <p class="govuk-body">{{data.orgName}}</p>
+
+      {%else%}
+        <p class="govuk-body">UK Employer Ltd</p>
+
+      {%endif%}
+      <!--  <p><a href="#" class="govuk-link">Change</a></p>-->
       </li>
       <li id="section-disability">
 
@@ -393,17 +401,26 @@ Manage apprentices
     {% if data.has_training_provider == "yes" %}
     <div>
       <h3 class="govuk-heading-s">Training provider</h3>
+
       <p class="govuk-body">{{data.providerName}}</p>
+
+
       <p><a href="../create/select-training-provider?edit=yes" class="govuk-link">Change</a></p>
+
     </div>
 
     {% else %}
-    <div class="das-preview-empty govuk-!-margin-top-0">
-      <h3 class="govuk-heading-s">Training provider</h3>
-      <p class="govuk-body"></p>
-      <a class="das-button-secondary" data-automation="link-to-select-training-provider" href="../create/select-training-provider?edit=yes">Add</a>
+      <div class="das-preview-empty govuk-!-margin-top-0">
+      {% if data.user == 'provider' %}
+            <h3 class="govuk-heading-s">Training provider</h3>
+            <p class="govuk-body">XYZ Training UK</p>
+      {% endif %}
+
+      {% if data.user == 'employer' %}
+          <a class="das-button-secondary" data-automation="link-to-select-training-provider" href="../create/select-training-provider?edit=yes">Add</a>
+      {% endif %}
     </div>
-    <br>
+    <br />
     {% endif %}
     {% if data.user == 'provider' %}
       {% if not data.HasEmployerContactDetails %}

@@ -44,7 +44,7 @@ module.exports = {
   "redirect" :                "dashboard-multiple",
   "orgName" :                 "ABC opticians",
   "providerName":             "PLUMPTON COLLEGE",
-  "training_level":           "Business and Administration, Level: 3",
+  "training_level":           "Business and Administration Level: 3",
   "hasTradingName" :          "no",
   "numberOfPositions":        1,
   "NumberOfEntities" :        5,
