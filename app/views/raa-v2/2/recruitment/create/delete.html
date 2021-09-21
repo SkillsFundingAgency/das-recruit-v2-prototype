@@ -1,0 +1,56 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+
+
+{% block content %}
+
+<form method="post">
+<div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+
+       <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">new job apprentice</h1>
+
+       <h1 class="govuk-heading-l">Are you sure you want to delete this advert?</h1>
+       <p>!! Not working yet</p>
+       <form action="/accounts/KK6WKG/vacancies/7943056c-1de8-4f78-959d-518b8fd59221/delete/" method="post">
+           <div class="govuk-form-group">
+               <fieldset class="govuk-fieldset">
+                   <span class="govuk-error-message field-validation-valid" id="error-message-ConfirmDeletion" data-valmsg-for="ConfirmDeletion" data-valmsg-replace="true"></span>
+                   <div class="govuk-radios">
+                       <div class="govuk-radios__item">
+                           <input type="radio" value="true" class="govuk-radios__input" id="delete-yes" data-val="true" data-val-required="Select yes if you want to delete this advert" name="ConfirmDeletion" />
+                           <label class="govuk-label govuk-radios__label" for="delete-yes">Yes, delete this advert now</label>
+                       </div>
+                       <div class="govuk-radios__item">
+                           <input type="radio" value="false" class="govuk-radios__input" id="delete-no" name="ConfirmDeletion" />
+                           <label class="govuk-label govuk-radios__label" for="delete-no">No, do not delete this advert</label>
+                       </div>
+                   </div>
+               </fieldset>
+           </div>
+           <div class="govuk-form-group">
+               <input type="submit" value="Continue" class="govuk-button" />
+           </div>
+   </div>
+</div>
+
+
+    <a href="vacancy-preview" class="govuk-body das-button--link">  <input type="submit" class="govuk-button" name="continueButton" value="continue1" href="../vacancies" /></a>
+      <br /><br />
+    <!--  <a href="vacancy-preview" class="govuk-body das-button--link">Cancel</a>-->
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

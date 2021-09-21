@@ -32,4 +32,5 @@ router.get('/raa-v2/latest-version/*', function (req, res, next) {
 // New version increment
 //require('./routes/raa-v2/0-2-1/routes.js')(router);
 require('./routes/raa-v2/1/routes.js')(router);
+require('./routes/raa-v2/2/routes.js')(router);
 module.exports = router

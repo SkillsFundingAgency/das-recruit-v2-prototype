@@ -1,0 +1,69 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+{{super()}}
+<a href="#" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Confirm training provider permissions</h1>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-6">
+            METSKILL LIMITED
+            <span class="govuk-caption-m">UKPRN 10004319</span>
+        </h2>
+        <table class="govuk-table govuk-!-font-size-19">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header">Your organisations</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                        SKILL  LTD
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+<form action="/accounts/VN4XKG/providers/150/legalentities/6869/update" method="post"><input name="__RequestVerificationToken" type="hidden" value="e1FrVFPdT3Wt7vMNzziq4NFtTamYhAdFUXWUaqYrBIow-lPqn0PS6s0GlJnu_K8x39gJYCWOCxF7tjWuz4JxUvev4Z2Zjpfv6zvaDNZyQfX2vO27MlVje3xs668JxuSqNQQXf5XMvt-bQxrru59huw2">            <table class="govuk-table govuk-!-font-size-19">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th class="govuk-table__header">Permissions</th>
+                        <th class="govuk-table__header">State</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <input data-val="true" data-val-required="The Value field is required." id="Operations_0__Value" name="Operations[0].Value" type="hidden" value="CreateCohort">
+                                <input data-val="true" data-val-required="The IsEnabled field is required." id="Operations_0__IsEnabled" name="Operations[0].IsEnabled" type="hidden" value="False">
+                                Create cohort
+                            </td>
+                            <td class="govuk-table__cell">
+                                    No
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <input data-val="true" data-val-required="The Value field is required." id="Operations_1__Value" name="Operations[1].Value" type="hidden" value="Recruitment">
+                                <input data-val="true" data-val-required="The IsEnabled field is required." id="Operations_1__IsEnabled" name="Operations[1].IsEnabled" type="hidden" value="True">
+                                Recruitment
+                            </td>r
+                            <td class="govuk-table__cell">
+                                    Yes
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <button class="govuk-button" type="submit">Confirm</button>
+</form>    </div>
+</div>
+
+{% endblock %}

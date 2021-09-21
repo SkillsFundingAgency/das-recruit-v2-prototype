@@ -1,0 +1,65 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          <span class="govuk-caption-l">{% if data.title %}{{data.title}}{% else %}Developer apprenticeship{% endif %}</span>
+            Does the applicant need to already have qualifications to do this apprenticeship?</h1>
+
+        <div class="panel panel-border-wide govuk-!-margin-bottom-6 close-vacancy-info">
+            <p></p>
+        </div>
+        <form  method="post">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Do you want to close this vacancy?</legend> -->
+                    <div class="govuk-radios govuk-radios--inline">
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="yes" class="govuk-radios__input" id="show_qualifications_yes" name="show_qualifications" {% if data.show_qualifications == "yes"%}checked="checked"{% endif %}>
+                          <label class="govuk-label govuk-radios__label" for="close-yes">Yes</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                          <input type="radio" value="no" class="govuk-radios__input" id="show_qualifications_no" name="show_qualifications" {% if data.show_qualifications == "no"%}checked="checked"{% endif %}>
+                          <label class="govuk-label govuk-radios__label" for="close-no">No</label>
+                      </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group">
+                <input type="submit" value="Continue" class="govuk-button" data-module="govuk-button">
+                  <a class="govuk-body das-button--link" href="vacancy-preview?edit=no" data-automation="link-cancel">Cancel</a>
+            </div>
+        <input name="_csrfToken" type="hidden" value="CfDJ8NobtAlAKkhGh3ZpMiyZ2c8c2V7E4YfTsJCYAAjNlktmeIkv-guHF6OkQ3LIMaInRTrmxoCvmJjXHjTLqG68EkZBR9sT7Az6BV2ce9tym8FORRlM9684RgjlTBoxWwc_Pe1JpudSBzJG5ZiJVqEPkfjigs2caC8h9G3qIrire0I9E0cQDLeJG5NZWQ39qZzbaQ"></form>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block footer %}
+{{ govukFooter({
+meta: {
+items: [
+  {
+    href: "#1",
+    text: "Item 1"
+  },
+  {
+    href: "#2",
+    text: "Item 2"
+  },
+  {
+    href: "#3",
+    text: "Item 3"
+  }
+]
+}
+}) }}
+{% endblock %}
