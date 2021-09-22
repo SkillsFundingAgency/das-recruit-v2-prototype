@@ -241,12 +241,12 @@ Manage apprentices
     </div><!-- Other actions  -->
 
     <div class="govuk-grid-row">
-      {% if data.user=="provider"%}
+
       <div class="govuk-grid-column-one-third ">
         <h3 class="govuk-heading-s"><a class="govuk-link  govuk-link--no-visited-state" href="reports/dashboard">Reports</a></h3>
         <p class="govuk-body">Create a report about applicants or {%if data.user== "employer" %}adverts{%else%}vacancies{%endif%}</p>
       </div>
-      {% endif %}
+
 
       {% if data.user=="employer"%}
       <div class="govuk-grid-column-one-third ">

@@ -1,4 +1,4 @@
-{% extends "tp-layout.html" %}
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
 
 {% block pageTitle %}
 Manage apprentices
