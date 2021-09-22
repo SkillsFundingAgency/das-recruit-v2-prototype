@@ -22,7 +22,7 @@ Manage apprentices
       <div class="govuk-error-summary__body">
         <ul class="govuk-list govuk-error-summary__list">
           <li>
-            <a href="#passport-issued-error">The start date must be before 01 08 2019 when the apprenticeship training  closes to new starters.</a>
+            <a href="#passport-issued-error">The start date must be before 01 08 2022 when the apprenticeship training  closes to new starters.</a>
           </li>
         </ul>
       </div>
@@ -90,12 +90,12 @@ Manage apprentices
           </label>
           {% if hasError and errorType == "dates" %}
           <span id="dates-need-update" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> The start date must be before 01 08 2019 when the apprenticeship training closes to new starters.
+              <span class="govuk-visually-hidden">Error:</span> The start date must be before 01 08 2022 when the apprenticeship training closes to new starters.
           </span>
           {% endif %}
           <span id="start-hint" class="govuk-hint">
             {% if data.expiryDate and not hasError %}
-            The start date must be before the {% if data.training_level %} {{data.training_level}} {%else%}Animal Care, Level: 2{%endif%} closes to new starters on 01 08 2019 <br> <br>
+            The start date must be before the {% if data.training_level %} {{data.training_level}} {%else%}Animal Care, Level: 2{%endif%} closes to new starters on 01 08 2022 <br> <br>
             {% elseif data.expiryDate and hasError %}
             You may want to <a href="training-select{% if data.edit=="yes" %}?edit=yes"{% else %}?edit=no"{% endif %} class="govuk-link">find different apprenticeship training</a> that doesnt have an ending date.<br><br>
             {% endif %}
