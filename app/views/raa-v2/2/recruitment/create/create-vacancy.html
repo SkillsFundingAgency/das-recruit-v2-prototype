@@ -41,40 +41,36 @@ Manage apprentices
                             Do you want to create a new advert?
                         </h1>
                     </legend>
-
                     <div class="govuk-radios govuk-radios--conditional" data-module="radios">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="" name="advert-create" type="radio" value="yes" {% if data.VacancyId=="yes" %}checked="checked" {%endif%}data-aria-controls="conditional-how-contacted-conditional-1">
+                            <input class="govuk-radios__input" id="" name="advert-create" type="radio" value="yes" {% if data.VacancyId=="yes" %}checked="checked" {%endif%}data-aria-controls="disability-confident-1">
                             <label class="govuk-label govuk-radios__label" for="create-new">Yes, create new advert</label>
                         </div>
-
-
-                            <div class="govuk-radios__conditional {% if data.VacancyId == "yes" %}govuk-radios__conditional--hidden{% endif %}" id="conditional-how-contacted-conditional-1">
+                            <div class="govuk-radios__conditional {% if data.VacancyId == "yes" %}govuk-radios__conditional--hidden{% endif %}" id="disability-confident-1">
                               <h2>Is the new advert disability confident?</h2>
+                              <div class="govuk-hint">
+                                  <a href="https://louderthanwords.org.uk/the-disability-confident-scheme-explained/?gclid=Cj0KCQjwtMCKBhDAARIsAG-2Eu8wNrELrFPmM1xy5AlcB-4rhnmdim6_fYQfn378tgEe6iIe7tHCWsgaAsDrEALw_wcB" target="_blank"title="Learn more about being Disability Confident">Disability Confident</a> is a government scheme that helps employers attract, recruit and retain disabled staff. 
+                              </div>
                               <div class="govuk-form-group search-field search-field-darker">
                                   <div class="govuk-radios__item">
-                                  <label class="govuk-label govuk-radios__label" for="contact-by-email">
-                                      Yes
+                                    <input class="govuk-radios__input" type="radio" value="yes" id="disability-confident-yes" name="disability-confident">
+                                  <label class="govuk-label govuk-radios__label" for="disability-confident-yes">
+                                      Yes, the new advert is disability confident
                                   </label>
                                 </div>
                           </div>
 
-
                             <div class="govuk-form-group search-field search-field-darker">
                                 <div class="govuk-radios__item">
-                                <label class="govuk-label govuk-radios__label" for="contact-by-email">
-                                  No
+                                        <input class="govuk-radios__input" type="radio" value="no" id="disability-confident-no" name="disability-confident">
+                                <label class="govuk-label govuk-radios__label" for="disability-confident-no">
+                                  No, the new advert is not disability confident
                                 </label>
                               </div>
                         </div>
                       </div>
-
-
-
-
-
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" type="radio" value="e659ea2b-ec12-4d11-ac63-57fb128805b1" id="e659ea2b-ec12-4d11-ac63-57fb128805b1" name="advert-create">
+                                <input class="govuk-radios__input" type="radio" value="" name="advert-create">
                                 <label class="govuk-label govuk-radios__label" for="e659ea2b-ec12-4d11-ac63-57fb128805b1">No, clone 1000003681
                                     <div class="govuk-hint">
                                         Manufacturing Engineering Rail Engineering apprenticeship, closing 01 Nov 2021, status: Pending review, Abattoir Worker, Level: Intermediate (Standard)
