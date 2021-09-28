@@ -45,17 +45,34 @@ Manage apprentices
                 <div class="form-group search-field search-field-darker">
                   <input type="hidden" name="clientsFilter" value="new">
                   <div class="search-input search-input-with-button">
-                    <label class="govuk-label " for="search">{%if data.user== "employer" %}
-                    Search by advert  title or reference number{%else%}Search vacancies{% endif %}
+                    <label class="govuk-label " for="search">
+                    {%if data.user== "employer" %}
+                    Search by advert number, advert title or postcode
+                    {%else%}
+                    Search by vacancy number, vacancy title , Employer name or postcode
+                    {% endif %}
                     </label>
                     <div class="autocomplete__parent_wrapper">
                       <div class="autocomplete__wrapper">
                         <div aria-atomic="true" aria-live="polite" role="status" style="border: 0px; clip: rect(0px 0px 0px 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
                           <span>No search results.</span>
-                          <span>,,</span>
                         </div>
                         <p id="search-default-value" class="hidden">{% if search %}{{search}}{% endif%}</p>
-                        <input aria-owns="searchClients__listbox" autocomplete="off" class="autocomplete__input" id="search" name="search"  role="combobox" type="text" value="{%if search %}{{search}}{%endif%}">
+
+                        <select class="" name="" style="font-size:1em; padding:12px 12px 12px 2px; height:50px;">
+                          {%if data.user== "employer" %}
+                          <option label="Advert number" value="Name"></option>
+                          <option label="Advert title" value="Name"></option>
+                          <option label="Postcode" value="Name"></option>
+                          {%else%}
+                          <option label="Vacancy number" value="Name"></option>
+                          <option label="Vacancy title" value="Name"></option>
+                          <option label="Employer name" value="Name"></option>
+                          <option label="Postcode" value="Name"></option>
+                          {%endif%}
+                        </select>
+                        <input type="text" {%if data.user== "employer" %} style="width:75%; {%else%}style="width:72.7%;{%endif%} display:inline; border-right:1px solid black;">
+
                         <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
                       </div>
                     </div>
@@ -63,7 +80,7 @@ Manage apprentices
                     <input class="form-control form-control-3-4" name="filter" id="filter" type="text" value="any" style="display: none;">
                   </div>
                   <div class="search-submit">
-                    <button class="button" type="submit" id="searchSubmit" name="searchSubmit" value="Search">Search clients</button>
+                    <button class="button" type="submit" id="searchSubmit" name="searchSubmit" value="Search">Search vacancies</button>
                   </div>
                 </div>
               </fieldset>
