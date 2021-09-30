@@ -71,8 +71,11 @@ Manage apprentices
                           <option label="Postcode" value="Name"></option>
                           {%endif%}
                         </select>-->
-                        <input type="text" placeholder="Enter advert">
-
+                        {%if data.user== "employer"%}
+                        <input type="text" placeholder="Enter advert reference, provider or postcode">
+                        {%else%}
+                        <input type="text" placeholder="Enter advert reference, provider, postcode or employer">
+                        {%endif%}
                         <ul class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden" id="searchClients__listbox" role="listbox"></ul>
                       </div>
                     </div>
