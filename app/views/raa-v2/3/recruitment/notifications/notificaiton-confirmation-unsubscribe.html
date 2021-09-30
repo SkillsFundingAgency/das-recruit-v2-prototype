@@ -1,0 +1,28 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        You’ve successfully unsubscribed from recruitment emails
+      </h1>
+    </div>
+    <p class="govuk-body">You’ll no longer get emails when you have updates to your vacancies. You can view updates on your {% if data.user == "employer"%}vacancies{%else%}recruitment{%endif%} dashboard.</p>
+    <form method="post">
+    <div class="form-group inline">
+      <div class="govuk-form-group">
+        	<button class="govuk-button submit" type="submit">Return to dashboard</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+{% block help %}{% include "includes/service-help.html" %}{% endblock %}
+{% endblock %}

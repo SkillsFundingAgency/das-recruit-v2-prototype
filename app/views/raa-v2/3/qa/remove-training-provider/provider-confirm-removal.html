@@ -1,0 +1,125 @@
+{% extends "qa-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+{{super()}}
+
+<div id="js-breadcrumbs" class="breadcrumbs"><a href="#" class="link-back">Back</a></div>
+{% endblock %}
+
+{% block main %}
+{{super}}
+<style media="screen">
+  .panel-filled {
+    background: #dee0e2;
+}
+.panel {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    border-left-style: solid;
+    border-color: #bfc1c3;
+    padding: .78947em;
+    margin-bottom: .78947em;
+}
+  hr.dashboard-heading-separator {
+    border-bottom: 5px solid #bfc1c3;
+    margin: 10px 0 40px;
+  }
+  .dashboard-heading-company {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
+
+<div class="govuk-width-container">
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+            <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Remove BOSTON COLLEGE from the recruitment service</h1>
+        <p class="govuk-body">Removing a training provider will do the following:</p>
+        <ul class="govuk-list govuk-list--bullet">
+
+
+            <li>any vacancies created by BOSTON COLLEGE will be transferred to the employer</li>
+            <li>no longer be able to access the recruitment service. Can still access the rest of the apprenticeship services</li>
+            <li>live vacancies using BOSTON COLLEGE as the training provider will close</li>
+        </ul>
+        <form action="provider-removed" method="post">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-label govuk-!-font-weight-bold"></legend>
+                    <span class="govuk-error-message field-validation-valid" id="error-message-HasConsent" data-valmsg-for="HasConsent" data-valmsg-replace="true"></span>
+                    <div class="govuk-checkboxes" data-module="checkboxes">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" data-aria-controls="consent-conditional" id="consent" type="checkbox" value="true" data-val="true" data-val-required="The HasConsent field is required." name="HasConsent">
+                            <label class="govuk-label govuk-checkboxes__label" for="HasConsent">I understand the above and wish to remove this training provider</label>
+                        </div>
+                        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="consent-conditional">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label" for="Reason">
+                                    Why do you want to remove this training provider?
+                                </label>
+                                <span class="govuk-error-message field-validation-valid" id="error-message-Reason" data-valmsg-for="Reason" data-valmsg-replace="true"></span>
+                                <textarea data-val-length-max="200" class="govuk-textarea govuk-!-width-three-quarters" rows="5" type="text" id="Reason" name="Reason">
+</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group">
+                <button type="submit" class="govuk-button govuk-button--warning">Remove training provider</button>
+                <a class="govuk-link das-button-link" href="index" style="font-size:120%; margin-left:20px; margin-top:10px; position:absolute;">Cancel</a>
+            </div>
+        <input name="_csrfToken" type="hidden" value="CfDJ8JAWEZWKl7BLi1nDsw5hWITU81A2HAm8xp5OoMRT4TIiO6u-D5OH9dUxIV2WKXv3gl5FgxbatabAvFuZWX5uU3t-MDsPDt3dq5SNjP3cZ1qKhWU3-Wp4AZrtDD4S-gKOJHqgQzoQsH83chIpUlUk_AKQ8i--OHi_l_jFVPXGU8KsS9BEkuzwJuai_DanpKmJaA" /><input name="HasConsent" type="hidden" value="false"></form>
+    </div>
+</div>
+        </main>
+    </div>
+
+
+
+
+<div id="global-app-error" class="app-error hidden"></div>
+<script src="/bundles/sfajs?v=epUSgYeWCRVXQtkrz6ow5Oe4hq4jkScFpxymodtHb7M1"></script>
+
+
+<div style="display: none; visibility: hidden;">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+    jQuery.noConflict();
+    (function(b) {
+      b(function() {
+        b("body").on("click", function(a) {
+          dataLayer.push({
+            "gtm.element": a.target,
+            "gtm.elementClasses": b(a.target).attr("class"),
+            "gtm.elementId": b(a.target).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.target).attr("href"),
+            event: "gtm.click"
+          })
+        });
+        b(document).on("click", "a", function(a) {
+          dataLayer.push({
+            "gtm.element": a.currentTarget,
+            "gtm.elementClasses": b(a.currentTarget).attr("class"),
+            "gtm.elementId": b(a.currentTarget).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.currentTarget).attr("href"),
+            event: "gtm.linkClick"
+          })
+        })
+      })
+    })(jQuery);
+  </script>
+</div>
+</body>
+
+{% endblock %}

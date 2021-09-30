@@ -1,0 +1,70 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+{{super()}}
+<a href="#" class="govuk-back-link">Back</a>
+{% endblock%}
+
+{% block content %}
+
+<main class="govuk-main-wrapper " id="main-content" role="main">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          {{data.set_permissions_provider or "METASKILL"}}
+          <span class="govuk-caption-m">UKPRN 10033670</span>
+      </h1>
+
+    </div>
+    <div class="govuk-grid-column-three-quarters">
+        <table class="govuk-table govuk-!-font-size-19">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header">Your organisations</th>
+                    <th class="govuk-table__header">Permissions</th>
+                        <th class="govuk-table__header"></th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell das-table__cell--vertical-align-top das-table-colomn-30">MUSECRAFT  LTD</td>
+                        <td class="govuk-table__cell">
+                                No permissions set
+                        </td>
+
+                            <td class="govuk-table__cell das-table__cell--vertical-align-top">
+                                <a href="set-permissions?set_permission_employer=MUSECRAFT  LTD&&has_recruitment_settings=no&collaboration=no&allow_recruitment=">Change</a>
+                            </td>
+
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell das-table__cell--vertical-align-top das-table-colomn-30">SKILL  LTD</td>
+                        <td class="govuk-table__cell">
+                                No permissions set
+                        </td>
+                            <td class="govuk-table__cell das-table__cell--vertical-align-top">
+                                <a href="set-permissions?set_permission_employer=SKILL  LTD&has_recruitment_settings=no&collaboration=no&allow_recruitment=">Change</a>
+                            </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell das-table__cell--vertical-align-top das-table-colomn-30">Skills Funding Agency</td>
+                        <td class="govuk-table__cell">
+                                <ul class="govuk-list das-list--comma-after govuk-body govuk-!-margin-bottom-0">
+                                        Recruit apprentices (you will approve vacancies)
+                                        and create cohorts
+                                </ul>
+                        </td>
+                            <td class="govuk-table__cell das-table__cell--vertical-align-top">
+                                <a href="set-permissions?set_permission_employer=Skills Funding Agency&&has_recruitment_settings=yes&collaboration=yes&allow_recruitment=">Change</a>
+                            </td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

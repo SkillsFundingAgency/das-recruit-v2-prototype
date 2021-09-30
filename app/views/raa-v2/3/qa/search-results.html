@@ -1,0 +1,202 @@
+{% extends "qa-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+{{super()}}
+
+<div id="js-breadcrumbs" class="breadcrumbs"><a href="#" class="link-back">Back</a></div>
+{% endblock %}
+
+{% block main %}
+{{super}}
+<style media="screen">
+  .panel-filled {
+    background: #dee0e2;
+}
+.panel {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    border-left-style: solid;
+    border-color: #bfc1c3;
+    padding: .78947em;
+    margin-bottom: .78947em;
+}
+  hr.dashboard-heading-separator {
+    border-bottom: 5px solid #bfc1c3;
+    margin: 10px 0 40px;
+  }
+  .dashboard-heading-company {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
+
+<div class="govuk-width-container">
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="reviews" method="post">
+            <button class="govuk-button" type="submit">Review Vacancy</button>
+        <input name="_csrfToken" type="hidden" value="CfDJ8JAWEZWKl7BLi1nDsw5hWITFE64pwkzQYRRXoY-ohE8zR06Y0Yo2gDqMhYi3iz-R1sBmNMGz3XePYTmwnRkk3NtxkkwzhB8nxF-GZJbPz39QJrer62yy9AG87RWTqmhy6mXXz5ZsGlKD7V9x0r42vgKWVdyYa4DWVV0FnVPD79uDmvLuQsxjygntqdGB-Uvxug" /></form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+        <form method="get" action="search-results">
+            <div class="search-field">
+                <div class="search-input">
+                    <input placeholder="Search vacancies" class="govuk-input" maxlength="200" type="text" id="SearchTerm" name="SearchTerm" value="" />
+                </div>
+                <div class="search-submit">
+                    <button class="" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Statistics</h2>
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header">Total vacancies</th>
+                    <th class="govuk-table__header">Submitted +24 hours</th>
+                    <th class="govuk-table__header">Resubmitted vacancies</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">210</td>
+                    <td class="govuk-table__cell">166</td>
+                    <td class="govuk-table__cell">36</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-0">In-progress vacancies</h2>
+
+<span class="govuk-body">There are no vacancy reviews currently in progress</span>
+
+
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-0">Search results for [VAC1000029746]</h2>
+
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header">Employer</th>
+                    <th class="govuk-table__header">Vacancy Title</th>
+                    <th class="govuk-table__header">Reference Number</th>
+                    <th class="govuk-table__header">Submitted Date</th>
+                    <th class="govuk-table__header">Closing Date</th>
+                    <th class="govuk-table__header"></th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">BARBERRY COVENTRY LIMITED</td>
+                    <td class="govuk-table__cell">FKVXuTNSwz_01Sep2021_12360999632 apprenticeship</td>
+                    <td class="govuk-table__cell"><span>VAC</span>1000029746</td>
+                    <td class="govuk-table__cell">01 Sep 2021 1.38pm</td>
+                    <td class="govuk-table__cell">04 Nov 2021</td>
+                    <td class="govuk-table__cell">
+
+
+
+
+                        <a class="govuk-link" href="reviews">Review</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+    <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+            <a class="govuk-link govuk-link--no-visited-state" href="reports-dashboard">Reports</a>
+        </h3>
+        <p class="govuk-body">Create and download reports for your vacancies for any period of time.</p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+            <a class="govuk-link govuk-link--no-visited-state" href="remove-training-provider/index">Remove training provider</a>
+        </h3>
+        <p class="govuk-body">Remove a training provider</p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+            <a class="govuk-link govuk-link--no-visited-state" href="close-vacancy/index">Close a vacancy</a>
+        </h3>
+        <p class="govuk-body">Find and close a live vacancy and prevent it being found on Find an apprenticeship.</p>
+    </div>
+</div>
+
+
+        </main>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="global-app-error" class="app-error hidden"></div>
+<script src="/bundles/sfajs?v=epUSgYeWCRVXQtkrz6ow5Oe4hq4jkScFpxymodtHb7M1"></script>
+
+
+<div style="display: none; visibility: hidden;">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+    jQuery.noConflict();
+    (function(b) {
+      b(function() {
+        b("body").on("click", function(a) {
+          dataLayer.push({
+            "gtm.element": a.target,
+            "gtm.elementClasses": b(a.target).attr("class"),
+            "gtm.elementId": b(a.target).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.target).attr("href"),
+            event: "gtm.click"
+          })
+        });
+        b(document).on("click", "a", function(a) {
+          dataLayer.push({
+            "gtm.element": a.currentTarget,
+            "gtm.elementClasses": b(a.currentTarget).attr("class"),
+            "gtm.elementId": b(a.currentTarget).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.currentTarget).attr("href"),
+            event: "gtm.linkClick"
+          })
+        })
+      })
+    })(jQuery);
+  </script>
+</div>
+</body>
+
+{% endblock %}

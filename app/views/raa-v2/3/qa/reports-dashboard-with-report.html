@@ -1,0 +1,127 @@
+{% extends "qa-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+{{super()}}
+
+<div id="js-breadcrumbs" class="breadcrumbs"><a href="#" class="link-back">Back</a></div>
+{% endblock %}
+
+{% block main %}
+{{super}}
+<style media="screen">
+  .panel-filled {
+    background: #dee0e2;
+}
+.panel {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    border-left-style: solid;
+    border-color: #bfc1c3;
+    padding: .78947em;
+    margin-bottom: .78947em;
+}
+  hr.dashboard-heading-separator {
+    border-bottom: 5px solid #bfc1c3;
+    margin: 10px 0 40px;
+  }
+  .dashboard-heading-company {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+    <a class="govuk-back-link govuk-!-margin-bottom-6" href="../index">Return to dashboard</a>
+
+    <h1 class="govuk-heading-xl">Reports</h1>
+</div>
+
+<div class="govuk-grid-column-full">
+    <a class="govuk-button" href="reports-create">Create new report</a>
+    <p class="govuk-body">
+        You have 0 reports being processed.
+
+    </p>
+</div>
+</div>
+<div>
+<table class="govuk-table responsive">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Report period</th>
+            <th class="govuk-table__header" scope="col">Created</th>
+            <th class="govuk-table__header" scope="col">Created by</th>
+            <th class="govuk-table__header" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell" data-label="Report period">
+                    13 Aug 2021 to 12 Sep 2021
+                    <div>
+                        <span class="das-tag das-tag--new">new</span>
+                    </div>
+                </td>
+                <td class="govuk-table__cell" data-label="Created">
+                    12 Sep 2021 10.47am
+                </td>
+                <td class="govuk-table__cell" data-label="Created by">
+                    3 DASTest
+                </td>
+                <td class="govuk-table__cell">
+
+
+                    <a href="13-Aug-2021-to-12-Sep-2021.csv">Download CSV</a>
+                </td>
+            </tr>
+    </tbody>
+</table>
+<p class="govuk-body">The files will be kept for 7 days from the date created</p>
+</div>
+    </main>
+</div>
+
+<div id="global-app-error" class="app-error hidden"></div>
+<script src="/bundles/sfajs?v=epUSgYeWCRVXQtkrz6ow5Oe4hq4jkScFpxymodtHb7M1"></script>
+<div style="display: none; visibility: hidden;">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+    jQuery.noConflict();
+    (function(b) {
+      b(function() {
+        b("body").on("click", function(a) {
+          dataLayer.push({
+            "gtm.element": a.target,
+            "gtm.elementClasses": b(a.target).attr("class"),
+            "gtm.elementId": b(a.target).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.target).attr("href"),
+            event: "gtm.click"
+          })
+        });
+        b(document).on("click", "a", function(a) {
+          dataLayer.push({
+            "gtm.element": a.currentTarget,
+            "gtm.elementClasses": b(a.currentTarget).attr("class"),
+            "gtm.elementId": b(a.currentTarget).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.currentTarget).attr("href"),
+            event: "gtm.linkClick"
+          })
+        })
+      })
+    })(jQuery);
+  </script>
+</div>
+</body>
+
+{% endblock %}

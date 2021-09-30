@@ -1,0 +1,495 @@
+{% extends "qa-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+{{super()}}
+
+<div id="js-breadcrumbs" class="breadcrumbs"><a href="#" class="link-back">Back</a></div>
+{% endblock %}
+
+{% block main %}
+{{super}}
+<style media="screen">
+  .panel-filled {
+    background: #dee0e2;
+}
+.panel {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    border-left-style: solid;
+    border-color: #bfc1c3;
+    padding: .78947em;
+    margin-bottom: .78947em;
+}
+  hr.dashboard-heading-separator {
+    border-bottom: 5px solid #bfc1c3;
+    margin: 10px 0 40px;
+  }
+  .dashboard-heading-company {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .review-container .govuk-checkboxes__input+.govuk-checkboxes__label::after {
+      content: " X ";
+      font-weight: bold;
+      border: none;
+      width: 25px;
+      height: 19 px;
+      top: 5px;
+      left: 12px;
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      -webkit-transform: rotate(
+  0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(
+  0deg);
+      font-size: x-large;
+  }
+
+</style>
+<div class="govuk-width-container">
+       <main class="govuk-main-wrapper" id="main-content" role="main">
+           <div class="review-container">
+   <form action="reviews" method="post">
+
+<div class="govuk-grid-row review-header-table">
+   <div class="govuk-grid-column-one-quarter review-header-table-cell" >
+
+       <h2 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-1">Submitted date</h2>
+       <p class="govuk-body">12 Sep 2021 9.32pm</p>
+   </div>
+   <div class="govuk-grid-column-one-half review-header-table-cell review-header-table-cell__border-left">
+       <h2 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-1">Submitted by</h2>
+
+       <p class="govuk-body govuk-!-margin-bottom-0">
+           Boop 10005310 of Training INC LIMITED (provider) for Smiths Butchers (employer)
+       </p>
+       <p class="break-word govuk-body">
+           <a href="nagothumm@gmail.com" class="govuk-link">john@butchers.com</a>
+       </p>
+   </div>
+   <div class="govuk-grid-column-one-quarter review-header-table-cell review-header-table-cell__border-left">
+       <h2 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-1">User history</h2>
+       <p class="govuk-body govuk-!-margin-bottom-0"><span class="govuk-!-font-weight-bold das-user-history-count">63</span> Reviewed vacancies</p>
+       <p class="govuk-body"><span class="govuk-!-font-weight-bold das-user-history-count">6</span> Passed QA first time</p>
+   </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-6">
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+               <div class="govuk-error-summary review-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+                   <h2 class="govuk-error-summary__title" id="error-summary-title">
+                       Automated QA Results
+                   </h2>
+                   <div class="govuk-error-summary__body">
+                       <p class="govuk-body">Uncheck the box if you don't want this feedback to be sent to the provider.</p>
+                           <div class="govuk-form-group">
+                               <div class="govuk-checkboxes">
+                                   <div class="govuk-checkboxes__item">
+                                       <input name="SelectedAutomatedQaResults"
+                                           id="automatedqaresults-4ce2a231-d5eb-42ce-a3fb-22c47f589608"
+                                           type="checkbox"
+                                           checked="checked"
+                                           value="4ce2a231-d5eb-42ce-a3fb-22c47f589608"
+                                           class="govuk-checkboxes__input automatedqaresults-checkbox"
+                                           data-text="The title is not common for apprenticeships with the training standard 274 - Abattoir worker.">
+                                       <label class="govuk-label govuk-checkboxes__label" for="automatedqaresults-4ce2a231-d5eb-42ce-a3fb-22c47f589608">The title is not common for apprenticeships with the training standard 274 - Abattoir worker.</label>
+                                   </div>
+                               </div>
+                           </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-two-thirds">
+               <div class="" id="Title">
+                   <h1 class="govuk-heading-xl no-bottom-margin">
+                       Car Mechanic apprenticeship
+                   </h1>
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-Title" name="SelectedFieldIdentifiers" type="checkbox" value="Title"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-Title"></label></div></div></div>
+               </div>
+               <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">
+                   <span class="govuk-caption-xl">Dave's garage LTD</span>
+               </h2>
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-two-thirds">
+               <div id="ShortDescription">
+                   <h3 class="govuk-heading-s govuk-!-margin-top-0">Brief overview</h3>
+                   <p class="govuk-body">yuGJOalQRJHRTwzIvjPUhxCAWYkubIYUlNdgkAeaNoCHCKDOej</p>
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-ShortDescription" name="SelectedFieldIdentifiers" type="checkbox" value="ShortDescription"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-ShortDescription"></label></div></div></div>
+               </div>
+           </div>
+           <div class="govuk-grid-column-one-third">
+               <div id="ClosingDate">
+                   <h3 class="govuk-heading-s govuk-!-margin-top-0">Closing Date</h3>
+                   <p class="govuk-body">04 Nov 2021</p>
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-ClosingDate" name="SelectedFieldIdentifiers" type="checkbox" value="ClosingDate"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-ClosingDate"></label></div></div></div>
+               </div>
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+               <h2 class="govuk-heading-l">Apprenticeship summary</h2>
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-one-third">
+               <ul class="govuk-list">
+                   <li>
+                       <div id="Wage">
+                           <h3 class="govuk-heading-s">Annual wage</h3>
+                           <p class="govuk-body">&#xA3;10,000</p>
+                           <p class="govuk-body">nJHOzRxrkLSvkRVaYcIKrXtEjpiOZm</p>
+                           <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-Wage" name="SelectedFieldIdentifiers" type="checkbox" value="Wage"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-Wage"></label></div></div></div>
+                       </div>
+                   </li>
+                   <li>
+                       <div id="WorkingWeek">
+                           <h3 class="govuk-heading-s">Working week</h3>
+                           <p class="govuk-body">yUiAqodSwXrXVUQ</p>
+                           <p class="govuk-body">Total hours per week: 40</p>
+                           <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-WorkingWeek" name="SelectedFieldIdentifiers" type="checkbox" value="WorkingWeek"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-WorkingWeek"></label></div></div></div>
+                       </div>
+                   </li>
+                   <li>
+                       <div id="ExpectedDuration">
+                           <h3 class="govuk-heading-s">Expected duration</h3>
+                           <p class="govuk-body">52 Months</p>
+                           <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-ExpectedDuration" name="SelectedFieldIdentifiers" type="checkbox" value="ExpectedDuration"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-ExpectedDuration"></label></div></div></div>
+                       </div>
+                   </li>
+                   <li>
+                       <div id="PossibleStartDate">
+                           <h3 class="govuk-heading-s">Possible start date</h3>
+                           <p class="govuk-body">05 Dec 2021</p>
+                           <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-PossibleStartDate" name="SelectedFieldIdentifiers" type="checkbox" value="PossibleStartDate"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-PossibleStartDate"></label></div></div></div>
+                       </div>
+                   </li>
+                   <li>
+                       <div id="TrainingLevel">
+                           <h3 class="govuk-heading-s">Apprenticeship level</h3>
+                           <p class="govuk-body">
+                               Intermediate <br />
+                               Level 2 (GCSE)
+                           </p>
+                       <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-TrainingLevel" name="SelectedFieldIdentifiers" type="checkbox" value="TrainingLevel"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-TrainingLevel"></label></div></div></div>
+                   </div>
+               </li>
+               <li>
+                   <h3 class="govuk-heading-s">Reference number</h3>
+                   <p class="govuk-body">VAC1000029751</p>
+               </li>
+               <li>
+                   <div id="NumberOfPositions">
+                       <h3 class="govuk-heading-s">Positions</h3>
+                       <p class="govuk-body">2 positions available</p>
+                       <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-NumberOfPositions" name="SelectedFieldIdentifiers" type="checkbox" value="NumberOfPositions"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-NumberOfPositions"></label></div></div></div>
+                   </div>
+               </li>
+               </ul>
+           </div>
+           <div class="govuk-grid-column-two-thirds vacancy-descriptions">
+               <div id="VacancyDescription">
+
+                   <h3 class="govuk-heading-s">What will the apprentice be doing?</h3>
+                   <div class="govuk-body"><p>YZhIiiPMGLIkfgJ</p></div>
+
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-VacancyDescription" name="SelectedFieldIdentifiers" type="checkbox" value="VacancyDescription"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-VacancyDescription"></label></div></div></div>
+               </div>
+               <div id="TrainingDescription">
+
+                   <h3 class="govuk-heading-s">What training will the apprentice take and what qualification will the apprentice get at the end?</h3>
+                   <div class="govuk-body"><p>RJXKpzMHjteyrJFibVTYyEbojgxt</p></div>
+
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-TrainingDescription" name="SelectedFieldIdentifiers" type="checkbox" value="TrainingDescription"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-TrainingDescription"></label></div></div></div>
+               </div>
+               <div id="OutcomeDescription">
+
+                   <h3 class="govuk-heading-s">What is the expected career progression after this apprenticeship?</h3>
+                   <div class="govuk-body"><p>ucjiDdDjtVqbjtrqfDzIXF</p></div>
+
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-OutcomeDescription" name="SelectedFieldIdentifiers" type="checkbox" value="OutcomeDescription"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-OutcomeDescription"></label></div></div></div>
+               </div>
+           </div>
+       </div>
+       <div class="govuk-grid-row" id="reqAndProspects">
+           <div class="govuk-grid-column-full">
+               <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+               <h2 class="govuk-heading-l">Requirements and prospects</h2>
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-one-half">
+               <div id="Skills">
+                   <h3 class="govuk-heading-s">Desired skills and personal qualities</h3>
+                   <p class="govuk-body">Attention to detail</p>
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-Skills" name="SelectedFieldIdentifiers" type="checkbox" value="Skills"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-Skills"></label></div></div></div>
+               </div>
+           </div>
+           <div class="govuk-grid-column-one-half">
+               <div id="ThingsToConsider">
+                   <h3 class="govuk-heading-s">Things to consider (optional)</h3>
+
+                   <p class="govuk-body"></p>
+
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-ThingsToConsider" name="SelectedFieldIdentifiers" type="checkbox" value="ThingsToConsider"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-ThingsToConsider"></label></div></div></div>
+               </div>
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+               <div id="Qualifications">
+                   <h3 class="govuk-heading-s">Qualifications</h3>
+                   <p class="govuk-body">
+A Level or equivalent NXUmHcmr (Grade A Level) essential<br />
+                   </p>
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-Qualifications" name="SelectedFieldIdentifiers" type="checkbox" value="Qualifications"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-Qualifications"></label></div></div></div>
+               </div>
+           </div>
+       </div>
+       <div class="govuk-grid-row" id="reqAndProspects">
+           <div class="govuk-grid-column-full">
+               <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+               <h2 class="govuk-heading-l">About the employer</h2>
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-two-thirds">
+               <div id="EmployerDescription">
+                   <h3 class="govuk-heading-s">Description</h3>
+
+                   <p class="govuk-body">KGiaypDHFm_EmployerDescription</p>
+
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-EmployerDescription" name="SelectedFieldIdentifiers" type="checkbox" value="EmployerDescription"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-EmployerDescription"></label></div></div></div>
+               </div>
+               <div id="EmployerName">
+                   <h3 class="govuk-heading-s">Employer</h3>
+                   <p class="govuk-body">BOSE ACCOUNTANCY  LTD</p>
+
+
+
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-EmployerName" name="SelectedFieldIdentifiers" type="checkbox" value="EmployerName"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-EmployerName"></label></div></div></div>
+               </div>
+               <div id="DisabilityConfident">
+                   <h3 class="govuk-heading-s">Disability Confident (optional)</h3>
+
+                   <p class="govuk-body">This vacancy is not Disability Confident</p>
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-DisabilityConfident" name="SelectedFieldIdentifiers" type="checkbox" value="DisabilityConfident"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-DisabilityConfident"></label></div></div></div>
+               </div>
+               <div id="EmployerWebsiteUrl">
+                   <h3 class="govuk-heading-s">Website (optional)</h3>
+
+                   <p class="govuk-body">www.oWdRvdUkGc_EmployerName.com</p>
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-EmployerWebsiteUrl" name="SelectedFieldIdentifiers" type="checkbox" value="EmployerWebsiteUrl"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-EmployerWebsiteUrl"></label></div></div></div>
+               </div>
+           </div>
+
+           <div class="govuk-grid-column-one-third">
+
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-one-half">
+               <div id="EmployerAddress">
+                   <h3 class="govuk-heading-s">Location</h3>
+                   <ul class="govuk-list">
+                           <li>49  Cambridge Crescent</li>
+                           <li>High Wycombe</li>
+                           <li>Buckinghamshire</li>
+                           <li>HP13 7NE</li>
+                   </ul>
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-EmployerAddress" name="SelectedFieldIdentifiers" type="checkbox" value="EmployerAddress"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-EmployerAddress"></label></div></div></div>
+               </div>
+           </div>
+           <div class="govuk-grid-column-one-half">
+               <img id="static-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=51.6326,-0.7268&amp;size=465x256&amp;zoom=12&amp;client=gme-skillsfundingagency&amp;signature=yamGNHpFo_exqWmRj3M1OY0kg0E=" alt="Location map" />
+           </div>
+       </div>
+       <div class="govuk-grid-row" id="reqAndProspects">
+           <div class="govuk-grid-column-full">
+               <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+               <h2 class="govuk-heading-l">Training</h2>
+           </div>
+       </div>
+
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-two-thirds">
+               <div id="Provider">
+                   <h3 class="govuk-heading-s">Training provider</h3>
+                   <p class="govuk-body">EDUC8 TRAINING (ENGLAND) LIMITED</p>
+
+               </div>
+               <div id="ProviderContact">
+                   <h3 class="govuk-heading-s">Contact details (optional)</h3>
+                   <p class="govuk-body"></p>
+                   <p class="govuk-body"></p>
+                   <p class="govuk-body"></p>
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-ProviderContact" name="SelectedFieldIdentifiers" type="checkbox" value="ProviderContact"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-ProviderContact"></label></div></div></div>
+               </div>
+           </div>
+           <div class="govuk-grid-column-one-third">
+               <div id="Training">
+                   <h3 class="govuk-heading-s">Apprenticeship Standard</h3>
+                   <p class="govuk-body">
+                       Abattoir worker<br />
+                       Level 2 (GCSE)
+                   </p>
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-Training" name="SelectedFieldIdentifiers" type="checkbox" value="Training"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-Training"></label></div></div></div>
+               </div>
+           </div>
+       </div>
+       <div class="govuk-grid-row" id="reqAndProspects">
+           <div class="govuk-grid-column-full">
+               <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+               <h2 class="govuk-heading-l" id="ApplicationMethod">Application process</h2>
+           </div>
+       </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+               <div id="ApplicationMethod">
+                   <p class="govuk-body">
+                       Candidates will apply through the Find an apprenticeship service
+                   </p>
+
+                   <div class="govuk-form-group"><div class="govuk-checkboxes"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input field-identifier-checkbox" id="SelectedFieldIdentifiers-ApplicationMethod" name="SelectedFieldIdentifiers" type="checkbox" value="ApplicationMethod"></input><label class="govuk-label govuk-checkboxes__label" for="SelectedFieldIdentifiers-ApplicationMethod"></label></div></div></div>
+               </div>
+
+
+           </div>
+       </div>
+       <div class="govuk-grid-row" id="reqAndProspects">
+           <div class="govuk-grid-column-full">
+               <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+           </div>
+       </div>
+
+
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+               <div class="govuk-form-group">
+                   <h2 class="govuk-heading-m">Reviewer's Comments</h2>
+                   <ul class="govuk-!-margin-bottom-6 govuk-list" id="automatedqarules-selected-comments"><li>The title is not common for apprenticeships with the training standard 274 - Abattoir worker.</li></ul>
+                   <span class="govuk-error-message field-validation-valid" data-valmsg-for="ReviewerComment" data-valmsg-replace="true"></span>
+                   <div class="govuk-form-group">
+                       <textarea class="govuk-textarea" cols="20" rows="5" size="12" type="text" data-val-length-max="2500" id="ReviewerComment" name="ReviewerComment">
+</textarea>
+                       <span class="maxchar-count"></span>
+                       <span class="maxchar-text"></span>
+                   </div>
+               </div>
+           </div>
+       <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+               <div class="govuk-form-group inline">
+                   <div class="govuk-form-group govuk-!-margin-top-6">
+                       <button type="submit" class="govuk-button" id="submit-button">Refer</button>
+                       <a class="govuk-link das-button-link" href="index" style="margin-left :10px;">Back to QA dashboard</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+   <input name="_csrfToken" type="hidden" value="CfDJ8JAWEZWKl7BLi1nDsw5hWIQb_qEdUSDyYQFDpFJpKA-4FGnOnLSof4WELre1oIr-MCYxSz-ccFABMn93VuDs_WHrbvaacFIdvm58KgYhrVwQwA0HkmOR8Ps_CO5cs_FnCznMPYhZETGl-T9UeW0t0HRIfkfVOlGnmNAa5kTyONhz--X8WPky4j63MiTf9km7aQ" /></form>
+</div>
+<script nonce="hPNBJ0qp7dHsiDT5Kddw">
+   $(function () {
+       hookupHistory();
+
+       $(".field-identifier-checkbox").change(function () {
+           toggleSubmitButton();
+       });
+
+       $(".automatedqaresults-checkbox").change(function () {
+           toggleSubmitButton();
+           rebuildAutomatedQaReviewersComment();
+       });
+
+       function toggleSubmitButton() {
+           var isRefer = $(".field-identifier-checkbox:checked,.automatedqaresults-checkbox:checked").length > 0;
+           var submitButtonText = isRefer ? "Refer" : "Approve";
+           $("#submit-button").text(submitButtonText);
+       }
+
+       function rebuildAutomatedQaReviewersComment() {
+           var $comments = $("#automatedqarules-selected-comments");
+           $comments.empty();
+
+           $(".automatedqaresults-checkbox:checked").each(function (_, el) {
+               var $automatedQaText = $("<li></li>").text($(el).data("text"));
+               $comments.append($automatedQaText);
+           });
+       }
+
+       toggleSubmitButton();
+       rebuildAutomatedQaReviewersComment();
+   });
+</script>
+       </main>
+   </div>
+
+<div id="global-app-error" class="app-error hidden"></div>
+<script src="/bundles/sfajs?v=epUSgYeWCRVXQtkrz6ow5Oe4hq4jkScFpxymodtHb7M1"></script>
+
+
+<div style="display: none; visibility: hidden;">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+    jQuery.noConflict();
+    (function(b) {
+      b(function() {
+        b("body").on("click", function(a) {
+          dataLayer.push({
+            "gtm.element": a.target,
+            "gtm.elementClasses": b(a.target).attr("class"),
+            "gtm.elementId": b(a.target).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.target).attr("href"),
+            event: "gtm.click"
+          })
+        });
+        b(document).on("click", "a", function(a) {
+          dataLayer.push({
+            "gtm.element": a.currentTarget,
+            "gtm.elementClasses": b(a.currentTarget).attr("class"),
+            "gtm.elementId": b(a.currentTarget).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.currentTarget).attr("href"),
+            event: "gtm.linkClick"
+          })
+        })
+      })
+    })(jQuery);
+  </script>
+</div>
+</body>
+
+{% endblock %}

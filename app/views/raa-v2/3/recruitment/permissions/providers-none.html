@@ -1,0 +1,24 @@
+{% extends "ma-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+{{super()}}
+<a href="home" class="govuk-back-link">Return to homepage</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Training provider permissions</h1>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body">Add or manage permissions for training providers to act your behalf.</p>
+    <a class="govuk-button" href="select-training-provider?set_permissions_employer=MUSECRAFT&new_provider=&allow_recruitment=&has_recruitment_settings=" role="button">Add a new training provider</a>
+  </div>
+
+</div>
+
+{% endblock %}

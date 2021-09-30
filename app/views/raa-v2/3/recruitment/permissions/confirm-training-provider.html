@@ -1,0 +1,32 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- <span class="govuk-caption-xl">{% if data.title %}{{data.title}}{% else %}Business Administration Apprentice{% endif %} vacancy</span> -->
+    <h1 class="govuk-heading-xl">
+      Confirm the training provider
+    </h1>
+    <div class="das-confirm-card" style="background-color:#f4f4f4;padding:20px;margin-bottom:30px;">
+      <h2 class="govuk-heading-m">{{data.set_permission_provider}}<span class="govuk-caption-m">16 Dorrington Ave, Coventry, CV1 6HX<br>UKPRN: 10004319</span></h2>
+      <p class="govuk-body govuk-!-margin-bottom-0"><a href="select-training-provider">Change provider</a><br></p>
+    </div>
+    {%set p = data.set_permission_provider or "PLUMPTON COLLEGE 10021998" %}
+    {% set len = (p  | length)-9%}
+    {% set newname = p.slice( 0, len) %}
+
+
+    <a href="set-permissions?new_provider=yes&set_permission_provider={{newname}}" class="govuk-button">Save and continue</a>
+  </div>
+</div>
+{% block help %}
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "qa-layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent%}
+{{super()}}
+
+<div id="js-breadcrumbs" class="breadcrumbs"><a href="#" class="link-back">Back</a></div>
+{% endblock %}
+
+{% block main %}
+{{super}}
+<style media="screen">
+  .panel-filled {
+    background: #dee0e2;
+}
+.panel {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    border-left-style: solid;
+    border-color: #bfc1c3;
+    padding: .78947em;
+    margin-bottom: .78947em;
+}
+  hr.dashboard-heading-separator {
+    border-bottom: 5px solid #bfc1c3;
+    margin: 10px 0 40px;
+  }
+  .dashboard-heading-company {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
+<div class="govuk-width-container">
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+            <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+                Your report from 13 Aug 2021 to 12 Sep 2021 is being created
+            </h1>
+        </div>
+        <p class="govuk-body">
+            When your report is ready, you will be able to download it from the
+            <a href="reports-dashboard-with-report">reporting dashboard</a>
+        </p>
+        <p class="govuk-body">Large reports may take longer to create.</p>
+        <p class="govuk-body">
+            <a class="govuk-button" href="reports-dashboard-with-report">Back to report dashboard</a>
+        </p>
+    </div>
+</div>
+
+        </main>
+    </div>
+
+
+<div id="global-app-error" class="app-error hidden"></div>
+<script src="/bundles/sfajs?v=epUSgYeWCRVXQtkrz6ow5Oe4hq4jkScFpxymodtHb7M1"></script>
+<div style="display: none; visibility: hidden;">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+    jQuery.noConflict();
+    (function(b) {
+      b(function() {
+        b("body").on("click", function(a) {
+          dataLayer.push({
+            "gtm.element": a.target,
+            "gtm.elementClasses": b(a.target).attr("class"),
+            "gtm.elementId": b(a.target).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.target).attr("href"),
+            event: "gtm.click"
+          })
+        });
+        b(document).on("click", "a", function(a) {
+          dataLayer.push({
+            "gtm.element": a.currentTarget,
+            "gtm.elementClasses": b(a.currentTarget).attr("class"),
+            "gtm.elementId": b(a.currentTarget).attr("id"),
+            "gtm.elementTarget": a.target,
+            "gtm.elementUrl": b(a.currentTarget).attr("href"),
+            event: "gtm.linkClick"
+          })
+        })
+      })
+    })(jQuery);
+  </script>
+</div>
+</body>
+
+{% endblock %}

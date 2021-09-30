@@ -1,0 +1,26 @@
+{% if data.user=='employer'%}{% extends "ma-layout.html" %}{%else%}{% extends "tp-layout.html" %}{%endif%}
+
+{% block pageTitle %}
+Manage apprentices
+{% endblock %}
+
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Preview your vacancy</h1>
+    <p class="govuk-body">
+            Review the details that will appear in your advert. You can still make changes if you need to.
+            Once we've approved your advert, it will appear on ​the
+            <a href="https://www.gov.uk/apply-apprenticeship" class="govuk-link" target="_blank">Find an apprenticeship service (opens in a new tab or window).</a>
+        </p>
+
+    <p class="govuk-body"><a href="vacancy-preview" class="govuk-button" data-module="govuk-button">Preview advert</a></p>
+</div>
+</div>
+{% endblock %}
