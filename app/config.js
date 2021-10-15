@@ -8,7 +8,7 @@ module.exports = {
   maServiceName: 'Manage apprenticeships',
   qaServiceName: 'QA',
   // Default port that prototype runs on
-  port: '3000',
+  port: '4000',
 
   // Enable or disable password protection on production
   useAuth: 'true',

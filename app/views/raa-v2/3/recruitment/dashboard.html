@@ -259,12 +259,6 @@ Manage apprentices
 
     <div class="govuk-grid-row">
 
-      <div class="govuk-grid-column-one-third ">
-        <h3 class="govuk-heading-s"><a class="govuk-link  govuk-link--no-visited-state" href="reports/dashboard">Reports</a></h3>
-        <p class="govuk-body">Create a report about applicants or {%if data.user== "employer" %}adverts{%else%}vacancies{%endif%}</p>
-      </div>
-
-
       {% if data.user=="employer"%}
       <div class="govuk-grid-column-one-third ">
         <h3 class="govuk-heading-s"><a class="govuk-link  govuk-link--no-visited-state" href="permissions/providers-none">Set up permission</a></h3>
@@ -282,6 +276,17 @@ Manage apprentices
         </h3>
         <p class="govuk-body">Set up and manage the emails you receive about your {%if data.user== "employer" %}adverts{%else%}vacancies{%endif%} and applications.</p>
       </div>
+
+      <div class="govuk-grid-column-one-third ">
+        <h3 class="govuk-heading-s">Recruitment tools</h3>
+        <p class="govuk-body">Use our <a class="govuk-link govuk-link--no-visited-state" href="api">recruitment API</a> to create and display adverts on your websites. Use our <a class="govuk-link govuk-link--no-visited-state" href="reports/dashboard">reporting tools</a> to track the performance of your adverts. </p>
+      </div>
+
+      <!--<div class="govuk-grid-column-one-third ">
+        <h3 class="govuk-heading-s"><a class="govuk-link  govuk-link--no-visited-state" href="reports/dashboard">Recruitment tools</a></h3>
+        <p class="govuk-body">Use our recruitment API to create and display adverts on your websites. Use our reporting tools to track the performance of your adverts. </p>
+      </div>-->
+
     </div>
 
 

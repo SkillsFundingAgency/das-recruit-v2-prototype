@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-var latest_version = '1'
+var latest_version = '3'
 
 
 
@@ -33,4 +33,5 @@ router.get('/raa-v2/latest-version/*', function (req, res, next) {
 //require('./routes/raa-v2/0-2-1/routes.js')(router);
 require('./routes/raa-v2/1/routes.js')(router);
 require('./routes/raa-v2/2/routes.js')(router);
+require('./routes/raa-v2/3/routes.js')(router);
 module.exports = router
