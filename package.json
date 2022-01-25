@@ -35,7 +35,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "inquirer": "^8.2.0",
     "lodash": "^4.17.21",
-    "marked": "^3.0.8",
+    "marked": "^4.0.10",
     "node-sass": "^6.0.1",
     "notifications-node-client": "^5.1.0",
     "nunjucks": "^3.2.1",
@@ -50,7 +50,10 @@
     "jest": "^27.3.1",
     "standard": "^14.3.3",
     "supertest": "^6.1.6",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "postcss": ">=8.2.13",
+    "json-schema": ">=0.4.0",
+    "follow-redirects": ">=1.14.7"
   },
   "jest": {
     "testRunner": "jest-jasmine2"
